@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { Link } from '@remix-run/react';
-import { Button } from '~/components/ui/button';
-import { AnimatePresence, motion } from 'framer-motion';
-import { RxChevronDown, RxMoon, RxSun } from 'react-icons/rx';
-import { useTheme } from '~/hooks/use-theme';
+import { useState } from "react";
+import { Link } from "@remix-run/react";
+import { Button } from "~/components/ui/button";
+import { AnimatePresence, motion } from "framer-motion";
+import { RxChevronDown, RxMoon, RxSun } from "react-icons/rx";
+import { useTheme } from "~/hooks/use-theme";
 
 type NavLink = {
   title: string;
@@ -14,10 +14,10 @@ type NavLink = {
 };
 
 const navLinks: NavLink[] = [
-  { title: 'About Us', url: '/about-us' },
-  { title: 'Services', url: '/services' },
-  { title: 'Vision & Roadmap', url: '/vision-roadmap' },
-  { title: 'Contact Us', url: '/contact-us' },
+  { title: "關於我們", url: "/about-us" },
+  { title: "服務", url: "/services" },
+  { title: "未來營運", url: "/vision-roadmap" },
+  { title: "聯絡我們", url: "/contact-us" },
 ];
 
 export function Header() {
@@ -36,7 +36,10 @@ export function Header() {
             {Array(3)
               .fill(null)
               .map((_, index) => (
-                <span key={index} className="my-[3px] h-0.5 w-6 bg-foreground lg:hidden" />
+                <span
+                  key={index}
+                  className="my-[3px] h-0.5 w-6 bg-foreground lg:hidden"
+                />
               ))}
           </button>
 
@@ -69,18 +72,15 @@ export function Header() {
               onClick={toggleTheme}
               className="mr-2"
             >
-              {theme === 'dark' ? (
+              {theme === "dark" ? (
                 <RxSun className="h-5 w-5" />
               ) : (
                 <RxMoon className="h-5 w-5" />
               )}
             </Button>
             <div className="hidden lg:flex items-center gap-4">
-              <Button variant="outline" asChild>
-                <Link to="/login">Log in</Link>
-              </Button>
               <Button asChild>
-                <Link to="/get-started">Get Started</Link>
+                <Link to="/get-started">開啟跨境</Link>
               </Button>
             </div>
           </div>
@@ -109,7 +109,7 @@ export function Header() {
                 <Link to="/" className="mb-8 mt-10 text-2xl font-bold">
                   KFC Freight
                 </Link>
-                
+
                 <nav className="flex flex-col gap-4">
                   {navLinks.map((link, index) => (
                     <Link

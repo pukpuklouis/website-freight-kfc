@@ -1,88 +1,98 @@
-import { json } from '@remix-run/node';
-import { useLoaderData } from '@remix-run/react';
-import type { MetaFunction } from '@remix-run/node';
+import { json } from "@remix-run/node";
+import { useLoaderData } from "@remix-run/react";
+import type { MetaFunction } from "@remix-run/node";
+import { MissionSection } from "~/components/mission-section";
+import { FAQSection } from "~/components/faq-section";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: 'About Us - KFC Freight Services' },
-    { name: 'description', content: 'Learn about KFC Freight Services, our history, values, and commitment to excellence in freight solutions.' },
+    { title: "About Us - KFC Freight Services" },
+    {
+      name: "description",
+      content:
+        "Learn about KFC Freight Services, our history, values, and commitment to excellence in freight solutions.",
+    },
   ];
 };
 
-interface AboutUsData {
-  sections: {
-    title: string;
-    content: string;
-  }[];
-}
-
 export const loader = async () => {
-  const aboutData: AboutUsData = {
-    sections: [
-      {
-        title: 'Our Story',
-        content: 'KFC Freight Services has been a trusted name in the freight industry for years, delivering excellence and reliability in every shipment.',
-      },
-      {
-        title: 'Our Mission',
-        content: 'To provide innovative and efficient freight solutions while maintaining the highest standards of service and customer satisfaction.',
-      },
-      {
-        title: 'Our Values',
-        content: 'Integrity, Excellence, Innovation, and Customer Focus drive everything we do at KFC Freight Services.',
-      },
-    ],
-  };
+  const missionFeatures = [
+    {
+      number: "01",
+      tagline: "Our Purpose",
+      heading: "Connecting Global Trade",
+      description:
+        "We bridge businesses across continents with reliable and efficient freight solutions.",
+    },
+    {
+      number: "02",
+      tagline: "Our Commitment",
+      heading: "Excellence in Service",
+      description:
+        "Delivering outstanding customer service and maintaining the highest standards in freight management.",
+    },
+    {
+      number: "03",
+      tagline: "Our Vision",
+      heading: "Future of Freight",
+      description:
+        "Leading innovation in the freight industry while maintaining sustainable and efficient practices.",
+    },
+    {
+      number: "04",
+      tagline: "Our Expertise",
+      heading: "Global Network",
+      description:
+        "Leveraging our extensive international partnerships to provide seamless logistics solutions worldwide.",
+    },
+    {
+      number: "05",
+      tagline: "Our Responsibility",
+      heading: "Sustainable Logistics",
+      description:
+        "Committed to reducing our environmental impact through eco-friendly practices and green transportation solutions.",
+    },
+  ];
 
-  return json(aboutData);
+  const faqQuestions = [
+    {
+      title: "What services does KFC Freight offer?",
+      answer: "We offer comprehensive freight solutions including air freight, sea freight, land transportation, customs clearance, and specialized logistics services tailored to your needs.",
+    },
+    {
+      title: "How do you ensure cargo safety?",
+      answer: "We implement strict security protocols, use advanced tracking systems, and partner with trusted carriers to ensure your cargo is safe throughout its journey.",
+    },
+    {
+      title: "What areas do you service?",
+      answer: "We operate globally with a strong presence in Asia Pacific, Europe, and the Americas, supported by our extensive network of partners worldwide.",
+    },
+    {
+      title: "How can I track my shipment?",
+      answer: "We provide real-time tracking through our online portal and mobile app. Each shipment is assigned a unique tracking number for easy monitoring.",
+    },
+    {
+      title: "What makes KFC Freight different?",
+      answer: "Our combination of industry expertise, cutting-edge technology, and commitment to customer service sets us apart. We provide personalized solutions while maintaining competitive rates.",
+    },
+  ];
+
+  return json({ missionFeatures, faqQuestions });
 };
 
 export default function AboutUs() {
-  const { sections } = useLoaderData<AboutUsData>();
+  const { missionFeatures, faqQuestions } = useLoaderData<typeof loader>();
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <h1 className="text-4xl font-bold text-gray-900 mb-8 text-center">About Us</h1>
-      
-      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {sections.map((section, index) => (
-          <div 
-            key={index}
-            className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300"
-          >
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">{section.title}</h2>
-            <p className="text-gray-600 leading-relaxed">{section.content}</p>
-          </div>
-        ))}
-      </div>
-
-      <div className="mt-12 bg-gray-50 rounded-xl p-8">
-        <h2 className="text-3xl font-bold text-gray-900 mb-6">Why Choose Us?</h2>
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="flex items-start space-x-4">
-            <div className="flex-shrink-0">
-              <svg className="h-6 w-6 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-              </svg>
-            </div>
-            <div>
-              <h3 className="text-lg font-medium text-gray-900">Experienced Team</h3>
-              <p className="mt-2 text-gray-600">Our team brings years of industry expertise to every project.</p>
-            </div>
-          </div>
-          <div className="flex items-start space-x-4">
-            <div className="flex-shrink-0">
-              <svg className="h-6 w-6 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-              </svg>
-            </div>
-            <div>
-              <h3 className="text-lg font-medium text-gray-900">Global Network</h3>
-              <p className="mt-2 text-gray-600">Extensive network of partners worldwide for seamless logistics.</p>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div className="min-h-screen bg-gray-50">
+      <MissionSection features={missionFeatures} />
+      <FAQSection
+        questions={faqQuestions}
+        heading="常見問題"
+        description="✨ 物流疑問全攻略！從時效到價格，最關心的問題一次解答"
+        footerHeading="還有更多問題嗎?"
+        footerDescription="🚀 24小時護航｜AI助理+真人助手雙重服務 輸入你的需求＞＞秒速回覆專屬方案"
+      />
     </div>
   );
 }
