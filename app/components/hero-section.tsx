@@ -124,7 +124,7 @@ export function HeroSection() {
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
           >
             <Clock className="h-5 w-5 text-primary" />
-            <span>24/7 客戶服務</span>
+            <span>24/7  客戶服務</span>
           </motion.div>
         </motion.div>
       </div>

@@ -14,10 +14,10 @@ type NavLink = {
 };
 
 const navLinks: NavLink[] = [
+  { title: 'About Us', url: '/about-us' },
   { title: 'Services', url: '/services' },
-  { title: 'Features', url: '/features' },
-  { title: 'Pricing', url: '/pricing' },
-  { title: 'Contact', url: '/contact' },
+  { title: 'Vision & Roadmap', url: '/vision-roadmap' },
+  { title: 'Contact Us', url: '/contact-us' },
 ];
 
 export function Header() {
