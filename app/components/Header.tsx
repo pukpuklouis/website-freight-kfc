@@ -27,7 +27,8 @@ export function Header() {
   return (
     <section className="fixed top-4 left-1/2 -translate-x-1/2 w-[900px] bg-background/60 backdrop-blur-md z-50 rounded-full border shadow-sm">
       <div className="px-6">
-        <div className="grid h-14 grid-cols-[1fr_max-content_1fr] items-center justify-between">
+        <div className="relative flex h-14 items-center justify-between">
+          {/* Mobile Menu Button */}
           <button
             className="flex size-12 flex-col justify-center lg:hidden"
             onClick={() => setIsMobileMenuOpen((prev) => !prev)}
@@ -39,59 +40,29 @@ export function Header() {
               ))}
           </button>
 
-          <AnimatePresence>
-            <motion.div
-              initial="closed"
-              animate={isMobileMenuOpen ? "open" : "closed"}
-              exit="closed"
-              variants={{
-                closed: {
-                  x: "-100%",
-                  opacity: 1,
-                  transition: { type: "spring", duration: 0.6, bounce: 0 },
-                  transitionEnd: {
-                    opacity: "var(--opacity-closed, 0%)",
-                    x: "var(--x-closed, -100%)",
-                  },
-                },
-                open: {
-                  x: 0,
-                  opacity: 1,
-                  transition: { type: "spring", duration: 0.4, bounce: 0 },
-                },
-              }}
-              className="absolute left-0 top-14 z-50 flex h-dvh w-[90%] flex-col border rounded-2xl border-border bg-background/95 backdrop-blur-md px-[5%] pb-4 md:w-[80%] lg:visible lg:static lg:-ml-4 lg:flex lg:h-auto lg:w-auto lg:flex-row lg:border-none lg:bg-transparent lg:px-0 lg:pb-0 lg:[--opacity-closed:100%] lg:[--x-closed:0%]"
-            >
-              <Link to="/" className="mb-8 mt-10 text-2xl font-bold lg:hidden">
-                KFC Freight
-              </Link>
-              
-              {navLinks.map((link, index) => (
-                <Link
-                  key={index}
-                  to={link.url}
-                  className="relative block py-3 text-md hover:text-primary transition-colors lg:px-4 lg:py-2 lg:text-base"
-                >
-                  {link.title}
-                </Link>
-              ))}
-
-              <div className="mt-6 flex flex-col gap-4 lg:hidden">
-                <Button variant="outline" asChild>
-                  <Link to="/login">Log in</Link>
-                </Button>
-                <Button asChild>
-                  <Link to="/get-started">Get Started</Link>
-                </Button>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-
-          <Link to="/" className="flex min-h-16 flex-shrink-0 items-center text-2xl font-bold">
+          {/* Logo */}
+          <Link to="/" className="flex items-center text-2xl font-bold">
             KFC Freight
           </Link>
 
-          <div className="flex min-h-16 items-center justify-end gap-x-4">
+          {/* Desktop Navigation */}
+          <nav className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 lg:block">
+            <ul className="flex items-center gap-6">
+              {navLinks.map((link, index) => (
+                <li key={index}>
+                  <Link
+                    to={link.url}
+                    className="text-sm font-medium hover:text-primary transition-colors"
+                  >
+                    {link.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          {/* Right Side Actions */}
+          <div className="flex items-center gap-x-4">
             <Button
               variant="ghost"
               size="icon"
@@ -113,19 +84,69 @@ export function Header() {
               </Button>
             </div>
           </div>
+
+          {/* Mobile Navigation */}
+          <AnimatePresence>
+            {isMobileMenuOpen && (
+              <motion.div
+                initial="closed"
+                animate="open"
+                exit="closed"
+                variants={{
+                  closed: {
+                    x: "-100%",
+                    opacity: 1,
+                    transition: { type: "spring", duration: 0.6, bounce: 0 },
+                  },
+                  open: {
+                    x: 0,
+                    opacity: 1,
+                    transition: { type: "spring", duration: 0.4, bounce: 0 },
+                  },
+                }}
+                className="absolute left-0 top-14 z-50 flex h-dvh w-[90%] flex-col border rounded-2xl border-border bg-background/95 backdrop-blur-md px-[5%] pb-4 md:w-[80%] lg:hidden"
+              >
+                <Link to="/" className="mb-8 mt-10 text-2xl font-bold">
+                  KFC Freight
+                </Link>
+                
+                <nav className="flex flex-col gap-4">
+                  {navLinks.map((link, index) => (
+                    <Link
+                      key={index}
+                      to={link.url}
+                      className="text-lg font-medium hover:text-primary transition-colors"
+                    >
+                      {link.title}
+                    </Link>
+                  ))}
+                </nav>
+
+                <div className="mt-8 flex flex-col gap-4">
+                  <Button variant="outline" asChild>
+                    <Link to="/login">Log in</Link>
+                  </Button>
+                  <Button asChild>
+                    <Link to="/get-started">Get Started</Link>
+                  </Button>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* Mobile Menu Overlay */}
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              exit={{ opacity: 0 }}
+              animate={{ opacity: 0.5 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 z-40 bg-black lg:hidden"
+              onClick={() => setIsMobileMenuOpen(false)}
+            />
+          )}
         </div>
       </div>
-
-      {isMobileMenuOpen && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          exit={{ opacity: 0 }}
-          animate={{ opacity: 0.5 }}
-          transition={{ duration: 0.2 }}
-          className="fixed inset-0 z-40 bg-black lg:hidden"
-          onClick={() => setIsMobileMenuOpen(false)}
-        />
-      )}
     </section>
   );
 }

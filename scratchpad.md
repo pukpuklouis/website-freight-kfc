@@ -50,6 +50,45 @@
    - Optimize asset loading
    - Add proper caching strategies
 
+## Layout Structure Update (2025-01-22)
+
+### Issue
+Duplicate header and footer components were present in both `root.tsx` and `routes/_app.tsx`, causing potential conflicts and unnecessary rendering.
+
+### Changes Made
+
+1. **app/root.tsx**
+   - Moved the complete layout structure to root.tsx
+   - Added meta function for global SEO settings
+   - Integrated Header and Footer components
+   - Added main content wrapper with flex-1 for proper layout
+   - Consolidated all global layout elements in one place
+
+2. **app/routes/_app.tsx**
+   - Simplified to only handle the Outlet component
+   - Removed duplicate Header and Footer
+   - Removed redundant meta function
+   - Cleaned up unnecessary imports
+
+### Benefits
+- Single source of truth for layout structure
+- Cleaner routing hierarchy
+- Better performance (no duplicate components)
+- More maintainable codebase
+- Proper SEO meta tags handling at root level
+
+### Layout Structure
+```
+root.tsx
+├── Header
+├── main
+│   └── _app.tsx
+│       └── [other routes]
+└── Footer
+```
+
+This structure ensures that the Header and Footer are rendered only once and properly positioned in the application hierarchy.
+
 ## Notes
 - Keep track of any server/client separation issues
 - Review Remix documentation for proper data loading patterns

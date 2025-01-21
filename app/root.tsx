@@ -5,11 +5,11 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-import type { LinksFunction } from "@remix-run/node";
+import type { LinksFunction, MetaFunction } from "@remix-run/node";
 
 import "./tailwind.css";
-import { Header } from '~/components/header';
-import { Footer } from '~/components/footer';
+import { Header } from '~/components/Header';
+import { Footer } from '~/components/Footer';
 
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -24,7 +24,14 @@ export const links: LinksFunction = () => [
   },
 ];
 
-export function Layout({ children }: { children: React.ReactNode }) {
+export const meta: MetaFunction = () => {
+  return [
+    { title: 'KFC Freight - Global Logistics Solutions' },
+    { name: 'description', content: 'Your trusted partner in global logistics and freight solutions.' },
+  ];
+};
+
+export default function App() {
   return (
     <html lang="en" className="h-full">
       <head>
@@ -34,9 +41,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body className="h-full">
-        <div className="flex min-h-full flex-col">
+        <div className="flex min-h-screen flex-col">
           <Header />
-          {children}
+          <main className="flex-1">
+            <Outlet />
+          </main>
           <Footer />
         </div>
         <ScrollRestoration />
@@ -44,8 +53,4 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </body>
     </html>
   );
-}
-
-export default function App() {
-  return <Outlet />;
 }
