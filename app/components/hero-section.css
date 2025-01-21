@@ -1,0 +1,19 @@
+.HeroSection_section1 {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: visible;
+}
+
+.HeroSection_section1 .container {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .HeroSection_section1 {
+    min-height: 120vh;
+  }
+}

@@ -3,6 +3,8 @@ import type { MetaFunction } from '@remix-run/node';
 import { Link, useLoaderData } from '@remix-run/react';
 import { Button } from '~/components/ui/button';
 import { ArrowRight, Globe, Clock, Shield, Truck, Ship, Plane } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { HeroSection } from '~/components/hero-section';
 
 interface Feature {
   title: string;
@@ -60,14 +62,14 @@ export async function loader() {
         link: '/services/road-freight',
       },
       {
-        title: 'Ocean Freight',
-        description: 'Reliable sea freight services for global trade',
+        title: 'Sea Freight',
+        description: 'Cost-effective ocean freight services for global trade',
         iconType: 'ship',
-        link: '/services/ocean-freight',
+        link: '/services/sea-freight',
       },
       {
         title: 'Air Freight',
-        description: 'Fast and secure air cargo transportation',
+        description: 'Express air cargo services for time-sensitive deliveries',
         iconType: 'plane',
         link: '/services/air-freight',
       },
@@ -79,39 +81,31 @@ export default function Index() {
   const { features, services } = useLoaderData<typeof loader>();
 
   return (
-    <div className="flex flex-col gap-16 py-8">
-      {/* Hero Section */}
-      <section className="container mx-auto px-4 text-center">
-        <h1 className="mb-6 text-4xl font-bold md:text-6xl">
-          Global Freight Solutions
-        </h1>
-        <p className="mb-8 text-xl text-gray-600">
-          Your trusted partner in worldwide logistics
-        </p>
-        <Button asChild size="lg">
-          <Link to="/contact">
-            Get Started <ArrowRight className="ml-2 h-5 w-5" />
-          </Link>
-        </Button>
-      </section>
-
+    <main className="flex-1">
+      <HeroSection />
       {/* Features Section */}
-      <section className="bg-gray-50 py-16">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="mb-12 text-center text-3xl font-bold">Why Choose Us</h2>
-          <div className="grid gap-8 md:grid-cols-3">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <h2 className="text-3xl font-bold mb-4">Why Choose Us</h2>
+            <p className="text-gray-600">
+              Experience the difference with our comprehensive logistics solutions designed
+              to meet your unique business needs.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {features.map((feature) => {
               const Icon = IconMap[feature.iconType];
               return (
                 <div
                   key={feature.title}
-                  className="flex flex-col items-center rounded-lg bg-white p-6 shadow-sm"
+                  className="p-6 rounded-lg border bg-white shadow-sm hover:shadow-md transition-all duration-300"
                 >
-                  <Icon className="mb-4 h-12 w-12 text-primary" />
-                  <h3 className="mb-2 text-xl font-semibold">{feature.title}</h3>
-                  <p className="text-center text-gray-600">
-                    {feature.description}
-                  </p>
+                  <div className="mb-4">
+                    <Icon className="w-8 h-8 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+                  <p className="text-gray-600">{feature.description}</p>
                 </div>
               );
             })}
@@ -120,29 +114,35 @@ export default function Index() {
       </section>
 
       {/* Services Section */}
-      <section className="container mx-auto px-4">
-        <h2 className="mb-12 text-center text-3xl font-bold">Our Services</h2>
-        <div className="grid gap-8 md:grid-cols-3">
-          {services.map((service) => {
-            const Icon = IconMap[service.iconType];
-            return (
-              <div
-                key={service.title}
-                className="group relative overflow-hidden rounded-lg border bg-white p-6 transition-all hover:shadow-lg"
-              >
-                <Icon className="mb-4 h-12 w-12 text-primary transition-transform group-hover:scale-110" />
-                <h3 className="mb-2 text-xl font-semibold">{service.title}</h3>
-                <p className="mb-4 text-gray-600">{service.description}</p>
-                <Button asChild variant="outline">
-                  <Link to={service.link}>
-                    Learn More <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-              </div>
-            );
-          })}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <h2 className="text-3xl font-bold mb-4">Our Services</h2>
+            <p className="text-gray-600">
+              Comprehensive freight solutions tailored to your business needs.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {services.map((service) => {
+              const Icon = IconMap[service.iconType];
+              return (
+                <Link
+                  key={service.title}
+                  to={service.link}
+                  className="group p-6 rounded-lg border bg-white shadow-sm hover:shadow-md transition-all duration-300"
+                >
+                  <div className="mb-4 flex justify-between items-center">
+                    <Icon className="w-8 h-8 text-primary" />
+                    <ArrowRight className="w-5 h-5 text-gray-400 transform group-hover:translate-x-1 transition-transform" />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
+                  <p className="text-gray-600">{service.description}</p>
+                </Link>
+              );
+            })}
+          </div>
         </div>
       </section>
-    </div>
+    </main>
   );
 }
