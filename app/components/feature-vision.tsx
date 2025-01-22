@@ -5,56 +5,63 @@ interface FeatureVisionProps {
   description: string;
   features: {
     icon: string;
-    title: string;
-    description: string;
+    text: string;
   }[];
+  image: {
+    src: string;
+    alt: string;
+  };
 }
 
-export function FeatureVision({ heading, description, features }: FeatureVisionProps) {
+export function FeatureVision({ heading, description, features, image }: FeatureVisionProps) {
   return (
-    <section className="py-16 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-3xl font-bold text-gray-900 sm:text-4xl mb-4"
-          >
-            {heading}
-          </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-xl text-gray-600 max-w-3xl mx-auto"
-          >
-            {description}
-          </motion.p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature, index) => (
-            <motion.div
-              key={index}
+    <section className="px-[5%] py-16 md:py-24 lg:py-28">
+      <div className="container mx-auto">
+        <div className="grid grid-cols-1 gap-y-12 md:grid-cols-2 md:items-center md:gap-x-12 lg:gap-x-20">
+          <div>
+            <motion.h2 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="bg-gray-50 rounded-xl p-8 hover:shadow-lg transition-all duration-300"
+              transition={{ duration: 0.6 }}
+              className="mb-5 md:mb-6 font-bold leading-tight text-[clamp(1.4rem,3.9vw,4rem)]"
             >
-              <div className="flex items-center mb-4">
-                <div className="bg-blue-100 rounded-full p-3">
-                  <img src={feature.icon} alt="" className="w-6 h-6" />
-                </div>
-                <h3 className="text-xl font-semibold ml-4 text-gray-900">
-                  {feature.title}
-                </h3>
-              </div>
-              <p className="text-gray-600">
-                {feature.description}
-              </p>
-            </motion.div>
-          ))}
+              {heading}
+            </motion.h2>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="mb-5 md:mb-6 md:text-md"
+            >
+              {description}
+            </motion.p>
+            <motion.ul 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="grid grid-cols-1 gap-4 py-2"
+            >
+              {features.map((feature, index) => (
+                <li key={index} className="flex self-start">
+                  <div className="mr-4 flex-none self-start">
+                    <img src={feature.icon} alt="" className="size-6" />
+                  </div>
+                  <p>{feature.text}</p>
+                </li>
+              ))}
+            </motion.ul>
+          </div>
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            <img 
+              src={image.src} 
+              alt={image.alt}
+              className="w-full object-cover rounded-lg shadow-lg"
+            />
+          </motion.div>
         </div>
       </div>
     </section>
