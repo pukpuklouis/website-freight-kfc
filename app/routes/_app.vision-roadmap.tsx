@@ -1,6 +1,7 @@
 import { json } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
 import type { MetaFunction } from '@remix-run/node';
+import { FeatureVision } from '~/components/feature-vision';
 
 export const meta: MetaFunction = () => {
   return [
@@ -49,9 +50,9 @@ export default function VisionRoadmap() {
   const { vision, milestones } = useLoaderData<VisionRoadmapData>();
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-40">
       <div className="text-center mb-16">
-        <h1 className="text-4xl font-bold text-gray-900 mb-8">Our Vision & Roadmap</h1>
+        <h1 className="text-4xl font-bold text-gray-900 mb-8">卡菲斯國際的願景與藍圖</h1>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto">{vision}</p>
       </div>
 
@@ -83,6 +84,43 @@ export default function VisionRoadmap() {
           ))}
         </div>
       </div>
+
+      <FeatureVision 
+        heading="我們的願景特色"
+        description="卡菲斯國際致力於提供創新、可持續和高效的物流解決方案"
+        features={[
+          {
+            icon: "/icons/innovation.svg",
+            title: "技術創新",
+            description: "運用先進技術提升物流效率，為客戶提供更好的服務體驗"
+          },
+          {
+            icon: "/icons/global.svg",
+            title: "全球網絡",
+            description: "建立強大的全球物流網絡，確保貨物運輸的安全性和準時性"
+          },
+          {
+            icon: "/icons/sustainable.svg",
+            title: "永續發展",
+            description: "實施環保物流解決方案，推動產業的可持續發展"
+          },
+          {
+            icon: "/icons/service.svg",
+            title: "優質服務",
+            description: "提供專業、可靠的客戶服務，建立長期的合作關係"
+          },
+          {
+            icon: "/icons/digital.svg",
+            title: "數位轉型",
+            description: "推動數位化轉型，優化營運流程和客戶體驗"
+          },
+          {
+            icon: "/icons/partnership.svg",
+            title: "策略合作",
+            description: "與全球合作夥伴建立策略聯盟，擴展服務範圍"
+          }
+        ]}
+      />
 
       <div className="mt-20 bg-gray-50 rounded-xl p-8">
         <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">Strategic Focus Areas</h2>

@@ -39,12 +39,12 @@ export function MissionSection({ features }: MissionSectionProps) {
                 const segmentDuration = totalDuration / features.length;
                 
                 // Increase this value (0.1 to 0.4) to make numbers overlap more
-                const overlapFactor = 0.05; 
+                const overlapFactor = 0.08; 
 
                 // === FIRST NUMBER TIMING ADJUSTMENTS ===
                 // For earlier first number appearance:
                 // 1. Decrease this offset for the first number (index === 0)
-                const startOffset = index === 0 ? -0.05 : (index * segmentDuration);
+                const startOffset = index === 0 ? -0.02 : (index * segmentDuration);
                 
                 // Calculate animation points
                 // Decrease these values for earlier first number appearance
