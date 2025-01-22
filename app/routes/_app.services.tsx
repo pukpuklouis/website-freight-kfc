@@ -3,7 +3,7 @@ import type { MetaFunction } from '@remix-run/node';
 
 export const meta: MetaFunction = () => {
   return [
-    { title: 'Services - KFC Freight' },
+    { title: 'Services - KFC FreightXX' },
     { name: 'description', content: 'Explore our comprehensive freight and logistics services.' },
   ];
 };

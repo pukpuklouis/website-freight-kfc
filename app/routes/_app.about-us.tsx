@@ -3,6 +3,7 @@ import { useLoaderData } from "@remix-run/react";
 import type { MetaFunction } from "@remix-run/node";
 import { MissionSection } from "~/components/mission-section";
 import { FAQSection } from "~/components/faq-section";
+import { PurposeSection } from "~/components/purpose-section";
 
 export const meta: MetaFunction = () => {
   return [
@@ -19,38 +20,31 @@ export const loader = async () => {
   const missionFeatures = [
     {
       number: "01",
-      tagline: "Our Purpose",
-      heading: "Connecting Global Trade",
+      tagline: "跨境包裹還沒下單就開始焦慮？",
+      heading: "極限時效 跑贏每一秒",
       description:
-        "We bridge businesses across continents with reliable and efficient freight solutions.",
+        "我們用72小時極速圈破解時間差困局：智能預報關系統+24小時彈性清關窗口+在地化末端派送部隊，比您預期的更早完成「收件→報關→清關→派送」全鏈條賽跑。",
     },
     {
       number: "02",
-      tagline: "Our Commitment",
-      heading: "Excellence in Service",
+      tagline: "在東亞黃金航線上高效流轉",
+      heading: "專業是精準到秒的系統",
       description:
-        "Delivering outstanding customer service and maintaining the highest standards in freight management.",
+        "120天的專業人員訓練「各地關稅」｜深諳港口脈動，3國稅則藍圖｜比海關更早半拍的佈局規劃，訓練外語基因｜熟稔在地報關文化。",
     },
     {
       number: "03",
-      tagline: "Our Vision",
-      heading: "Future of Freight",
+      tagline: "安全，是我們對托運的承諾",
+      heading: "看得見的安全感",
       description:
-        "Leading innovation in the freight industry while maintaining sustainable and efficient practices.",
+        "√ 動態監控黑科技艙位 √ 全鏈可視化追蹤 √ 智能風險預警系統。為每件貨物搭配專屬保鑣，讓安全感先於貨物抵達。",
     },
     {
       number: "04",
-      tagline: "Our Expertise",
-      heading: "Global Network",
+      tagline: "最貼心的物流商",
+      heading: "服務不是口號是DNA",
       description:
-        "Leveraging our extensive international partnerships to provide seamless logistics solutions worldwide.",
-    },
-    {
-      number: "05",
-      tagline: "Our Responsibility",
-      heading: "Sustainable Logistics",
-      description:
-        "Committed to reducing our environmental impact through eco-friendly practices and green transportation solutions.",
+        "用Z世代的創新腦洞，搭配多年實戰經驗，為傳統運輸注入高效新解法。透過智能追蹤系統與客製化包裝方案，讓每個環節都成為信任的基石。",
     },
   ];
 
@@ -85,6 +79,7 @@ export default function AboutUs() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <PurposeSection />
       <MissionSection features={missionFeatures} />
       <FAQSection
         questions={faqQuestions}

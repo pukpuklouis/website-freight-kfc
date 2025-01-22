@@ -1,5 +1,6 @@
-import { useRef } from 'react';
-import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
+import "./mission-section.css";
+import { useRef } from "react";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 
 interface MissionFeature {
   number: string;
@@ -14,27 +15,42 @@ interface MissionSectionProps {
 
 export function MissionSection({ features }: MissionSectionProps) {
   const ref = useRef<HTMLDivElement>(null);
-  
+
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ['start end', 'end start'],
+    offset: ["start start", "end end"],
   });
 
   return (
-    <section ref={ref} className="px-[5%] py-24 pb-32 md:py-32 md:pb-40 lg:py-40 lg:pb-48 bg-white">
-      <div className="container mx-auto">
-        <div className="relative grid gap-x-8 gap-y-12 md:grid-cols-[0.4fr_1fr] lg:grid-cols-[0.5fr_1fr] lg:gap-x-20">
+    <section
+      ref={ref}
+      className="px-[5%] py-24 pb-24 md:py-16 md:pb-32 lg:py-12 lg:pb-16 bg-white relative MissionSection_section1"
+    >
+      <div className="container mx-auto MissionSection_div2">
+        <div className="relative grid gap-x-8 gap-y-12 md:grid-cols-[0.4fr_1fr] lg:grid-cols-[0.5fr_1fr] lg:gap-x-20 MissionSection_div3">
           <div className="static top-[15%] hidden h-80 md:sticky md:flex md:items-start">
             <div className="text-center relative h-full w-full overflow-hidden flex items-start justify-center pt-8">
               {features.map((feature, index) => {
+                // Calculate segment size based on number of features
+                const segmentSize = 1.3 / features.length;
+                // Add padding between segments
+                const padding = 0.1;
+
+                // For first number (index 0), start immediately
+                const points =
+                  index === 0
+                    ? [0, 0, segmentSize - padding, segmentSize] // First number points
+                    : [
+                        // Other numbers points
+                        index * segmentSize,
+                        index * segmentSize + padding,
+                        (index + 1) * segmentSize - padding,
+                        (index + 1) * segmentSize,
+                      ];
+
                 const opacity = useTransform(
                   scrollYProgress,
-                  [
-                    index * 0.3,
-                    index * 0.3 + 0.05,
-                    (index + 1) * 0.3 - 0.05,
-                    (index + 1) * 0.3
-                  ],
+                  points,
                   [0, 1, 1, 0]
                 );
 
@@ -50,7 +66,7 @@ export function MissionSection({ features }: MissionSectionProps) {
               })}
             </div>
           </div>
-          <div className="grid gap-y-40 md:gap-y-56">
+          <div className="grid gap-y-24 md:gap-y-32 mb-24">
             {features.map((feature, index) => (
               <FeatureCard key={index} {...feature} />
             ))}
@@ -61,19 +77,24 @@ export function MissionSection({ features }: MissionSectionProps) {
   );
 }
 
-function FeatureCard({ number, tagline, heading, description }: MissionFeature) {
+function FeatureCard({
+  number,
+  tagline,
+  heading,
+  description,
+}: MissionFeature) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ['start center', 'end center'],
+    offset: ["start center", "end center"],
   });
-  
-  const animatedWidth = useSpring(scrollYProgress, { 
-    stiffness: 100, 
-    damping: 20 
+
+  const animatedWidth = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 20,
   });
-  
-  const width = useTransform(animatedWidth, [0, 1], ['0%', '100%']);
+
+  const width = useTransform(animatedWidth, [0, 1], ["0%", "100%"]);
 
   return (
     <div className="flex flex-col items-start justify-center py-8 md:py-0">
@@ -81,10 +102,7 @@ function FeatureCard({ number, tagline, heading, description }: MissionFeature) 
         {number}
       </div>
       <div ref={ref} className="mb-8 mt-8 h-0.5 w-full bg-gray-200 md:mt-0">
-        <motion.div 
-          className="h-0.5 bg-gray-900" 
-          style={{ width }}
-        />
+        <motion.div className="h-0.5 bg-gray-900" style={{ width }} />
       </div>
       <div className="max-w-2xl">
         <p className="mb-3 font-semibold text-gray-600 md:mb-4">{tagline}</p>
