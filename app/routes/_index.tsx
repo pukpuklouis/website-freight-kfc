@@ -2,15 +2,11 @@ import { json } from '@remix-run/node';
 import type { MetaFunction } from '@remix-run/node';
 import { Link, useLoaderData } from '@remix-run/react';
 import { Button } from '~/components/ui/button';
-import { ArrowRight, Globe, Clock, Shield, Truck, Ship, Plane } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { ArrowRight, Truck, Ship, Plane } from 'lucide-react';
 import { HeroSection } from '~/components/hero-section';
-
-interface Feature {
-  title: string;
-  description: string;
-  iconType: 'globe' | 'clock' | 'shield';
-}
+import { FeatureSection } from '~/components/_index_feature_section';
+import { BenefitSection } from '~/components/_index_benefit_section';
+import { HowItWork } from '~/components/_index_howitwork';
 
 interface Service {
   title: string;
@@ -19,121 +15,76 @@ interface Service {
   link: string;
 }
 
-const IconMap = {
-  globe: Globe,
-  clock: Clock,
-  shield: Shield,
+const IconMap: Record<Service['iconType'], typeof Truck> = {
   truck: Truck,
   ship: Ship,
   plane: Plane,
-} as const;
+};
 
 export const meta: MetaFunction = () => {
   return [
-    { title: 'KFC Freight - Home' },
-    { name: 'description', content: 'Discover our comprehensive freight and logistics solutions.' },
+    { title: 'KFC Freight' },
+    { name: 'description', content: 'Welcome to KFC Freight!' },
   ];
 };
 
 export async function loader() {
   return json({
-    features: [
-      {
-        title: 'Global Coverage',
-        description: 'Access to worldwide shipping routes with reliable partners in over 150 countries',
-        iconType: 'globe',
-      },
-      {
-        title: 'Real-time Tracking',
-        description: 'Advanced tracking system providing 24/7 visibility of your shipments',
-        iconType: 'clock',
-      },
-      {
-        title: 'Secure Handling',
-        description: "State-of-the-art security measures ensuring your cargo's safety",
-        iconType: 'shield',
-      },
-    ] as Feature[],
     services: [
       {
         title: 'Road Freight',
-        description: 'Efficient ground transportation solutions across continents',
+        description: '提供全面的陸運服務，包括整車運輸和零擔運輸。',
         iconType: 'truck',
         link: '/services/road-freight',
       },
       {
         title: 'Sea Freight',
-        description: 'Cost-effective ocean freight services for global trade',
+        description: '提供全球海運服務，包括整櫃和拼箱運輸。',
         iconType: 'ship',
         link: '/services/sea-freight',
       },
       {
         title: 'Air Freight',
-        description: 'Express air cargo services for time-sensitive deliveries',
+        description: '提供快速可靠的空運服務，適合緊急和高價值貨物。',
         iconType: 'plane',
         link: '/services/air-freight',
       },
-    ] as Service[],
+    ],
   });
 }
 
 export default function Index() {
-  const { features, services } = useLoaderData<typeof loader>();
+  const { services } = useLoaderData<typeof loader>();
 
   return (
     <main className="flex-1">
       <HeroSection />
-      {/* Features Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <h2 className="text-3xl font-bold mb-4">Why Choose Us</h2>
-            <p className="text-gray-600">
-              Experience the difference with our comprehensive logistics solutions designed
-              to meet your unique business needs.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {features.map((feature) => {
-              const Icon = IconMap[feature.iconType];
-              return (
-                <div
-                  key={feature.title}
-                  className="p-6 rounded-lg border bg-white shadow-sm hover:shadow-md transition-all duration-300"
-                >
-                  <div className="mb-4">
-                    <Icon className="w-8 h-8 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                  <p className="text-gray-600">{feature.description}</p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
+      <FeatureSection />
+      <BenefitSection />
+      <HowItWork />
       {/* Services Section */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <h2 className="text-3xl font-bold mb-4">Our Services</h2>
+            <h2 className="text-3xl font-bold mb-4">我們的服務</h2>
             <p className="text-gray-600">
-              Comprehensive freight solutions tailored to your business needs.
+              我們提供全方位的物流解決方案，滿足您的所有運輸需求。
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {services.map((service) => {
-              const Icon = IconMap[service.iconType];
+              const Icon = IconMap[service.iconType as 'truck' | 'ship' | 'plane'];
               return (
                 <Link
                   key={service.title}
                   to={service.link}
-                  className="group p-6 rounded-lg border bg-white shadow-sm hover:shadow-md transition-all duration-300"
+                  className="group bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow"
                 >
-                  <div className="mb-4 flex justify-between items-center">
-                    <Icon className="w-8 h-8 text-primary" />
-                    <ArrowRight className="w-5 h-5 text-gray-400 transform group-hover:translate-x-1 transition-transform" />
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="p-2 bg-primary/10 rounded-lg">
+                      <Icon className="w-6 h-6 text-primary" />
+                    </div>
+                    <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-primary transition-colors" />
                   </div>
                   <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
                   <p className="text-gray-600">{service.description}</p>

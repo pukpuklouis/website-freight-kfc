@@ -75,7 +75,7 @@ export function MissionSection({ features }: MissionSectionProps) {
                   useTransform(
                     scrollYProgress,
                     [start, peak1, peak2, end],
-                    [0.8, 1, 1, 0.8]
+                    [0.7, 0.9, 0.9, 0.7]
                   ),
                   springConfig
                 );

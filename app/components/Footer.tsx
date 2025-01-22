@@ -55,10 +55,10 @@ const followLinks: FollowLink[] = [
 ];
 
 const quickLinks: QuickLink[] = [
-  { name: 'Services', to: '#services' },
-  { name: 'Features', to: '#features' },
-  { name: 'Pricing', to: '#pricing' },
-  { name: 'Contact', to: '#contact' }
+  { name: '服務項目', to: '/services' },
+  { name: '願景藍圖', to: '/vision-roadmap' },
+  { name: '關於我們', to: '/about-us' },
+  { name: '聯絡我們', to: '/contact-us' }
 ];
 
 export const Footer = () => {
@@ -69,21 +69,20 @@ export const Footer = () => {
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <h3 className="text-xl font-bold text-white mb-4">卡菲斯國際</h3>
-            <p className="text-sm mb-4 font-light">
+            <h3 className="text-xl font-bold text-white mb-4">KFZ卡菲斯國際</h3>
+            <p className="text-sm mb-4 font-thin">
               在全球物流和運輸解決方案的可靠夥伴
             </p>
             <div className="space-y-2 text-sm">
               <p>卡菲斯國際有限公司/台海絲路運通有限公司</p>
               <p>
-                <span className="font-semibold">電話:</span> (02)2935-1589
+                <span className="font-semibold">電話:</span> <span className="font-thin">(02)2935-1589</span>
               </p>
               <p>
-                <span className="font-semibold">傳真:</span> (02)2935-0833
+                <span className="font-semibold">傳真:</span> <span className="font-thin">(02)2935-0833</span>
               </p>
               <p>
-                <span className="font-semibold">地址:</span>{' '}
-                11670台北市文山區羅斯福路六段142巷82號1樓
+                <span className="font-semibold">地址:</span> <span className="font-thin">11670 台北市文山區羅斯福路六段142巷82號1樓</span>
               </p>
             </div>
           </div>
@@ -139,7 +138,24 @@ export const Footer = () => {
         </div>
         
         <div className="border-t border-gray-800 mt-8 pt-8 text-sm text-center">
-          <p className="mb-2">&copy; {currentYear} KFC Freight. All rights reserved.</p>
+          <p className="mb-2">&copy; {currentYear} 卡菲斯國際. All rights reserved.</p>
+          <div className="flex justify-center gap-4 mb-4 text-gray-500">
+            <Link 
+              to="/terms" 
+              className="hover:text-white transition-colors"
+              prefetch="intent"
+            >
+              服務條款
+            </Link>
+            <span>•</span>
+            <Link 
+              to="/privacy" 
+              className="hover:text-white transition-colors"
+              prefetch="intent"
+            >
+              隱私政策
+            </Link>
+          </div>
           <p className="text-gray-500">
             Design by{' '}
             <a 
@@ -148,7 +164,7 @@ export const Footer = () => {
               rel="noopener noreferrer"
               className="hover:text-white transition-colors"
             >
-              A&Lstudio
+              A&LStudio
             </a>
           </p>
         </div>
