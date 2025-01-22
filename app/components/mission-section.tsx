@@ -18,7 +18,7 @@ export function MissionSection({ features }: MissionSectionProps) {
 
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start start", "end end"],
+    offset: ["start center", "end center"],
   });
 
   return (
@@ -31,34 +31,78 @@ export function MissionSection({ features }: MissionSectionProps) {
           <div className="static top-[15%] hidden h-80 md:sticky md:flex md:items-start">
             <div className="text-center relative h-full w-full overflow-hidden flex items-start justify-center pt-8">
               {features.map((feature, index) => {
-                // Calculate segment size based on number of features
-                const segmentSize = 1.3 / features.length;
-                // Add padding between segments
-                const padding = 0.1;
+                // === ANIMATION TIMING CONTROLS ===
+                // Increase this value to make all animations take longer
+                const totalDuration = 1.2; // Total scroll duration
+                
+                // Decrease this value to make numbers appear more quickly in sequence
+                const segmentDuration = totalDuration / features.length;
+                
+                // Increase this value (0.1 to 0.4) to make numbers overlap more
+                const overlapFactor = 0.05; 
 
-                // For first number (index 0), start immediately
-                const points =
-                  index === 0
-                    ? [0, 0, segmentSize - padding, segmentSize] // First number points
-                    : [
-                        // Other numbers points
-                        index * segmentSize,
-                        index * segmentSize + padding,
-                        (index + 1) * segmentSize - padding,
-                        (index + 1) * segmentSize,
-                      ];
+                // === FIRST NUMBER TIMING ADJUSTMENTS ===
+                // For earlier first number appearance:
+                // 1. Decrease this offset for the first number (index === 0)
+                const startOffset = index === 0 ? -0.05 : (index * segmentDuration);
+                
+                // Calculate animation points
+                // Decrease these values for earlier first number appearance
+                const start = Math.max(0, startOffset - (overlapFactor * segmentDuration));
+                const peak1 = start + (segmentDuration * 0.2);  // Adjust 0.2 to change fade-in speed
+                const peak2 = start + (segmentDuration * 0.8);  // Adjust 0.8 to change how long number stays visible
+                const end = Math.min(totalDuration, start + segmentDuration + (overlapFactor * segmentDuration));
 
-                const opacity = useTransform(
-                  scrollYProgress,
-                  points,
-                  [0, 1, 1, 0]
+                // === ANIMATION SMOOTHNESS CONTROLS ===
+                // Adjust these values to change animation feel
+                const springConfig = { 
+                  stiffness: 100,  // Higher = more reactive
+                  damping: 30,     // Lower = more bouncy
+                  restDelta: 0.001 // Lower = more precise
+                };
+                
+                const opacity = useSpring(
+                  useTransform(
+                    scrollYProgress,
+                    [start, peak1, peak2, end],
+                    [0, 1, 1, 0]
+                  ),
+                  springConfig
+                );
+
+                // Add scale animation for more dynamic effect
+                const scale = useSpring(
+                  useTransform(
+                    scrollYProgress,
+                    [start, peak1, peak2, end],
+                    [0.8, 1, 1, 0.8]
+                  ),
+                  springConfig
+                );
+
+                // Add Y position animation for subtle floating effect
+                const y = useSpring(
+                  useTransform(
+                    scrollYProgress,
+                    [start, peak1, peak2, end],
+                    [20, 0, 0, 20]
+                  ),
+                  springConfig
                 );
 
                 return (
                   <motion.h1
                     key={index}
-                    style={{ opacity }}
-                    className="text-[8rem] font-bold leading-[1] md:text-[12rem] lg:text-[14rem] text-gray-900 absolute top-0"
+                    style={{ 
+                      opacity,
+                      scale,
+                      y,
+                      position: 'absolute',
+                      top: 0,
+                      left: '50%',
+                      x: '-50%'
+                    }}
+                    className="text-[8rem] font-bold leading-[1] md:text-[12rem] lg:text-[14rem] text-gray-900"
                   >
                     {feature.number}
                   </motion.h1>
