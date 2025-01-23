@@ -1,6 +1,7 @@
 import "./purpose-section.css";
 import type { FC } from "react";
 import { useTheme, themes } from "~/utils/theme";
+import { red, green, blue } from "@radix-ui/colors";
 
 interface FeatureCard {
   title: string;

@@ -32,7 +32,7 @@ export function FAQSection({
   };
 
   return (
-    <section className="px-[5%] py-24 bg-white">
+    <section className="px-[5%] py-24 bg-accent-2">
       <div className="container mx-auto max-w-4xl">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900">
