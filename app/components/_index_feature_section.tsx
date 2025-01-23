@@ -1,8 +1,10 @@
 import "./_index_feature_section.css";
 import { memo } from "react";
+import { motion } from "framer-motion";
 import type { LucideIcon } from "lucide-react";
 import { Tilt } from "~/components/ui/tilt";
 import { Spotlight } from "~/components/ui/spotlight";
+import { useTheme, themes } from '~/utils/theme';
 
 interface ImageData {
   readonly src: string;
@@ -24,64 +26,6 @@ interface FeatureSectionProps {
   readonly className?: string;
 }
 
-const FeatureCard = memo(function FeatureCard({
-  image,
-  title,
-  description,
-  className,
-}: FeatureCardProps) {
-  return (
-    <Tilt
-      rotationFactor={8}
-      isRevese
-      springOptions={{
-        stiffness: 300,
-        damping: 20,
-        mass: 0.5,
-      }}
-      className={className}
-    >
-      <div
-        className={`
-          group relative overflow-hidden rounded-xl border border-gray-100
-          transition-all duration-300 hover:border-gray-200 hover:shadow-lg
-          h-full
-        `}
-      >
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/0 to-black/70 transition-all duration-300 group-hover:from-black/10 group-hover:via-black/20 group-hover:to-black/80" />
-
-        {/* Spotlight Effect */}
-        <Spotlight
-          className="z-10 from-white/30 via-white/10 to-transparent blur-2xl"
-          size={200}
-          springOptions={{
-            stiffness: 300,
-            damping: 20,
-            mass: 0.5,
-          }}
-        />
-
-        {/* Image with grayscale effect */}
-        <img
-          src={image.src}
-          alt={image.alt}
-          className="h-full w-full object-cover transition-all duration-500 grayscale group-hover:grayscale-0"
-        />
-
-        {/* Content overlay */}
-        <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-          <h3 className="mb-2 text-2xl font-bold tracking-tight">{title}</h3>
-          <p className="text-gray-100 opacity-0 transform translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
-            {description}
-          </p>
-        </div>
-      </div>
-    </Tilt>
-  );
-});
-
-// Default values for the feature section
 const defaultFeatures: FeatureCardProps[] = [
   {
     image: {
@@ -90,7 +34,7 @@ const defaultFeatures: FeatureCardProps[] = [
     },
     title: "全球網絡",
     description:
-      "我們的服務遍布全球150多個國家，確保您的貨物可以安全高效地運送到世界各地。",
+      "專精大中華區，確保貨物安全高效地運送到目的地。",
   },
   {
     image: {
@@ -110,6 +54,68 @@ const defaultFeatures: FeatureCardProps[] = [
   },
 ];
 
+const FeatureCard = memo(function FeatureCard({
+  image,
+  title,
+  description,
+  className = '',
+}: FeatureCardProps & { className?: string }) {
+  const { theme } = useTheme();
+  const { accent, gray } = themes[theme];
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
+      className={className}
+    >
+      <Tilt
+        rotationFactor={6}
+        isRevese
+        springOptions={{
+          stiffness: 300,
+          damping: 20,
+          mass: 0.5,
+        }}
+        className="h-full"
+      >
+        <div className="feature-card group relative overflow-hidden rounded-xl h-full">
+          {/* Background Image */}
+          <img
+            src={image.src}
+            alt={image.alt}
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+
+          {/* Gradient Overlay */}
+          <div className="feature-card-gradient absolute inset-0" />
+
+          {/* Spotlight Effect */}
+          <Spotlight
+            className="feature-spotlight z-10 blur-2xl"
+            size={100}
+            springOptions={{
+              stiffness: 300,
+              damping: 20,
+              mass: 0.5,
+            }}
+          />
+
+          {/* Content overlay */}
+          <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-[var(--accent-8)] to-transparent">
+            <h3 className="mb-2 text-2xl font-black tracking-tight text-[var(--gray-12)]">{title}</h3>
+            <p className="text-[var(--gray-12)] font-ligjt opacity-0 transform translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
+              {description}
+            </p>
+          </div>
+        </div>
+      </Tilt>
+    </motion.div>
+  );
+});
+
 export const FeatureSection = memo(function FeatureSection({
   tagline = "為什麼選擇我們",
   heading = "Make logistics disappear like magic.",
@@ -117,8 +123,11 @@ export const FeatureSection = memo(function FeatureSection({
   features = defaultFeatures,
   className,
 }: FeatureSectionProps) {
+  const { theme } = useTheme();
+  const { accent, gray } = themes[theme];
+
   return (
-    <section className="relative px-[10%] py-16 md:py-24 lg:py-32 bg-white">
+    <section className="feature-section relative px-[10%] py-16 md:py-24 lg:py-32 bg-[var(--accent-2)]">
       <div className="container mx-auto">
         {/* Header Section */}
         <div className="relative mb-8 md:mb-8 lg:mb-8">
@@ -137,14 +146,14 @@ export const FeatureSection = memo(function FeatureSection({
               <img
                 src="https://placehold.co/1920x600?text=Header+Background"
                 alt="Background"
-                className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0"
+                className="w-full h-full object-cover transition-all duration-700 group-hover:grayscale-0"
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/40" />
+              <div className="feature-card-gradient absolute inset-0" />
             </div>
 
             {/* Spotlight Effect */}
             <Spotlight
-              className="z-10 from-white/50 via-white/20 to-white/10 blur-2xl"
+              className="feature-spotlight z-10 blur-2xl"
               size={400}
               springOptions={{
                 stiffness: 26.7,
@@ -156,22 +165,22 @@ export const FeatureSection = memo(function FeatureSection({
             {/* Content Card */}
             <div className="relative z-20 py-16 md:py-20 lg:py-24 px-6 md:px-12">
               <div className="mx-auto max-w-3xl">
-                <div className="bg-white/5 backdrop-blur-lg rounded-2xl p-8 md:p-12 border border-white/10 transform-gpu transition-all duration-500 group-hover:bg-white/10 group-hover:border-white/20">
-                  <p className="mb-3 text-sm font-medium uppercase tracking-widest text-gray-200 md:mb-4">
+                <div className="rounded-2xl p-8 md:p-12 border border-[var(--accent-9)] bg-[var(--accent-6)]/50 backdrop-blur-sm transform-gpu transition-all duration-500">
+                  <p className="mb-3 text-sm font-medium uppercase tracking-widest md:mb-4 text-[var(--gray-11)]">
                     {tagline}
                   </p>
-                  <h2 className="mb-6 text-4xl font-bold text-white md:text-6xl lg:text-7xl tracking-tight">
+                  <h2 className="mb-6 text-4xl font-bold md:text-6xl lg:text-7xl tracking-tight text-[var(--accent-9)]">
                     {heading.split(" ").map((word, index, array) => (
                       <span key={index}>
                         {index === array.length - 1 ? (
-                          <span className="italic text-gray-100">{word}</span>
+                          <span className="italic">{word}</span>
                         ) : (
                           <span>{word} </span>
                         )}
                       </span>
                     ))}
                   </h2>
-                  <p className="text-gray-200 md:text-lg max-w-2xl">
+                  <p className="md:text-lg max-w-2xl text-[var(--gray-11)]">
                     {description}
                   </p>
                 </div>

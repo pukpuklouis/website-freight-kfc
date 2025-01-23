@@ -4,6 +4,7 @@ import type { MetaFunction } from "@remix-run/node";
 import { MissionSection } from "~/components/mission-section";
 import { FAQSection } from "~/components/faq-section";
 import { PurposeSection } from "~/components/purpose-section";
+import { useTheme, themes } from "~/utils/theme";
 
 export const meta: MetaFunction = () => {
   return [
@@ -76,9 +77,10 @@ export const loader = async () => {
 
 export default function AboutUs() {
   const { missionFeatures, faqQuestions } = useLoaderData<typeof loader>();
+  const { theme } = useTheme();
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen">
       <PurposeSection />
       <MissionSection features={missionFeatures} />
       <FAQSection

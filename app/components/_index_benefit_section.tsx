@@ -2,6 +2,7 @@ import { memo } from 'react';
 import { Tilt } from '~/components/ui/tilt';
 import { Spotlight } from '~/components/ui/spotlight';
 import { motion } from 'framer-motion';
+import { useTheme, themes } from '~/utils/theme';
 
 interface BenefitItem {
   readonly title: string;
@@ -23,11 +24,14 @@ const defaultBenefits: BenefitItem[] = [
   },
   {
     title: '成本效益',
-    description: '我們提供具競爭力的價格，助您降低運輸成本。',
+    description: '提供具競爭力的價格，助您降低運輸成本。',
   },
 ];
 
 const BenefitCard = memo(function BenefitCard({ title, description }: BenefitItem) {
+  const { theme } = useTheme();
+  const { accent, gray } = themes[theme];
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -45,9 +49,13 @@ const BenefitCard = memo(function BenefitCard({ title, description }: BenefitIte
         }}
         className="h-full"
       >
-        <div className="group relative h-full overflow-hidden rounded-2xl border border-gray-100 bg-white p-8 transition-all duration-300 hover:border-gray-200 hover:shadow-lg">
+        <div className="group relative h-full overflow-hidden rounded-2xl border bg-[var(--gray-2)] p-8 transition-all duration-300 hover:shadow-lg"
+             style={{
+               borderColor: `var(--accent-8)`,
+               '--spotlight-color': `var(--accent-1)`
+             } as React.CSSProperties}>
           <Spotlight
-            className="z-10 from-zinc-200/40 via-zinc-200/20 to-transparent blur-2xl"
+            className="z-10 blur-2xl"
             size={200}
             springOptions={{
               stiffness: 300,
@@ -57,7 +65,7 @@ const BenefitCard = memo(function BenefitCard({ title, description }: BenefitIte
           />
           <div className="relative z-20">
             <motion.h3 
-              className="mb-4 text-2xl font-bold tracking-tight text-gray-900"
+              className="mb-4 text-2xl font-bold tracking-tight bg-gradient-to-r from-[var(--accent-11)] to-[var(--accent-5)] bg-clip-text text-transparent"
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -66,7 +74,7 @@ const BenefitCard = memo(function BenefitCard({ title, description }: BenefitIte
               {title}
             </motion.h3>
             <motion.p 
-              className="text-gray-600"
+              className="text-[var(--theme-gray-11)]"
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -88,8 +96,11 @@ export const BenefitSection = memo(function BenefitSection({
   className,
   imageSrc = 'https://placehold.co/800x600?text=Logistics+Image',
 }: BenefitSectionProps) {
+  const { theme } = useTheme();
+  const { accent, gray } = themes[theme];
+
   return (
-    <section className="relative px-[10%] py-16 md:py-24 lg:py-32 bg-white">
+    <section className="relative px-[10%] py-16 md:py-24 lg:py-32 bg-[var(--accent-2)]">
       <div className="container mx-auto">
         <div className="grid gap-12 lg:grid-cols-2 items-center">
           {/* Left Column - Content */}
@@ -104,7 +115,7 @@ export const BenefitSection = memo(function BenefitSection({
             >
               <div className="relative z-20">
                 <motion.h2 
-                  className="mb-6 font-bold tracking-tight text-gray-900 text-[clamp(2rem,3.5vw,4rem)]"
+                  className="mb-6 font-bold tracking-tight text-[var(--accent-10)] text-[clamp(1.7rem,3vw+0.2rem,3.5rem)] leading-[1.1]"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -113,7 +124,7 @@ export const BenefitSection = memo(function BenefitSection({
                   {heading}
                 </motion.h2>
                 <motion.p 
-                  className="text-lg text-gray-600 md:text-xl"
+                  className="text-lg text-[var(--theme-gray-11)] md:text-xl"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -163,7 +174,7 @@ export const BenefitSection = memo(function BenefitSection({
                   alt="Logistics Benefits"
                   className="w-full rounded-2xl shadow-2xl transition-all duration-300 group-hover:shadow-3xl"
                 />
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-black/10 to-transparent" />
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-[var(--theme-gray-12)]/10 to-transparent" />
               </motion.div>
             </Tilt>
           </motion.div>

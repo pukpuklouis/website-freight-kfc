@@ -1,22 +1,27 @@
 import { Link } from '@remix-run/react';
 import { FaFacebookF, FaLine, FaWeixin, FaQq } from 'react-icons/fa';
+import { useTheme, themes } from '~/utils/theme';
 
 interface SocialLink {
   name: string;
-  url: string;
   id: string;
+  url: string;
   icon: React.ReactNode;
 }
 
-interface QuickLink {
+interface NavLink {
   name: string;
   to: string;
 }
 
-interface FollowLink {
-  name: string;
-  url: string;
-  icon: React.ReactNode;
+interface ContactInfo {
+  label: string;
+  value: string;
+}
+
+interface FooterSection {
+  title: string;
+  children: React.ReactNode;
 }
 
 const socialLinks: SocialLink[] = [
@@ -24,125 +29,159 @@ const socialLinks: SocialLink[] = [
     name: 'Line',
     url: 'https://line.me/ti/p/~0932194674',
     id: '0932194674',
-    icon: <FaLine className="w-5 h-5" />
+    icon: <FaLine className="w-5 h-5 text-green-500" />
   },
   {
     name: 'Line',
     url: 'https://line.me/ti/p/~12unisky',
     id: '12unisky',
-    icon: <FaLine className="w-5 h-5" />
+    icon: <FaLine className="w-5 h-5 text-green-500" />
   },
   {
     name: 'WeChat',
     url: '#',
     id: 'a0932194674',
-    icon: <FaWeixin className="w-5 h-5" />
+    icon: <FaWeixin className="w-5 h-5 text-green-500" />
   },
   {
     name: 'QQ',
     url: '#',
     id: '1794331657',
-    icon: <FaQq className="w-5 h-5" />
+    icon: <FaQq className="w-5 h-5 text-gray-600" />
   }
 ];
 
-const followLinks: FollowLink[] = [
-  {
-    name: 'Facebook',
-    url: '#',
-    icon: <FaFacebookF className="w-5 h-5" />
-  }
+const followLinks = [
+  { name: 'Facebook', url: 'https://facebook.com', icon: <FaFacebookF className="w-4 h-4" /> },
 ];
 
-const quickLinks: QuickLink[] = [
+const quickLinks: NavLink[] = [
+  { name: '首頁', to: '/' },
+  { name: '關於我們', to: '/about-us' },
   { name: '服務項目', to: '/services' },
   { name: '願景藍圖', to: '/vision-roadmap' },
-  { name: '關於我們', to: '/about-us' },
   { name: '聯絡我們', to: '/contact-us' }
 ];
 
-export const Footer = () => {
+const companyInfo = {
+  name: 'KFZ卡菲斯國際',
+  slogan: '在全球物流和運輸解決方案的可靠夥伴',
+  legalName: '卡菲斯國際有限公司/台海絲路運通有限公司',
+  contacts: [
+    { label: '電話', value: '(02)2935-1589' },
+    { label: '傳真', value: '(02)2935-0833' },
+    { label: '地址', value: '11670 台北市文山區羅斯福路六段142巷82號1樓' },
+  ] as ContactInfo[]
+};
+
+const ContactItem = ({ label, value }: ContactInfo) => (
+  <p>
+    <span className="font-semibold">{label}:</span>{' '}
+    <span className="">{value}</span>
+  </p>
+);
+
+const FooterSection = ({ title, children }: FooterSection) => (
+  <div>
+    <h4 className="font-semibold mb-4">{title}</h4>
+    {children}
+  </div>
+);
+
+const QuickLinksSection = () => (
+  <nav aria-label="Footer navigation">
+    <FooterSection title="快速連結">
+      <ul className="space-y-2">
+        {quickLinks.map(({ name, to }) => (
+          <li key={name}>
+            <Link 
+              to={to} 
+              className="hover:text-[var(--accent-1)] transition-colors"
+              prefetch="intent"
+            >
+              {name}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </FooterSection>
+  </nav>
+);
+
+const SocialLinksSection = () => (
+  <FooterSection title="聯絡方式">
+    <ul className="space-y-2 text-sm">
+      {socialLinks.map((link) => (
+        <li key={link.name + link.id}>
+          <a href={link.url} className="hover:text-[var(--accent-1)] transition-colors flex items-center gap-2">
+            {link.icon}
+            <span className="font-semibold">{link.name}:</span> {link.id}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </FooterSection>
+);
+
+const FollowSection = () => (
+  <FooterSection title="追蹤我們">
+    <div className="flex gap-4">
+      {followLinks.map((link) => (
+        <a 
+          key={link.name}
+          href={link.url} 
+          className="hover:text-[var(--accent-1)] transition-colors"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Follow us on ${link.name}`}
+        >
+          {link.icon}
+        </a>
+      ))}
+    </div>
+  </FooterSection>
+);
+
+const CompanySection = () => (
+  <div>
+    <h3 className="text-2xl font-bold mb-4">{companyInfo.name}</h3>
+    <p className="mb-4 text-[clamp(0.75rem,3vw+0.5rem,0.9rem)]">
+      {companyInfo.slogan}
+    </p>
+    <div className="space-y-2 text-sm">
+      <p className="text-[clamp(0.5rem,4vw+0.25rem,0.9rem)]">{companyInfo.legalName}</p>
+      {companyInfo.contacts.map((contact) => (
+        <ContactItem key={contact.label} {...contact} />
+      ))}
+    </div>
+  </div>
+);
+
+export function Footer() {
+  const { theme } = useTheme();
+  const { accent, gray } = themes[theme];
+
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-900 text-gray-300" role="contentinfo">
+    <footer 
+      className={`${theme === 'dark' ? 'bg-[var(--accent-2)] text-[var(--accent-12)]' : 'bg-[var(--accent-9)] text-[var(--accent-4)]'}`} 
+      role="contentinfo"
+    >
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div>
-            <h3 className="text-xl font-bold text-white mb-4">KFZ卡菲斯國際</h3>
-            <p className="text-sm mb-4 font-thin">
-              在全球物流和運輸解決方案的可靠夥伴
-            </p>
-            <div className="space-y-2 text-sm">
-              <p>卡菲斯國際有限公司/台海絲路運通有限公司</p>
-              <p>
-                <span className="font-semibold">電話:</span> <span className="font-thin">(02)2935-1589</span>
-              </p>
-              <p>
-                <span className="font-semibold">傳真:</span> <span className="font-thin">(02)2935-0833</span>
-              </p>
-              <p>
-                <span className="font-semibold">地址:</span> <span className="font-thin">11670 台北市文山區羅斯福路六段142巷82號1樓</span>
-              </p>
-            </div>
-          </div>
-          
-          <nav aria-label="Footer navigation">
-            <h4 className="text-white font-semibold mb-4">快速連結</h4>
-            <ul className="space-y-2">
-              {quickLinks.map(({ name, to }) => (
-                <li key={name}>
-                  <Link 
-                    to={to} 
-                    className="hover:text-white transition-colors"
-                    prefetch="intent"
-                  >
-                    {name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-          
-          <div>
-            <h4 className="text-white font-semibold mb-4">聯絡方式</h4>
-            <ul className="space-y-2 text-sm">
-              {socialLinks.map((link) => (
-                <li key={link.name + link.id}>
-                  <a href={link.url} className="hover:text-white transition-colors flex items-center gap-2">
-                    {link.icon}
-                    <span className="font-semibold">{link.name}:</span> {link.id}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-          
-          <div>
-            <h4 className="text-white font-semibold mb-4">追蹤我們</h4>
-            <div className="flex gap-4">
-              {followLinks.map((link) => (
-                <a 
-                  key={link.name}
-                  href={link.url} 
-                  className="text-gray-300 hover:text-white transition-colors"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Follow us on ${link.name}`}
-                >
-                  {link.icon}
-                </a>
-              ))}
-            </div>
-          </div>
+          <CompanySection />
+          <QuickLinksSection />
+          <SocialLinksSection />
+          <FollowSection />
         </div>
         
-        <div className="border-t border-gray-800 mt-8 pt-8 text-sm text-center">
+        <div className={`border-t ${theme === 'dark' ? 'border-[var(--accent-7)]' : 'border-[var(--accent-6)]'} mt-8 pt-8 text-sm text-center`}>
           <p className="mb-2">&copy; {currentYear} 卡菲斯國際. All rights reserved.</p>
-          <div className="flex justify-center gap-4 mb-4 text-gray-500">
+          <div className="flex justify-center gap-4 mb-4">
             <Link 
               to="/terms" 
-              className="hover:text-white transition-colors"
+              className="hover:text-[var(--accent-1)] transition-colors"
               prefetch="intent"
             >
               服務條款
@@ -150,19 +189,19 @@ export const Footer = () => {
             <span>•</span>
             <Link 
               to="/privacy" 
-              className="hover:text-white transition-colors"
+              className="hover:text-[var(--accent-1)] transition-colors"
               prefetch="intent"
             >
               隱私政策
             </Link>
           </div>
-          <p className="text-gray-500">
+          <p className="">
             Design by{' '}
             <a 
               href="https://anlstudio.framer.website" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="hover:text-white transition-colors"
+              className="hover:text-[var(--accent-1)] transition-colors"
             >
               A&LStudio
             </a>

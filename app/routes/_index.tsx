@@ -1,12 +1,11 @@
 import { json } from '@remix-run/node';
-import type { MetaFunction } from '@remix-run/node';
-import { Link, useLoaderData } from '@remix-run/react';
-import { Button } from '~/components/ui/button';
-import { ArrowRight, Truck, Ship, Plane } from 'lucide-react';
-import { HeroSection } from '~/components/hero-section';
+import type { LoaderFunction, MetaFunction } from '@remix-run/node';
+import { useLoaderData } from '@remix-run/react';
+import { HeroSection } from '~/components/_index_hero_section';
 import { FeatureSection } from '~/components/_index_feature_section';
 import { BenefitSection } from '~/components/_index_benefit_section';
-import { HowItWork } from '~/components/_index_howitwork';
+import { HowItWorks } from '~/components/_index_howitwork';
+import { ServiceSection } from '~/components/_index_service_section';
 
 interface Service {
   title: string;
@@ -15,12 +14,6 @@ interface Service {
   link: string;
 }
 
-const IconMap: Record<Service['iconType'], typeof Truck> = {
-  truck: Truck,
-  ship: Ship,
-  plane: Plane,
-};
-
 export const meta: MetaFunction = () => {
   return [
     { title: 'KFC Freight' },
@@ -28,7 +21,7 @@ export const meta: MetaFunction = () => {
   ];
 };
 
-export async function loader() {
+export const loader: LoaderFunction = async () => {
   return json({
     services: [
       {
@@ -61,39 +54,8 @@ export default function Index() {
       <HeroSection />
       <FeatureSection />
       <BenefitSection />
-      <HowItWork />
-      {/* Services Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <h2 className="text-3xl font-bold mb-4">我們的服務</h2>
-            <p className="text-gray-600">
-              我們提供全方位的物流解決方案，滿足您的所有運輸需求。
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {services.map((service) => {
-              const Icon = IconMap[service.iconType as 'truck' | 'ship' | 'plane'];
-              return (
-                <Link
-                  key={service.title}
-                  to={service.link}
-                  className="group bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow"
-                >
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="p-2 bg-primary/10 rounded-lg">
-                      <Icon className="w-6 h-6 text-primary" />
-                    </div>
-                    <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-primary transition-colors" />
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
-                  <p className="text-gray-600">{service.description}</p>
-                </Link>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+      <HowItWorks />
+      <ServiceSection services={services} />
     </main>
   );
 }

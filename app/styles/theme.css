@@ -1,0 +1,56 @@
+@import '@radix-ui/colors/gray.css';
+@import '@radix-ui/colors/blue.css';
+@import '@radix-ui/colors/red.css';
+@import '@radix-ui/colors/green.css';
+@import '@radix-ui/colors/gray-dark.css';
+@import '@radix-ui/colors/blue-dark.css';
+@import '@radix-ui/colors/red-dark.css';
+@import '@radix-ui/colors/green-dark.css';
+
+/* Light mode variables */
+:root {
+  --background: var(--gray-1);
+  --foreground: var(--gray-12);
+  --muted: var(--gray-3);
+  --muted-foreground: var(--gray-11);
+  --popover: var(--gray-2);
+  --popover-foreground: var(--gray-12);
+  --card: var(--gray-2);
+  --card-foreground: var(--gray-12);
+  --border: var(--gray-6);
+  --input: var(--gray-7);
+  --primary: var(--blue-9);
+  --primary-foreground: white;
+  --secondary: var(--gray-4);
+  --secondary-foreground: var(--gray-12);
+  --accent: var(--gray-3);
+  --accent-foreground: var(--gray-12);
+  --destructive: var(--red-9);
+  --destructive-foreground: white;
+  --success: var(--green-9);
+  --success-foreground: white;
+}
+
+/* Dark mode variables */
+.dark {
+  --background: var(--gray-1);
+  --foreground: var(--gray-12);
+  --muted: var(--gray-3);
+  --muted-foreground: var(--gray-11);
+  --popover: var(--gray-2);
+  --popover-foreground: var(--gray-12);
+  --card: var(--gray-2);
+  --card-foreground: var(--gray-12);
+  --border: var(--gray-6);
+  --input: var(--gray-7);
+  --primary: var(--blue-9);
+  --primary-foreground: white;
+  --secondary: var(--gray-4);
+  --secondary-foreground: var(--gray-12);
+  --accent: var(--gray-3);
+  --accent-foreground: var(--gray-12);
+  --destructive: var(--red-9);
+  --destructive-foreground: white;
+  --success: var(--green-9);
+  --success-foreground: white;
+}
