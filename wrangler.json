@@ -3,9 +3,7 @@
   "name": "freight-kfc",
   "compatibility_date": "2025-01-24",
   "pages_build_output_dir": "./build/client",
-  "node_compat": true,
   "observability": {
     "enabled": true
-  },
-  "compatibility_flags": ["nodejs_compat"]
+  }
 }
