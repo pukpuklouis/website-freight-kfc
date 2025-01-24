@@ -1,0 +1,9 @@
+# Redirect domain aliases to primary domain
+https://www.kfcfreight.com/* https://kfcfreight.com/:splat 301!
+
+# Optional: Redirect old URLs to new ones
+/old-page    /new-page    301
+/blog/*      /posts/:splat 301
+
+# Handle SPA routes - send all requests to index.html
+/*    /index.html   200

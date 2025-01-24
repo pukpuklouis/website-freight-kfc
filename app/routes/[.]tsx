@@ -1,0 +1,35 @@
+import { LoaderFunction, redirect } from '@remix-run/node';
+
+// Define your redirects map
+const REDIRECTS: Record<string, string> = {
+  '/old-contact': '/contact',
+  '/old-about': '/about',
+  // Add more redirects as needed
+};
+
+export const loader: LoaderFunction = async ({ request }) => {
+  const url = new URL(request.url);
+  const path = url.pathname.toLowerCase();
+
+  // Check if we have a redirect for this path
+  const redirectTo = REDIRECTS[path];
+  if (redirectTo) {
+    // 301 is permanent redirect, use 302 for temporary
+    return redirect(redirectTo, 301);
+  }
+
+  // Handle www to non-www redirect
+  if (url.hostname.startsWith('www.')) {
+    const newUrl = new URL(request.url);
+    newUrl.hostname = newUrl.hostname.replace('www.', '');
+    return redirect(newUrl.toString(), 301);
+  }
+
+  // If no redirect is found, continue to the next route
+  return null;
+};
+
+// This component will never be rendered because we always redirect
+export default function Redirects() {
+  return null;
+}
