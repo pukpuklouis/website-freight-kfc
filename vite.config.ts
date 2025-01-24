@@ -1,8 +1,11 @@
-import { vitePlugin as remix } from "@remix-run/dev";
+import { 
+  vitePlugin as remix,
+  cloudflareDevProxyVitePlugin as remixCloudflareDevProxy,
+ } from "@remix-run/dev";
 import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 
-declare module "@remix-run/node" {
+declare module "@remix-run/cloudflare" {
   interface Future {
     v3_singleFetch: true;
   }
@@ -10,6 +13,7 @@ declare module "@remix-run/node" {
 
 export default defineConfig({
   plugins: [
+    remixCloudflareDevProxy(),
     remix({
       future: {
         v3_fetcherPersist: true,
@@ -17,8 +21,15 @@ export default defineConfig({
         v3_throwAbortReason: true,
         v3_singleFetch: true,
         v3_lazyRouteDiscovery: true,
-      },
+      }
     }),
     tsconfigPaths(),
   ],
+  resolve: {
+    alias: {
+      crypto: 'crypto-browserify',
+      stream: 'stream-browserify',
+      util: 'util'
+    }
+  }
 });

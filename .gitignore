@@ -50,5 +50,9 @@ next-env.d.ts
 .windsurfrules
 
 # Misc
-.DS_Store
 Thumbs.db
+
+
+# Cloudflare
+.dev.vars
+.wrangler

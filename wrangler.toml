@@ -1,6 +1,0 @@
-compatibility_date = "2024-05-01"
-name = "freight-kfc"
-
-[pages]
-# Enable SPA mode
-include = ["/*"]
