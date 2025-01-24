@@ -35,8 +35,33 @@ export const meta: MetaFunction = () => {
       name: 'description',
       content: 'Welcome to KFC Freight!',
     },
+    { name: 'viewport', content: 'width=device-width,initial-scale=1,viewport-fit=cover' },
+    { name: 'theme-color', content: '#ffffff' },
+    { name: 'apple-mobile-web-app-capable', content: 'yes' },
+    { name: 'apple-mobile-web-app-status-bar-style', content: 'default' },
   ];
 };
+
+export function ErrorBoundary() {
+  return (
+    <html lang="en">
+      <head>
+        <title>Oops! Something went wrong</title>
+        <Meta />
+        <Links />
+      </head>
+      <body className="h-full">
+        <ThemeProvider>
+          <div className="flex min-h-screen flex-col items-center justify-center p-4">
+            <h1 className="text-2xl font-bold">Oops! Something went wrong</h1>
+            <p className="mt-4 text-gray-600">Please try refreshing the page</p>
+          </div>
+        </ThemeProvider>
+        <Scripts />
+      </body>
+    </html>
+  );
+}
 
 export default function App() {
   return (
