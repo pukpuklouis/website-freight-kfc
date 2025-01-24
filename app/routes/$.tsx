@@ -12,18 +12,15 @@ export const loader: LoaderFunction = async ({ request }) => {
   const url = new URL(request.url);
   const path = url.pathname.toLowerCase();
 
+  // Remove trailing slashes (except for the root path)
+  if (path.length > 1 && path.endsWith('/')) {
+    return redirect(path.slice(0, -1), 301);
+  }
+
   // Check if we have a redirect for this path
   const redirectTo = REDIRECTS[path];
   if (redirectTo) {
-    // 301 is permanent redirect, use 302 for temporary
     return redirect(redirectTo, 301);
-  }
-
-  // Handle www to non-www redirect
-  if (url.hostname.startsWith('www.')) {
-    const newUrl = new URL(request.url);
-    newUrl.hostname = newUrl.hostname.replace('www.', '');
-    return redirect(newUrl.toString(), 301);
   }
 
   // If no redirect is found, throw a 404
