@@ -1,4 +1,5 @@
-import { LoaderFunction, redirect } from '@remix-run/node';
+import type { LoaderFunction } from '@remix-run/node';
+import { redirect } from '@remix-run/node';
 
 // Define your redirects map
 const REDIRECTS: Record<string, string> = {
@@ -25,11 +26,15 @@ export const loader: LoaderFunction = async ({ request }) => {
     return redirect(newUrl.toString(), 301);
   }
 
-  // If no redirect is found, continue to the next route
-  return null;
+  // If no redirect is found, throw a 404
+  throw new Response('Not Found', { status: 404 });
 };
 
-// This component will never be rendered because we always redirect
-export default function Redirects() {
-  return null;
+export default function CatchAllRoute() {
+  return (
+    <div className="flex min-h-screen flex-col items-center justify-center p-4">
+      <h1 className="text-2xl font-bold">Page Not Found</h1>
+      <p className="mt-4 text-gray-600">The page you're looking for doesn't exist.</p>
+    </div>
+  );
 }
