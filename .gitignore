@@ -1,14 +1,54 @@
+# Dependencies
 node_modules
+/.pnp
+.pnp.js
 
-/.cache
+# Testing
+/coverage
+
+# Production
 /build
+/public/build
+/.cache
+/api
 .env
+.env.*
+!.env.example
 
-# log files
+# Development
+.DS_Store
+*.pem
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Debug logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+.pnpm-debug.log*
 
+# Local files
+*.local
+.local
 
-# windsurf rules
+# Remix specific
+/api/_build/
+/app/styles/tailwind.css
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# Windsurf
 .windsurfrules
+
+# Misc
+.DS_Store
+Thumbs.db
