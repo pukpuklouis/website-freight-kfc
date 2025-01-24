@@ -94,7 +94,7 @@ export const BenefitSection = memo(function BenefitSection({
   description = '使用卡菲斯的服務，您可以節省大量時間，讓物流過程變得簡單高效。我們的專業團隊確保每一個貨物都能安全準時送達。',
   benefits = defaultBenefits,
   className,
-  imageSrc = 'https://placehold.co/800x600?text=Logistics+Image',
+  imageSrc = 'https://images.unsplash.com/photo-1465447142348-e9952c393450?q=80&w=2874&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
 }: BenefitSectionProps) {
   const { theme } = useTheme();
   const { accent, gray } = themes[theme];
@@ -162,19 +162,19 @@ export const BenefitSection = memo(function BenefitSection({
                 damping: 20,
                 mass: 0.5,
               }}
-              className="relative overflow-hidden rounded-2xl"
+              className="relative overflow-hidden rounded-2xl w-full"
             >
               <motion.div
                 className="relative z-20"
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
               >
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-[var(--gray-12)]/10 to-transparent" />
                 <img
                   src={imageSrc}
                   alt="Logistics Benefits"
-                  className="w-full rounded-2xl shadow-2xl transition-all duration-300 group-hover:shadow-3xl"
+                  className="w-full rounded-2xl shadow-2xl aspect-[9/11] transition-all duration-300 group-hover:shadow-3xl object-cover"
                 />
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-[var(--theme-gray-12)]/10 to-transparent" />
               </motion.div>
             </Tilt>
           </motion.div>

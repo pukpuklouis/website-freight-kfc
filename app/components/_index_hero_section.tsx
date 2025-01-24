@@ -2,7 +2,6 @@ import "./_index_hero_section.css";
 import { Link } from "@remix-run/react";
 import { motion } from "framer-motion";
 import { ArrowRight, Globe, Clock, Shield } from "lucide-react";
-// import { Button } from "~/components/ui/button";
 import { useTheme, themes } from "~/utils/theme";
 import { Button } from "@radix-ui/themes";
 import "@radix-ui/themes/styles.css";
@@ -11,9 +10,9 @@ export function HeroSection() {
   const { theme } = useTheme();
   const { accent, gray, } = themes[theme];
 
-  // Create a lighter version of the accent color for gradient
-  const accentColor = accent === 'tomato' ? '#FF3B1F' : '#E01543';
-  const lighterAccent = accent === 'tomato' ? '#FF6B4D' : '#FF2E5C';
+  // Create gradient colors for the accent theme
+  const gradient1 = `var(--accent-9)`;
+  const gradient2 = `var(--accent-a4)`;
 
   const heroCTA = "貨發出錢進來";
 
@@ -46,7 +45,7 @@ export function HeroSection() {
         >
           <motion.h1
             style={{
-              background: `linear-gradient(135deg, ${accentColor}, ${lighterAccent})`,
+              background: `linear-gradient(170deg, ${gradient1}, ${gradient2})`,
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text'
@@ -76,7 +75,7 @@ export function HeroSection() {
             <Button 
               size="4"
               variant="solid"
-              className="shadow-lg bg-[var(--accent-9)] border-[var(--accent-8)] text-[var(--accent-contrast)] hover:bg-[var(--accent-10)] hover:border-[var(--accent-9)]"
+              className="shadow-lg bg-[var(--accent-9)] text-[var(--accent-contrast)] hover:bg-[var(--accent-10)] hover:border-[var(--accent-9)]"
               asChild
             >
               <Link to="/contact-us" className="group" >
@@ -101,9 +100,9 @@ export function HeroSection() {
             style={{ transform: "translateY(-16%)" }}
           >
             <img
-              src="https://placehold.co/600x600/1a365d/ffffff?text=Logistics"
+              src="https://images.unsplash.com/photo-1578245093109-472875396a2a?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               alt="Logistics Services"
-              className="aspect-square w-full object-cover rounded-2xl shadow-xl"
+              className="aspect-square w-full object-cover rounded-2xl shadow-2xl "
             />
           </motion.div>
           <motion.div
@@ -114,9 +113,9 @@ export function HeroSection() {
             style={{ transform: "translateY(15.5%)" }}
           >
             <img
-              src="https://placehold.co/800x800/2a4365/ffffff?text=Global+Network"
+              src="https://images.unsplash.com/photo-1510681916233-314f497f3301?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               alt="Global Network"
-              className="aspect-square w-full object-cover rounded-2xl shadow-xl"
+              className="aspect-square w-full object-cover rounded-2xl shadow-2xl"
             />
           </motion.div>
           <motion.div
@@ -127,9 +126,9 @@ export function HeroSection() {
             style={{ transform: "translateY(12%)" }}
           >
             <img
-              src="https://placehold.co/600x450/1a365d/ffffff?text=Supply+Chain"
-              alt="Supply Chain Solutions"
-              className="aspect-[4/3] w-full object-cover rounded-2xl shadow-xl"
+              src="https://images.unsplash.com/photo-1509810505-b88f10b18375?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="japan port"
+              className="aspect-[4/3] w-full object-cover rounded-2xl shadow-xl duration-700 group-hover:shadow-2xl"
             />
           </motion.div>
         </motion.div>

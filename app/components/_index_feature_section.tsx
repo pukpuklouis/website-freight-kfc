@@ -29,16 +29,16 @@ interface FeatureSectionProps {
 const defaultFeatures: FeatureCardProps[] = [
   {
     image: {
-      src: "https://placehold.co/600x400?text=Global+Logistics",
+      src: "https://images.unsplash.com/photo-1516738901171-8eb4fc13bd20?q=80&w=600&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3Ds",
       alt: "全球物流網絡",
     },
-    title: "全球網絡",
+    title: "全球網路",
     description:
       "專精大中華區，確保貨物安全高效地運送到目的地。",
   },
   {
     image: {
-      src: "https://placehold.co/600x400?text=Tracking+System",
+      src: "https://images.unsplash.com/photo-1581089781785-603411fa81e5?q=80&w=600&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       alt: "即時追蹤系統",
     },
     title: "即時追蹤",
@@ -46,7 +46,7 @@ const defaultFeatures: FeatureCardProps[] = [
   },
   {
     image: {
-      src: "https://placehold.co/600x400?text=Secure+Freight",
+      src: "https://images.unsplash.com/photo-1553413077-190dd305871c?q=80&w=600&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       alt: "安全貨運處理",
     },
     title: "安全處理",
@@ -88,10 +88,6 @@ const FeatureCard = memo(function FeatureCard({
             alt={image.alt}
             className="absolute inset-0 h-full w-full object-cover"
           />
-
-          {/* Gradient Overlay */}
-          <div className="feature-card-gradient absolute inset-0" />
-
           {/* Spotlight Effect */}
           <Spotlight
             className="feature-spotlight z-10 blur-2xl"
@@ -104,9 +100,9 @@ const FeatureCard = memo(function FeatureCard({
           />
 
           {/* Content overlay */}
-          <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-[var(--accent-8)] to-transparent">
-            <h3 className="mb-2 text-2xl font-black tracking-tight text-[var(--gray-12)]">{title}</h3>
-            <p className="text-[var(--gray-12)] font-ligjt opacity-0 transform translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
+          <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-[var(--gray-a12)] to-transparent">
+            <h3 className="mb-2 text-2xl font-black tracking-tight text-[var(--gray-1)]">{title}</h3>
+            <p className="text-[var(--gray-3)] font-light opacity-0 transform translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
               {description}
             </p>
           </div>
@@ -144,17 +140,17 @@ export const FeatureSection = memo(function FeatureSection({
             {/* Background Image */}
             <div className="absolute inset-0">
               <img
-                src="https://placehold.co/1920x600?text=Header+Background"
+                src="https://images.unsplash.com/photo-1617952739858-28043cecdae3?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 alt="Background"
-                className="w-full h-full object-cover transition-all duration-700 group-hover:grayscale-0"
+                className="w-full h-full object-cover transition-all duration-700 group-hover:grayscale-7"
               />
               <div className="feature-card-gradient absolute inset-0" />
             </div>
 
             {/* Spotlight Effect */}
             <Spotlight
-              className="feature-spotlight z-10 blur-2xl"
-              size={400}
+              className="feature-spotlight z-10 blur-3xl"
+              size={200}
               springOptions={{
                 stiffness: 26.7,
                 damping: 4.1,

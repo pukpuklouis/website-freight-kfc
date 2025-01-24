@@ -1,6 +1,7 @@
 import "./mission-section.css";
 import { useRef } from "react";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import { useTheme, themes } from "~/utils/theme";
 
 interface MissionFeature {
   number: string;
@@ -24,10 +25,10 @@ export function MissionSection({ features }: MissionSectionProps) {
   return (
     <section
       ref={ref}
-      className="px-[5%] py-24 pb-24 md:py-16 md:pb-32 lg:py-12 lg:pb-16 bg-white relative MissionSection_section1"
+      className="px-[5%] py-24 pb-24 md:py-16 md:pb-32 lg:py-12 lg:pb-16 bg-[var(--accent-2)] relative"
     >
-      <div className="container mx-auto MissionSection_div2">
-        <div className="relative grid gap-x-8 gap-y-12 md:grid-cols-[0.4fr_1fr] lg:grid-cols-[0.5fr_1fr] lg:gap-x-20 MissionSection_div3">
+      <div className="container mx-auto">
+        <div className="relative grid gap-x-8 gap-y-12 md:grid-cols-[0.4fr_1fr] lg:grid-cols-[0.5fr_1fr] lg:gap-x-20">
           <div className="static top-[15%] hidden h-80 md:sticky md:flex md:items-start">
             <div className="text-center relative h-full w-full overflow-hidden flex items-start justify-center pt-8">
               {features.map((feature, index) => {
@@ -102,7 +103,7 @@ export function MissionSection({ features }: MissionSectionProps) {
                       left: '50%',
                       x: '-50%'
                     }}
-                    className="text-[8rem] font-bold leading-[1] md:text-[12rem] lg:text-[14rem] text-gray-900"
+                    className="text-[8rem] font-bold leading-[1] md:text-[12rem] lg:text-[14rem] text-[var(--accent-10)]"
                   >
                     {feature.number}
                   </motion.h1>
@@ -145,15 +146,15 @@ function FeatureCard({
       <div className="mt-10 flex text-[6rem] font-bold leading-[1] md:mt-0 md:hidden">
         {number}
       </div>
-      <div ref={ref} className="mb-8 mt-8 h-0.5 w-full bg-gray-200 md:mt-0">
-        <motion.div className="h-0.5 bg-gray-900" style={{ width }} />
+      <div ref={ref} className="mb-8 mt-8 h-0.5 w-full bg-[var(--gray-6)] md:mt-0">
+        <motion.div className="h-0.5 bg-[var(--accent-7)]" style={{ width }} />
       </div>
       <div className="max-w-2xl">
-        <p className="mb-3 font-semibold text-gray-600 md:mb-4">{tagline}</p>
-        <h2 className="mb-5 text-4xl font-bold text-gray-900 md:mb-6 md:text-5xl lg:text-6xl">
+        <p className="mb-3 font-semibold text-[var(--gray-10)] md:text-gray- md:mb-4">{tagline}</p>
+        <h2 className="mb-5 md:mb-6 text-[clamp(2rem,4vw+0.6rem,5rem)] font-bold text-[var(--accent-12)]">
           {heading}
         </h2>
-        <p className="text-gray-600">{description}</p>
+        <p className="text-[var(--gray-11)]">{description}</p>
       </div>
     </div>
   );

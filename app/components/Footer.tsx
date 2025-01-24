@@ -58,8 +58,8 @@ const followLinks = [
 const quickLinks: NavLink[] = [
   { name: '首頁', to: '/' },
   { name: '關於我們', to: '/about-us' },
-  { name: '服務項目', to: '/services' },
-  { name: '願景藍圖', to: '/vision-roadmap' },
+  { name: '服務', to: '/services' },
+  { name: '未來營運', to: '/vision-roadmap' },
   { name: '聯絡我們', to: '/contact-us' }
 ];
 

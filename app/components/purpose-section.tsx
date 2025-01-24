@@ -1,14 +1,10 @@
 import "./purpose-section.css";
 import type { FC } from "react";
 import { useTheme, themes } from "~/utils/theme";
-import { red, green, blue } from "@radix-ui/colors";
 
 interface FeatureCard {
   title: string;
-  gradient: {
-    from: string;
-    to: string;
-  };
+  gradientClass: string;
   points: string[];
   pointStyle: '✔️' | '▸';
 }
@@ -16,10 +12,7 @@ interface FeatureCard {
 const featureCards: FeatureCard[] = [
   {
     title: '為什麼選擇我們？',
-    gradient: {
-      from: 'amber-500',
-      to: 'orange-600'
-    },
+    gradientClass: 'bg-gradient-to-r from-amber-500 to-orange-600',
     points: [
       '台灣在地12年口碑團隊｜服務超3000+企業客戶',
       '空運72小時極速達標｜海運菲律賓專線業界最快',
@@ -30,10 +23,7 @@ const featureCards: FeatureCard[] = [
   },
   {
     title: '卡菲斯承諾',
-    gradient: {
-      from: 'green-500',
-      to: 'emerald-600'
-    },
+    gradientClass: 'bg-gradient-to-r from-green-500 to-emerald-600',
     points: [
       '絕不說「應該明天到」→ 精確到小時的物流時效',
       '沒有隱藏費用→ 報價單=最終收費',
@@ -73,7 +63,7 @@ export const PurposeSection: FC = () => {
             {featureCards.map((card, index) => (
               <div key={index} className="bg-[var(--accent-4)] border border-[var(--accent-9)] p-6 rounded-lg transition-all duration-300 hover:bg-[var(--accent-5)] hover:shadow-lg">
                 <h3 className="text-2xl font-semibold mb-4">
-                  <span className={`bg-gradient-to-r from-${card.gradient.from} to-${card.gradient.to} bg-clip-text text-transparent`}>
+                  <span className={`${card.gradientClass} bg-clip-text text-transparent`}>
                     {card.title}
                   </span>
                 </h3>

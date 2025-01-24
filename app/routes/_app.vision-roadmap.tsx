@@ -1,6 +1,7 @@
 import type { MetaFunction } from "@remix-run/node";
 import { FeatureVision } from "~/components/feature-vision";
 import { StrategicFocus } from "~/components/strategic-focus";
+import { useTheme, themes } from "~/utils/theme";
 
 export const meta: MetaFunction = () => {
   return [
@@ -15,7 +16,7 @@ export const meta: MetaFunction = () => {
 
 export default function VisionRoadmap() {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-40">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-40 bg-[var(--accent-2)]">
       <FeatureVision
         heading="卡菲斯國際願景藍圖"
         description="台海絲路貨運隸屬卡菲斯國際物流集團，多年來攜手專業團隊，以「正派永續」為核心，穩紮穩打佈局全球物流網絡。透過先進技術和全球網絡，為客戶創造更大的價值。"

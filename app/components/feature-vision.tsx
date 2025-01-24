@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useTheme, themes } from '~/utils/theme';
 
 interface FeatureVisionProps {
   heading: string;
@@ -14,6 +15,9 @@ interface FeatureVisionProps {
 }
 
 export function FeatureVision({ heading, description, features, image }: FeatureVisionProps) {
+  const { theme } = useTheme();
+  const { accent, gray } = themes[theme];
+
   return (
     <section className="px-[5%] py-16 md:py-24 lg:py-28">
       <div className="container mx-auto">
@@ -23,7 +27,7 @@ export function FeatureVision({ heading, description, features, image }: Feature
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="mb-5 md:mb-6 font-bold leading-tight text-[clamp(1.4rem,3.9vw,4rem)]"
+              className="mb-5 md:mb-6 font-bold leading-tight text-[var(--gray-12)] text-[clamp(1.4rem,3.9vw,4rem)]"
             >
               {heading}
             </motion.h2>
@@ -31,7 +35,7 @@ export function FeatureVision({ heading, description, features, image }: Feature
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="mb-5 md:mb-6 md:text-md"
+              className="mb-5 md:mb-6 md:text-md text-[var(--gray-11)]"
             >
               {description}
             </motion.p>
@@ -46,7 +50,7 @@ export function FeatureVision({ heading, description, features, image }: Feature
                   <div className="mr-4 flex-none self-start">
                     <img src={feature.icon} alt="" className="size-6" />
                   </div>
-                  <p>{feature.text}</p>
+                  <p className="text-[var(--gray-11)]">{feature.text}</p>
                 </li>
               ))}
             </motion.ul>
