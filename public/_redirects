@@ -1,9 +1,1 @@
-# Redirect domain aliases to primary domain
-
-
-# Optional: Redirect old URLs to new ones
-/old-page    /new-page    301
-/blog/*      /posts/:splat 301
-
-# SPA Fallback - this should be the last rule
-/*    /index.html   200
+/* /index.html 200
