@@ -12,11 +12,6 @@ export const loader: LoaderFunction = async ({ request }) => {
   const url = new URL(request.url);
   const path = url.pathname.toLowerCase();
 
-  // Remove trailing slashes (except for the root path)
-  if (path.length > 1 && path.endsWith('/')) {
-    return redirect(path.slice(0, -1), 301);
-  }
-
   // Check if we have a redirect for this path
   const redirectTo = REDIRECTS[path];
   if (redirectTo) {
