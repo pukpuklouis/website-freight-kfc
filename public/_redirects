@@ -1,5 +1,5 @@
 # Redirect domain aliases to primary domain
-https://www.kfcfreight.com/* https://kfcfreight.com/:splat 301!
+https://website-freight-kfc.pages.dev/* https://website-freight-kfc.pages.dev/:splat 301!
 
 # Optional: Redirect old URLs to new ones
 /old-page    /new-page    301
