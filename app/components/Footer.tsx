@@ -165,7 +165,7 @@ export function Footer() {
 
   return (
     <footer 
-      className={`${theme === 'dark' ? 'bg-[var(--accent-2)] text-[var(--accent-12)]' : 'bg-[var(--accent-9)] text-[var(--accent-4)]'}`} 
+      className={`${theme === 'dark' ? 'bg-[var(--accent-2)] text-[var(--accent-12)]' : 'bg-[var(--accent-6)] text-[var(--accent-12)]'}`} 
       role="contentinfo"
     >
       <div className="container mx-auto px-4 py-12">
@@ -176,7 +176,7 @@ export function Footer() {
           <FollowSection />
         </div>
         
-        <div className={`border-t ${theme === 'dark' ? 'border-[var(--accent-7)]' : 'border-[var(--accent-6)]'} mt-8 pt-8 text-sm text-center`}>
+        <div className={`border-t ${theme === 'dark' ? 'border-[var(--accent-7)]' : 'border-[var(--accent-11)]'} mt-8 pt-8 text-sm text-center`}>
           <p className="mb-2">&copy; {currentYear} 卡菲斯國際. All rights reserved.</p>
           <div className="flex justify-center gap-4 mb-4">
             <Link 
