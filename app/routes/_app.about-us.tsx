@@ -51,24 +51,55 @@ export const loader = async () => {
 
   const faqQuestions = [
     {
-      title: "What services does KFC Freight offer?",
-      answer: "We offer comprehensive freight solutions including air freight, sea freight, land transportation, customs clearance, and specialized logistics services tailored to your needs.",
+      title: "Q1：你們在台、中、菲、日四地的配送網絡有多深入？",
+      answer: "我們在四國主要城市設有自有倉儲中心（如台北、上海、馬尼拉、東京），並透過與當地物流龍頭合作，延伸至二線城市及工業區。針對菲律賓島嶼地區與日本偏遠縣市，提供「經濟型專船+最後一哩陸運」整合方案，確保全覆蓋無盲區。",
     },
     {
-      title: "How do you ensure cargo safety?",
-      answer: "We implement strict security protocols, use advanced tracking systems, and partner with trusted carriers to ensure your cargo is safe throughout its journey.",
+      title: "Q2：跨境清關如何避免延誤？",
+      answer: `採取「**雙軌預審制**」：
+1. **預申報系統**：客戶寄件前可上傳文件，由駐點清關團隊預審（台灣/中國團隊精通中日雙語，菲律賓團隊熟悉BOC最新規範）。
+2. **緊急通道服務**：針對高時效貨件，支付10%附加費即可使用「優先驗放通道」，例如中國→日本電子零件24小時內通關完成率達98%。
+`,
     },
     {
-      title: "What areas do you service?",
-      answer: "We operate globally with a strong presence in Asia Pacific, Europe, and the Americas, supported by our extensive network of partners worldwide.",
+      title: "Q3：運費是否包含隱藏成本？",
+      answer: `堅持「**三透明報價**」：
+1. **全包價顯示**：報價單明確拆分「基本運費+燃油附加費+關稅預付金」
+2. **超重預警系統**：貨件入倉後自動測量材積，若實際重量超過預估10%將即時通知
+3. **退件保證**：若因我方因素產生海關罰金，最高賠償200%運費`,
     },
     {
-      title: "How can I track my shipment?",
-      answer: "We provide real-time tracking through our online portal and mobile app. Each shipment is assigned a unique tracking number for easy monitoring.",
+      title: "Q4：如何確保日本線的時效精準度？",
+      answer:  `1. **全包價顯示**：報價單明確拆分「基本運費+燃油附加費+關稅預付金」
+2. **超重預警系統**：貨件入倉後自動測量材積，若實際重量超過預估10%將即時通知
+3. **退件保證**：若因我方因素產生海關罰金，最高賠償200%運費`,
     },
     {
-      title: "What makes KFC Freight different?",
-      answer: "Our combination of industry expertise, cutting-edge technology, and commitment to customer service sets us apart. We provide personalized solutions while maintaining competitive rates.",
+      title: "Q5：有無中小企業的彈性方案？",
+      answer: `### 亞洲跨境電商套餐
+-  **拼櫃優惠**:每月5/15/25日固定併櫃班次1CBM起收
+-  **代收代付**:協助中國供應商代收菲律賓/日本客戶貨款
+-  **返向物流**:日本退貨可經台灣倉重新貼標轉寄中國`,
+    },
+    {
+    title: "Q6：如何追蹤貨件？",
+      answer: `提供「貨況預測」增值服務：
+1. 即時GPS定位（台灣/中國段使用北斗衛星系統）
+2. 自動推送海關審查進度（如日本稅關審查完成前2小時預警）
+3. 氣象監測：遇颱風/暴雨主動建議改道方案`,
+    },
+    {
+    title: "Q7：環保措施是否符合國際規範？",
+      answer: `- **船舶減碳**：台灣-菲律賓航線使用LNG燃料船
+- **循環包材**：日本線提供可折疊回收的FSC認證木箱
+- **碳權折抵**：選擇電子文件可累積點數兌換碳中和憑證`,
+    },
+    {
+    title: "Q8：緊急狀況如何聯繫？",
+      answer: `提供「在地母語支援」：
+- 24小時專屬窗口（中文/日語/塔加洛語/英語）
+- 重大事故啟動「三方通話」：客戶+當地海關+我方律師同步處理
+- 菲律賓地區可派員至BOC海關現場即時回傳影像`,
     },
   ];
 

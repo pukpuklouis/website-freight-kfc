@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme, themes } from '~/utils/theme';
+import ReactMarkdown from 'react-markdown';
 
 interface FAQItem {
   title: string;
@@ -86,8 +87,8 @@ export function FAQSection({
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <div className="px-6 py-4 bg-[var(--accent-a2)] transition-colors duration-300">
-                      <p className="text-[var(--gray-11)]">{question.answer}</p>
+                    <div className="px-6 py-4 bg-[var(--accent-a2)] transition-colors duration-300 prose prose-gray dark:prose-invert max-w-none">
+                      <ReactMarkdown className="text-[var(--gray-11)]">{question.answer}</ReactMarkdown>
                     </div>
                   </motion.div>
                 )}
