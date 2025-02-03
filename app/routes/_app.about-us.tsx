@@ -8,11 +8,11 @@ import { useTheme, themes } from "~/utils/theme";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "About Us - KFC Freight Services" },
+    { title: "特色-卡菲斯國際" },
     {
       name: "description",
       content:
-        "Learn about KFC Freight Services, our history, values, and commitment to excellence in freight solutions.",
+        "了解卡菲斯國際貨運服務，我們的優勢、價值觀以及對卓越貨運解決方案的承諾。",
     },
   ];
 };

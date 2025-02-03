@@ -21,8 +21,8 @@ interface LoaderData {
 
 export const meta: MetaFunction = () => {
   return [
-    { title: 'KFC Freight' },
-    { name: 'description', content: 'Welcome to KFZ Freight!' },
+    { title: '卡菲斯國際' },
+    { name: 'description', content: '卡菲斯國際專營中國日本菲律賓三地運輸!' },
   ];
 };
 

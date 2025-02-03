@@ -1,5 +1,5 @@
-import { Tilt } from "@/components/ui/tilt";
-import { Spotlight } from "@/components/ui/spotlight";
+import { Tilt } from "~/components/ui/tilt";
+import { Spotlight } from "~/components/ui/spotlight";
 
 function BasicTiltCard() {
   return (

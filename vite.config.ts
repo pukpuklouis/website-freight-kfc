@@ -28,12 +28,13 @@ export default defineConfig({
   optimizeDeps: {
     exclude: [
       '@radix-ui/react-form',
-      '@radix-ui/react-alert-dialog',
-      '@radix-ui/react-aspect-ratio',
-      '@radix-ui/react-dialog',
-      '@radix-ui/react-icons',
-      '@radix-ui/react-label',
-      '@radix-ui/react-menubar'
+      '@radix-ui/react-alert-dialog'
+    ],
+    include: [
+      '@remix-run/react',
+      'react',
+      'react-dom',
+      'react/jsx-runtime'
     ]
   },
   resolve: {
@@ -41,6 +42,11 @@ export default defineConfig({
       crypto: 'crypto-browserify',
       stream: 'stream-browserify',
       util: 'util'
+    }
+  },
+  server: {
+    hmr: {
+      timeout: 5000
     }
   }
 });

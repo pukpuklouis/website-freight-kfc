@@ -43,8 +43,8 @@ function sanitizeInput(input: string): string {
 
 export const meta: MetaFunction = () => {
   return [
-    { title: 'Contact Us - KFC Freight Services' },
-    { name: 'description', content: 'Get in touch with KFC Freight Services. We\'re here to help with all your freight and logistics needs.' },
+    { title: '聯絡我們-卡菲斯國際' },
+    { name: 'description', content: '聯繫卡菲斯國際貨運服務。我們隨時為您的貨運和物流需求提供協助。' },
   ];
 };
 
@@ -185,18 +185,21 @@ interface FormFieldProps {
 
 const FormField = ({ name, label, type = 'text', required = true, error, rows, defaultValue }: FormFieldProps) => {
   const inputClasses = `
-    mt-2 block w-full 
+    mt-2 block w-full border border-[var(--gray-9)]
     rounded-md shadow-sm 
-    ${error ? 'border-[var(--accent-8)]' : 'border-[var(--gray-9)]'}
-    focus:border-[var(--accent-8)] focus:ring focus:ring-[var(--accent-a8)] focus:ring-opacity-50
+    ${error ? 'border-[var(--accent-8)]' : 'border-[var(--gray-7)]'}
+    focus:border-[var(--accent-a8)] focus:ring focus:ring-[var(--accent-a8)] focus:ring-opacity-50
     text-base
     px-4 py-3
+    bg-white dark:bg-[var(--gray-2)]
+    text-[var(--gray-12)] dark:text-[var(--gray-12)]
+    placeholder-[var(--gray-8)] dark:placeholder-[var(--gray-8)]
   `;
 
   return (
     <div className="space-y-2">
       <div className="flex items-baseline justify-between">
-        <label htmlFor={name} className="text-sm font-medium text-gray-700">
+        <label htmlFor={name} className="text-sm font-medium text-[var(--gray-12)] dark:text-[var(--gray-12)]">
           {label}
         </label>
         {required && (
@@ -269,9 +272,9 @@ const CONTACT_INFO = [
 ] as const;
 
 const BusinessHourRow = ({ days, hours }: { days: string; hours: string }) => (
-  <div className="flex justify-between text-[var(--gray-11)]">
-    <span>{days}</span>
-    <span>{hours}</span>
+  <div className="flex justify-between py-2">
+    <span className="text-[var(--gray-12)] dark:text-[var(--gray-12)]">{days}</span>
+    <span className="text-[var(--gray-11)] dark:text-[var(--gray-11)]">{hours}</span>
   </div>
 );
 
@@ -291,13 +294,13 @@ const BUSINESS_HOURS = [
 ] as const;
 
 const ContactInfo = ({ icon, title, content }: { icon: React.ReactNode; title: string; content: React.ReactNode }) => (
-  <div className="flex items-start space-x-4">
-    <div className="flex-shrink-0">
+  <div className="flex gap-4 items-start">
+    <div className="p-2 bg-[var(--gray-3)] dark:bg-[var(--gray-4)] rounded-lg">
       {icon}
     </div>
     <div>
-      <h3 className="text-lg font-medium text-[var(--gray-12)]">{title}</h3>
-      <div className="mt-1 text-[var(--gray-11)]">{content}</div>
+      <h3 className="text-lg font-medium text-[var(--gray-12)] dark:text-[var(--gray-12)]">{title}</h3>
+      <div className="mt-1 text-[var(--gray-11)] dark:text-[var(--gray-11)]">{content}</div>
     </div>
   </div>
 );
@@ -319,12 +322,12 @@ export default function ContactUs() {
   }, [actionData]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white mt-16 sm:mt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div className="relative bg-gradient-to-b from-bg-[var(--accent-12a)] to-transparent bg-[var(--accent-2)] pt-24 ">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 ">
         {/* Hero Section */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">聯絡我們</h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <h1 className="text-5xl font-bold text-[var(--gray-12)] dark:text-[var(--gray-12)] mb-4">聯絡我們</h1>
+          <p className="text-xl text-[var(--gray-11)] dark:text-[var(--gray-11)] max-w-2xl mx-auto">
             無論您有任何問題或需求，我們都樂意為您提供協助。讓我們一起為您的貨運需求找到最佳解決方案。
           </p>
         </div>
@@ -332,8 +335,8 @@ export default function ContactUs() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
           {/* Contact Information */}
           <div className="space-y-8">
-            <div className="bg-white rounded-2xl shadow-xl p-8 transform hover:scale-105 transition-transform duration-300">
-              <h2 className="text-2xl font-bold text-[var(--gray-12)] mb-6">聯絡資訊</h2>
+            <div className="bg-[var(--gray-1)] dark:bg-[var(--gray-2)] rounded-2xl shadow-xl p-8 transform hover:scale-105 transition-transform duration-300 border border-[var(--gray-6)]">
+              <h2 className="text-2xl font-bold text-[var(--gray-12)] dark:text-[var(--gray-12)] mb-6">聯絡資訊</h2>
               <div className="space-y-6">
                 {CONTACT_INFO.map((info, index) => (
                   <ContactInfo
@@ -346,7 +349,7 @@ export default function ContactUs() {
               </div>
 
               <div className="mt-8">
-                <h3 className="text-lg font-medium text-[var(--gray-12)] mb-3">營業時間</h3>
+                <h3 className="text-lg font-medium text-[var(--gray-12)] dark:text-[var(--gray-12)] mb-3">營業時間</h3>
                 <div className="space-y-2">
                   {BUSINESS_HOURS.map((schedule, index) => (
                     <BusinessHourRow
@@ -361,16 +364,16 @@ export default function ContactUs() {
           </div>
 
           {/* Contact Form */}
-          <div className="bg-white rounded-2xl shadow-xl p-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">發送訊息</h2>
+          <div className="bg-[var(--gray-1)] dark:bg-[var(--gray-2)] shadow-xl p-8 rounded-lg shadow-sm border border-[var(--gray-6)]">
+            <h2 className="text-2xl font-bold mb-6 text-[var(--gray-12)] dark:text-[var(--gray-12)]">聯絡我們</h2>
 
             {actionData?.success ? (
-              <div className="bg-green-50 border border-green-200 rounded-xl p-6 mb-6">
+              <div className="bg-green-50 dark:bg-[var(--accent-2)] border border-[var(--gray-6)] rounded-xl p-6 mb-6">
                 <div className="flex items-center">
-                  <svg className="h-6 w-6 text-green-600 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="h-6 w-6 text-[var(--accent-9)] dark:text-[var(--accent-9)] mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <p className="text-green-700 font-medium">感謝您的訊息！我們會盡快回覆您。</p>
+                  <p className="text-[var(--accent-11)] dark:text-[var(--accent-11)] font-medium">感謝您的訊息！我們會盡快回覆您。</p>
                 </div>
               </div>
             ) : (

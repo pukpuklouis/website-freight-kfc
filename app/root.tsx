@@ -16,6 +16,7 @@ import { Footer } from '~/components/Footer';
 
 export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: 'stylesheet', href: cssBundleHref }] : []),
+  { rel: 'icon', type: 'image/svg+xml', href: '/kFC-fav.svg' },
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
   {
     rel: 'preconnect',

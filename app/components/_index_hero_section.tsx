@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Globe, Clock, Shield } from "lucide-react";
+import { ArrowRight, Globe, Clock, Shield, Ship } from "lucide-react";
 import { useTheme, themes } from "~/utils/theme";
 import { Button } from "@radix-ui/themes";
 import "@radix-ui/themes/styles.css";
@@ -58,7 +58,7 @@ export function HeroSection() {
           className="aspect-square w-full object-cover rounded-2xl shadow-2xl"
         />
         <div className="absolute inset-0 bg-black/30 rounded-2xl flex items-end justify-end p-4">
-          <span className="text-[var(--gray-1)] text-3xl font-bold">{location}</span>
+          <span className="text-gray-300 text-3xl font-bold">{location}</span>
         </div>
       </div>
     </motion.div>
@@ -114,7 +114,7 @@ export function HeroSection() {
                 className="inline-flex items-center gap-2"
               >
                 {heroCTA}
-                <ArrowRight className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1" />
+                <Ship className="h-5 w-5 transition-transform duration-200 group-hover:scale-[1.2]" />
               </Link>
             </Button>
           </motion.div>

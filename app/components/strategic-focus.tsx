@@ -1,11 +1,13 @@
 import { motion } from 'framer-motion';
+import { useTheme } from '~/utils/theme';
 
 interface StrategyItem {
   title: string;
   points: string[];
   icon: {
     color: string;
-    path: string;
+    path?: string;
+    component?: React.ReactNode;
   };
 }
 
@@ -15,13 +17,15 @@ interface StrategicFocusProps {
 }
 
 export function StrategicFocus({ heading, strategies }: StrategicFocusProps) {
+  const { theme } = useTheme();
+  
   return (
-    <div className="mt-20 bg-gray-50 rounded-xl p-8">
+    <div className="mt-20 bg-[var(--accent-3)] dark:bg-[var(--accent-9)] rounded-xl py-32 px-16 shadow-xl">
       <motion.h2 
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="text-3xl font-bold text-gray-900 mb-6 text-center"
+        className="text-4xl font-bold mb-6 text-center text-[var(--accent-12)]"
       >
         {heading}
       </motion.h2>
@@ -32,31 +36,37 @@ export function StrategicFocus({ heading, strategies }: StrategicFocusProps) {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: index * 0.2 }}
-            className="text-center"
+            className="p-6 rounded-lg bg-[var(--accent-2)] dark:bg-[var(--accent-8)] shadow-lg"
           >
-            <div className={`bg-${strategy.icon.color}-100 rounded-full p-4 inline-block mb-4`}>
-              <svg
-                className={`h-8 w-8 text-${strategy.icon.color}-500`}
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d={strategy.icon.path}
-                />
-              </svg>
+            <div className="flex items-center justify-center mb-4">
+              {strategy.icon.component ? (
+                strategy.icon.component
+              ) : (
+                <svg
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke={strategy.icon.color}
+                  strokeWidth={1.5}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d={strategy.icon.path}
+                  />
+                </svg>
+              )}
             </div>
-            <h3 className="text-xl font-semibold mb-2">{strategy.title}</h3>
-            <p className="text-gray-600">
-              {strategy.points.map((point, idx) => (
-                <span key={idx}>
-                  ✓ {point}<br/>
-                </span>
+            <h3 className="text-xl font-semibold mb-4 text-[var(--accent-12)]">
+              {strategy.title}
+            </h3>
+            <ul className="space-y-2 text-left">
+              {strategy.points.map((point, pointIndex) => (
+                <li key={pointIndex} className="text-[var(--accent-11)] text-md">
+                  ✓ {point}
+                </li>
               ))}
-            </p>
+            </ul>
           </motion.div>
         ))}
       </div>

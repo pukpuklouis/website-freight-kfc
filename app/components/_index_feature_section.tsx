@@ -100,7 +100,7 @@ const FeatureCard = memo(function FeatureCard({
           />
 
           {/* Content overlay */}
-          <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-[var(--gray-a12)] to-transparent">
+          <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-[var(--gray-12)] to-transparent">
             <h3 className="mb-2 text-2xl font-black tracking-tight text-[var(--gray-1)]">{title}</h3>
             <p className="text-[var(--gray-3)] font-light opacity-0 transform translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
               {description}
@@ -176,7 +176,7 @@ export const FeatureSection = memo(function FeatureSection({
                       </span>
                     ))}
                   </h2>
-                  <p className="md:text-lg max-w-2xl text-[var(--gray-2)]">
+                  <p className="md:text-lg max-w-2xl text-gray-300">
                     {description}
                   </p>
                 </div>

@@ -1,8 +1,6 @@
-import { Outlet } from '@remix-run/react';
 import type { MetaFunction } from '@remix-run/node';
 import { useTheme, themes } from '~/utils/theme';
 import { motion } from "framer-motion";
-import { Link } from "@remix-run/react";
 
 const services = [
   {
@@ -30,8 +28,8 @@ const services = [
 
 export const meta: MetaFunction = () => {
   return [
-    { title: 'Services - KFC Freight' },
-    { name: 'description', content: 'Explore our comprehensive freight and logistics services.' },
+    { title: '專業服務-卡菲斯國際' },
+    { name: 'description', content: '探索我們的完整貨運和物流服務' },
   ];
 };
 
@@ -56,14 +54,14 @@ function ServiceCard({ service }: { service: (typeof services)[number] }) {
         <h3 className="text-2xl font-bold text-[var(--accent-11)] mb-3">
           {service.title}
         </h3>
-        <p className="text-[var(--accent-11)] mb-4">
+        <p className="text-[var(--gray-11)] font-light mb-4">
           {service.description}
         </p>
         <div className="flex flex-wrap gap-2 mb-4">
           {service.tags.map((tag) => (
             <span
               key={tag}
-              className="px-3 py-1 text-sm rounded-full bg-[var(--accent-4)] text-[var(--accent-11)]"
+              className="px-3 py-1 text-sm rounded-full bg-[var(--accent-6)] text-[var(--accent-11)]"
             >
               {tag}
             </span>
@@ -81,13 +79,13 @@ export default function ServicesLayout() {
 
 
   return (
-    <div className="min-h-screen bg-[var(--accent-2)] py-16 px-4 sm:px-6 lg:px-8 mt-16 sm:mt-20">
-      <div className="max-w-7xl mx-auto">
+    <div className="min-h-screen bg-[var(--accent-2)] py-16 px-4 sm:px-6 lg:px-8 pt-24">
+      <div className="max-w-7xl mx-auto py-12">
         <div className="text-center mb-16">
-          <h1 className="text-4xl font-bold tracking-tight text-[var(--accent-11)] sm:text-5xl md:text-6xl">
+          <h1 className="text-5xl font-bold tracking-tight text-[var(--gray-12)] sm:text-5xl md:text-6xl">
             我們的服務
           </h1>
-          <p className="mt-4 max-w-2xl mx-auto text-xl text-[var(--accent-11)]">
+          <p className="mt-4 max-w-2xl mx-auto text-xl text-[var(--gray-10)]">
             提供全方位的物流運輸解決方案
           </p>
         </div>
