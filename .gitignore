@@ -59,4 +59,4 @@ bun.lockb
 
 # Git
 .git
-.gitignore
+.gitignore.dev.vars

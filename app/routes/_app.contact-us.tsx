@@ -83,10 +83,9 @@ export const action = async ({
   request,
   context,
 }: ActionFunctionArgs): Promise<TypedResponse<ActionData>> => {
-  const env = context.env as Env;
+  const env = context.cloudflare.env as Env;
   validateEnv(env);
-
-  // Get client IP
+  // Get clientIP
   const ip = request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || 'unknown';
   
   // Check rate limit
