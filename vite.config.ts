@@ -25,6 +25,17 @@ export default defineConfig({
     }),
     tsconfigPaths(),
   ],
+  optimizeDeps: {
+    exclude: [
+      '@radix-ui/react-form',
+      '@radix-ui/react-alert-dialog',
+      '@radix-ui/react-aspect-ratio',
+      '@radix-ui/react-dialog',
+      '@radix-ui/react-icons',
+      '@radix-ui/react-label',
+      '@radix-ui/react-menubar'
+    ]
+  },
   resolve: {
     alias: {
       crypto: 'crypto-browserify',
