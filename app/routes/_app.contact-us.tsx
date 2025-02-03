@@ -1,4 +1,4 @@
-import { json, type ActionFunction, type MetaFunction } from '@remix-run/cloudflare';
+import { json, type ActionFunctionArgs, type MetaFunction, type TypedResponse } from '@remix-run/cloudflare';
 import { Form, useActionData } from '@remix-run/react';
 import { useState, useRef, useEffect } from 'react';
 import { Resend } from 'resend';
@@ -65,8 +65,27 @@ interface ActionData {
   success?: boolean;
 }
 
-export const action: ActionFunction = async ({ request, context }) => {
-  // Get client IP
+/**
+ * Defines the structure of Cloudflare environment variables
+ * @property {string} RESEND_API_KEY - API key for Resend email service
+ */
+interface Env {
+  RESEND_API_KEY: string;
+}
+
+function validateEnv(env: Env): void {
+  if (!env.RESEND_API_KEY) {
+    throw new Error('Missing required environment variable: RESEND_API_KEY');
+  }
+}
+
+export const action = async ({
+  request,
+  context,
+}: ActionFunctionArgs): Promise<TypedResponse<ActionData>> => {
+  const env = context.cloudflare.env as Env;
+  validateEnv(env);
+  // Get clientIP
   const ip = request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || 'unknown';
   
   // Check rate limit
@@ -116,26 +135,13 @@ export const action: ActionFunction = async ({ request, context }) => {
       return json<ActionData>({ errors, values: { name, email, subject, message } });
     }
 
-    // Get API key from Cloudflare context
-    const RESEND_API_KEY = (context.env as any).RESEND_API_KEY;
-
-    if (!RESEND_API_KEY) {
-      console.error('RESEND_API_KEY is not configured in Cloudflare environment');
-      return json<ActionData>({
-        errors: {
-          system: 'Email service is not properly configured. Please try again later.'
-        },
-        values: { name, email, subject, message }
-      });
-    }
-
     // Initialize Resend with API key from context
-    const resend = new Resend(RESEND_API_KEY);
+    const resend = new Resend(env.RESEND_API_KEY);
     
     try {
       await resend.emails.send({
         from: 'onboarding@resend.dev',
-        to: ['pukpuk.tw@gmail.com'],
+        to: ['anlstudio.kfc@gmail.com'],
         replyTo: email,
         subject: `Contact Form: ${subject}`,
         html: `
