@@ -143,7 +143,7 @@ export const action = async ({
     try {
       await resend.emails.send({
         from: 'onboarding@resend.dev',
-        to: ['pukpuk.tw@gmail.com'],
+        to: ['anlstudio.kfc@gmail.com'],
         replyTo: email,
         subject: `Contact Form: ${subject}`,
         html: `
