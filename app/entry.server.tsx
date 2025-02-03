@@ -16,6 +16,7 @@ export default async function handleRequest(
   remixContext: EntryContext
 ) {
   const isBot = isbot(request.headers.get("user-agent") || "");
+  const controller = new AbortController();
 
   const stream = await renderToReadableStream(
     <RemixServer context={remixContext} url={request.url} />,

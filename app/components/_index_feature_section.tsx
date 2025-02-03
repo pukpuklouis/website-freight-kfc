@@ -100,7 +100,7 @@ const FeatureCard = memo(function FeatureCard({
           />
 
           {/* Content overlay */}
-          <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-[var(--gray-a12)] to-transparent">
+          <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-[var(--gray-12)] to-transparent">
             <h3 className="mb-2 text-2xl font-black tracking-tight text-[var(--gray-1)]">{title}</h3>
             <p className="text-[var(--gray-3)] font-light opacity-0 transform translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
               {description}
@@ -162,7 +162,7 @@ export const FeatureSection = memo(function FeatureSection({
             <div className="relative z-20 py-16 md:py-20 lg:py-24 px-6 md:px-12">
               <div className="mx-auto max-w-3xl">
                 <div className="rounded-2xl p-8 md:p-12 border border-[var(--accent-9)] bg-[var(--accent-6)]/50 backdrop-blur-sm transform-gpu transition-all duration-500">
-                  <p className="mb-3 text-sm font-medium uppercase tracking-widest md:mb-4 text-[var(--gray-11)]">
+                  <p className="mb-3 text-sm font-medium uppercase tracking-widest md:mb-4 text-[var(--accent-10)]">
                     {tagline}
                   </p>
                   <h2 className="mb-6 text-4xl font-bold md:text-6xl lg:text-7xl tracking-tight text-[var(--accent-9)]">
@@ -176,7 +176,7 @@ export const FeatureSection = memo(function FeatureSection({
                       </span>
                     ))}
                   </h2>
-                  <p className="md:text-lg max-w-2xl text-[var(--gray-11)]">
+                  <p className="md:text-lg max-w-2xl text-gray-300">
                     {description}
                   </p>
                 </div>

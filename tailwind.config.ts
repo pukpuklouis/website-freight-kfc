@@ -14,6 +14,7 @@ export default {
   				'Apple Color Emoji',
   				'Segoe UI Emoji',
   				'Segoe UI Symbol',
+  				'Noto Sans TC',
   				'Noto Color Emoji'
   			]
   		},
@@ -88,5 +89,5 @@ export default {
   		}
   	}
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), require('@tailwindcss/typography')],
 } satisfies Config;

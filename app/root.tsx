@@ -8,14 +8,15 @@ import {
 } from '@remix-run/react';
 import type { LinksFunction, MetaFunction } from '@remix-run/node';
 import { cssBundleHref } from '@remix-run/css-bundle';
-import '@radix-ui/themes/styles.css';
 import './tailwind.css';
+import '@radix-ui/themes/styles.css';
 import { ThemeProvider } from '~/components/ThemeProvider';
 import { Header } from '~/components/Header';
 import { Footer } from '~/components/Footer';
 
 export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: 'stylesheet', href: cssBundleHref }] : []),
+  { rel: 'icon', type: 'image/svg+xml', href: '/kFC-fav.svg' },
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
   {
     rel: 'preconnect',

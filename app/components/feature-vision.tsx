@@ -5,7 +5,7 @@ interface FeatureVisionProps {
   heading: string;
   description: string;
   features: {
-    icon: string;
+    path: string;
     text: string;
   }[];
   image: {
@@ -48,7 +48,17 @@ export function FeatureVision({ heading, description, features, image }: Feature
               {features.map((feature, index) => (
                 <li key={index} className="flex self-start">
                   <div className="mr-4 flex-none self-start">
-                    <img src={feature.icon} alt="" className="size-6" />
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      aria-hidden="true"
+                      className="size-6 stroke-[var(--gray-11)]"
+                    >
+                      <path d={feature.path} />
+                    </svg>
                   </div>
                   <p className="text-[var(--gray-11)]">{feature.text}</p>
                 </li>
@@ -59,11 +69,12 @@ export function FeatureVision({ heading, description, features, image }: Feature
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
+            className="relative aspect-[4/3]"
           >
-            <img 
-              src={image.src} 
+            <img
+              src={image.src}
               alt={image.alt}
-              className="w-full object-cover rounded-lg shadow-lg"
+              className="absolute inset-0 h-full w-full rounded-2xl bg-zinc-100 object-cover"
             />
           </motion.div>
         </div>

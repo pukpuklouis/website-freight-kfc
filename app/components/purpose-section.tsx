@@ -41,7 +41,7 @@ export const PurposeSection: FC = () => {
   return (
     <section className="py-32 pb-8 px-4 md:px-8 lg:px-16 bg-[var(--accent-2)]">
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-4xl md:text-5xl font-bold mb-8 text-center">
+        <h1 className="text-5xl md:text-5xl font-bold mb-8 text-center">
           全球直送{" "}
           <span className="bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent">
             使命必達

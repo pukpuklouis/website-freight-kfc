@@ -25,11 +25,28 @@ export default defineConfig({
     }),
     tsconfigPaths(),
   ],
+  optimizeDeps: {
+    exclude: [
+      '@radix-ui/react-form',
+      '@radix-ui/react-alert-dialog'
+    ],
+    include: [
+      '@remix-run/react',
+      'react',
+      'react-dom',
+      'react/jsx-runtime'
+    ]
+  },
   resolve: {
     alias: {
       crypto: 'crypto-browserify',
       stream: 'stream-browserify',
       util: 'util'
+    }
+  },
+  server: {
+    hmr: {
+      timeout: 5000
     }
   }
 });
