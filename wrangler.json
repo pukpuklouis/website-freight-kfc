@@ -7,7 +7,4 @@
     "enabled": true
   },
   "compatibility_flags": ["nodejs_compat"],
-  "vars": {
-    "RESEND_API_KEY": ""
-  }
 }
