@@ -1,4 +1,4 @@
-import { json, type ActionFunction, type MetaFunction } from '@remix-run/cloudflare';
+import { json, type ActionFunctionArgs, type MetaFunction, type TypedResponse } from '@remix-run/cloudflare';
 import type { AppLoadContext } from '@remix-run/cloudflare';
 import { Form, useActionData } from '@remix-run/react';
 import { useState, useRef, useEffect } from 'react';
@@ -70,10 +70,12 @@ interface Env {
   RESEND_API_KEY: string;
 }
 
-export const action: ActionFunction = async ({ request, context }: { 
-  request: Request; 
-  context: AppLoadContext & { env: Env } 
-}) => {
+export const action = async ({
+  request,
+  context,
+}: ActionFunctionArgs): Promise<TypedResponse<ActionData>> => {
+  const { RESEND_API_KEY } = context.env as Env;
+
   // Get client IP
   const ip = request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || 'unknown';
   
@@ -125,8 +127,6 @@ export const action: ActionFunction = async ({ request, context }: {
     }
 
     // Get API key from Cloudflare context
-    const RESEND_API_KEY = context.env.RESEND_API_KEY;
-
     if (!RESEND_API_KEY) {
       console.error('RESEND_API_KEY is not configured in Cloudflare environment');
       return json<ActionData>({
