@@ -1,6 +1,43 @@
 import { json, type ActionFunction, type MetaFunction } from '@remix-run/node';
 import { Form, useActionData } from '@remix-run/react';
 import { useState } from 'react';
+import { Resend } from 'resend';
+import { encode } from 'html-entities';
+
+// Store IP-based rate limiting
+const ipRequests = new Map<string, { count: number; timestamp: number }>();
+
+// Rate limit configuration
+const RATE_LIMIT_WINDOW = 3600000; // 1 hour in milliseconds
+const MAX_REQUESTS = 5; // Maximum 5 requests per hour
+
+// Helper function to check rate limit
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const requestData = ipRequests.get(ip);
+
+  if (!requestData) {
+    ipRequests.set(ip, { count: 1, timestamp: now });
+    return false;
+  }
+
+  if (now - requestData.timestamp > RATE_LIMIT_WINDOW) {
+    ipRequests.set(ip, { count: 1, timestamp: now });
+    return false;
+  }
+
+  if (requestData.count >= MAX_REQUESTS) {
+    return true;
+  }
+
+  requestData.count++;
+  return false;
+}
+
+// Input sanitization function
+function sanitizeInput(input: string): string {
+  return encode(input.trim());
+}
 
 export const meta: MetaFunction = () => {
   return [
@@ -16,41 +53,106 @@ interface ActionData {
     email?: string;
     subject?: string;
     message?: string;
+    system?: string;
   };
 }
 
 export const action: ActionFunction = async ({ request }) => {
-  const formData = await request.formData();
-  const name = formData.get('name');
-  const email = formData.get('email');
-  const subject = formData.get('subject');
-  const message = formData.get('message');
-
-  const errors: ActionData['errors'] = {};
-
-  if (!name || typeof name !== 'string' || name.length < 2) {
-    errors.name = 'Name must be at least 2 characters long';
+  // Get client IP
+  const ip = request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || 'unknown';
+  
+  // Check rate limit
+  if (isRateLimited(ip)) {
+    return json<ActionData>({
+      errors: {
+        system: 'Too many requests. Please try again later.'
+      }
+    }, { status: 429 });
   }
 
-  if (!email || typeof email !== 'string' || !email.includes('@')) {
-    errors.email = 'Valid email is required';
-  }
+  try {
+    const formData = await request.formData();
+    
+    // Get and sanitize form data
+    const name = sanitizeInput(formData.get('name') as string);
+    const email = sanitizeInput(formData.get('email') as string);
+    const subject = sanitizeInput(formData.get('subject') as string);
+    const message = sanitizeInput(formData.get('message') as string);
 
-  if (!subject || typeof subject !== 'string' || subject.length < 3) {
-    errors.subject = 'Subject must be at least 3 characters long';
-  }
+    const errors: ActionData['errors'] = {};
 
-  if (!message || typeof message !== 'string' || message.length < 10) {
-    errors.message = 'Message must be at least 10 characters long';
-  }
+    // Validate input length and format
+    if (!name || name.length < 2 || name.length > 100) {
+      errors.name = 'Name must be between 2 and 100 characters';
+    }
 
-  if (Object.keys(errors).length > 0) {
-    return json<ActionData>({ errors });
-  }
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      errors.email = 'Valid email is required';
+    }
 
-  // TODO: Implement actual email sending logic here
-  // For now, we'll simulate a successful submission
-  return json<ActionData>({ success: true });
+    if (!subject || subject.length < 3 || subject.length > 200) {
+      errors.subject = 'Subject must be between 3 and 200 characters';
+    }
+
+    if (!message || message.length < 10 || message.length > 5000) {
+      errors.message = 'Message must be between 10 and 5000 characters';
+    }
+
+    if (Object.keys(errors).length > 0) {
+      return json<ActionData>({ errors });
+    }
+
+    // Additional spam checks
+    if (message.includes('http') || message.includes('www.')) {
+      return json<ActionData>({
+        errors: {
+          system: 'Links are not allowed in the message.'
+        }
+      });
+    }
+
+    // Initialize Resend with API key
+    const resend = new Resend(process.env.RESEND_API_KEY || '');
+
+    if (!process.env.RESEND_API_KEY) {
+      console.error('RESEND_API_KEY is not configured');
+      return json<ActionData>({
+        errors: {
+          system: 'Email service is not properly configured. Please try again later.'
+        }
+      });
+    }
+
+    console.log('Attempting to send email with Resend...');
+    
+    const emailResult = await resend.emails.send({
+      from: 'KFC Freight Services <onboarding@resend.dev>', // Use verified domain
+      to: ['pukpuk.tw@gmail.com'],
+      reply_to: email,
+      subject: `Contact Form: ${subject}`,
+      html: `
+        <h2>New Contact Form Submission</h2>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Subject:</strong> ${subject}</p>
+        <p><strong>Message:</strong></p>
+        <p>${message}</p>
+        <hr>
+        <p><small>This email was sent from the contact form at KFC Freight Services website.</small></p>
+      `
+    });
+
+    console.log('Email sent successfully:', emailResult);
+
+    return json<ActionData>({ success: true });
+  } catch (error) {
+    console.error('Email sending failed:', error);
+    return json<ActionData>({
+      errors: {
+        system: 'Failed to send message. Please try again later or contact us directly.'
+      }
+    });
+  }
 };
 
 export default function ContactUs() {
@@ -169,6 +271,9 @@ export default function ContactUs() {
                 ></textarea>
                 {actionData?.errors?.message && (
                   <p className="mt-1 text-sm text-red-600">{actionData.errors.message}</p>
+                )}
+                {actionData?.errors?.system && (
+                  <p className="mt-1 text-sm text-red-600">{actionData.errors.system}</p>
                 )}
               </div>
 

@@ -6,5 +6,8 @@
   "observability": {
     "enabled": true
   },
-  "compatibility_flags": ["nodejs_compat"]
+  "compatibility_flags": ["nodejs_compat"],
+  "vars": {
+    "RESEND_API_KEY": "re_icVGkVhK_9Zm8448yP2V2zWvt3mK6SXZE"
+  }
 }

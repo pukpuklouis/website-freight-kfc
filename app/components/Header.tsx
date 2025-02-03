@@ -109,7 +109,7 @@ export function Header() {
               to="/" 
               className="lg:ml-0 absolute left-1/2 -translate-x-1/2 lg:static lg:translate-x-0 flex items-center text-2xl font-bold"
             >
-              <span className="text-[--accent-9]">KFC Freight</span>
+              <img src="/KFC-logo.svg" alt="KFC Logo" className="h-8" />
             </Link>
           </div>
 

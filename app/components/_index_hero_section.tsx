@@ -1,10 +1,9 @@
-import "./_index_hero_section.css";
-import { Link } from "@remix-run/react";
 import { motion } from "framer-motion";
 import { ArrowRight, Globe, Clock, Shield } from "lucide-react";
 import { useTheme, themes } from "~/utils/theme";
 import { Button } from "@radix-ui/themes";
 import "@radix-ui/themes/styles.css";
+import { Link } from "@remix-run/react";
 
 export function HeroSection() {
   const { theme } = useTheme();
@@ -33,9 +32,41 @@ export function HeroSection() {
     </motion.div>
   );
 
+  interface HeroImageProps {
+    src: string;
+    alt: string;
+    location: string;
+    className: string;
+    style?: React.CSSProperties;
+    initial?: any;
+    animate?: any;
+    transition?: any;
+  }
+
+  const HeroImage = ({ src, alt, location, className, style, initial, animate, transition }: HeroImageProps) => (
+    <motion.div
+      className={className}
+      initial={initial}
+      animate={animate}
+      transition={transition}
+      style={style}
+    >
+      <div className="relative">
+        <img
+          src={src}
+          alt={alt}
+          className="aspect-square w-full object-cover rounded-2xl shadow-2xl"
+        />
+        <div className="absolute inset-0 bg-black/30 rounded-2xl flex items-end justify-end p-4">
+          <span className="text-[var(--gray-1)] text-3xl font-bold">{location}</span>
+        </div>
+      </div>
+    </motion.div>
+  );
+
   return (
-    <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 bg-gradient-to-b from-[var(--accent-4)] via-[var(--accent-2)] to-transparent overflow-show bg-[var(--accent-2)]">
-      <div className="absolute inset-0 bg-grid-slate-900/[0.04] bg-[size:75px_75px] [mask-image:linear-gradient(to_bottom,white,transparent)]" />
+    <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 bg-gradient-to-b from-[var(--accent-6)] via-[var(--accent-2)] to-transparent overflow-show bg-[var(--accent-2)]">
+      <div className="absolute inset-0 bg-grid-slate-900/[0.04] bg-[size:75px_75px] [mask-image:linear-gradient(to_bottom,white,transparent)] z-[-1]" />
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -72,15 +103,18 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <Button 
+            <Button
               size="4"
               variant="solid"
-              className="shadow-lg bg-[var(--accent-9)] text-[var(--accent-contrast)] hover:bg-[var(--accent-10)] hover:border-[var(--accent-9)]"
+              className="group transition-all duration-200 shadow-lg bg-[var(--accent-9)] text-[var(--accent-contrast)] hover:bg-[var(--accent-10)] hover:border-[var(--accent-9)]"
               asChild
             >
-              <Link to="/contact-us" className="group" >
+              <Link
+                to="/contact-us"
+                className="inline-flex items-center gap-2"
+              >
                 {heroCTA}
-                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1" />
               </Link>
             </Button>
           </motion.div>
@@ -92,45 +126,36 @@ export function HeroSection() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          <motion.div
+          <HeroImage
+            src="https://images.unsplash.com/photo-1578245093109-472875396a2a?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="Logistics Services"
+            location="上海"
             className="absolute bottom-0 left-0 z-10 w-2/5"
             initial={{ x: -50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.7 }}
             style={{ transform: "translateY(-16%)" }}
-          >
-            <img
-              src="https://images.unsplash.com/photo-1578245093109-472875396a2a?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="Logistics Services"
-              className="aspect-square w-full object-cover rounded-2xl shadow-2xl "
-            />
-          </motion.div>
-          <motion.div
+          />
+          <HeroImage
+            src="https://images.unsplash.com/photo-1510681916233-314f497f3301?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="Global Network"
+            location="菲律賓"
             className="mx-[10%] mb-[10%] w-1/2"
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.8 }}
             style={{ transform: "translateY(15.5%)" }}
-          >
-            <img
-              src="https://images.unsplash.com/photo-1510681916233-314f497f3301?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="Global Network"
-              className="aspect-square w-full object-cover rounded-2xl shadow-2xl"
-            />
-          </motion.div>
-          <motion.div
+          />
+          <HeroImage
+            src="https://images.unsplash.com/photo-1509810505-b88f10b18375?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="japan port"
+            location="日本"
             className="absolute right-0 top-[10%] w-2/5"
             initial={{ x: 50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.9 }}
             style={{ transform: "translateY(12%)" }}
-          >
-            <img
-              src="https://images.unsplash.com/photo-1509810505-b88f10b18375?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="japan port"
-              className="aspect-[4/3] w-full object-cover rounded-2xl shadow-xl duration-700 group-hover:shadow-2xl"
-            />
-          </motion.div>
+          />
         </motion.div>
 
         <motion.div
@@ -144,6 +169,7 @@ export function HeroSection() {
           ))}
         </motion.div>
       </div>
+      
     </section>
   );
 }

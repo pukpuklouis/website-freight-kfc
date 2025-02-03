@@ -2,6 +2,7 @@ import { Link } from '@remix-run/react';
 import { ArrowRight } from 'lucide-react';
 import { Truck, Ship, Plane } from 'lucide-react';
 import { useTheme, themes } from '~/utils/theme';
+import ReactMarkdown from 'react-markdown';
 
 interface Service {
   title: string;
@@ -41,13 +42,13 @@ export const ServiceSection = ({
           }`}>
             {title}
           </h2>
-          <p className={`${
+          <ReactMarkdown className={`${
             theme === 'dark'
               ? 'text-[var(--accent-11)]'
               : 'text-[var(--accent-11)]'
-          }`}>
+          } prose prose-sm max-w-none prose-headings:text-[var(--accent-11)] prose-strong:text-[var(--accent-11)] prose-em:text-[var(--accent-11)]`}>
             {description}
-          </p>
+          </ReactMarkdown>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {services.map((service) => {
@@ -87,13 +88,13 @@ export const ServiceSection = ({
                 }`}>
                   {service.title}
                 </h3>
-                <p className={`${
+                <ReactMarkdown className={`${
                   theme === 'dark'
                     ? 'text-[var(--accent-11)]'
                     : 'text-[var(--accent-11)]'
-                }`}>
+                } prose prose-sm max-w-none prose-headings:text-[var(--accent-11)] prose-strong:text-[var(--accent-11)] prose-em:text-[var(--accent-11)]`}>
                   {service.description}
-                </p>
+                </ReactMarkdown>
               </Link>
             );
           })}

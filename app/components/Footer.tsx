@@ -52,7 +52,7 @@ const socialLinks: SocialLink[] = [
 ];
 
 const followLinks = [
-  { name: 'Facebook', url: 'https://facebook.com', icon: <FaFacebookF className="w-4 h-4" /> },
+  { name: 'Facebook', url: 'https://www.facebook.com/profile.php?id=100057394310703', icon: <FaFacebookF className="w-4 h-4" /> },
 ];
 
 const quickLinks: NavLink[] = [
@@ -64,7 +64,7 @@ const quickLinks: NavLink[] = [
 ];
 
 const companyInfo = {
-  name: 'KFZ卡菲斯國際',
+  name: 'KFC卡菲斯國際',
   slogan: '在全球物流和運輸解決方案的可靠夥伴',
   legalName: '卡菲斯國際有限公司/台海絲路運通有限公司',
   contacts: [
@@ -144,7 +144,10 @@ const FollowSection = () => (
 
 const CompanySection = () => (
   <div>
-    <h3 className="text-2xl font-bold mb-4">{companyInfo.name}</h3>
+    <div className="flex items-bottom justify-left gap-2">
+      <img src="/KFC-logo.svg" alt="KFC Logo" className="h-8" />
+      <h3 className="text-2xl font-bold mb-4">{companyInfo.name}</h3>
+    </div>
     <p className="mb-4 text-[clamp(0.75rem,3vw+0.5rem,0.9rem)]">
       {companyInfo.slogan}
     </p>

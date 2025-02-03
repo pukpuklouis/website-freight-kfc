@@ -14,40 +14,45 @@ interface Service {
   link: string;
 }
 
+// Add LoaderData type to properly type the loader return value
+interface LoaderData {
+  services: Service[];
+}
+
 export const meta: MetaFunction = () => {
   return [
     { title: 'KFC Freight' },
-    { name: 'description', content: 'Welcome to KFC Freight!' },
+    { name: 'description', content: 'Welcome to KFZ Freight!' },
   ];
 };
 
 export const loader: LoaderFunction = async () => {
-  return json({
-    services: [
-      {
-        title: 'Road Freight',
-        description: '提供全面的陸運服務，包括整車運輸和零擔運輸。',
-        iconType: 'truck',
-        link: '/services/road-freight',
-      },
-      {
-        title: 'Sea Freight',
-        description: '提供全球海運服務，包括整櫃和拼箱運輸。',
-        iconType: 'ship',
-        link: '/services/sea-freight',
-      },
-      {
-        title: 'Air Freight',
-        description: '提供快速可靠的空運服務，適合緊急和高價值貨物。',
-        iconType: 'plane',
-        link: '/services/air-freight',
-      },
-    ],
-  });
+  const services: Service[] = [
+    {
+      title: '海運',
+      description: '**卡菲斯**提供海運服務，然而目前已正式成為一獨立的全方位公司。我們與信譽的船公司密切合作，據以提升本身的服務品質，降低客戶的成本，同時提供客戶在激烈競爭的市場環境中成長',
+      iconType: 'ship',
+      link: '/',
+    },
+    {
+      title: '空運/快遞',
+      description: '**台海絲路航空貨運承攬股份有限公司**提供之空運服務有戶對戶送貨服務。客戶可放心的交我們台海絲路，所運送的每一批貨進行更迅速的信息傳送和查詢。',
+      iconType: 'plane',
+      link: '/',
+    },
+    {
+      title: '倉儲配送',
+      description: '**卡菲斯**在各地提供倉儲配送及物流作業與服務，如揀貨分類配送，轉倉處理，即時出貨處理，集散配送管理，中轉併貨處理及其它各項物流服務。',
+      iconType: 'truck',
+      link: '/',
+    },
+  ];
+
+  return json<LoaderData>({ services });
 }
 
 export default function Index() {
-  const { services } = useLoaderData<typeof loader>();
+  const { services } = useLoaderData<LoaderData>();
 
   return (
     <main className="flex-1">
