@@ -94,7 +94,7 @@ export const BenefitSection = memo(function BenefitSection({
   description = '使用卡菲斯的服務，您可以節省大量時間，讓物流過程變得簡單高效。我們的專業團隊確保每一個貨物都能安全準時送達。',
   benefits = defaultBenefits,
   className,
-  imageSrc = 'https://images.unsplash.com/photo-1465447142348-e9952c393450?q=80&w=2874&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  imageSrc = 'https://images.unsplash.com/photo-1465447142348-e9952c393450?q=80&w=900&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
 }: BenefitSectionProps) {
   const { theme } = useTheme();
   const { accent, gray } = themes[theme];

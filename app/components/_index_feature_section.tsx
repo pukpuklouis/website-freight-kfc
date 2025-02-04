@@ -1,4 +1,3 @@
-import "./_index_feature_section.css";
 import { memo } from "react";
 import { motion } from "framer-motion";
 import type { LucideIcon } from "lucide-react";
@@ -29,7 +28,7 @@ interface FeatureSectionProps {
 const defaultFeatures: FeatureCardProps[] = [
   {
     image: {
-      src: "https://images.unsplash.com/photo-1516738901171-8eb4fc13bd20?q=80&w=600&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3Ds",
+      src: "https://images.unsplash.com/photo-1516738901171-8eb4fc13bd20?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3Ds",
       alt: "全球物流網絡",
     },
     title: "全球網路",
@@ -38,7 +37,7 @@ const defaultFeatures: FeatureCardProps[] = [
   },
   {
     image: {
-      src: "https://images.unsplash.com/photo-1581089781785-603411fa81e5?q=80&w=600&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      src: "https://images.unsplash.com/photo-1581089781785-603411fa81e5?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       alt: "即時追蹤系統",
     },
     title: "即時追蹤",
@@ -46,7 +45,7 @@ const defaultFeatures: FeatureCardProps[] = [
   },
   {
     image: {
-      src: "https://images.unsplash.com/photo-1553413077-190dd305871c?q=80&w=600&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      src: "https://images.unsplash.com/photo-1553413077-190dd305871c?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       alt: "安全貨運處理",
     },
     title: "安全處理",
@@ -140,7 +139,7 @@ export const FeatureSection = memo(function FeatureSection({
             {/* Background Image */}
             <div className="absolute inset-0">
               <img
-                src="https://images.unsplash.com/photo-1617952739858-28043cecdae3?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                src="https://images.unsplash.com/photo-1617952739858-28043cecdae3?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 alt="Background"
                 className="w-full h-full object-cover transition-all duration-700 group-hover:grayscale-7"
               />

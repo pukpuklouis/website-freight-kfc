@@ -8,6 +8,7 @@ import { Button } from "@radix-ui/themes";
 import { useTheme, themes } from "~/utils/theme";
 import "@radix-ui/themes/styles.css";
 
+
 type NavLink = {
   title: string;
   url: string;
@@ -109,7 +110,7 @@ export function Header() {
               to="/" 
               className="lg:ml-0 absolute left-1/2 -translate-x-1/2 lg:static lg:translate-x-0 flex items-center text-2xl font-bold"
             >
-              <img src="/KFC-logo.svg" alt="KFC Logo" className="h-8" />
+              <img src="https://res.cloudinary.com/pukpuklouis/image/upload/s--Dq6anFk9--/KFZ/KFC-logo_wrjevi" alt="KFC Logo" className="h-8" />
             </Link>
           </div>
 
@@ -117,7 +118,7 @@ export function Header() {
           <nav className="hidden lg:flex lg:gap-4 items-center absolute left-1/2 -translate-x-1/2">
             {navLinks.map((link) => (
               <NavItem key={link.title} link={link} />
-            ))}
+            ))} 
           </nav>
 
           {/* Right Actions */}

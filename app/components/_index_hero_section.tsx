@@ -127,7 +127,7 @@ export function HeroSection() {
           transition={{ duration: 0.8, delay: 0.6 }}
         >
           <HeroImage
-            src="https://images.unsplash.com/photo-1578245093109-472875396a2a?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            src="https://images.unsplash.com/photo-1578245093109-472875396a2a?q=80&w800&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="Logistics Services"
             location="上海"
             className="absolute bottom-0 left-0 z-10 w-2/5"
@@ -137,7 +137,7 @@ export function HeroSection() {
             style={{ transform: "translateY(-16%)" }}
           />
           <HeroImage
-            src="https://images.unsplash.com/photo-1510681916233-314f497f3301?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            src="https://images.unsplash.com/photo-1510681916233-314f497f3301?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="Global Network"
             location="菲律賓"
             className="mx-[10%] mb-[10%] w-1/2"
@@ -147,7 +147,7 @@ export function HeroSection() {
             style={{ transform: "translateY(15.5%)" }}
           />
           <HeroImage
-            src="https://images.unsplash.com/photo-1509810505-b88f10b18375?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            src="https://images.unsplash.com/photo-1509810505-b88f10b18375?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="japan port"
             location="日本"
             className="absolute right-0 top-[10%] w-2/5"
