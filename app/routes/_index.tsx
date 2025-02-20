@@ -58,12 +58,12 @@ export default function Index() {
   const { services } = useLoaderData<LoaderData>();
 
   return (
-    <main className="flex-1" data-oid="j7upu9j">
-      <HeroSection data-oid="4e71t4:" />
-      <FeatureSection data-oid="m._zhp6" />
-      <BenefitSection data-oid=".5.11og" />
-      <HowItWorks data-oid="sm030vl" />
-      <ServiceSection services={services} data-oid="rb6s:rr" />
+    <main className="flex-1" data-oid="z8ah8mg">
+      <HeroSection data-oid="26zz_01" />
+      <FeatureSection data-oid="u60itcw" />
+      {/* <BenefitSection data-oid=".5.11og" /> */}
+      <HowItWorks data-oid="kd95oc4" />
+      {/* <ServiceSection services={services} data-oid="rb6s:rr" /> */}
     </main>
   );
 }

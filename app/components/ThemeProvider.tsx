@@ -52,14 +52,14 @@ export function ThemeProvider({
   return (
     <ThemeContext.Provider
       value={{ theme, setTheme: handleThemeChange }}
-      data-oid="wt..lju"
+      data-oid="lw4s1_k"
     >
       <RadixTheme
         appearance={theme}
         accentColor={themes[theme].accent}
         radius="large"
         hasBackground
-        data-oid="va._kr-"
+        data-oid="o4bdx2n"
       >
         {children}
       </RadixTheme>

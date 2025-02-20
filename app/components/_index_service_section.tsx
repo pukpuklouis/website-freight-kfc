@@ -34,17 +34,17 @@ export const ServiceSection = ({
   return (
     <section
       className="py-16 md:py-20 lg:py-24 bg-[var(--accent-2)]"
-      data-oid="iha5z0u"
+      data-oid="oyn6om6"
     >
-      <div className="container mx-auto px-4" data-oid="e10nzev">
-        <div className="text-center max-w-3xl mx-auto mb-12" data-oid="5-ep896">
+      <div className="container mx-auto px-4" data-oid="hrulyv.">
+        <div className="text-center max-w-3xl mx-auto mb-12" data-oid="nig_4xr">
           <h2
             className={`text-3xl font-bold mb-4 ${
               theme === "dark"
                 ? "text-[var(--accent-12)]"
                 : "text-[var(--accent-12)]"
             }`}
-            data-oid="4g08mgp"
+            data-oid="ry_0tvu"
           >
             {title}
           </h2>
@@ -54,14 +54,14 @@ export const ServiceSection = ({
                 ? "text-[var(--accent-11)]"
                 : "text-[var(--accent-11)]"
             } prose prose-sm max-w-none prose-headings:text-[var(--accent-11)] prose-strong:text-[var(--accent-11)] prose-em:text-[var(--accent-11)]`}
-            data-oid="1o:u-hp"
+            data-oid="g710grk"
           >
             {description}
           </ReactMarkdown>
         </div>
         <div
           className="grid grid-cols-1 md:grid-cols-3 gap-8"
-          data-oid="ae1i_2e"
+          data-oid="9w9fbyf"
         >
           {services.map((service) => {
             const Icon = IconMap[service.iconType];
@@ -74,11 +74,11 @@ export const ServiceSection = ({
                     ? "bg-[var(--accent-3)] hover:bg-[var(--accent-4)] shadow-lg shadow-accent-12/5"
                     : "bg-[var(--accent-2)] hover:bg-[var(--accent-3)] shadow-md hover:shadow-lg"
                 }`}
-                data-oid="tyfd9fo"
+                data-oid="o8_i0nx"
               >
                 <div
                   className="flex items-center justify-between mb-4"
-                  data-oid="jonpz2t"
+                  data-oid="vaootfr"
                 >
                   <div
                     className={`p-2 rounded-lg ${
@@ -86,7 +86,7 @@ export const ServiceSection = ({
                         ? "bg-[var(--accent-4)]"
                         : "bg-[var(--accent-3)]"
                     }`}
-                    data-oid="9v.0xgw"
+                    data-oid="9qgg8ew"
                   >
                     <Icon
                       className={`w-6 h-6 ${
@@ -94,7 +94,7 @@ export const ServiceSection = ({
                           ? "text-[var(--accent-11)]"
                           : "text-[var(--accent-11)]"
                       }`}
-                      data-oid="dg.-5b5"
+                      data-oid="imgbz::"
                     />
                   </div>
                   <ArrowRight
@@ -103,7 +103,7 @@ export const ServiceSection = ({
                         ? "text-[var(--accent-8)] group-hover:text-[var(--accent-11)]"
                         : "text-[var(--accent-8)] group-hover:text-[var(--accent-11)]"
                     }`}
-                    data-oid="ibq4lml"
+                    data-oid="xh7-dyr"
                   />
                 </div>
                 <h3
@@ -112,7 +112,7 @@ export const ServiceSection = ({
                       ? "text-[var(--accent-12)]"
                       : "text-[var(--accent-12)]"
                   }`}
-                  data-oid="l_mlc:k"
+                  data-oid="ci.8rdl"
                 >
                   {service.title}
                 </h3>
@@ -122,7 +122,7 @@ export const ServiceSection = ({
                       ? "text-[var(--accent-11)]"
                       : "text-[var(--accent-11)]"
                   } prose prose-sm max-w-none prose-headings:text-[var(--accent-11)] prose-strong:text-[var(--accent-11)] prose-em:text-[var(--accent-11)]`}
-                  data-oid="n5slf5."
+                  data-oid="e8s59zb"
                 >
                   {service.description}
                 </ReactMarkdown>
