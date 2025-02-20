@@ -1,8 +1,8 @@
-import { memo } from 'react';
-import { Tilt } from '~/components/ui/tilt';
-import { Spotlight } from '~/components/ui/spotlight';
-import { motion } from 'framer-motion';
-import { useTheme, themes } from '~/utils/theme';
+import { memo } from "react";
+import { Tilt } from "~/components/ui/tilt";
+import { Spotlight } from "~/components/ui/spotlight";
+import { motion } from "framer-motion";
+import { useTheme, themes } from "~/utils/theme";
 
 interface BenefitItem {
   readonly title: string;
@@ -19,16 +19,19 @@ interface BenefitSectionProps {
 
 const defaultBenefits: BenefitItem[] = [
   {
-    title: '時間節省',
-    description: '使用我們的服務，讓您的業務運行更順暢。',
+    title: "時間節省",
+    description: "使用我們的服務，讓您的業務運行更順暢。",
   },
   {
-    title: '成本效益',
-    description: '提供具競爭力的價格，助您降低運輸成本。',
+    title: "成本效益",
+    description: "提供具競爭力的價格，助您降低運輸成本。",
   },
 ];
 
-const BenefitCard = memo(function BenefitCard({ title, description }: BenefitItem) {
+const BenefitCard = memo(function BenefitCard({
+  title,
+  description,
+}: BenefitItem) {
   const { theme } = useTheme();
   const { accent, gray } = themes[theme];
 
@@ -37,7 +40,8 @@ const BenefitCard = memo(function BenefitCard({ title, description }: BenefitIte
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5, ease: 'easeOut' }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      data-oid="4ho2hhx"
     >
       <Tilt
         rotationFactor={6}
@@ -48,12 +52,18 @@ const BenefitCard = memo(function BenefitCard({ title, description }: BenefitIte
           mass: 0.5,
         }}
         className="h-full"
+        data-oid=":4mxu.s"
       >
-        <div className="group relative h-full overflow-hidden rounded-2xl border bg-[var(--gray-2)] p-8 transition-all duration-300 hover:shadow-lg"
-             style={{
-               borderColor: `var(--accent-8)`,
-               '--spotlight-color': `var(--accent-1)`
-             } as React.CSSProperties}>
+        <div
+          className="group relative h-full overflow-hidden rounded-2xl border bg-[var(--gray-2)] p-8 transition-all duration-300 hover:shadow-lg"
+          style={
+            {
+              borderColor: `var(--accent-8)`,
+              "--spotlight-color": `var(--accent-1)`,
+            } as React.CSSProperties
+          }
+          data-oid="ri1_620"
+        >
           <Spotlight
             className="z-10 blur-2xl"
             size={200}
@@ -62,23 +72,27 @@ const BenefitCard = memo(function BenefitCard({ title, description }: BenefitIte
               damping: 20,
               mass: 0.5,
             }}
+            data-oid="jdygsaw"
           />
-          <div className="relative z-20">
-            <motion.h3 
+
+          <div className="relative z-20" data-oid="4r9:rty">
+            <motion.h3
               className="mb-4 text-2xl font-bold tracking-tight bg-gradient-to-r from-[var(--accent-11)] to-[var(--accent-5)] bg-clip-text text-transparent"
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
+              data-oid="3r3h:mc"
             >
               {title}
             </motion.h3>
-            <motion.p 
+            <motion.p
               className="text-[var(--theme-gray-11)]"
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
+              data-oid="4kd:4-n"
             >
               {description}
             </motion.p>
@@ -90,21 +104,27 @@ const BenefitCard = memo(function BenefitCard({ title, description }: BenefitIte
 });
 
 export const BenefitSection = memo(function BenefitSection({
-  heading = '選擇卡菲斯體驗無縫物流',
-  description = '使用卡菲斯的服務，您可以節省大量時間，讓物流過程變得簡單高效。我們的專業團隊確保每一個貨物都能安全準時送達。',
+  heading = "選擇卡菲斯體驗無縫物流",
+  description = "使用卡菲斯的服務，您可以節省大量時間，讓物流過程變得簡單高效。我們的專業團隊確保每一個貨物都能安全準時送達。",
   benefits = defaultBenefits,
   className,
-  imageSrc = 'https://images.unsplash.com/photo-1465447142348-e9952c393450?q=80&w=900&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  imageSrc = "https://images.unsplash.com/photo-1465447142348-e9952c393450?q=80&w=900&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 }: BenefitSectionProps) {
   const { theme } = useTheme();
   const { accent, gray } = themes[theme];
 
   return (
-    <section className="relative px-[10%] py-16 md:py-24 lg:py-32 bg-[var(--accent-2)]">
-      <div className="container mx-auto">
-        <div className="grid gap-12 lg:grid-cols-2 items-center">
+    <section
+      className="relative px-[10%] py-16 md:py-24 lg:py-32 bg-[var(--accent-2)]"
+      data-oid="su3ee-p"
+    >
+      <div className="container mx-auto" data-oid="5w0zhmn">
+        <div
+          className="grid gap-12 lg:grid-cols-2 items-center"
+          data-oid="9h.3zi9"
+        >
           {/* Left Column - Content */}
-          <div className="space-y-12">
+          <div className="space-y-12" data-oid="dus5a.1">
             {/* Header */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -112,23 +132,26 @@ export const BenefitSection = memo(function BenefitSection({
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
               className="max-w-xl"
+              data-oid="pya3zsr"
             >
-              <div className="relative z-20">
-                <motion.h2 
+              <div className="relative z-20" data-oid="siek.vp">
+                <motion.h2
                   className="mb-6 font-bold tracking-tight text-[var(--accent-10)] text-[clamp(1.7rem,3vw+0.2rem,3.5rem)] leading-[1.1]"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.1 }}
+                  data-oid="hvuk:m1"
                 >
                   {heading}
                 </motion.h2>
-                <motion.p 
+                <motion.p
                   className="text-lg text-[var(--theme-gray-11)] md:text-xl"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.2 }}
+                  data-oid="_a129r8"
                 >
                   {description}
                 </motion.p>
@@ -136,11 +159,12 @@ export const BenefitSection = memo(function BenefitSection({
             </motion.div>
 
             {/* Benefits Grid */}
-            <div className="grid gap-8">
+            <div className="grid gap-8" data-oid=".vj1x3r">
               {benefits.map((benefit, index) => (
                 <BenefitCard
                   key={`benefit-${index}`}
                   {...benefit}
+                  data-oid="i:m0iz1"
                 />
               ))}
             </div>
@@ -153,6 +177,7 @@ export const BenefitSection = memo(function BenefitSection({
             viewport={{ once: false }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="relative"
+            data-oid="kp7nyap"
           >
             <Tilt
               rotationFactor={4}
@@ -163,17 +188,24 @@ export const BenefitSection = memo(function BenefitSection({
                 mass: 0.5,
               }}
               className="relative overflow-hidden rounded-2xl w-full"
+              data-oid="qb_-gcp"
             >
               <motion.div
                 className="relative z-20"
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
+                data-oid="-4v0h.g"
               >
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-[var(--gray-12)]/10 to-transparent" />
+                <div
+                  className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-[var(--gray-12)]/10 to-transparent"
+                  data-oid="hrrptk5"
+                />
+
                 <img
                   src={imageSrc}
                   alt="Logistics Benefits"
                   className="w-full rounded-2xl shadow-2xl aspect-[9/11] transition-all duration-300 group-hover:shadow-3xl object-cover"
+                  data-oid="dr.7gf4"
                 />
               </motion.div>
             </Tilt>

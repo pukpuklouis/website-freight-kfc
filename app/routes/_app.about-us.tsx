@@ -52,7 +52,8 @@ export const loader = async () => {
   const faqQuestions = [
     {
       title: "Q1：你們在台、中、菲、日四地的配送網絡有多深入？",
-      answer: "我們在四國主要城市設有自有倉儲中心（如台北、上海、馬尼拉、東京），並透過與當地物流龍頭合作，延伸至二線城市及工業區。針對菲律賓島嶼地區與日本偏遠縣市，提供「經濟型專船+最後一哩陸運」整合方案，確保全覆蓋無盲區。",
+      answer:
+        "我們在四國主要城市設有自有倉儲中心（如台北、上海、馬尼拉、東京），並透過與當地物流龍頭合作，延伸至二線城市及工業區。針對菲律賓島嶼地區與日本偏遠縣市，提供「經濟型專船+最後一哩陸運」整合方案，確保全覆蓋無盲區。",
     },
     {
       title: "Q2：跨境清關如何避免延誤？",
@@ -70,7 +71,7 @@ export const loader = async () => {
     },
     {
       title: "Q4：如何確保日本線的時效精準度？",
-      answer:  `1. **全包價顯示**：報價單明確拆分「基本運費+燃油附加費+關稅預付金」
+      answer: `1. **全包價顯示**：報價單明確拆分「基本運費+燃油附加費+關稅預付金」
 2. **超重預警系統**：貨件入倉後自動測量材積，若實際重量超過預估10%將即時通知
 3. **退件保證**：若因我方因素產生海關罰金，最高賠償200%運費`,
     },
@@ -82,20 +83,20 @@ export const loader = async () => {
 -  **返向物流**:日本退貨可經台灣倉重新貼標轉寄中國`,
     },
     {
-    title: "Q6：如何追蹤貨件？",
+      title: "Q6：如何追蹤貨件？",
       answer: `提供「貨況預測」增值服務：
 1. 即時GPS定位（台灣/中國段使用北斗衛星系統）
 2. 自動推送海關審查進度（如日本稅關審查完成前2小時預警）
 3. 氣象監測：遇颱風/暴雨主動建議改道方案`,
     },
     {
-    title: "Q7：環保措施是否符合國際規範？",
+      title: "Q7：環保措施是否符合國際規範？",
       answer: `- **船舶減碳**：台灣-菲律賓航線使用LNG燃料船
 - **循環包材**：日本線提供可折疊回收的FSC認證木箱
 - **碳權折抵**：選擇電子文件可累積點數兌換碳中和憑證`,
     },
     {
-    title: "Q8：緊急狀況如何聯繫？",
+      title: "Q8：緊急狀況如何聯繫？",
       answer: `提供「在地母語支援」：
 - 24小時專屬窗口（中文/日語/塔加洛語/英語）
 - 重大事故啟動「三方通話」：客戶+當地海關+我方律師同步處理
@@ -111,15 +112,16 @@ export default function AboutUs() {
   const { theme } = useTheme();
 
   return (
-    <div className="min-h-screen">
-      <PurposeSection />
-      <MissionSection features={missionFeatures} />
+    <div className="min-h-screen" data-oid="_6-_q3v">
+      <PurposeSection data-oid="5t6ps6v" />
+      <MissionSection features={missionFeatures} data-oid="sl.914y" />
       <FAQSection
         questions={faqQuestions}
         heading="常見問題"
         description="✨ 物流疑問全攻略！從時效到價格，最關心的問題一次解答"
         footerHeading="還有更多問題嗎?"
         footerDescription="🚀 24小時護航｜AI助理+真人助手雙重服務 輸入你的需求＞＞秒速回覆專屬方案"
+        data-oid="6_36ur9"
       />
     </div>
   );

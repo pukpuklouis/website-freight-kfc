@@ -1,23 +1,27 @@
 import { useEffect, useState } from 'react';
+import { useHydrated } from './use-hydrated';
 
 type Theme = 'light' | 'dark';
 
 export function useTheme() {
-  const [theme, setTheme] = useState<Theme>(() => {
-    // Check if window is defined (browser environment)
-    if (typeof window !== 'undefined') {
-      const savedTheme = window.localStorage.getItem('theme') as Theme;
-      return savedTheme || 'light';
-    }
-    return 'light';
-  });
+  const isHydrated = useHydrated();
+  const [theme, setTheme] = useState<Theme>('light');
 
   useEffect(() => {
-    const root = window.document.documentElement;
-    root.classList.remove('light', 'dark');
-    root.classList.add(theme);
-    localStorage.setItem('theme', theme);
-  }, [theme]);
+    if (isHydrated) {
+      const savedTheme = localStorage.getItem('theme') as Theme;
+      setTheme(savedTheme || 'light');
+    }
+  }, [isHydrated]);
+
+  useEffect(() => {
+    if (isHydrated) {
+      const root = document.documentElement;
+      root.classList.remove('light', 'dark');
+      root.classList.add(theme);
+      localStorage.setItem('theme', theme);
+    }
+  }, [theme, isHydrated]);
 
   const toggleTheme = () => {
     setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));

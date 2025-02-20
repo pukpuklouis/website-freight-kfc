@@ -7,7 +7,7 @@ import { Link } from "@remix-run/react";
 
 export function HeroSection() {
   const { theme } = useTheme();
-  const { accent, gray, } = themes[theme];
+  const { accent, gray } = themes[theme];
 
   // Create gradient colors for the accent theme
   const gradient1 = `var(--accent-9)`;
@@ -16,19 +16,31 @@ export function HeroSection() {
   const heroCTA = "貨發出錢進來";
 
   const featureItems = [
-    { icon: Shield, text: '安全跨境運輸' },
-    { icon: Globe, text: '大中華區跨境首選' },
-    { icon: Clock, text: '24/7  客戶服務' },
+    { icon: Shield, text: "安全跨境運輸" },
+    { icon: Globe, text: "大中華區跨境首選" },
+    { icon: Clock, text: "24/7  客戶服務" },
   ] as const;
 
-  const FeatureItem = ({ icon: Icon, text }: { icon: typeof Shield | typeof Globe | typeof Clock, text: string }) => (
+  const FeatureItem = ({
+    icon: Icon,
+    text,
+  }: {
+    icon: typeof Shield | typeof Globe | typeof Clock;
+    text: string;
+  }) => (
     <motion.div
       className="flex items-center gap-2"
       whileHover={{ scale: 1.05 }}
       transition={{ type: "spring", stiffness: 400, damping: 10 }}
+      data-oid="a:wwv_9"
     >
-      <Icon className="h-5 w-5 text-[var(--accent-9)]" />
-      <span className="text-[var(--accent-10)] text-[clamp(0.2rem,2vw+0.5rem,1rem)]">{text}</span>
+      <Icon className="h-5 w-5 text-[var(--accent-9)]" data-oid="7w8pg86" />
+      <span
+        className="text-[var(--accent-10)] text-[clamp(0.2rem,2vw+0.5rem,1rem)]"
+        data-oid="zofpdde"
+      >
+        {text}
+      </span>
     </motion.div>
   );
 
@@ -43,48 +55,74 @@ export function HeroSection() {
     transition?: any;
   }
 
-  const HeroImage = ({ src, alt, location, className, style, initial, animate, transition }: HeroImageProps) => (
+  const HeroImage = ({
+    src,
+    alt,
+    location,
+    className,
+    style,
+    initial,
+    animate,
+    transition,
+  }: HeroImageProps) => (
     <motion.div
       className={className}
       initial={initial}
       animate={animate}
       transition={transition}
       style={style}
+      data-oid="_2bar_s"
     >
-      <div className="relative">
+      <div className="relative" data-oid="u:n76bn">
         <img
           src={src}
           alt={alt}
           className="aspect-square w-full object-cover rounded-2xl shadow-2xl"
+          data-oid="xdpdp47"
         />
-        <div className="absolute inset-0 bg-black/30 rounded-2xl flex items-end justify-end p-4">
-          <span className="text-gray-300 text-3xl font-bold">{location}</span>
+
+        <div
+          className="absolute inset-0 bg-black/30 rounded-2xl flex items-end justify-end p-4"
+          data-oid="qjr5xvf"
+        >
+          <span className="text-gray-300 text-3xl font-bold" data-oid="fwu8m3_">
+            {location}
+          </span>
         </div>
       </div>
     </motion.div>
   );
 
   return (
-    <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 bg-gradient-to-b from-[var(--accent-6)] via-[var(--accent-2)] to-transparent overflow-show bg-[var(--accent-2)]">
-      <div className="absolute inset-0 bg-grid-slate-900/[0.04] bg-[size:75px_75px] [mask-image:linear-gradient(to_bottom,white,transparent)] z-[-1]" />
-      <div className="container mx-auto px-4">
+    <section
+      className="relative pt-32 pb-16 md:pt-40 md:pb-24 bg-gradient-to-b from-[var(--accent-6)] via-[var(--accent-2)] to-transparent overflow-show bg-[var(--accent-2)]"
+      data-oid="8l007rv"
+    >
+      <div
+        className="absolute inset-0 bg-grid-slate-900/[0.04] bg-[size:75px_75px] [mask-image:linear-gradient(to_bottom,white,transparent)] z-[-1]"
+        data-oid="70fg_f5"
+      />
+
+      <div className="container mx-auto px-4" data-oid="qnhadv1">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="text-center mb-12 md:mb-16 mt-4"
+          data-oid="5---v2a"
         >
           <motion.h1
             style={{
               background: `linear-gradient(170deg, ${gradient1}, ${gradient2})`,
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text'
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
             }}
             className="text-[clamp(1.75rem,5vw+1rem,5rem)] font-bold tracking-tight mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
+            data-oid="sjnjkgm"
           >
             跨境運輸 連接四方
           </motion.h1>
@@ -94,6 +132,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
+            data-oid="kz7.5m."
           >
             卡菲斯國際運輸提供無縫的跨境運輸解決方案，讓您出貨無憂。
           </motion.p>
@@ -102,19 +141,25 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
+            data-oid="-kt1vzc"
           >
             <Button
               size="4"
               variant="solid"
               className="group transition-all duration-200 shadow-lg bg-[var(--accent-9)] text-[var(--accent-contrast)] hover:bg-[var(--accent-10)] hover:border-[var(--accent-9)]"
               asChild
+              data-oid=":e.1t9j"
             >
               <Link
                 to="/contact-us"
                 className="inline-flex items-center gap-2"
+                data-oid="ms7uclb"
               >
                 {heroCTA}
-                <Ship className="h-5 w-5 transition-transform duration-200 group-hover:scale-[1.2]" />
+                <Ship
+                  className="h-5 w-5 transition-transform duration-200 group-hover:scale-[1.2]"
+                  data-oid="12c57r8"
+                />
               </Link>
             </Button>
           </motion.div>
@@ -125,6 +170,7 @@ export function HeroSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.6 }}
+          data-oid="efrqs15"
         >
           <HeroImage
             src="https://images.unsplash.com/photo-1578245093109-472875396a2a?q=80&w800&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -135,7 +181,9 @@ export function HeroSection() {
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.7 }}
             style={{ transform: "translateY(-16%)" }}
+            data-oid="78wcjwb"
           />
+
           <HeroImage
             src="https://images.unsplash.com/photo-1510681916233-314f497f3301?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="Global Network"
@@ -145,7 +193,9 @@ export function HeroSection() {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.8 }}
             style={{ transform: "translateY(15.5%)" }}
+            data-oid="rieyd.m"
           />
+
           <HeroImage
             src="https://images.unsplash.com/photo-1509810505-b88f10b18375?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="japan port"
@@ -155,6 +205,7 @@ export function HeroSection() {
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.9 }}
             style={{ transform: "translateY(12%)" }}
+            data-oid="n771._3"
           />
         </motion.div>
 
@@ -163,13 +214,13 @@ export function HeroSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.5 }}
+          data-oid="juadvc6"
         >
           {featureItems.map((item) => (
-            <FeatureItem key={item.text} {...item} />
+            <FeatureItem key={item.text} {...item} data-oid="s4lt.2o" />
           ))}
         </motion.div>
       </div>
-      
     </section>
   );
 }

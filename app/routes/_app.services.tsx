@@ -1,5 +1,5 @@
-import type { MetaFunction } from '@remix-run/node';
-import { useTheme, themes } from '~/utils/theme';
+import type { MetaFunction } from "@remix-run/node";
+import { useTheme, themes } from "~/utils/theme";
 import { motion } from "framer-motion";
 
 const services = [
@@ -8,28 +8,31 @@ const services = [
     title: "海運服務",
     description: "提供完整的海運服務，包括整櫃、併櫃、散貨等多元化的運輸選擇",
     tags: ["整櫃", "併櫃", "散貨"],
-    image: "https://images.unsplash.com/photo-1606185540834-d6e7483ee1a4?q=80&w=900&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    image:
+      "https://images.unsplash.com/photo-1606185540834-d6e7483ee1a4?q=80&w=900&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 2,
     title: "空運服務",
     description: "快速可靠的空運服務，全球航線覆蓋，為您的貨物提供最佳運輸方案",
     tags: ["快遞", "空運", "全球配送"],
-    image: "https://images.unsplash.com/photo-1571086291540-b137111fa1c7?q=80&w=900&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    image:
+      "https://images.unsplash.com/photo-1571086291540-b137111fa1c7?q=80&w=900&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 3,
     title: "倉儲物流",
     description: "專業的倉儲管理和配送服務，確保您的貨物安全存儲和及時配送",
     tags: ["倉儲", "配送", "物流管理"],
-    image: "https://images.unsplash.com/photo-1601598852806-524f0060508e?q=80&w=900&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  }
+    image:
+      "https://images.unsplash.com/photo-1601598852806-524f0060508e?q=80&w=900&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
 ];
 
 export const meta: MetaFunction = () => {
   return [
-    { title: '專業服務-卡菲斯國際' },
-    { name: 'description', content: '探索我們的完整貨運和物流服務' },
+    { title: "專業服務-卡菲斯國際" },
+    { name: "description", content: "探索我們的完整貨運和物流服務" },
   ];
 };
 
@@ -42,26 +45,32 @@ function ServiceCard({ service }: { service: (typeof services)[number] }) {
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
       className="group relative bg-[var(--accent-3)] rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
+      data-oid="kx7d05s"
     >
-      <div className="relative w-full pt-[75%]">
+      <div className="relative w-full pt-[75%]" data-oid="9yeff5.">
         <img
           src={service.image}
           alt={service.title}
           className="absolute inset-0 w-full h-full object-cover"
+          data-oid="zv__580"
         />
       </div>
-      <div className="p-6">
-        <h3 className="text-2xl font-bold text-[var(--accent-11)] mb-3">
+      <div className="p-6" data-oid="of2orev">
+        <h3
+          className="text-2xl font-bold text-[var(--accent-11)] mb-3"
+          data-oid="bn9ao43"
+        >
           {service.title}
         </h3>
-        <p className="text-[var(--gray-11)] font-light mb-4">
+        <p className="text-[var(--gray-11)] font-light mb-4" data-oid="aoh0.r2">
           {service.description}
         </p>
-        <div className="flex flex-wrap gap-2 mb-4">
+        <div className="flex flex-wrap gap-2 mb-4" data-oid="ms5heb-">
           {service.tags.map((tag) => (
             <span
               key={tag}
               className="px-3 py-1 text-sm rounded-full bg-[var(--accent-6)] text-[var(--accent-11)]"
+              data-oid="jceo2t."
             >
               {tag}
             </span>
@@ -75,24 +84,38 @@ function ServiceCard({ service }: { service: (typeof services)[number] }) {
 export default function ServicesLayout() {
   const { theme } = useTheme();
   const { accent, gray } = themes[theme];
-  
-
 
   return (
-    <div className="min-h-screen bg-[var(--accent-2)] py-16 px-4 sm:px-6 lg:px-8 pt-24">
-      <div className="max-w-7xl mx-auto py-12">
-        <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold tracking-tight text-[var(--gray-12)] sm:text-5xl md:text-6xl">
+    <div
+      className="min-h-screen bg-[var(--accent-2)] py-16 px-4 sm:px-6 lg:px-8 pt-24"
+      data-oid="uaew06f"
+    >
+      <div className="max-w-7xl mx-auto py-12" data-oid="lugmdbw">
+        <div className="text-center mb-16" data-oid=":cp9t:z">
+          <h1
+            className="text-5xl font-bold tracking-tight text-[var(--gray-12)] sm:text-5xl md:text-6xl"
+            data-oid="xtlpzyf"
+          >
             我們的服務
           </h1>
-          <p className="mt-4 max-w-2xl mx-auto text-xl text-[var(--gray-10)]">
+          <p
+            className="mt-4 max-w-2xl mx-auto text-xl text-[var(--gray-10)]"
+            data-oid="82gz8uo"
+          >
             提供全方位的物流運輸解決方案
           </p>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div
+          className="grid gap-8 md:grid-cols-2 lg:grid-cols-3"
+          data-oid="xqy1n3r"
+        >
           {services.map((service) => (
-            <ServiceCard key={service.id} service={service} />
+            <ServiceCard
+              key={service.id}
+              service={service}
+              data-oid="11dns5s"
+            />
           ))}
         </div>
       </div>

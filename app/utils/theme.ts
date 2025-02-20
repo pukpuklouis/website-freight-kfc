@@ -34,3 +34,14 @@ export const getSystemTheme = (): Theme => {
   if (typeof window === 'undefined') return 'light';
   return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 };
+
+export const getThemeFromCookie = async (request: Request): Promise<Theme> => {
+  const cookieHeader = request.headers.get('Cookie');
+  const cookies = new URLSearchParams(cookieHeader?.replace(/;\s*/g, '&') ?? '');
+  const theme = cookies.get('theme') as Theme | undefined;
+  return theme ?? 'light';
+};
+
+export const setThemeCookie = (theme: Theme): string => {
+  return `theme=${theme}; Path=/; Max-Age=31536000; SameSite=Lax; Secure`;
+};
