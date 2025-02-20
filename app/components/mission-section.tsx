@@ -26,20 +26,20 @@ export function MissionSection({ features }: MissionSectionProps) {
     <section
       ref={ref}
       className="px-[5%] py-24 pb-24 md:py-16 md:pb-32 lg:py-12 lg:pb-16 bg-[var(--accent-2)] relative"
-      data-oid="55d:wiq"
+      data-oid="aheq838"
     >
-      <div className="container mx-auto" data-oid="rz3nfad">
+      <div className="container mx-auto" data-oid="b7-vhwr">
         <div
           className="relative grid gap-x-8 gap-y-12 md:grid-cols-[0.4fr_1fr] lg:grid-cols-[0.5fr_1fr] lg:gap-x-20"
-          data-oid="koj2:hn"
+          data-oid="l7gz9ok"
         >
           <div
             className="static top-[15%] hidden h-80 md:sticky md:flex md:items-start"
-            data-oid="nepr:-p"
+            data-oid="o6v5v7q"
           >
             <div
               className="text-center relative h-full w-full overflow-hidden flex items-start justify-center pt-8"
-              data-oid="u0hv751"
+              data-oid="pqz4qa2"
             >
               {features.map((feature, index) => {
                 // === ANIMATION TIMING CONTROLS ===
@@ -121,7 +121,7 @@ export function MissionSection({ features }: MissionSectionProps) {
                       x: "-50%",
                     }}
                     className="text-[8rem] font-bold leading-[1] md:text-[12rem] lg:text-[14rem] text-[var(--accent-10)]"
-                    data-oid="wqvb7n1"
+                    data-oid="5ep2io-"
                   >
                     {feature.number}
                   </motion.h1>
@@ -129,9 +129,9 @@ export function MissionSection({ features }: MissionSectionProps) {
               })}
             </div>
           </div>
-          <div className="grid gap-y-24 md:gap-y-32 mb-24" data-oid="7239jrv">
+          <div className="grid gap-y-24 md:gap-y-32 mb-24" data-oid="3_:y7o8">
             {features.map((feature, index) => (
-              <FeatureCard key={index} {...feature} data-oid=".pkqaj6" />
+              <FeatureCard key={index} {...feature} data-oid="8ziclq1" />
             ))}
           </div>
         </div>
@@ -162,39 +162,39 @@ function FeatureCard({
   return (
     <div
       className="flex flex-col items-start justify-center py-8 md:py-0"
-      data-oid="0b0xui9"
+      data-oid="6ytsllx"
     >
       <div
         className="mt-10 flex text-[6rem] font-bold leading-[1] md:mt-0 md:hidden"
-        data-oid="5dikrva"
+        data-oid="zp51ra3"
       >
         {number}
       </div>
       <div
         ref={ref}
         className="mb-8 mt-8 h-0.5 w-full bg-[var(--gray-6)] md:mt-0"
-        data-oid="0qpq7hk"
+        data-oid="cz8byy5"
       >
         <motion.div
           className="h-0.5 bg-[var(--accent-7)]"
           style={{ width }}
-          data-oid="mmu_kd5"
+          data-oid="qsdby.b"
         />
       </div>
-      <div className="max-w-2xl" data-oid="j2:wksg">
+      <div className="max-w-2xl" data-oid="skpyuhu">
         <p
           className="mb-3 font-semibold text-[var(--gray-10)] md:text-gray- md:mb-4"
-          data-oid="tg3qjnk"
+          data-oid="z:-i836"
         >
           {tagline}
         </p>
         <h2
           className="mb-5 md:mb-6 text-[clamp(2rem,4vw+0.6rem,5rem)] font-bold text-[var(--accent-12)]"
-          data-oid="10y_57r"
+          data-oid="p:ut1h2"
         >
           {heading}
         </h2>
-        <p className="text-[var(--gray-11)]" data-oid="cnqth7b">
+        <p className="text-[var(--gray-11)]" data-oid="fojtgun">
           {description}
         </p>
       </div>

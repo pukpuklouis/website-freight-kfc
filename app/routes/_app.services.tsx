@@ -45,32 +45,32 @@ function ServiceCard({ service }: { service: (typeof services)[number] }) {
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
       className="group relative bg-[var(--accent-3)] rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
-      data-oid="kx7d05s"
+      data-oid="_r3p2bt"
     >
-      <div className="relative w-full pt-[75%]" data-oid="9yeff5.">
+      <div className="relative w-full pt-[75%]" data-oid="gldn7z4">
         <img
           src={service.image}
           alt={service.title}
           className="absolute inset-0 w-full h-full object-cover"
-          data-oid="zv__580"
+          data-oid="pqnzl.8"
         />
       </div>
-      <div className="p-6" data-oid="of2orev">
+      <div className="p-6" data-oid="yf3cmzk">
         <h3
           className="text-2xl font-bold text-[var(--accent-11)] mb-3"
-          data-oid="bn9ao43"
+          data-oid="rhqj3y5"
         >
           {service.title}
         </h3>
-        <p className="text-[var(--gray-11)] font-light mb-4" data-oid="aoh0.r2">
+        <p className="text-[var(--gray-11)] font-light mb-4" data-oid=":t9e39t">
           {service.description}
         </p>
-        <div className="flex flex-wrap gap-2 mb-4" data-oid="ms5heb-">
+        <div className="flex flex-wrap gap-2 mb-4" data-oid="hu6:s82">
           {service.tags.map((tag) => (
             <span
               key={tag}
               className="px-3 py-1 text-sm rounded-full bg-[var(--accent-6)] text-[var(--accent-11)]"
-              data-oid="jceo2t."
+              data-oid="xanb4tn"
             >
               {tag}
             </span>
@@ -88,19 +88,19 @@ export default function ServicesLayout() {
   return (
     <div
       className="min-h-screen bg-[var(--accent-2)] py-16 px-4 sm:px-6 lg:px-8 pt-24"
-      data-oid="uaew06f"
+      data-oid="z88b06p"
     >
-      <div className="max-w-7xl mx-auto py-12" data-oid="lugmdbw">
-        <div className="text-center mb-16" data-oid=":cp9t:z">
+      <div className="max-w-7xl mx-auto py-12" data-oid="._7f3lg">
+        <div className="text-center mb-16" data-oid="bd:lz.:">
           <h1
             className="text-5xl font-bold tracking-tight text-[var(--gray-12)] sm:text-5xl md:text-6xl"
-            data-oid="xtlpzyf"
+            data-oid="x-s7zua"
           >
             我們的服務
           </h1>
           <p
             className="mt-4 max-w-2xl mx-auto text-xl text-[var(--gray-10)]"
-            data-oid="82gz8uo"
+            data-oid="aqm6p4f"
           >
             提供全方位的物流運輸解決方案
           </p>
@@ -108,13 +108,13 @@ export default function ServicesLayout() {
 
         <div
           className="grid gap-8 md:grid-cols-2 lg:grid-cols-3"
-          data-oid="xqy1n3r"
+          data-oid="0ppefs7"
         >
           {services.map((service) => (
             <ServiceCard
               key={service.id}
               service={service}
-              data-oid="11dns5s"
+              data-oid="o52ezjd"
             />
           ))}
         </div>

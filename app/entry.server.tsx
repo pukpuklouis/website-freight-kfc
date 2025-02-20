@@ -19,7 +19,7 @@ export default async function handleRequest(
   const controller = new AbortController();
 
   const stream = await renderToReadableStream(
-    <RemixServer context={remixContext} url={request.url} data-oid="skrti_i" />,
+    <RemixServer context={remixContext} url={request.url} data-oid="6c1:jqj" />,
     {
       signal: AbortSignal.timeout(ABORT_DELAY),
       onError(error) {

@@ -1,7 +1,9 @@
+
 import { Link } from "@remix-run/react";
 import { FaFacebookF, FaLine, FaWeixin, FaQq } from "react-icons/fa";
 import { useTheme, themes } from "~/utils/theme";
 import * as React from "react";
+import KfcLogo from "~/components/icons/KfcLogo";
 
 type Theme = "light" | "dark";
 
@@ -16,12 +18,25 @@ interface NavLink {
   name: string;
   to: string;
 }
+interface LinkItem {
+  name: string;
+  url: string;
+}
 
+interface DownloadItem {
+  name: string;
+  url: string;
+}
 interface ContactInfo {
   label: string;
   value: string;
 }
-
+interface CompanyInfo {
+  name: string;
+  slogan: string;
+  legalName: string;
+  contacts: ContactInfo[];
+}
 interface FooterSection {
   title: string;
   children: React.ReactNode;
@@ -32,50 +47,77 @@ const socialLinks: SocialLink[] = [
     name: "Line",
     url: "https://line.me/ti/p/~0932194674",
     id: "0932194674",
-    icon: <FaLine className="w-5 h-5 text-green-500" data-oid="zcku7ud" />,
+    icon: <FaLine className="w-5 h-5 text-green-500" data-oid="l_8nnid" />,
   },
   {
     name: "Line",
     url: "https://line.me/ti/p/~12unisky",
     id: "12unisky",
-    icon: <FaLine className="w-5 h-5 text-green-500" data-oid="y00-62-" />,
+    icon: <FaLine className="w-5 h-5 text-green-500" data-oid="rpejc5g" />,
+  },
+  {
+    name: "Line",
+    url: "https://line.me/ti/p/~@217iielg",
+    id: "@217iielg",
+    icon: <FaLine className="w-5 h-5 text-green-500" data-oid="s29ukta" />,
   },
   {
     name: "WeChat",
-    url: "#",
+    url: "weixin://dl/chat?a0932194674",
     id: "a0932194674",
-    icon: <FaWeixin className="w-5 h-5 text-green-500" data-oid="szv_lb." />,
+    icon: <FaWeixin className="w-5 h-5 text-green-500" data-oid="2v-:n7m" />,
   },
-  {
-    name: "QQ",
-    url: "#",
-    id: "1794331657",
-    icon: <FaQq className="w-5 h-5 text-gray-600" data-oid="adghegh" />,
-  },
+  // {
+  //   name: "QQ",
+  //   url: "#",
+  //   id: "1794331657",
+  //   icon: <FaQq className="w-5 h-5 text-gray-600" data-oid="adghegh" />,
+  // },
 ];
 
 const followLinks = [
   {
     name: "Facebook",
     url: "https://www.facebook.com/profile.php?id=100057394310703",
-    icon: <FaFacebookF className="w-4 h-4" data-oid="rph4pks" />,
+    icon: <FaFacebookF className="w-4 h-4" data-oid="hrx3egi" />,
   },
 ];
 
 const quickLinks: NavLink[] = [
   { name: "首頁", to: "/" },
   { name: "關於我們", to: "/about-us" },
-  { name: "服務", to: "/services" },
-  { name: "未來營運", to: "/vision-roadmap" },
+  { name: "服務項目", to: "/services" },
+  // { name: "未來營運", to: "/vision-roadmap" },
   { name: "聯絡我們", to: "/contact-us" },
 ];
 
-interface CompanyInfo {
-  name: string;
-  slogan: string;
-  legalName: string;
-  contacts: ContactInfo[];
-}
+const downloadLinks: DownloadItem[] = [
+  { name: "個案委任書", url: "~/docs/106_09_19_個案委任書(新).docx" },
+  { name: "INVOICE", url: "~/docs/Invoice-範本.xls" },
+  { name: "PACKING LIST", url: "~/docs/Packing範本.xls" },
+  { name: "報關檢核表", url: "~/docs/檢核表.doc" },
+  { name: "洋貨具結書", url: "~/docs/新具結書.doc" },
+  { name: "易碎品切結書", url: "~/docs/易碎品切結書.docx" },
+  { name: "海運詢問表(出口中國)", url: "~/docs/海運詢問表-出口中國.xlsx" },
+];
+
+const linkItems: LinkItem[] = [
+  { name: "財政部關務署", url: "https://web.customs.gov.tw/" },
+  {
+    name: "關稅查詢",
+    url: "https://portal.sw.nat.gov.tw/APGQ/LoginFree?request_locale=zh_TW&breadCrumbs=JTdCJTIyYnJlYWRDcnVtYnMlMjIlM0ElNUIlN0IlMjJuYW1lJTIyJTNBJTIyJUU1JTg1JThEJUU4JUFEJTg5JUU2JTlGJUE1JUU4JUE5JUEyJUU2JTlDJThEJUU1JThCJTk5JTIyJTJDJTIydXJsJTIyJTNBJTIyJTIyJTdEJTJDJTdCJTIybmFtZSUyMiUzQSUyMiVFNyVBOCU4NSVFNSU4OSU4NyVFNyVBOCU4NSVFNyU4RSU4NyVFNiU5RiVBNSVFOCVBOSVBMiUyMiUyQyUyMnVybCUyMiUzQSUyMmNoYW5nZU1lbnVVcmwyKCclRTclQTglODUlRTUlODklODclRTclQTglODUlRTclOEUlODclRTYlOUYlQTUlRTglQTklQTInJTJDJ0FQR1FfNycpJTIyJTdEJTJDJTdCJTIybmFtZSUyMiUzQSUyMihHQzQxMSklRTclQTglODUlRTUlODklODclRTclQTglODUlRTclOEUlODclRTclQjYlOUMlRTUlOTAlODglRTYlOUYlQTUlRTglQTklQTIlRTQlQkQlOUMlRTYlQTUlQUQlMjIlMkMlMjJ1cmwlMjIlM0ElMjJvcGVuTWVudSgnJTJGQVBHUSUyRkdDNDExJyklMjIlN0QlMkMlN0IlN0QlMkMlN0IlN0QlNUQlMkMlMjJwYXRoVXJsJTIyJTNBJTIyJTIzTUVOVV9BUEdRJTJDJTIzTUVOVV9BUEdRXzclMkMlMkZBUEdRJTJGR0M0MTElMjIlN0Q=",
+  },
+  { name: "台灣銀行匯率", url: "https://rate.bot.com.tw/xrt?Lang=zh-TW" },
+  { name: "快遞100", url: "https://www.kuaidi100.com/" },
+  {
+    name: "易利委IOS下載",
+    url: "https://apps.apple.com/tw/app/ez-way-%E6%98%93%E5%88%A9%E5%A7%94/id1127781971",
+  },
+  {
+    name: "易利委ANDROID下載",
+    url: "https://play.google.com/store/apps/details?id=com.tradevan.android.forms&hl=zh_TW&gl=US",
+  },
+];
 
 const defaultCompanyInfo: CompanyInfo = {
   name: "卡菲斯國際",
@@ -89,19 +131,19 @@ const defaultCompanyInfo: CompanyInfo = {
 };
 
 const ContactItem = ({ label, value }: ContactInfo) => (
-  <p data-oid="g.xoka9">
-    <span className="font-semibold" data-oid=".p6ex1h">
+  <p data-oid="aqkp_30">
+    <span className="font-semibold" data-oid="367yl2x">
       {label}:
     </span>{" "}
-    <span className="" data-oid="qogm1kj">
+    <span className="" data-oid="szeyfx6">
       {value}
     </span>
   </p>
 );
 
 const FooterSection = ({ title, children }: FooterSection) => (
-  <div data-oid="vzn.9pn">
-    <h4 className="font-semibold mb-4" data-oid="hz8avoy">
+  <div data-oid="c.n.t7:">
+    <h4 className="font-semibold mb-4" data-oid=":-s32v9">
       {title}
     </h4>
     {children}
@@ -109,16 +151,16 @@ const FooterSection = ({ title, children }: FooterSection) => (
 );
 
 const QuickLinksSection = () => (
-  <nav aria-label="Footer navigation" data-oid="els5a5j">
-    <FooterSection title="快速連結" data-oid="ftznny7">
-      <ul className="space-y-2" data-oid="1_tye45">
+  <nav aria-label="Footer navigation" data-oid="vh.796i">
+    <FooterSection title="快速連結" data-oid="v2t-zsf">
+      <ul className="space-y-2" data-oid="0oq:2mh">
         {quickLinks.map(({ name, to }) => (
-          <li key={name} data-oid="ddw0pza">
+          <li key={name} data-oid="iwxhn8u">
             <Link
               to={to}
               className="hover:text-[var(--accent-1)] transition-colors"
               prefetch="intent"
-              data-oid="spr_wgp"
+              data-oid="22cdw-5"
             >
               {name}
             </Link>
@@ -130,17 +172,17 @@ const QuickLinksSection = () => (
 );
 
 const SocialLinksSection = () => (
-  <FooterSection title="聯絡方式" data-oid="ycclopu">
-    <ul className="space-y-2 text-sm" data-oid="x.i7-rh">
+  <FooterSection title="聯絡方式" data-oid="jzf7al2">
+    <ul className="space-y-2 text-sm" data-oid="l6ozo_z">
       {socialLinks.map((link) => (
-        <li key={link.name + link.id} data-oid="d34w3qu">
+        <li key={link.name + link.id} data-oid="x8g_uoe">
           <a
             href={link.url}
             className="hover:text-[var(--accent-1)] transition-colors flex items-center gap-2"
-            data-oid="b3vy1un"
+            data-oid="-f8ja_s"
           >
             {link.icon}
-            <span className="font-semibold" data-oid="1jj44lc">
+            <span className="font-semibold" data-oid="-1b3yom">
               {link.name}:
             </span>{" "}
             {link.id}
@@ -152,8 +194,8 @@ const SocialLinksSection = () => (
 );
 
 const FollowSection = () => (
-  <FooterSection title="追蹤我們" data-oid="h320oyr">
-    <div className="flex gap-4" data-oid="dk0kntj">
+  <FooterSection title="追蹤我們" data-oid="pq24mgz">
+    <div className="flex gap-4" data-oid="jcl6k:m">
       {followLinks.map((link) => (
         <a
           key={link.name}
@@ -162,7 +204,7 @@ const FollowSection = () => (
           target="_blank"
           rel="noopener noreferrer"
           aria-label={`Follow us on ${link.name}`}
-          data-oid="f417182"
+          data-oid="1.c2gi8"
         >
           {link.icon}
         </a>
@@ -171,36 +213,96 @@ const FollowSection = () => (
   </FooterSection>
 );
 
+const DownloadLinksSection = () => (
+  <FooterSection title="下載專區" data-oid="d2k9mf3">
+    <ul className="space-y-1" data-oid="p7x3n2q">
+      {downloadLinks.map((link) => (
+        <li key={link.name} data-oid="r5t8m1v">
+          <a
+            href={link.url}
+            download
+            className="inline-flex items-center gap-1 hover:text-[var(--accent-1)] transition-colors group"
+            data-oid="y9h6k4l"
+          >
+            {link.name}
+            <svg
+              className="w-3.5 h-3.5 opacity-0 -translate-y-0.5 transition-all group-hover:opacity-100 group-hover:translate-y-0"
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M3 13h10M8 3v7m0 0l3-3m-3 3L5 7"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </FooterSection>
+);
+
+const LinkItemsSection = () => (
+  <FooterSection title="相關連結" data-oid="f8g7j2h">
+    <ul className="space-y-1" data-oid="c3v1b5n">
+      {linkItems.map((item) => (
+        <li key={item.name} data-oid="w4s9m6x">
+          <a
+            href={item.url}
+            className="inline-flex items-center gap-1 hover:text-[var(--accent-1)] transition-colors group"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-oid="z7l2k8j"
+          >
+            {item.name}
+            <svg
+              className="w-3.5 h-3.5 opacity-0 -translate-y-0.5 transition-all group-hover:opacity-100 group-hover:translate-y-0"
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M4.5 11.5L11.5 4.5M11.5 4.5H6.5M11.5 4.5V9.5"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </FooterSection>
+);
+
 function CompanySection() {
   const companyInfo = React.useMemo(() => defaultCompanyInfo, []);
 
   return (
-    <div className="flex flex-col items-left gap-4" data-oid="br0bl0p">
-      <div className="flex flex-row item-center" data-oid="hpdoldv">
-      <svg width="65" height="32" viewBox="0 0 65 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <g clipPath="url(#clip0_19_2)">
-          <path fillRule="evenodd" clipRule="evenodd" d="M64.239 0.691718C64.2716 0.741679 64.2854 0.782714 64.2888 0.841995C64.3063 1.14201 64.3018 1.44818 64.2974 1.75249C64.2954 1.88876 64.2935 2.02466 64.2935 2.15947L64.2938 4.70763L64.2942 12.5363L64.2939 26.6934L64.2937 30.1604C64.2937 30.2494 64.2975 30.3667 64.3017 30.4965L64.3017 30.4967C64.3131 30.8483 64.3274 31.2908 64.2772 31.5059C64.2695 31.5386 64.2565 31.5647 64.2394 31.5934C60.4434 31.6398 56.6472 31.6491 52.851 31.6212L34.3174 31.6207L11.384 31.6138C7.70575 31.6463 4.02745 31.6494 0.349119 31.6233L0.314087 0.66802C1.14934 0.649442 1.98731 0.654207 2.82444 0.658966H2.82447H2.82451H2.82454C3.20979 0.661157 3.59485 0.663347 3.97939 0.663259L10.9954 0.661817L32.1829 0.660956L52.6337 0.658196C53.7186 0.658171 54.8042 0.653412 55.8902 0.648651H55.8902H55.8903H55.8903C58.6739 0.63645 61.4595 0.624239 64.239 0.691718ZM60.6111 7.23844C60.5413 7.24178 60.4714 7.24478 60.4015 7.24779C60.2401 7.25473 60.0786 7.26167 59.9176 7.27275C59.9437 7.43741 59.9366 7.80244 59.9302 8.13581C59.9263 8.33403 59.9227 8.52106 59.9264 8.64812C59.9308 8.79828 59.9498 9.08595 59.9734 9.44207L59.9734 9.44221L59.9734 9.44236L59.9734 9.44255C60.0493 10.5885 60.172 12.4428 60.0044 12.7053C59.6161 12.7154 59.2762 12.6842 58.9782 12.4017C58.667 12.1068 58.4178 11.7152 58.1787 11.3394C58.1075 11.2276 58.0372 11.1171 57.9665 11.0111C56.7762 9.2264 55.5725 7.75697 53.2277 7.79477C50.6874 7.83565 48.4088 9.81722 46.733 11.5548L46.636 11.6554C45.877 12.442 45.0865 13.2612 44.4483 14.1442C42.8278 16.3862 41.8859 19.3701 41.9372 22.1341C41.9595 23.338 42.1957 24.6309 42.7023 25.7235C42.7468 25.8195 42.8508 25.988 42.9557 26.1581L42.9557 26.1581C43.0901 26.376 43.2261 26.5965 43.2411 26.6708L43.2431 26.6727L43.2546 26.6829C43.3078 26.733 43.3484 26.7919 43.3892 26.8511C43.416 26.89 43.4428 26.929 43.4734 26.9657C43.6325 27.1563 43.8098 27.3384 43.9834 27.5158C44.7953 28.345 45.9292 28.7183 47.0786 28.6983C50.2032 28.6441 53.2367 26.3785 55.5483 24.4769C55.6074 24.4283 55.7099 24.3344 55.8348 24.2201L55.8348 24.2201C56.2318 23.8567 56.8543 23.287 57.0236 23.3086C57.0735 23.3672 57.0814 23.3972 57.0742 23.4754C57.0499 23.7391 56.6714 24.6249 56.4687 24.7836C56.4567 24.7931 56.4505 24.797 56.4402 24.8035L56.4348 24.8069C58.5441 24.8518 60.6535 24.8638 62.7631 24.8427C62.8498 24.7055 62.851 24.5733 62.8525 24.4227C62.8527 24.401 62.8529 24.379 62.8534 24.3566C62.8746 23.3287 62.8712 22.3007 62.8677 21.2726C62.8662 20.7965 62.8646 20.3203 62.8654 19.8442L62.8819 11.6178L62.8871 8.99337C62.8883 8.88006 62.8945 8.73778 62.9014 8.58281C62.9199 8.16164 62.9426 7.64675 62.8774 7.36497C62.8681 7.32478 62.8461 7.29038 62.8208 7.25852C62.0845 7.23001 61.3479 7.22331 60.6111 7.23844ZM61.3668 2.11957C60.8269 2.1519 60.2813 2.14681 59.738 2.14174C59.56 2.14008 59.3822 2.13842 59.2049 2.13808L55.6412 2.13315L44.3942 2.13338L16.2715 2.13409L7.37925 2.13274C5.48296 2.11572 3.58669 2.11917 1.69045 2.14307C1.65504 3.02598 1.67927 3.9105 1.70349 4.79461L1.70349 4.79466C1.71531 5.22619 1.72713 5.65762 1.73201 6.08872C2.23026 6.10322 2.72857 6.11501 3.22695 6.12412L44.6786 6.11037L55.5721 6.11568C57.9905 6.12945 60.4088 6.1286 62.8272 6.11311C62.9276 5.9048 63.0017 2.50181 62.8976 2.2205C62.8882 2.19526 62.875 2.17178 62.8607 2.1491C62.3602 2.11356 61.8687 2.09861 61.3668 2.11957ZM43.0696 7.23845L42.5981 7.2546C42.6819 7.4275 43.0119 11.3209 42.9384 11.5511C42.9372 11.5549 42.9359 11.5587 42.9345 11.5624L42.931 11.5725L42.9269 11.5856L42.9235 11.5967L42.9195 11.6081L42.9184 11.6111C42.5608 11.6326 42.2013 11.6362 41.8419 11.6398C41.6074 11.6421 41.3731 11.6445 41.1393 11.6518C41.2635 11.426 41.1493 10.9937 41.0798 10.7554C40.7727 9.70214 40.0694 8.76049 39.1023 8.22963C39.0149 8.18177 38.9256 8.13776 38.8343 8.09759C38.743 8.05747 38.6503 8.02133 38.5559 7.98919C38.4615 7.95704 38.366 7.929 38.2692 7.90508C38.1724 7.8812 38.0748 7.86151 37.9763 7.84599C37.3446 7.74507 36.6807 7.75984 36.0298 7.77433C35.8272 7.77883 35.6259 7.78331 35.4273 7.78427C34.9249 7.78665 34.4229 7.78025 33.9208 7.77385C33.5413 7.76901 33.1617 7.76418 32.7821 7.76313C32.7786 8.00927 32.5421 8.50004 32.3579 8.88239L32.3579 8.8824L32.3579 8.88241C32.2877 9.02804 32.2251 9.15794 32.1859 9.2526C31.916 9.90338 31.6624 10.5608 31.4088 11.2182L31.4088 11.2182L31.4088 11.2183L31.4087 11.2184L31.4087 11.2185L31.4087 11.2186L31.4086 11.2187C31.2418 11.6511 31.075 12.0836 30.9036 12.5142C30.839 12.6763 30.758 12.8698 30.6695 13.0812C30.3456 13.8545 29.9215 14.8674 29.8353 15.4626C32.1126 15.4296 34.6239 15.3896 36.3219 13.6334C36.6182 13.3269 36.9023 12.9819 37.148 12.6345C37.2054 12.5533 37.2614 12.4681 37.3179 12.3821L37.318 12.3819L37.3181 12.3818L37.3182 12.3817C37.4639 12.16 37.6133 11.9327 37.7994 11.7551C37.8065 11.7581 37.8128 11.7605 37.8184 11.7627C37.843 11.7721 37.8557 11.7769 37.8682 11.8088C37.9223 11.9471 37.856 12.184 37.8075 12.3222C37.6658 12.7262 37.4836 13.1239 37.303 13.5181C37.2296 13.6783 37.1565 13.8378 37.0865 13.997C36.7559 14.7485 36.4437 15.5115 36.1346 16.2721C35.874 16.9118 35.623 17.5553 35.3816 18.2025C35.3369 18.3239 35.2936 18.447 35.2503 18.5705C35.126 18.9243 35.0004 19.2819 34.8345 19.6138C34.8 19.6828 34.7647 19.744 34.707 19.7966C34.6383 19.7305 34.5384 19.697 34.4453 19.6658L34.4452 19.6658L34.445 19.6657C34.4253 19.6591 34.4059 19.6526 34.3871 19.6458C34.6358 19.3172 34.6867 18.5188 34.6308 18.1186C34.5649 17.6464 34.3033 17.2541 33.9267 16.9733C33.1669 16.4067 32.1602 16.3047 31.244 16.246L29.742 16.1786C29.3726 16.7615 29.1175 17.4177 28.8649 18.0676L28.8649 18.0676L28.8649 18.0677L28.8649 18.0677C28.7688 18.3149 28.6731 18.5611 28.5716 18.802C28.4384 19.1183 28.2984 19.4345 28.1579 19.7518C27.7481 20.6775 27.3344 21.612 27.0742 22.5809C26.9971 22.8683 26.9346 23.1929 26.9985 23.4879C27.0035 23.5116 27.0092 23.5351 27.0154 23.5585C27.0215 23.5819 27.0283 23.6051 27.0357 23.6282C27.043 23.6512 27.051 23.6741 27.0595 23.6967C27.0679 23.7194 27.077 23.7418 27.0866 23.764C27.0962 23.7862 27.1064 23.8082 27.1171 23.8298C27.1278 23.8516 27.1391 23.873 27.1509 23.8941C27.1626 23.9153 27.1749 23.9361 27.1877 23.9566C27.2005 23.9771 27.2138 23.9974 27.2276 24.0172C27.2415 24.0371 27.2558 24.0566 27.2706 24.0757C27.2853 24.0949 27.3006 24.1137 27.3164 24.132C27.3321 24.1504 27.3482 24.1684 27.3649 24.186C27.3815 24.2036 27.3985 24.2207 27.416 24.2375C27.4335 24.2542 27.4514 24.2705 27.4696 24.2863C27.4879 24.3021 27.5066 24.3175 27.5257 24.3325C27.5447 24.3474 27.5641 24.3618 27.5839 24.3758C27.6036 24.3897 27.6238 24.4031 27.6442 24.416C27.9856 24.6305 28.4019 24.6964 28.7953 24.7447C29.8272 24.8714 30.8834 24.8632 31.93 24.8552H31.9301H31.9303H31.9304C32.2349 24.8528 32.5385 24.8505 32.8405 24.8515C33.2392 24.8528 33.638 24.8557 34.0369 24.8587H34.037H34.0371H34.0372H34.0374C35.3592 24.8684 36.6812 24.8782 38.0022 24.8279L38.0049 24.8222L38.005 24.822C38.0063 24.8193 38.0076 24.8165 38.0088 24.8136C38.0662 24.6719 38.0128 24.3315 37.9672 24.0411L37.9672 24.041L37.9672 24.0409C37.9444 23.8957 37.9235 23.763 37.9195 23.6738C37.9074 23.4039 37.9143 23.1296 37.9306 22.8601C38.0413 21.0277 38.5462 19.3452 39.3288 17.6911C39.429 17.483 39.5324 17.2765 39.639 17.0716C39.7456 16.8667 39.8554 16.6636 39.9684 16.4621C40.0814 16.2607 40.1975 16.0611 40.3168 15.8632C40.436 15.6655 40.5584 15.4696 40.6838 15.2756C40.8091 15.0817 40.9375 14.8897 41.0689 14.6998C41.2004 14.5098 41.3347 14.322 41.472 14.1363C41.6093 13.9506 41.7495 13.7671 41.8926 13.5858C42.0356 13.4045 42.1815 13.2254 42.3302 13.0487C42.4789 12.872 42.6303 12.6976 42.7844 12.5256C42.9385 12.3536 43.0953 12.1841 43.2548 12.0171C43.4142 11.85 43.5763 11.6855 43.7409 11.5235C43.9055 11.3615 44.0726 11.2022 44.2422 11.0454C44.4119 10.8887 44.5839 10.7347 44.7583 10.5833C44.9328 10.432 45.1096 10.2834 45.2887 10.1376C45.4678 9.99183 45.6491 9.84891 45.8327 9.70882C46.0163 9.56869 46.202 9.43149 46.3899 9.29722C46.7773 9.01368 47.1747 8.74503 47.5823 8.49128C47.9898 8.23753 48.4063 7.99939 48.8317 7.77686C48.8686 7.75791 48.9235 7.73162 48.9884 7.70048C49.2531 7.57366 49.6857 7.3664 49.7579 7.24695C48.9731 7.2135 48.1875 7.21864 47.402 7.22378L47.402 7.22378C47.156 7.22539 46.91 7.227 46.664 7.22743C45.4658 7.21945 44.2677 7.22312 43.0696 7.23845ZM25.4588 7.19818C24.0893 7.4818 21.4378 9.44647 19.6621 10.7622L19.662 10.7623C19.2489 11.0684 18.8831 11.3394 18.592 11.546C18.1528 11.8574 17.7088 12.1624 17.2647 12.4675L17.2647 12.4675C16.4766 13.0089 15.6883 13.5503 14.9273 14.1281C15.2782 14.9913 15.6662 15.8351 16.0545 16.6794L16.0545 16.6795L16.0546 16.6796C16.2831 17.1764 16.5116 17.6734 16.7327 18.1747C17.1443 19.1157 17.5607 20.0546 17.9818 20.9914L18.007 21.0472C18.4439 22.0124 18.9002 23.0206 19.519 23.8831C19.8097 24.2784 20.1522 24.6198 20.6598 24.7023C21.3634 24.8166 22.2344 24.4439 22.7906 24.0362C23.404 23.5867 23.8163 22.952 24.1666 22.2883C24.5654 21.5325 24.8722 20.7314 25.1778 19.9331L25.1779 19.9331L25.1781 19.9325C25.2381 19.7759 25.298 19.6194 25.3586 19.4634L26.856 15.5981L27.9349 12.8354C28.0129 12.6408 28.0951 12.4438 28.1781 12.2448L28.1781 12.2448L28.1782 12.2447L28.1783 12.2445C28.5311 11.3987 28.8989 10.5169 29.0304 9.62948C29.0907 9.2228 29.0636 8.79337 28.8123 8.45084C28.5155 8.04636 27.9721 7.82691 27.4877 7.75924C27.27 7.72878 27.0664 7.7406 26.8482 7.76027C26.7461 7.52232 26.6455 7.36247 26.3949 7.26C26.1178 7.14663 25.7519 7.1639 25.4588 7.19818ZM55.7824 25.9548C55.6606 26.1797 55.4176 26.4101 55.2 26.6164C55.1238 26.6887 55.0507 26.758 54.987 26.8231C54.9175 26.8941 54.8486 26.9652 54.7798 27.0362L54.7795 27.0365L54.7792 27.0368L54.7791 27.0369C54.452 27.3745 54.1281 27.7088 53.7612 28.0093C52.6562 28.9142 50.6824 29.9431 49.3325 30.3439C49.2865 30.3577 49.2401 30.3702 49.1934 30.3815C51.5717 30.2792 53.963 30.2909 56.3431 30.3032L60.6447 30.3036C60.856 30.3041 61.0703 30.3114 61.2858 30.3188H61.2858H61.2858H61.2859C61.7927 30.336 62.3056 30.3535 62.799 30.2835C62.9118 30.0655 62.9311 26.3334 62.8367 26.0408C62.83 26.0201 62.8221 26.0008 62.8128 25.9812C62.0078 25.9012 61.1255 25.919 60.2653 25.9364H60.2652L60.2651 25.9364L60.2642 25.9364C59.8726 25.9443 59.4856 25.9521 59.1125 25.9506L57.0459 25.9376C56.9463 25.9369 56.846 25.9348 56.7454 25.9328L56.7451 25.9328C56.4237 25.9263 56.0988 25.9197 55.7824 25.9548ZM14.8666 7.23598C15.1297 7.21369 15.4004 7.21632 15.6679 7.21892C15.7598 7.21982 15.8513 7.22071 15.942 7.22059L17.7611 7.21962C17.9675 7.21963 18.2055 7.21555 18.4589 7.2112C19.2384 7.19782 20.1633 7.18195 20.7583 7.2751C20.8757 7.29348 20.9616 7.3164 21.0306 7.41913C21.1456 7.59073 21.129 7.89935 21.0876 8.09099C21.0674 8.18456 21.041 8.27873 20.989 8.36012C20.8071 8.6452 20.504 8.8971 20.2294 9.12535C20.1712 9.17377 20.1142 9.22112 20.0599 9.2675C18.3216 10.7536 16.404 11.9781 14.483 13.2047L14.4829 13.2048C14.1768 13.4002 13.8707 13.5957 13.5652 13.7923C12.7332 14.301 11.9071 14.819 11.0867 15.3463C10.9404 15.4387 10.7934 15.5298 10.6463 15.6209L10.6463 15.621C10.3197 15.8233 9.99312 16.0256 9.67533 16.2417C9.88299 15.1998 10.225 14.1974 10.5671 13.1947C10.639 12.984 10.7109 12.7732 10.7816 12.5621C10.851 12.3549 10.9184 12.1464 10.986 11.9377C11.2224 11.2069 11.46 10.4726 11.784 9.77862C12.0485 9.21209 12.3674 8.66119 12.7808 8.18933C13.3824 7.5028 13.9719 7.29543 14.8666 7.23598ZM12.3521 15.6099L12.3521 15.6099C12.3487 15.6084 12.3444 15.6066 12.3388 15.6039C12.2332 15.6635 12.0926 15.7404 11.9318 15.8285L11.9317 15.8285L11.9317 15.8285C11.2572 16.1977 10.226 16.762 9.91973 17.0589C9.37984 17.5823 8.09544 21.3728 7.82865 22.3281C7.6616 22.9262 7.42608 23.7952 7.75885 24.3791C7.88729 24.6045 8.07929 24.7306 8.32795 24.7934C8.81567 24.9165 9.50352 24.8878 10.1172 24.8622H10.1172C10.3568 24.8522 10.5851 24.8427 10.7857 24.8428L12.5024 24.8452C12.6356 24.8461 12.772 24.8502 12.9098 24.8543H12.9099H12.91C13.393 24.8689 13.8949 24.8841 14.3483 24.7628C14.4256 24.7419 14.5014 24.7161 14.5754 24.6855C14.6495 24.6548 14.7213 24.6196 14.7909 24.5799C14.8604 24.54 14.9272 24.496 14.9911 24.4476C15.055 24.3992 15.1156 24.347 15.1728 24.2908C15.4128 24.0525 15.5467 23.7738 15.5431 23.4333C15.5386 23.018 15.403 22.5978 15.2623 22.2116C14.9024 21.2229 14.4556 20.2726 14.0087 19.322L14.0087 19.322L14.0087 19.322L14.0087 19.322C13.8115 18.9027 13.6144 18.4833 13.4246 18.0605C13.2726 17.7217 13.1412 17.3747 13.01 17.0282L13.0099 17.0281L13.0099 17.0281C12.8797 16.6843 12.7497 16.341 12.6 16.0067L12.5867 15.977C12.5341 15.8584 12.4694 15.7128 12.3787 15.6279C12.3657 15.6158 12.3632 15.6147 12.3521 15.6099ZM5.21602 7.20798L5.21949 7.20787C5.83489 7.1872 8.15441 7.10932 8.64076 7.37047C8.90755 7.51381 9.08142 7.88394 9.16824 8.1657C9.29874 8.58889 9.2401 8.98016 9.13844 9.39976C8.97605 10.0704 8.73517 10.7276 8.49695 11.3776L8.49695 11.3776L8.49687 11.3778C8.46111 11.4754 8.42541 11.5728 8.39004 11.6701L7.04703 15.2898C6.44836 16.977 5.83578 18.659 5.20931 20.3361C5.16331 20.4569 5.11756 20.578 5.07177 20.6992L5.07169 20.6995C4.75235 21.5449 4.43085 22.3961 4.00796 23.194C3.90741 23.3637 3.8059 23.5321 3.68934 23.6914C3.20415 24.3543 2.59961 24.7598 1.78619 24.8845C1.72257 24.3433 1.73651 23.7938 1.75039 23.247C1.75493 23.068 1.75947 22.8892 1.76127 22.7111L1.78453 19.2218L1.7916 7.25716L5.21602 7.20798ZM38.215 25.9078L37.6535 25.9235C35.3592 25.9934 33.0614 25.9746 30.7648 25.9558C29.9086 25.9488 29.0526 25.9418 28.197 25.9394L10.7893 25.9414L4.84426 25.9413C4.50178 25.9409 4.15893 25.9374 3.81598 25.934C3.12972 25.927 2.44305 25.9201 1.75805 25.9372C1.77089 26.776 1.77387 27.6149 1.76698 28.4538C1.76567 28.6066 1.76201 28.761 1.75832 28.9161C1.74753 29.3701 1.7366 29.8303 1.78437 30.2748C2.95269 30.3 4.12115 30.3126 5.28973 30.3126L32.1252 30.3049L39.0017 30.31C39.2055 30.3105 39.4518 30.325 39.7106 30.3403C40.2317 30.3711 40.8031 30.4048 41.1774 30.3324C41.1667 30.2247 41.1001 30.1617 41.0197 30.0965C40.9163 30.0125 40.8223 29.9381 40.7353 29.8692C40.2895 29.516 40.0286 29.3093 39.6247 28.7184C39.2582 28.1822 38.9875 27.5354 38.7355 26.9333C38.7223 26.9018 38.7092 26.8704 38.6961 26.8392C38.6661 26.7676 38.6372 26.6946 38.6083 26.6213C38.5408 26.4504 38.4727 26.2781 38.3878 26.1181C38.3423 26.0323 38.2941 25.9656 38.215 25.9078Z" fill={theme === 'light' ? `var(--accent-3)` : `var(--${accent}-9)`}/>
-          </g>
-          <defs>
-          <clipPath id="clip0_19_2">
-          <rect width="64.2936" height="32" fill="white"/>
-          </clipPath>
-          </defs>
-        </svg>
-        <h3 className="font-bold text-lg" data-oid="lkwkdb0">
+    <div className="flex flex-col items-left gap-4" data-oid="eqyqh50">
+      <div className="flex flex-row items-center" data-oid=":pn.f2e">
+        <KfcLogo
+          className="w-11 h-6 fill-[var(--accent-11)] mr-2"
+          data-oid="pof-6w6"
+        />
+
+        <h3 className="font-bold text-lg" data-oid="ikq:n3w">
           {companyInfo.name}
         </h3>
       </div>
-      <div className="space-y-2" data-oid="i:q-lgd">
-        <p className="text-sm" data-oid="ch7vt:x">
+      <div className="space-y-2" data-oid="e4oec80">
+        <p className="text-sm" data-oid="lgrpwfu">
           {companyInfo.slogan}
         </p>
-        <p className="text-sm" data-oid="p_0-5px">
+        <p className="text-sm" data-oid="k138obb">
           {companyInfo.legalName}
         </p>
-        <div className="space-y-1" data-oid="5g4pdys">
+        <div className="space-y-1" data-oid="dgzhlof">
           {companyInfo.contacts.map((contact) => (
-            <ContactItem key={contact.label} {...contact} data-oid="0ayvf07" />
+            <ContactItem key={contact.label} {...contact} data-oid="j-wlcgv" />
           ))}
         </div>
       </div>
@@ -232,7 +334,7 @@ export function Footer() {
           : "border-[var(--accent-11)]"
       }`,
     }),
-    [themeValue],
+    [themeValue]
   );
 
   // Memoize year calculation
@@ -242,53 +344,57 @@ export function Footer() {
     <footer
       className={themeStyles.footer}
       role="contentinfo"
-      data-oid="u.v6bbh"
+      data-oid="60slxky"
     >
-      <div className="container mx-auto px-4 py-12" data-oid="ddgivc9">
+      <div className="container mx-auto px-4 py-12" data-oid="0kcpsnr">
         <div
-          className="grid grid-cols-1 md:grid-cols-4 gap-8"
-          data-oid="2tsy2xc"
+          className="flex flex-col gap-8 md:grid md:grid-cols-3 md:gap-4 lg:grid-cols-7 lg:gap-4"
+          data-oid="9zry7rj"
         >
-          <CompanySection data-oid="nty.vnw" />
-          <QuickLinksSection data-oid="1ugyvsc" />
-          <SocialLinksSection data-oid="uzdueeq" />
-          <FollowSection data-oid="q8lij:p" />
+          <div className="lg:col-span-2 md:col-span-1">
+            <CompanySection data-oid="dfq0y79" />
+          </div>
+          <QuickLinksSection data-oid="ctmixx7" />
+          <LinkItemsSection />
+          <DownloadLinksSection />
+          <SocialLinksSection data-oid="b3deg-4" />
+          <FollowSection data-oid="9zhukdk" />
         </div>
 
         <div
           className={`${themeStyles.border} mt-8 pt-8 text-sm text-center`}
-          data-oid="ve22ogs"
+          data-oid="0crhitr"
         >
-          <p className="mb-2" data-oid="de2c06q">
+          <p className="mb-2" data-oid="hwn22hk">
             &copy; {currentYear} 卡菲斯國際. All rights reserved.
           </p>
-          <div className="flex justify-center gap-4 mb-4" data-oid="ldyktra">
+          <div className="flex justify-center gap-4 mb-4" data-oid="2:0rh4h">
             <Link
               to="/terms"
               className="hover:text-[var(--accent-1)] transition-colors"
               prefetch="intent"
-              data-oid="4ypr69x"
+              data-oid="hw51p19"
             >
               服務條款
             </Link>
-            <span data-oid="9nf:rkv">•</span>
+            <span data-oid="l5zzn1e">•</span>
             <Link
               to="/privacy"
               className="hover:text-[var(--accent-1)] transition-colors"
               prefetch="intent"
-              data-oid="2e:.t8h"
+              data-oid="z:fntq5"
             >
               隱私政策
             </Link>
           </div>
-          <p className="" data-oid="szdmf2a">
+          <p className="" data-oid="-:xn3nh">
             Design by{" "}
             <a
               href="https://anlstudio.framer.website"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-[var(--accent-1)] transition-colors"
-              data-oid="9t4ok_b"
+              data-oid="z-ra:hf"
             >
               A&LStudio
             </a>

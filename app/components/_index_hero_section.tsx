@@ -32,12 +32,12 @@ export function HeroSection() {
       className="flex items-center gap-2"
       whileHover={{ scale: 1.05 }}
       transition={{ type: "spring", stiffness: 400, damping: 10 }}
-      data-oid="a:wwv_9"
+      data-oid="k5g62rp"
     >
-      <Icon className="h-5 w-5 text-[var(--accent-9)]" data-oid="7w8pg86" />
+      <Icon className="h-5 w-5 text-[var(--accent-9)]" data-oid="b8yjy32" />
       <span
         className="text-[var(--accent-10)] text-[clamp(0.2rem,2vw+0.5rem,1rem)]"
-        data-oid="zofpdde"
+        data-oid="fjg-idd"
       >
         {text}
       </span>
@@ -71,21 +71,21 @@ export function HeroSection() {
       animate={animate}
       transition={transition}
       style={style}
-      data-oid="_2bar_s"
+      data-oid="se-za.0"
     >
-      <div className="relative" data-oid="u:n76bn">
+      <div className="relative" data-oid="p1c-056">
         <img
           src={src}
           alt={alt}
           className="aspect-square w-full object-cover rounded-2xl shadow-2xl"
-          data-oid="xdpdp47"
+          data-oid="ep39v6e"
         />
 
         <div
           className="absolute inset-0 bg-black/30 rounded-2xl flex items-end justify-end p-4"
-          data-oid="qjr5xvf"
+          data-oid="2v7cyth"
         >
-          <span className="text-gray-300 text-3xl font-bold" data-oid="fwu8m3_">
+          <span className="text-gray-300 text-3xl font-bold" data-oid="99_5..b">
             {location}
           </span>
         </div>
@@ -96,20 +96,20 @@ export function HeroSection() {
   return (
     <section
       className="relative pt-32 pb-16 md:pt-40 md:pb-24 bg-gradient-to-b from-[var(--accent-6)] via-[var(--accent-2)] to-transparent overflow-show bg-[var(--accent-2)]"
-      data-oid="8l007rv"
+      data-oid="3ut9jmf"
     >
       <div
         className="absolute inset-0 bg-grid-slate-900/[0.04] bg-[size:75px_75px] [mask-image:linear-gradient(to_bottom,white,transparent)] z-[-1]"
-        data-oid="70fg_f5"
+        data-oid="0_2hwj1"
       />
 
-      <div className="container mx-auto px-4" data-oid="qnhadv1">
+      <div className="container mx-auto px-4" data-oid="1-eh4mt">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="text-center mb-12 md:mb-16 mt-4"
-          data-oid="5---v2a"
+          data-oid="lp5qr2d"
         >
           <motion.h1
             style={{
@@ -122,7 +122,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            data-oid="sjnjkgm"
+            data-oid="3508zd:"
           >
             跨境運輸 連接四方
           </motion.h1>
@@ -132,7 +132,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            data-oid="kz7.5m."
+            data-oid="je5:vf1"
           >
             卡菲斯國際運輸提供無縫的跨境運輸解決方案，讓您出貨無憂。
           </motion.p>
@@ -141,24 +141,24 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            data-oid="-kt1vzc"
+            data-oid="65vhkuy"
           >
             <Button
               size="4"
               variant="solid"
               className="group transition-all duration-200 shadow-lg bg-[var(--accent-9)] text-[var(--accent-contrast)] hover:bg-[var(--accent-10)] hover:border-[var(--accent-9)]"
               asChild
-              data-oid=":e.1t9j"
+              data-oid="vv-rhur"
             >
               <Link
                 to="/contact-us"
                 className="inline-flex items-center gap-2"
-                data-oid="ms7uclb"
+                data-oid="b9oinky"
               >
                 {heroCTA}
                 <Ship
                   className="h-5 w-5 transition-transform duration-200 group-hover:scale-[1.2]"
-                  data-oid="12c57r8"
+                  data-oid="g1z6ym9"
                 />
               </Link>
             </Button>
@@ -170,7 +170,7 @@ export function HeroSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          data-oid="efrqs15"
+          data-oid="l:ztbih"
         >
           <HeroImage
             src="https://images.unsplash.com/photo-1578245093109-472875396a2a?q=80&w800&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -181,7 +181,7 @@ export function HeroSection() {
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.7 }}
             style={{ transform: "translateY(-16%)" }}
-            data-oid="78wcjwb"
+            data-oid="z0tc.i."
           />
 
           <HeroImage
@@ -193,7 +193,7 @@ export function HeroSection() {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.8 }}
             style={{ transform: "translateY(15.5%)" }}
-            data-oid="rieyd.m"
+            data-oid="4zpmdzb"
           />
 
           <HeroImage
@@ -205,7 +205,7 @@ export function HeroSection() {
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.9 }}
             style={{ transform: "translateY(12%)" }}
-            data-oid="n771._3"
+            data-oid="_50wool"
           />
         </motion.div>
 
@@ -214,10 +214,10 @@ export function HeroSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          data-oid="juadvc6"
+          data-oid="1bqak59"
         >
           {featureItems.map((item) => (
-            <FeatureItem key={item.text} {...item} data-oid="s4lt.2o" />
+            <FeatureItem key={item.text} {...item} data-oid="rag3qfz" />
           ))}
         </motion.div>
       </div>

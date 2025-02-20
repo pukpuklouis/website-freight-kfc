@@ -41,7 +41,7 @@ const BenefitCard = memo(function BenefitCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      data-oid="4ho2hhx"
+      data-oid="cwxxnz9"
     >
       <Tilt
         rotationFactor={6}
@@ -52,7 +52,7 @@ const BenefitCard = memo(function BenefitCard({
           mass: 0.5,
         }}
         className="h-full"
-        data-oid=":4mxu.s"
+        data-oid="2ehhq0b"
       >
         <div
           className="group relative h-full overflow-hidden rounded-2xl border bg-[var(--gray-2)] p-8 transition-all duration-300 hover:shadow-lg"
@@ -62,7 +62,7 @@ const BenefitCard = memo(function BenefitCard({
               "--spotlight-color": `var(--accent-1)`,
             } as React.CSSProperties
           }
-          data-oid="ri1_620"
+          data-oid="lxi84xs"
         >
           <Spotlight
             className="z-10 blur-2xl"
@@ -72,17 +72,17 @@ const BenefitCard = memo(function BenefitCard({
               damping: 20,
               mass: 0.5,
             }}
-            data-oid="jdygsaw"
+            data-oid="dffinwi"
           />
 
-          <div className="relative z-20" data-oid="4r9:rty">
+          <div className="relative z-20" data-oid="fje29g1">
             <motion.h3
               className="mb-4 text-2xl font-bold tracking-tight bg-gradient-to-r from-[var(--accent-11)] to-[var(--accent-5)] bg-clip-text text-transparent"
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              data-oid="3r3h:mc"
+              data-oid="z_swdih"
             >
               {title}
             </motion.h3>
@@ -92,7 +92,7 @@ const BenefitCard = memo(function BenefitCard({
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              data-oid="4kd:4-n"
+              data-oid="7.j285h"
             >
               {description}
             </motion.p>
@@ -116,15 +116,15 @@ export const BenefitSection = memo(function BenefitSection({
   return (
     <section
       className="relative px-[10%] py-16 md:py-24 lg:py-32 bg-[var(--accent-2)]"
-      data-oid="su3ee-p"
+      data-oid=".8rop.q"
     >
-      <div className="container mx-auto" data-oid="5w0zhmn">
+      <div className="container mx-auto" data-oid="9nf7c.a">
         <div
           className="grid gap-12 lg:grid-cols-2 items-center"
-          data-oid="9h.3zi9"
+          data-oid="nt680bn"
         >
           {/* Left Column - Content */}
-          <div className="space-y-12" data-oid="dus5a.1">
+          <div className="space-y-12" data-oid="jv6ywn8">
             {/* Header */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -132,16 +132,16 @@ export const BenefitSection = memo(function BenefitSection({
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
               className="max-w-xl"
-              data-oid="pya3zsr"
+              data-oid="r8lo_ff"
             >
-              <div className="relative z-20" data-oid="siek.vp">
+              <div className="relative z-20" data-oid="8ojau2r">
                 <motion.h2
                   className="mb-6 font-bold tracking-tight text-[var(--accent-10)] text-[clamp(1.7rem,3vw+0.2rem,3.5rem)] leading-[1.1]"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.1 }}
-                  data-oid="hvuk:m1"
+                  data-oid="93m0clo"
                 >
                   {heading}
                 </motion.h2>
@@ -151,7 +151,7 @@ export const BenefitSection = memo(function BenefitSection({
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.2 }}
-                  data-oid="_a129r8"
+                  data-oid="skdg9kx"
                 >
                   {description}
                 </motion.p>
@@ -159,12 +159,12 @@ export const BenefitSection = memo(function BenefitSection({
             </motion.div>
 
             {/* Benefits Grid */}
-            <div className="grid gap-8" data-oid=".vj1x3r">
+            <div className="grid gap-8" data-oid="bgd-jh5">
               {benefits.map((benefit, index) => (
                 <BenefitCard
                   key={`benefit-${index}`}
                   {...benefit}
-                  data-oid="i:m0iz1"
+                  data-oid="d4n4.w2"
                 />
               ))}
             </div>
@@ -177,7 +177,7 @@ export const BenefitSection = memo(function BenefitSection({
             viewport={{ once: false }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="relative"
-            data-oid="kp7nyap"
+            data-oid="2r:ez6x"
           >
             <Tilt
               rotationFactor={4}
@@ -188,24 +188,24 @@ export const BenefitSection = memo(function BenefitSection({
                 mass: 0.5,
               }}
               className="relative overflow-hidden rounded-2xl w-full"
-              data-oid="qb_-gcp"
+              data-oid="b:_sv_j"
             >
               <motion.div
                 className="relative z-20"
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
-                data-oid="-4v0h.g"
+                data-oid="xppjmb6"
               >
                 <div
                   className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-[var(--gray-12)]/10 to-transparent"
-                  data-oid="hrrptk5"
+                  data-oid="7qmnbid"
                 />
 
                 <img
                   src={imageSrc}
                   alt="Logistics Benefits"
                   className="w-full rounded-2xl shadow-2xl aspect-[9/11] transition-all duration-300 group-hover:shadow-3xl object-cover"
-                  data-oid="dr.7gf4"
+                  data-oid="8kyhjqq"
                 />
               </motion.div>
             </Tilt>

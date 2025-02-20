@@ -68,7 +68,7 @@ const FeatureCard = memo(function FeatureCard({
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
       className={className}
-      data-oid="at9w1jd"
+      data-oid="ph.1ed4"
     >
       <Tilt
         rotationFactor={6}
@@ -79,18 +79,18 @@ const FeatureCard = memo(function FeatureCard({
           mass: 0.5,
         }}
         className="h-full"
-        data-oid="lfr1h:4"
+        data-oid="q396zq."
       >
         <div
           className="feature-card group relative overflow-hidden rounded-xl h-full"
-          data-oid="i1v03-v"
+          data-oid="4o2.zh1"
         >
           {/* Background Image */}
           <img
             src={image.src}
             alt={image.alt}
             className="absolute inset-0 h-full w-full object-cover"
-            data-oid="nyn0zoa"
+            data-oid="a10apc0"
           />
 
           {/* Spotlight Effect */}
@@ -102,23 +102,23 @@ const FeatureCard = memo(function FeatureCard({
               damping: 20,
               mass: 0.5,
             }}
-            data-oid="6rz36xu"
+            data-oid="c7g-lrm"
           />
 
           {/* Content overlay */}
           <div
             className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-[var(--gray-12)] to-transparent"
-            data-oid="tvx0wxz"
+            data-oid="zgfj5-z"
           >
             <h3
               className="mb-2 text-2xl font-black tracking-tight text-[var(--gray-1)]"
-              data-oid="l-g685a"
+              data-oid="vl7xxmf"
             >
               {title}
             </h3>
             <p
               className="text-[var(--gray-3)] font-light opacity-0 transform translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0"
-              data-oid="ezn0k8p"
+              data-oid="wu_pgij"
             >
               {description}
             </p>
@@ -142,11 +142,11 @@ export const FeatureSection = memo(function FeatureSection({
   return (
     <section
       className="feature-section relative px-[10%] py-16 md:py-24 lg:py-32 bg-[var(--accent-2)]"
-      data-oid="ri.ih_6"
+      data-oid="i6yjniz"
     >
-      <div className="container mx-auto" data-oid="_2meywi">
+      <div className="container mx-auto" data-oid="e1h34vy">
         {/* Header Section */}
-        <div className="relative mb-8 md:mb-8 lg:mb-8" data-oid="s_ee8th">
+        <div className="relative mb-8 md:mb-8 lg:mb-8" data-oid="593ibi-">
           <Tilt
             rotationFactor={4}
             isRevese
@@ -156,20 +156,20 @@ export const FeatureSection = memo(function FeatureSection({
               mass: 0.2,
             }}
             className="group relative overflow-hidden rounded-2xl"
-            data-oid="ixlnox7"
+            data-oid="i6c-ruo"
           >
             {/* Background Image */}
-            <div className="absolute inset-0" data-oid="f6x8eyr">
+            <div className="absolute inset-0" data-oid="x9ys:r_">
               <img
                 src="https://images.unsplash.com/photo-1617952739858-28043cecdae3?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 alt="Background"
                 className="w-full h-full object-cover transition-all duration-700 group-hover:grayscale-7"
-                data-oid="72zhmo:"
+                data-oid="qyjacee"
               />
 
               <div
                 className="feature-card-gradient absolute inset-0"
-                data-oid="s:k5-ax"
+                data-oid="9edjk08"
               />
             </div>
 
@@ -182,44 +182,44 @@ export const FeatureSection = memo(function FeatureSection({
                 damping: 4.1,
                 mass: 0.2,
               }}
-              data-oid="3e8ximu"
+              data-oid="j49993t"
             />
 
             {/* Content Card */}
             <div
               className="relative z-20 py-16 md:py-20 lg:py-24 px-6 md:px-12"
-              data-oid="vxfrg6j"
+              data-oid="vho7k8_"
             >
-              <div className="mx-auto max-w-3xl" data-oid="d6mknjw">
+              <div className="mx-auto max-w-3xl" data-oid="9xu5nra">
                 <div
                   className="rounded-2xl p-8 md:p-12 border border-[var(--accent-9)] bg-[var(--accent-6)]/50 backdrop-blur-sm transform-gpu transition-all duration-500"
-                  data-oid="hi_-qlo"
+                  data-oid="te.cyzh"
                 >
                   <p
                     className="mb-3 text-sm font-medium uppercase tracking-widest md:mb-4 text-[var(--accent-10)]"
-                    data-oid="-9jivpj"
+                    data-oid="7w2ztit"
                   >
                     {tagline}
                   </p>
                   <h2
                     className="mb-6 text-4xl font-bold md:text-6xl lg:text-7xl tracking-tight text-[var(--accent-9)]"
-                    data-oid="1dytmqt"
+                    data-oid="c1:rm68"
                   >
                     {heading.split(" ").map((word, index, array) => (
-                      <span key={index} data-oid="gv14t67">
+                      <span key={index} data-oid="97pic-0">
                         {index === array.length - 1 ? (
-                          <span className="italic" data-oid="kcxom2j">
+                          <span className="italic" data-oid="ypl1su-">
                             {word}
                           </span>
                         ) : (
-                          <span data-oid="rhr07ef">{word} </span>
+                          <span data-oid="rqo_4jz">{word} </span>
                         )}
                       </span>
                     ))}
                   </h2>
                   <p
                     className="md:text-lg max-w-2xl text-gray-300"
-                    data-oid="45f1.s8"
+                    data-oid="g.7t6qx"
                   >
                     {description}
                   </p>
@@ -232,7 +232,7 @@ export const FeatureSection = memo(function FeatureSection({
         {/* Features Grid */}
         <div
           className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
-          data-oid="ty5trm2"
+          data-oid="28ruqco"
         >
           {features.map((feature, index) => (
             <FeatureCard
@@ -243,7 +243,7 @@ export const FeatureSection = memo(function FeatureSection({
                   ? "md:col-span-2 lg:col-span-1 aspect-[16/9] md:aspect-[2/1] lg:aspect-[16/9]"
                   : "aspect-[16/9]"
               }
-              data-oid="jzz1h--"
+              data-oid="6w:gidq"
             />
           ))}
         </div>
