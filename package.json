@@ -5,7 +5,11 @@
   "type": "module",
   "scripts": {
     "build": "remix vite:build",
-    "dev": "remix vite:dev --host",
+    "dev": "run-p dev:*",
+    "dev:remix": "remix vite:dev --host",
+    "dev:svg": "run-s icons icons:watch",
+    "icons": "npx @svgr/cli --out-dir app/components/icons -- app/icons",
+    "icons:watch": "npm-watch icons",
     "preview": "bun run build && wrangler pages dev ./build/client",
     "start": "remix-serve ./build/server/index.js",
     "deploy": "remix vite:build && wrangler pages deploy",
@@ -13,6 +17,15 @@
     "typecheck": "tsc",
     "typegen": "wrangler types",
     "cf-typegen": "wrangler types"
+  },
+  "watch": {
+    "icons": {
+      "patterns": [
+        "icons"
+      ],
+      "extensions": "svg",
+      "quiet": false
+    }
   },
   "dependencies": {
     "@cloudinary/react": "^1.13.1",
@@ -59,6 +72,10 @@
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20250121.0",
     "@remix-run/dev": "^2.15.2",
+    "@svgr/cli": "^8.1.0",
+    "@svgr/plugin-jsx": "^8.1.0",
+    "@svgr/plugin-prettier": "^8.1.0",
+    "@svgr/plugin-svgo": "^8.1.0",
     "@tailwindcss/typography": "^0.5.16",
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
@@ -73,6 +90,8 @@
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "npm-run-all": "^4.1.5",
+    "npm-watch": "^0.13.0",
     "postcss": "^8.4.38",
     "stream-browserify": "^3.0.0",
     "tailwindcss": "^3.4.4",

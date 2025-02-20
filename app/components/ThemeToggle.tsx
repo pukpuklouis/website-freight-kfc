@@ -1,7 +1,7 @@
-import { IconButton } from '@radix-ui/themes';
-import { useTheme } from '~/utils/theme';
-import { MoonIcon, SunIcon } from '@radix-ui/react-icons';
-import { RiMoonFoggyLine, RiSunFoggyLine } from 'react-icons/ri';
+import { IconButton } from "@radix-ui/themes";
+import { useTheme } from "~/utils/theme";
+import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
+import { RiMoonFoggyLine, RiSunFoggyLine } from "react-icons/ri";
 
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
@@ -10,10 +10,17 @@ export function ThemeToggle() {
   return (
     <IconButton
       variant="ghost"
-      onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-      aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+      aria-label={
+        theme === "dark" ? "Switch to light theme" : "Switch to dark theme"
+      }
+      data-oid=":4ttige"
     >
-      {theme === 'dark' ? <RiMoonFoggyLine size={ICON_SIZE} /> : <RiSunFoggyLine size={ICON_SIZE} />}
+      {theme === "dark" ? (
+        <RiMoonFoggyLine size={ICON_SIZE} data-oid="uvl0tzv" />
+      ) : (
+        <RiSunFoggyLine size={ICON_SIZE} data-oid="h:-dqgg" />
+      )}
     </IconButton>
   );
 }

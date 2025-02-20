@@ -4,13 +4,13 @@ export function ErrorBoundary() {
   const error = useRouteError();
   console.error(error);
   return (
-    <html>
-      <head>
-        <title>Oops!</title>
+    <html data-oid="lg.dduc">
+      <head data-oid="6crult_">
+        <title data-oid="xnko1ua">Oops!</title>
       </head>
-      <body>
-        <h1>App Error</h1>
-        <p>Something went wrong!</p>
+      <body data-oid="23cdtlv">
+        <h1 data-oid="f4l6xtr">App Error</h1>
+        <p data-oid="8t59d_i">Something went wrong!</p>
       </body>
     </html>
   );
@@ -18,9 +18,11 @@ export function ErrorBoundary() {
 
 export default function CatchAllRoute() {
   return (
-    <div>
-      <h1>Not Found</h1>
-      <p>Looks like you've hit a route that doesn't exist.</p>
+    <div data-oid="-jy0ej1">
+      <h1 data-oid="b.d:zlu">Not Found</h1>
+      <p data-oid="57uqgfl">
+        Looks like you've hit a route that doesn't exist.
+      </p>
     </div>
   );
 }
