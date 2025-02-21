@@ -26,21 +26,11 @@ export function MissionSection({ features }: MissionSectionProps) {
     <section
       ref={ref}
       className="px-[5%] py-24 pb-24 md:py-16 md:pb-32 lg:py-12 lg:pb-16 bg-[var(--accent-2)] relative"
-      data-oid="aheq838"
     >
-      <div className="container mx-auto" data-oid="b7-vhwr">
-        <div
-          className="relative grid gap-x-8 gap-y-12 md:grid-cols-[0.4fr_1fr] lg:grid-cols-[0.5fr_1fr] lg:gap-x-20"
-          data-oid="l7gz9ok"
-        >
-          <div
-            className="static top-[15%] hidden h-80 md:sticky md:flex md:items-start"
-            data-oid="o6v5v7q"
-          >
-            <div
-              className="text-center relative h-full w-full overflow-hidden flex items-start justify-center pt-8"
-              data-oid="pqz4qa2"
-            >
+      <div className="container mx-auto">
+        <div className="relative grid gap-x-8 gap-y-12 md:grid-cols-[0.4fr_1fr] lg:grid-cols-[0.5fr_1fr] lg:gap-x-20">
+          <div className="static top-[15%] hidden h-80 md:sticky md:flex md:items-start">
+            <div className="text-center relative h-full w-full overflow-hidden flex items-start justify-center pt-8">
               {features.map((feature, index) => {
                 // === ANIMATION TIMING CONTROLS ===
                 // Increase this value to make all animations take longer
@@ -121,7 +111,6 @@ export function MissionSection({ features }: MissionSectionProps) {
                       x: "-50%",
                     }}
                     className="text-[8rem] font-bold leading-[1] md:text-[12rem] lg:text-[14rem] text-[var(--accent-10)]"
-                    data-oid="5ep2io-"
                   >
                     {feature.number}
                   </motion.h1>
@@ -129,9 +118,9 @@ export function MissionSection({ features }: MissionSectionProps) {
               })}
             </div>
           </div>
-          <div className="grid gap-y-24 md:gap-y-32 mb-24" data-oid="3_:y7o8">
+          <div className="grid gap-y-24 md:gap-y-32 mb-24">
             {features.map((feature, index) => (
-              <FeatureCard key={index} {...feature} data-oid="8ziclq1" />
+              <FeatureCard key={index} {...feature} />
             ))}
           </div>
         </div>
@@ -160,43 +149,24 @@ function FeatureCard({
   const width = useTransform(animatedWidth, [0, 1], ["0%", "100%"]);
 
   return (
-    <div
-      className="flex flex-col items-start justify-center py-8 md:py-0"
-      data-oid="6ytsllx"
-    >
-      <div
-        className="mt-10 flex text-[6rem] font-bold leading-[1] md:mt-0 md:hidden"
-        data-oid="zp51ra3"
-      >
+    <div className="flex flex-col items-start justify-center py-8 md:py-0">
+      <div className="mt-10 flex text-[6rem] font-bold leading-[1] md:mt-0 md:hidden">
         {number}
       </div>
       <div
         ref={ref}
         className="mb-8 mt-8 h-0.5 w-full bg-[var(--gray-6)] md:mt-0"
-        data-oid="cz8byy5"
       >
-        <motion.div
-          className="h-0.5 bg-[var(--accent-7)]"
-          style={{ width }}
-          data-oid="qsdby.b"
-        />
+        <motion.div className="h-0.5 bg-[var(--accent-7)]" style={{ width }} />
       </div>
-      <div className="max-w-2xl" data-oid="skpyuhu">
-        <p
-          className="mb-3 font-semibold text-[var(--gray-10)] md:text-gray- md:mb-4"
-          data-oid="z:-i836"
-        >
+      <div className="max-w-2xl">
+        <p className="mb-3 font-semibold text-[var(--gray-10)] md:text-gray- md:mb-4">
           {tagline}
         </p>
-        <h2
-          className="mb-5 md:mb-6 text-[clamp(2rem,4vw+0.6rem,5rem)] font-bold text-[var(--accent-12)]"
-          data-oid="p:ut1h2"
-        >
+        <h2 className="mb-5 md:mb-6 text-[clamp(2rem,4vw+0.6rem,5rem)] font-bold text-[var(--accent-12)]">
           {heading}
         </h2>
-        <p className="text-[var(--gray-11)]" data-oid="fojtgun">
-          {description}
-        </p>
+        <p className="text-[var(--gray-11)]">{description}</p>
       </div>
     </div>
   );

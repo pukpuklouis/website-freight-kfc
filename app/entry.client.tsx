@@ -11,8 +11,8 @@ import { hydrateRoot } from "react-dom/client";
 startTransition(() => {
   hydrateRoot(
     document,
-    <StrictMode data-oid="9oh.aap">
-      <RemixBrowser data-oid="y7aca5r" />
+    <StrictMode>
+      <RemixBrowser />
     </StrictMode>,
   );
 });

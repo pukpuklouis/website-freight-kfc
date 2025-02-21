@@ -58,27 +58,20 @@ export const loader: LoaderFunction = async ({ request }) => {
 
 export function ErrorBoundary() {
   return (
-    <html lang="en" data-oid="iefngxy">
-      <head data-oid="x5ntvmf">
-        <title data-oid=".3zhbib">Oops! Something went wrong</title>
-        <Meta data-oid="i__ymyu" />
-        <Links data-oid="cb1q.uq" />
+    <html lang="en">
+      <head>
+        <title>Oops! Something went wrong</title>
+        <Meta />
+        <Links />
       </head>
-      <body className="h-full" data-oid="k5qk0p9">
-        <ThemeProvider data-oid=".u:qgki">
-          <div
-            className="flex min-h-screen flex-col items-center justify-center p-4"
-            data-oid="5771vla"
-          >
-            <h1 className="text-2xl font-bold" data-oid="v-g2:b1">
-              Oops! Something went wrong
-            </h1>
-            <p className="mt-4 text-gray-600" data-oid="6l9o04z">
-              Please try refreshing the page
-            </p>
+      <body className="h-full">
+        <ThemeProvider>
+          <div className="flex min-h-screen flex-col items-center justify-center p-4">
+            <h1 className="text-2xl font-bold">Oops! Something went wrong</h1>
+            <p className="mt-4 text-gray-600">Please try refreshing the page</p>
           </div>
         </ThemeProvider>
-        <Scripts data-oid="o8_-bll" />
+        <Scripts />
       </body>
     </html>
   );
@@ -88,31 +81,27 @@ export default function App() {
   const { theme } = useLoaderData<{ theme: Theme }>();
 
   return (
-    <html lang="en" className={theme} data-oid="vbt7.78">
-      <head data-oid="szwds9y">
-        <meta charSet="utf-8" data-oid="4l_pvyl" />
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1"
-          data-oid="hi-:km:"
-        />
+    <html lang="en" className={theme}>
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <Meta data-oid="79jf7l2" />
-        <Links data-oid="17vcywx" />
+        <Meta />
+        <Links />
       </head>
-      <body className="h-full" data-oid="htv:pcd">
-        <ThemeProvider initialTheme={theme} data-oid="8m1r7q0">
-          <div className="flex min-h-screen flex-col" data-oid="s11tmn8">
-            <Header data-oid="vbc055u" />
-            <main className="flex-1" data-oid="8d5xens">
-              <Outlet data-oid="hiu4ly3" />
+      <body className="h-full">
+        <ThemeProvider initialTheme={theme}>
+          <div className="flex min-h-screen flex-col">
+            <Header />
+            <main className="flex-1">
+              <Outlet />
             </main>
-            <Footer data-oid="ti7khxe" />
+            <Footer />
           </div>
         </ThemeProvider>
-        <ScrollRestoration data-oid="0n0p:2:" />
-        <Scripts data-oid="c_5icx2" />
-        <LiveReload data-oid=".44th_k" />
+        <ScrollRestoration />
+        <Scripts />
+        <LiveReload />
       </body>
     </html>
   );

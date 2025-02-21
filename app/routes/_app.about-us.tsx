@@ -52,8 +52,7 @@ export const loader = async () => {
   const faqQuestions = [
     {
       title: "Q1：(日本/菲律賓/中國)材積計算方式:",
-      answer:
-        `貨件外包裝呎吋的 ⻑(cm)寬(cm)高(cm)÷6000`,
+      answer: `貨件外包裝呎吋的 ⻑(cm)寬(cm)高(cm)÷6000`,
     },
     {
       title: "Q2：(日本)是否包含關稅費用？",
@@ -74,8 +73,8 @@ export default function AboutUs() {
   const { theme } = useTheme();
 
   return (
-    <div className="min-h-screen" data-oid="9s.cgs4">
-      <PurposeSection data-oid="p6x1y.-" />
+    <div className="min-h-screen">
+      <PurposeSection />
       {/* <MissionSection features={missionFeatures} data-oid="nj6gzny" /> */}
       <FAQSection
         questions={faqQuestions}
@@ -83,7 +82,6 @@ export default function AboutUs() {
         description="✨ 物流疑問全攻略！從時效到價格，最關心的問題一次解答"
         footerHeading="還有更多問題嗎?"
         footerDescription="🚀 24小時護航｜AI助理+真人助手雙重服務 輸入你的需求＞＞秒速回覆專屬方案"
-        data-oid="i0mls2_"
       />
     </div>
   );
