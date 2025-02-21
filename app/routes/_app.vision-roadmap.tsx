@@ -44,12 +44,7 @@ export default function VisionRoadmap() {
 
       icon: {
         color: accentColor,
-        component: (
-          <CheckCircle
-            className={`h-6 w-6 text-[${accentColor}]`}
-            data-oid="woxxxa."
-          />
-        ),
+        component: <CheckCircle className={`h-6 w-6 text-[${accentColor}]`} />,
       },
     },
     {
@@ -62,12 +57,7 @@ export default function VisionRoadmap() {
 
       icon: {
         color: accentColor,
-        component: (
-          <Scale
-            className={`h-6 w-6 text-[${accentColor}]`}
-            data-oid="urez:4o"
-          />
-        ),
+        component: <Scale className={`h-6 w-6 text-[${accentColor}]`} />,
       },
     },
     {
@@ -80,21 +70,13 @@ export default function VisionRoadmap() {
 
       icon: {
         color: accentColor,
-        component: (
-          <Globe
-            className={`h-6 w-6 text-[${accentColor}]`}
-            data-oid="n-vr2ar"
-          />
-        ),
+        component: <Globe className={`h-6 w-6 text-[${accentColor}]`} />,
       },
     },
   ];
 
   return (
-    <div
-      className="mx-auto px-4 sm:px-6 lg:px-8 py-40 bg-[var(--accent-2)]"
-      data-oid="n3uhn5j"
-    >
+    <div className="mx-auto px-4 sm:px-6 lg:px-8 py-40 bg-[var(--accent-2)]">
       <FeatureVision
         heading="卡菲斯國際願景藍圖"
         description="台海絲路貨運隸屬卡菲斯國際物流集團，多年來攜手專業團隊，以「正派永續」為核心，穩紮穩打佈局全球物流網絡。透過先進技術和全球網絡，為客戶創造更大的價值。"
@@ -116,14 +98,9 @@ export default function VisionRoadmap() {
           src: "https://images.unsplash.com/photo-1605732562742-3023a888e56e?q=80&w=2835&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           alt: "Vision",
         }}
-        data-oid="gc10841"
       />
 
-      <StrategicFocus
-        heading="未來策略重點規劃"
-        strategies={strategies}
-        data-oid="wnwob5e"
-      />
+      <StrategicFocus heading="未來策略重點規劃" strategies={strategies} />
     </div>
   );
 }

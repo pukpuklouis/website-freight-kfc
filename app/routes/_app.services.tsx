@@ -45,32 +45,26 @@ function ServiceCard({ service }: { service: (typeof services)[number] }) {
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
       className="group relative bg-[var(--accent-3)] rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
-      data-oid="_r3p2bt"
     >
-      <div className="relative w-full pt-[75%]" data-oid="gldn7z4">
+      <div className="relative w-full pt-[75%]">
         <img
           src={service.image}
           alt={service.title}
           className="absolute inset-0 w-full h-full object-cover"
-          data-oid="pqnzl.8"
         />
       </div>
-      <div className="p-6" data-oid="yf3cmzk">
-        <h3
-          className="text-2xl font-bold text-[var(--accent-11)] mb-3"
-          data-oid="rhqj3y5"
-        >
+      <div className="p-6">
+        <h3 className="text-2xl font-bold text-[var(--accent-11)] mb-3">
           {service.title}
         </h3>
-        <p className="text-[var(--gray-11)] font-light mb-4" data-oid=":t9e39t">
+        <p className="text-[var(--gray-11)] font-light mb-4">
           {service.description}
         </p>
-        <div className="flex flex-wrap gap-2 mb-4" data-oid="hu6:s82">
+        <div className="flex flex-wrap gap-2 mb-4">
           {service.tags.map((tag) => (
             <span
               key={tag}
               className="px-3 py-1 text-sm rounded-full bg-[var(--accent-6)] text-[var(--accent-11)]"
-              data-oid="xanb4tn"
             >
               {tag}
             </span>
@@ -86,36 +80,20 @@ export default function ServicesLayout() {
   const { accent, gray } = themes[theme];
 
   return (
-    <div
-      className="min-h-screen bg-[var(--accent-2)] py-16 px-4 sm:px-6 lg:px-8 pt-24"
-      data-oid="z88b06p"
-    >
-      <div className="max-w-7xl mx-auto py-12" data-oid="._7f3lg">
-        <div className="text-center mb-16" data-oid="bd:lz.:">
-          <h1
-            className="text-5xl font-bold tracking-tight text-[var(--gray-12)] sm:text-5xl md:text-6xl"
-            data-oid="x-s7zua"
-          >
+    <div className="min-h-screen bg-[var(--accent-2)] py-16 px-4 sm:px-6 lg:px-8 pt-24">
+      <div className="max-w-7xl mx-auto py-12">
+        <div className="text-center mb-16">
+          <h1 className="text-5xl font-bold tracking-tight text-[var(--gray-12)] sm:text-5xl md:text-6xl">
             我們的服務
           </h1>
-          <p
-            className="mt-4 max-w-2xl mx-auto text-xl text-[var(--gray-10)]"
-            data-oid="aqm6p4f"
-          >
+          <p className="mt-4 max-w-2xl mx-auto text-xl text-[var(--gray-10)]">
             提供全方位的物流運輸解決方案
           </p>
         </div>
 
-        <div
-          className="grid gap-8 md:grid-cols-2 lg:grid-cols-3"
-          data-oid="0ppefs7"
-        >
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {services.map((service) => (
-            <ServiceCard
-              key={service.id}
-              service={service}
-              data-oid="o52ezjd"
-            />
+            <ServiceCard key={service.id} service={service} />
           ))}
         </div>
       </div>

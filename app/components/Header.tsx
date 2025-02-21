@@ -16,15 +16,15 @@ type NavLink = {
 
 const navLinks: NavLink[] = [
   { title: "關於我們", url: "/about-us" },
-  { 
-    title: "服務介紹", 
+  {
+    title: "服務介紹",
     url: "/services",
     subMenuLinks: [
       { title: "冷鏈物流", url: "/services/cold-chain" },
       { title: "倉儲服務", url: "/services/warehousing" },
       { title: "運輸配送", url: "/services/delivery" },
-      { title: "供應鏈管理", url: "/services/supply-chain" }
-    ]
+      { title: "供應鏈管理", url: "/services/supply-chain" },
+    ],
   },
   // { title: "未來營運", url: "/vision-roadmap" },
   { title: "聯絡我們", url: "/contact-us" },
@@ -41,28 +41,18 @@ export function Header() {
   const NavItem = ({ link }: { link: NavLink }) => {
     if (link.subMenuLinks) {
       return (
-        <div className="group relative" data-oid="y8i2mvy">
-          <div
-            className="flex items-center gap-1 py-2 text-lg font-medium text-[var(--accent-9)] transition-colors hover:text-[var(--accent-11)]"
-            data-oid="zcyedoz"
-          >
+        <div className="group relative">
+          <div className="flex items-center gap-1 py-2 text-lg font-medium text-[var(--accent-9)] transition-colors hover:text-[var(--accent-11)]">
             {link.title}
-            <RxChevronDown className="size-4" data-oid="8iyacb2" />
+            <RxChevronDown className="size-4" />
           </div>
-          <div
-            className="absolute left-0 top-full hidden pt-2 group-hover:block"
-            data-oid="4d6u4_o"
-          >
-            <div
-              className="w-48 rounded-lg border border-[var(--accent-6)] bg-background/70 backdrop-blur-sm p-2 shadow-lg"
-              data-oid="-b02her"
-            >
+          <div className="absolute left-0 top-full hidden pt-2 group-hover:block">
+            <div className="w-48 rounded-lg border border-[var(--accent-6)] bg-background/70 backdrop-blur-sm p-2 shadow-lg">
               {link.subMenuLinks.map((subLink) => (
                 <Link
                   key={subLink.title}
                   to={subLink.url}
                   className="block rounded-md px-2 py-1.5 text-md text-[var(--accent-9)] transition-colors hover:bg-[var(--accent-9)] hover:text-[var(--gray-1)] dark:hover:bg-[var(--accent-8)] dark:hover:text-[var(--gray-12)]"
-                  data-oid="l3bg:84"
                 >
                   {subLink.title}
                 </Link>
@@ -77,7 +67,6 @@ export function Header() {
       <Link
         to={link.url}
         className="py-2 text-lg font-bold text-[var(--accent-9)] transition-colors hover:text-[var(--accent-11)]"
-        data-oid="am_7fp6"
       >
         {link.title}
       </Link>
@@ -148,23 +137,15 @@ export function Header() {
           "--theme-gray-12": grayColors[12],
         } as React.CSSProperties
       }
-      data-oid="63.g.v1"
     >
-      <div
-        className="px-6 rounded-full bg-background/60 backdrop-blur-md border shadow-sm"
-        data-oid="6.bf3nw"
-      >
-        <div
-          className="relative flex h-14 items-center justify-between"
-          data-oid="v1ibp1l"
-        >
+      <div className="px-6 rounded-full bg-background/60 backdrop-blur-md border shadow-sm">
+        <div className="relative flex h-14 items-center justify-between">
           {/* Mobile Menu Button and Logo Container */}
-          <div className="flex items-center" data-oid="mrt:xbf">
+          <div className="flex items-center">
             {/* Mobile Menu Button */}
             <button
               className="flex size-12 flex-col justify-center lg:hidden"
               onClick={() => setIsMobileMenuOpen((prev) => !prev)}
-              data-oid="g3f:07x"
             >
               {Array(3)
                 .fill(null)
@@ -172,7 +153,6 @@ export function Header() {
                   <span
                     key={index}
                     className="my-[3px] h-0.5 w-6 bg-foreground"
-                    data-oid="cvs5q9e"
                   />
                 ))}
             </button>
@@ -181,68 +161,55 @@ export function Header() {
             <Link
               to="/"
               className="lg:ml-0 absolute left-1/2 -translate-x-1/2 lg:static lg:translate-x-0 flex items-center text-2xl font-bold"
-              data-oid="5d0qq91"
             >
               <img
                 src="https://res.cloudinary.com/pukpuklouis/image/upload/s--Dq6anFk9--/KFZ/KFC-logo_wrjevi"
                 alt="KFC Logo"
                 className="h-8"
-                data-oid="ftm:tq9"
               />
             </Link>
           </div>
 
           {/* Desktop Navigation - Centered */}
-          <nav
-            className="hidden lg:flex lg:gap-4 items-center absolute left-1/2 -translate-x-1/2"
-            data-oid="rx-eges"
-          >
+          <nav className="hidden lg:flex lg:gap-4 items-center absolute left-1/2 -translate-x-1/2">
             {navLinks.map((link) => (
-              <NavItem key={link.title} link={link} data-oid="xi0godx" />
+              <NavItem key={link.title} link={link} />
             ))}
           </nav>
 
           {/* Right Actions */}
-          <div className="hidden lg:flex items-center gap-4" data-oid="9c9-gif">
-            <ThemeToggle data-oid="xqweftc" />
-            <Button asChild data-oid="fqvzeke" size="3" radius="full">
-              <Link to="/contact-us" data-oid="_w4zeic">
-                {NavButtonText}
-              </Link>
+          <div className="hidden lg:flex items-center gap-4">
+            <ThemeToggle />
+            <Button asChild size="3" radius="full">
+              <Link to="/contact-us">{NavButtonText}</Link>
             </Button>
           </div>
         </div>
       </div>
 
       {/* Mobile Menu */}
-      <AnimatePresence data-oid="50ykamb">
+      <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             className="absolute left-0 right-0 top-full mt-2 rounded-2xl border bg-popover shadow-lg lg:hidden"
-            data-oid="zj7iz7d"
           >
-            <nav className="flex flex-col gap-2 p-4" data-oid="t8.8z-8">
+            <nav className="flex flex-col gap-2 p-4">
               {navLinks.map((link) => (
-                <MobileNavItem
-                  key={link.title}
-                  link={link}
-                  data-oid="_5b42fa"
-                />
+                <MobileNavItem key={link.title} link={link} />
               ))}
-              <Button asChild className="w-full mt-2 " data-oid="akix42q">
+              <Button asChild className="w-full mt-2 ">
                 <Link
                   to="/contact-us"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  data-oid=".v6n-xl"
                 >
                   {NavButtonText}
                 </Link>
               </Button>
-              <div className="flex justify-center mt-2" data-oid="jtj0bpa">
-                <ThemeToggle data-oid="hc-ea_m" />
+              <div className="flex justify-center mt-2">
+                <ThemeToggle />
               </div>
             </nav>
           </motion.div>

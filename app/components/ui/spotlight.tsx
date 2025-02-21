@@ -76,7 +76,6 @@ export function Spotlight({
         left: spotlightLeft,
         top: spotlightTop,
       }}
-      data-oid="9bb68kr"
     />
   );
 }

@@ -85,7 +85,6 @@ export function Tilt({
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      data-oid="arbz-v5"
     >
       {children}
     </motion.div>
