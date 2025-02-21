@@ -46,7 +46,7 @@ export function HeroSection() {
     {
       src: "https://images.unsplash.com/photo-1578245093109-472875396a2a?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       alt: "Logistics Services",
-      location: "上海"
+      location: "兩岸三地"
     },
     {
       src: "https://images.unsplash.com/photo-1510681916233-314f497f3301?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -124,7 +124,7 @@ export function HeroSection() {
           </motion.div>
         </motion.div>
 
-        <div className="relative w-full h-[500px] overflow-hidden rounded-2xl">
+        <div className="relative border border-1 border-separate border-[var(--accent-7)] w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[550px] overflow-hidden rounded-xl sm:rounded-3xl md:rounded-4xl">
           {heroImages.map((image, index) => (
             <motion.div
               key={image.src}
@@ -142,25 +142,24 @@ export function HeroSection() {
                 className="w-full h-full object-cover rounded-2xl"
               />
               <div className="absolute inset-0 bg-black/30 rounded-2xl flex items-end justify-end p-4">
-                <span className="text-gray-300 text-3xl font-bold">{image.location}</span>
+                <span className="absolute bottom-8 right-8 text-gray-300 lg:text-5xl md:text-3xl sm:text-3xl font-bold">{image.location}</span>
               </div>
             </motion.div>
           ))}
-          
-          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
-            {heroImages.map((_, index) => (
-              <button
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
+              {heroImages.map((_, index) => (
+                <button
                 key={index}
                 onClick={() => setCurrentImageIndex(index)}
                 className={`w-3 h-3 rounded-full transition-all duration-300 ${
                   currentImageIndex === index 
-                    ? 'bg-white scale-110' 
-                    : 'bg-white/50 hover:bg-white/70'
+                  ? 'bg-white scale-110' 
+                  : 'bg-white/50 hover:bg-white/70'
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
-          </div>
+                />
+              ))}
+            </div>
         </div>
 
         <motion.div
