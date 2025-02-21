@@ -1,101 +1,187 @@
-import type { MetaFunction } from "@remix-run/node";
-import { useTheme, themes } from "~/utils/theme";
-import { motion } from "framer-motion";
+import { json } from "@remix-run/node";
+import { Link, useLoaderData } from "@remix-run/react";
+import { readdir, readFile } from "fs/promises";
+import { join } from "path";
+import { motion, AnimatePresence } from "framer-motion";
+import matter from "gray-matter";
 
-const services = [
-  {
-    id: 1,
-    title: "海運服務",
-    description: "提供完整的海運服務，包括整櫃、併櫃、散貨等多元化的運輸選擇",
-    tags: ["整櫃", "併櫃", "散貨"],
-    image:
-      "https://images.unsplash.com/photo-1606185540834-d6e7483ee1a4?q=80&w=900&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    id: 2,
-    title: "空運服務",
-    description: "快速可靠的空運服務，全球航線覆蓋，為您的貨物提供最佳運輸方案",
-    tags: ["快遞", "空運", "全球配送"],
-    image:
-      "https://images.unsplash.com/photo-1571086291540-b137111fa1c7?q=80&w=900&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    id: 3,
-    title: "倉儲物流",
-    description: "專業的倉儲管理和配送服務，確保您的貨物安全存儲和及時配送",
-    tags: ["倉儲", "配送", "物流管理"],
-    image:
-      "https://images.unsplash.com/photo-1601598852806-524f0060508e?q=80&w=900&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-];
-
-export const meta: MetaFunction = () => {
-  return [
-    { title: "專業服務-卡菲斯國際" },
-    { name: "description", content: "探索我們的完整貨運和物流服務" },
-  ];
-};
-
-function ServiceCard({ service }: { service: (typeof services)[number] }) {
-  return (
-    <motion.div
-      key={service.id}
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
-      className="group relative bg-[var(--accent-3)] rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
-    >
-      <div className="relative w-full pt-[75%]">
-        <img
-          src={service.image}
-          alt={service.title}
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-      </div>
-      <div className="p-6">
-        <h3 className="text-2xl font-bold text-[var(--accent-11)] mb-3">
-          {service.title}
-        </h3>
-        <p className="text-[var(--gray-11)] font-light mb-4">
-          {service.description}
-        </p>
-        <div className="flex flex-wrap gap-2 mb-4">
-          {service.tags.map((tag) => (
-            <span
-              key={tag}
-              className="px-3 py-1 text-sm rounded-full bg-[var(--accent-6)] text-[var(--accent-11)]"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-      </div>
-    </motion.div>
-  );
+interface ServiceMeta {
+  slug: string;
+  title: string;
+  description: string;
+  image: string;
+  date: string;
+  tags: string[];
 }
 
-export default function ServicesLayout() {
-  const { theme } = useTheme();
-  const { accent, gray } = themes[theme];
+interface LoaderData {
+  services: ServiceMeta[];
+}
+
+export const loader = async () => {
+  const postsDirectory = join(process.cwd(), "app", "components", "posts");
+  
+  try {
+    const files = await readdir(postsDirectory);
+    const mdxFiles = files.filter(file => file.endsWith(".mdx"));
+    
+    const services = await Promise.all(
+      mdxFiles.map(async (filename) => {
+        const filePath = join(postsDirectory, filename);
+        const source = await readFile(filePath, "utf-8");
+        const { data } = matter(source);
+        
+        return {
+          slug: filename.replace(/\.mdx$/, ""),
+          title: data.title,
+          description: data.description,
+          image: data.image,
+          date: data.date,
+          tags: data.tags || [],
+        };
+      })
+    );
+
+    services.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    return json<LoaderData>({ services });
+  } catch (error) {
+    console.error("Error loading services:", error);
+    return json<LoaderData>({ services: [] });
+  }
+};
+
+export default function Services() {
+  const { services } = useLoaderData<typeof loader>();
+
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.3
+      }
+    }
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 12
+      }
+    }
+  };
+
+  const imageVariants = {
+    hover: { 
+      scale: 1.05,
+      transition: {
+        duration: 0.3,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const overlayVariants = {
+    hover: { 
+      backgroundColor: "rgba(0, 0, 0, 0.4)",
+      transition: {
+        duration: 0.3
+      }
+    }
+  };
 
   return (
-    <div className="min-h-screen bg-[var(--accent-2)] py-16 px-4 sm:px-6 lg:px-8 pt-24">
-      <div className="max-w-7xl mx-auto py-12">
-        <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold tracking-tight text-[var(--gray-12)] sm:text-5xl md:text-6xl">
-            我們的服務
-          </h1>
-          <p className="mt-4 max-w-2xl mx-auto text-xl text-[var(--gray-10)]">
-            提供全方位的物流運輸解決方案
-          </p>
-        </div>
+    <div className="min-h-screen bg-gradient-to-b from-[var(--accent-2)] to-transparent">
+      <div className="container mx-auto px-4 py-16">
+        <AnimatePresence>
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="text-center mb-16"
+          >
+            <h1 className="text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-[var(--accent-11)] to-[var(--accent-9)]">
+              我們的服務
+            </h1>
+            <p className="text-xl text-[var(--gray-11)] max-w-2xl mx-auto">
+              提供全方位的跨境物流解決方案，為您的業務保駕護航
+            </p>
+          </motion.div>
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {services.map((service) => (
-            <ServiceCard key={service.id} service={service} />
-          ))}
-        </div>
+          <motion.div
+            variants={container}
+            initial="hidden"
+            animate="show"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            {services.map((service) => (
+              <motion.div
+                key={service.slug}
+                variants={item}
+                className="group"
+                whileHover="hover"
+              >
+                <Link
+                  prefetch="intent"
+                  to={`/services/${service.slug}`}
+                  className="block rounded-2xl overflow-hidden bg-white dark:bg-gray-800 shadow-lg hover:shadow-2xl transform transition-all duration-300 hover:-translate-y-1"
+                >
+                  <div className="relative h-56 overflow-hidden">
+                    <motion.img
+                      variants={imageVariants}
+                      src={service.image}
+                      alt={service.title}
+                      className="w-full h-full object-cover"
+                    />
+                    <motion.div
+                      variants={overlayVariants}
+                      className="absolute inset-0 bg-black/30"
+                    />
+                  </div>
+                  
+                  <div className="p-6">
+                    <h2 className="text-2xl font-bold mb-3 text-[var(--accent-11)] group-hover:text-[var(--accent-9)] transition-colors duration-300">
+                      {service.title}
+                    </h2>
+                    <p className="text-[var(--gray-11)] mb-4 line-clamp-2">
+                      {service.description}
+                    </p>
+                    
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {service.tags.map(tag => (
+                        <span
+                          key={tag}
+                          className="px-3 py-1 text-sm bg-[var(--accent-3)] text-[var(--accent-11)] rounded-full"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    
+                    <div className="flex items-center justify-between text-sm text-[var(--gray-10)]">
+                      <time>
+                        {new Date(service.date).toLocaleDateString('zh-TW', {
+                          year: 'numeric',
+                          month: 'long',
+                          day: 'numeric'
+                        })}
+                      </time>
+                      <span className="group-hover:translate-x-1 transition-transform duration-300">
+                        瞭解更多 →
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </motion.div>
+        </AnimatePresence>
       </div>
     </div>
   );
