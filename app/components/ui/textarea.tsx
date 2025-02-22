@@ -14,6 +14,7 @@ const Textarea = React.forwardRef<
       )}
       ref={ref}
       {...props}
+      data-oid="q8.3iux"
     />
   );
 });

@@ -1,5 +1,5 @@
 import { Outlet } from "@remix-run/react";
 
 export default function AppLayout() {
-  return <Outlet />;
+  return <Outlet data-oid="-9cuwmo" />;
 }

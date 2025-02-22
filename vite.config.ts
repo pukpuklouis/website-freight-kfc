@@ -35,13 +35,35 @@ export default defineConfig({
       'react',
       'react-dom',
       'react/jsx-runtime'
-    ]
+    ],
+    esbuildOptions: {
+      target: 'es2020',
+      platform: 'browser',
+      jsx: 'automatic',
+      format: 'esm',
+    }
   },
   resolve: {
     alias: {
       crypto: 'crypto-browserify',
       stream: 'stream-browserify',
-      util: 'util'
+      util: 'util',
+      path: 'path-browserify',
+      process: 'process/browser'
+    }
+  },
+  build: {
+    rollupOptions: {
+      external: ['esbuild'],
+      output: {
+        manualChunks: {
+          mdx: ['mdx-bundler', 'remark-gfm', 'remark-breaks', 'rehype-slug', 'rehype-autolink-headings']
+        }
+      }
+    },
+    commonjsOptions: {
+      include: [/mdx-bundler/, /node_modules/],
+      transformMixedEsModules: true
     }
   },
   server: {

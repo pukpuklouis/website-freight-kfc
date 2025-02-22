@@ -31,7 +31,10 @@ export const useTheme = () => {
 };
 
 export const getSystemTheme = (): Theme => {
+  // During SSR or when window is not available, return default theme
   if (typeof window === 'undefined') return 'light';
+  
+  // On client-side, check system preference
   return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 };
 

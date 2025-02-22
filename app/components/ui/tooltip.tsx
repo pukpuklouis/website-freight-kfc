@@ -13,7 +13,7 @@ const TooltipContent = React.forwardRef<
   React.ElementRef<typeof TooltipPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Content>
 >(({ className, sideOffset = 4, ...props }, ref) => (
-  <TooltipPrimitive.Portal>
+  <TooltipPrimitive.Portal data-oid="6r_1f0h">
     <TooltipPrimitive.Content
       ref={ref}
       sideOffset={sideOffset}
@@ -22,6 +22,7 @@ const TooltipContent = React.forwardRef<
         className,
       )}
       {...props}
+      data-oid="vd3:2t_"
     />
   </TooltipPrimitive.Portal>
 ));
