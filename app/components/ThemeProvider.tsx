@@ -16,9 +16,11 @@ export function ThemeProvider({
   children: React.ReactNode;
   initialTheme?: Theme;
 }) {
+  // Start with initialTheme from server
   const [theme, setTheme] = useState<Theme>(initialTheme);
   const isHydrated = useHydrated();
 
+  // Only update theme after hydration
   useEffect(() => {
     if (isHydrated) {
       const savedTheme = localStorage.getItem("theme") as Theme;
@@ -29,6 +31,7 @@ export function ThemeProvider({
         setTheme(systemTheme);
       }
 
+      // Handle system theme changes
       const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
       const handleChange = (e: MediaQueryListEvent) => {
         if (!localStorage.getItem("theme")) {
@@ -50,12 +53,16 @@ export function ThemeProvider({
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme: handleThemeChange }}>
+    <ThemeContext.Provider
+      value={{ theme, setTheme: handleThemeChange }}
+      data-oid="r1k0.1v"
+    >
       <RadixTheme
         appearance={theme}
         accentColor={themes[theme].accent}
         radius="large"
         hasBackground
+        data-oid="lm-n48p"
       >
         {children}
       </RadixTheme>

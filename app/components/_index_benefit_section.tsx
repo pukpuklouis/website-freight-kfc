@@ -41,6 +41,7 @@ const BenefitCard = memo(function BenefitCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, ease: "easeOut" }}
+      data-oid="-efkxg_"
     >
       <Tilt
         rotationFactor={6}
@@ -51,6 +52,7 @@ const BenefitCard = memo(function BenefitCard({
           mass: 0.5,
         }}
         className="h-full"
+        data-oid="nqr286o"
       >
         <div
           className="group relative h-full overflow-hidden rounded-2xl border bg-[var(--gray-2)] p-8 transition-all duration-300 hover:shadow-lg"
@@ -60,6 +62,7 @@ const BenefitCard = memo(function BenefitCard({
               "--spotlight-color": `var(--accent-1)`,
             } as React.CSSProperties
           }
+          data-oid="v_xno-8"
         >
           <Spotlight
             className="z-10 blur-2xl"
@@ -69,15 +72,17 @@ const BenefitCard = memo(function BenefitCard({
               damping: 20,
               mass: 0.5,
             }}
+            data-oid="86nh2n3"
           />
 
-          <div className="relative z-20">
+          <div className="relative z-20" data-oid="e:9pc-e">
             <motion.h3
               className="mb-4 text-2xl font-bold tracking-tight bg-gradient-to-r from-[var(--accent-11)] to-[var(--accent-5)] bg-clip-text text-transparent"
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
+              data-oid="u:j-hvy"
             >
               {title}
             </motion.h3>
@@ -87,6 +92,7 @@ const BenefitCard = memo(function BenefitCard({
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
+              data-oid="tv66rkd"
             >
               {description}
             </motion.p>
@@ -108,11 +114,17 @@ export const BenefitSection = memo(function BenefitSection({
   const { accent, gray } = themes[theme];
 
   return (
-    <section className="relative px-[10%] py-16 md:py-24 lg:py-32 bg-[var(--accent-2)]">
-      <div className="container mx-auto">
-        <div className="grid gap-12 lg:grid-cols-2 items-center">
+    <section
+      className="relative px-[10%] py-16 md:py-24 lg:py-32 bg-[var(--accent-2)]"
+      data-oid="hq73zd:"
+    >
+      <div className="container mx-auto" data-oid="p01oan6">
+        <div
+          className="grid gap-12 lg:grid-cols-2 items-center"
+          data-oid="vl14o3s"
+        >
           {/* Left Column - Content */}
-          <div className="space-y-12">
+          <div className="space-y-12" data-oid="b-jrnkt">
             {/* Header */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -120,14 +132,16 @@ export const BenefitSection = memo(function BenefitSection({
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
               className="max-w-xl"
+              data-oid="wlo.ql:"
             >
-              <div className="relative z-20">
+              <div className="relative z-20" data-oid="cf-ff7r">
                 <motion.h2
                   className="mb-6 font-bold tracking-tight text-[var(--accent-10)] text-[clamp(1.7rem,3vw+0.2rem,3.5rem)] leading-[1.1]"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.1 }}
+                  data-oid="3fnejgx"
                 >
                   {heading}
                 </motion.h2>
@@ -137,6 +151,7 @@ export const BenefitSection = memo(function BenefitSection({
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.2 }}
+                  data-oid="bonjkrn"
                 >
                   {description}
                 </motion.p>
@@ -144,9 +159,13 @@ export const BenefitSection = memo(function BenefitSection({
             </motion.div>
 
             {/* Benefits Grid */}
-            <div className="grid gap-8">
+            <div className="grid gap-8" data-oid="ucyq:ur">
               {benefits.map((benefit, index) => (
-                <BenefitCard key={`benefit-${index}`} {...benefit} />
+                <BenefitCard
+                  key={`benefit-${index}`}
+                  {...benefit}
+                  data-oid="iufs92v"
+                />
               ))}
             </div>
           </div>
@@ -158,6 +177,7 @@ export const BenefitSection = memo(function BenefitSection({
             viewport={{ once: false }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="relative"
+            data-oid="79vt020"
           >
             <Tilt
               rotationFactor={4}
@@ -168,18 +188,24 @@ export const BenefitSection = memo(function BenefitSection({
                 mass: 0.5,
               }}
               className="relative overflow-hidden rounded-2xl w-full"
+              data-oid="h8dsa5l"
             >
               <motion.div
                 className="relative z-20"
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
+                data-oid="0d8ot8k"
               >
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-[var(--gray-12)]/10 to-transparent" />
+                <div
+                  className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-[var(--gray-12)]/10 to-transparent"
+                  data-oid="sqy8-r5"
+                />
 
                 <img
                   src={imageSrc}
                   alt="Logistics Benefits"
                   className="w-full rounded-2xl shadow-2xl aspect-[9/11] transition-all duration-300 group-hover:shadow-3xl object-cover"
+                  data-oid="0_e::6n"
                 />
               </motion.div>
             </Tilt>

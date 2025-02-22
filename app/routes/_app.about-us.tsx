@@ -73,8 +73,8 @@ export default function AboutUs() {
   const { theme } = useTheme();
 
   return (
-    <div className="min-h-screen">
-      <PurposeSection />
+    <div className="min-h-screen" data-oid="3b_4-sp">
+      <PurposeSection data-oid="x1yfoie" />
       {/* <MissionSection features={missionFeatures} data-oid="nj6gzny" /> */}
       <FAQSection
         questions={faqQuestions}
@@ -82,6 +82,7 @@ export default function AboutUs() {
         description="✨ 物流疑問全攻略！從時效到價格，最關心的問題一次解答"
         footerHeading="還有更多問題嗎?"
         footerDescription="🚀 24小時護航｜AI助理+真人助手雙重服務 輸入你的需求＞＞秒速回覆專屬方案"
+        data-oid="un3l3cf"
       />
     </div>
   );

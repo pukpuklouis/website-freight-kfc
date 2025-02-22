@@ -2,139 +2,147 @@ import "./mission-section.css";
 import { useRef } from "react";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { useTheme, themes } from "~/utils/theme";
+import { useHydrated } from "~/hooks/use-hydrated";
 
-interface MissionFeature {
-  number: string;
+interface Feature {
+  number: string; // Using this as a unique identifier
   tagline: string;
   heading: string;
   description: string;
 }
 
 interface MissionSectionProps {
-  features: MissionFeature[];
+  features: Feature[];
 }
 
 export function MissionSection({ features }: MissionSectionProps) {
+  const isHydrated = useHydrated();
   const ref = useRef<HTMLDivElement>(null);
 
+  // Only enable scroll animations on client-side
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start center", "end center"],
+    offset: ["start end", "end start"],
   });
+
+  if (!isHydrated) {
+    // Server-side or pre-hydration render
+    return (
+      <section
+        className="relative px-[5%] py-16 md:py-24 lg:py-28"
+        data-oid="b6c74nj"
+      >
+        <div className="container" data-oid="n.vgo_h">
+          <div className="grid gap-8" data-oid="r7t-cw9">
+            {features.map((feature) => (
+              <div
+                key={feature.number}
+                className="opacity-100"
+                data-oid="dghwi7o"
+              >
+                <p
+                  className="text-sm text-[var(--accent-9)]"
+                  data-oid="q72i6nu"
+                >
+                  {feature.tagline}
+                </p>
+                <h2 className="mt-2 text-2xl font-bold" data-oid="88ijrx5">
+                  {feature.heading}
+                </h2>
+                <p className="mt-4 text-[var(--accent-11)]" data-oid="c4fgybn">
+                  {feature.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section
       ref={ref}
-      className="px-[5%] py-24 pb-24 md:py-16 md:pb-32 lg:py-12 lg:pb-16 bg-[var(--accent-2)] relative"
+      className="relative px-[5%] py-16 md:py-24 lg:py-28"
+      data-oid="s9bttp0"
     >
-      <div className="container mx-auto">
-        <div className="relative grid gap-x-8 gap-y-12 md:grid-cols-[0.4fr_1fr] lg:grid-cols-[0.5fr_1fr] lg:gap-x-20">
-          <div className="static top-[15%] hidden h-80 md:sticky md:flex md:items-start">
-            <div className="text-center relative h-full w-full overflow-hidden flex items-start justify-center pt-8">
-              {features.map((feature, index) => {
-                // === ANIMATION TIMING CONTROLS ===
-                // Increase this value to make all animations take longer
-                const totalDuration = 1.2; // Total scroll duration
+      <div className="container" data-oid="pikrlbs">
+        <div className="grid gap-8" data-oid="dtq4vb0">
+          {features.map((feature, index) => {
+            const totalDuration = 1;
+            const segmentDuration = totalDuration / features.length;
+            const overlapFactor = 0.8;
 
-                // Decrease this value to make numbers appear more quickly in sequence
-                const segmentDuration = totalDuration / features.length;
+            const start = index * segmentDuration * (1 - overlapFactor);
+            const peak1 = start + segmentDuration * 0.4;
+            const peak2 = start + segmentDuration * 0.6;
+            const end = Math.min(
+              totalDuration,
+              start + segmentDuration + overlapFactor * segmentDuration,
+            );
 
-                // Increase this value (0.1 to 0.4) to make numbers overlap more
-                const overlapFactor = 0.08;
+            const springConfig = {
+              stiffness: 100,
+              damping: 30,
+              restDelta: 0.001,
+            };
 
-                // === FIRST NUMBER TIMING ADJUSTMENTS ===
-                // For earlier first number appearance:
-                // 1. Decrease this offset for the first number (index === 0)
-                const startOffset =
-                  index === 0 ? -0.02 : index * segmentDuration;
+            const opacity = useSpring(
+              useTransform(
+                scrollYProgress,
+                [start, peak1, peak2, end],
+                [0, 1, 1, 0],
+              ),
+              springConfig,
+            );
 
-                // Calculate animation points
-                // Decrease these values for earlier first number appearance
-                const start = Math.max(
-                  0,
-                  startOffset - overlapFactor * segmentDuration,
-                );
-                const peak1 = start + segmentDuration * 0.2; // Adjust 0.2 to change fade-in speed
-                const peak2 = start + segmentDuration * 0.8; // Adjust 0.8 to change how long number stays visible
-                const end = Math.min(
-                  totalDuration,
-                  start + segmentDuration + overlapFactor * segmentDuration,
-                );
+            const scale = useSpring(
+              useTransform(
+                scrollYProgress,
+                [start, peak1, peak2, end],
+                [0.7, 0.9, 0.9, 0.7],
+              ),
+              springConfig,
+            );
 
-                // === ANIMATION SMOOTHNESS CONTROLS ===
-                // Adjust these values to change animation feel
-                const springConfig = {
-                  stiffness: 100, // Higher = more reactive
-                  damping: 30, // Lower = more bouncy
-                  restDelta: 0.001, // Lower = more precise
-                };
+            const y = useSpring(
+              useTransform(
+                scrollYProgress,
+                [start, peak1, peak2, end],
+                [20, 0, 0, 20],
+              ),
+              springConfig,
+            );
 
-                const opacity = useSpring(
-                  useTransform(
-                    scrollYProgress,
-                    [start, peak1, peak2, end],
-                    [0, 1, 1, 0],
-                  ),
-                  springConfig,
-                );
-
-                // Add scale animation for more dynamic effect
-                const scale = useSpring(
-                  useTransform(
-                    scrollYProgress,
-                    [start, peak1, peak2, end],
-                    [0.7, 0.9, 0.9, 0.7],
-                  ),
-                  springConfig,
-                );
-
-                // Add Y position animation for subtle floating effect
-                const y = useSpring(
-                  useTransform(
-                    scrollYProgress,
-                    [start, peak1, peak2, end],
-                    [20, 0, 0, 20],
-                  ),
-                  springConfig,
-                );
-
-                return (
-                  <motion.h1
-                    key={index}
-                    style={{
-                      opacity,
-                      scale,
-                      y,
-                      position: "absolute",
-                      top: 0,
-                      left: "50%",
-                      x: "-50%",
-                    }}
-                    className="text-[8rem] font-bold leading-[1] md:text-[12rem] lg:text-[14rem] text-[var(--accent-10)]"
-                  >
-                    {feature.number}
-                  </motion.h1>
-                );
-              })}
-            </div>
-          </div>
-          <div className="grid gap-y-24 md:gap-y-32 mb-24">
-            {features.map((feature, index) => (
-              <FeatureCard key={index} {...feature} />
-            ))}
-          </div>
+            return (
+              <motion.div
+                key={feature.number}
+                style={{ opacity, scale, y }}
+                className="transform-gpu"
+                data-oid="ip7o-xk"
+              >
+                <p
+                  className="text-sm text-[var(--accent-9)]"
+                  data-oid=":kboml9"
+                >
+                  {feature.tagline}
+                </p>
+                <h2 className="mt-2 text-2xl font-bold" data-oid="8xj--g9">
+                  {feature.heading}
+                </h2>
+                <p className="mt-4 text-[var(--accent-11)]" data-oid="n.79t8:">
+                  {feature.description}
+                </p>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
   );
 }
 
-function FeatureCard({
-  number,
-  tagline,
-  heading,
-  description,
-}: MissionFeature) {
+function FeatureCard({ number, tagline, heading, description }: Feature) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -149,24 +157,43 @@ function FeatureCard({
   const width = useTransform(animatedWidth, [0, 1], ["0%", "100%"]);
 
   return (
-    <div className="flex flex-col items-start justify-center py-8 md:py-0">
-      <div className="mt-10 flex text-[6rem] font-bold leading-[1] md:mt-0 md:hidden">
+    <div
+      className="flex flex-col items-start justify-center py-8 md:py-0"
+      data-oid="dpug_e5"
+    >
+      <div
+        className="mt-10 flex text-[6rem] font-bold leading-[1] md:mt-0 md:hidden"
+        data-oid="1ccob5o"
+      >
         {number}
       </div>
       <div
         ref={ref}
         className="mb-8 mt-8 h-0.5 w-full bg-[var(--gray-6)] md:mt-0"
+        data-oid=".n1fce-"
       >
-        <motion.div className="h-0.5 bg-[var(--accent-7)]" style={{ width }} />
+        <motion.div
+          className="h-0.5 bg-[var(--accent-7)]"
+          style={{ width }}
+          data-oid="hvt6y2x"
+        />
       </div>
-      <div className="max-w-2xl">
-        <p className="mb-3 font-semibold text-[var(--gray-10)] md:text-gray- md:mb-4">
+      <div className="max-w-2xl" data-oid="y2-ozid">
+        <p
+          className="mb-3 font-semibold text-[var(--gray-10)] md:text-gray- md:mb-4"
+          data-oid="1iyh61z"
+        >
           {tagline}
         </p>
-        <h2 className="mb-5 md:mb-6 text-[clamp(2rem,4vw+0.6rem,5rem)] font-bold text-[var(--accent-12)]">
+        <h2
+          className="mb-5 md:mb-6 text-[clamp(2rem,4vw+0.6rem,5rem)] font-bold text-[var(--accent-12)]"
+          data-oid="h6xojsk"
+        >
           {heading}
         </h2>
-        <p className="text-[var(--gray-11)]">{description}</p>
+        <p className="text-[var(--gray-11)]" data-oid="0tyeas.">
+          {description}
+        </p>
       </div>
     </div>
   );

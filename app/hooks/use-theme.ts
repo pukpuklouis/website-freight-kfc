@@ -7,13 +7,16 @@ export function useTheme() {
   const isHydrated = useHydrated();
   const [theme, setTheme] = useState<Theme>('light');
 
+  // Only run on client-side after hydration
   useEffect(() => {
     if (isHydrated) {
       const savedTheme = localStorage.getItem('theme') as Theme;
-      setTheme(savedTheme || 'light');
+      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      setTheme(savedTheme || systemTheme);
     }
   }, [isHydrated]);
 
+  // Only update DOM and localStorage after hydration
   useEffect(() => {
     if (isHydrated) {
       const root = document.documentElement;

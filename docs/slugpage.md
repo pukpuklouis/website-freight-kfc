@@ -42,7 +42,7 @@ npm install mdx-bundler tiny-invariant @types/react-dom
 
 2. **Create MDX Files**
 
-Create MDX files in `app/components/posts/` with the following frontmatter structure:
+Create MDX files in `app/posts/` with the following frontmatter structure:
 
 ```mdx
 ---

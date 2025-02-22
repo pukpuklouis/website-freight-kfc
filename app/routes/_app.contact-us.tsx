@@ -10,6 +10,7 @@ import { Resend } from "resend";
 import { encode } from "html-entities";
 import * as FormPrimitive from "@radix-ui/react-form";
 import { Button } from "@radix-ui/themes";
+import { useHydrated } from "~/hooks/use-hydrated";
 
 // Store IP-based rate limiting
 const ipRequests = new Map<string, { count: number; timestamp: number }>();
@@ -228,15 +229,20 @@ const FormField = ({
   `;
 
   return (
-    <div className="space-y-2">
-      <div className="flex items-baseline justify-between">
+    <div className="space-y-2" data-oid="pra1fow">
+      <div className="flex items-baseline justify-between" data-oid="zf9im7j">
         <label
           htmlFor={name}
           className="text-sm font-medium text-[var(--gray-12)] dark:text-[var(--gray-12)]"
+          data-oid="p96o0h6"
         >
           {label}
         </label>
-        {required && <span className="text-sm text-[var(--accent-9)]">*</span>}
+        {required && (
+          <span className="text-sm text-[var(--accent-9)]" data-oid="zbkhyow">
+            *
+          </span>
+        )}
       </div>
       {type === "textarea" ? (
         <textarea
@@ -246,6 +252,7 @@ const FormField = ({
           required={required}
           rows={rows}
           defaultValue={defaultValue}
+          data-oid="jlat7:c"
         />
       ) : (
         <input
@@ -255,9 +262,14 @@ const FormField = ({
           className={inputClasses}
           required={required}
           defaultValue={defaultValue}
+          data-oid="ge6cv-l"
         />
       )}
-      {error && <p className="mt-1 text-sm text-[var(--accent-9)]">{error}</p>}
+      {error && (
+        <p className="mt-1 text-sm text-[var(--accent-9)]" data-oid="8ff7qig">
+          {error}
+        </p>
+      )}
     </div>
   );
 };
@@ -268,12 +280,14 @@ const LocationIcon = () => (
     fill="none"
     viewBox="0 0 24 24"
     stroke="currentColor"
+    data-oid="5zn8p7x"
   >
     <path
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth={2}
       d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+      data-oid="h8ry6wr"
     />
 
     <path
@@ -281,6 +295,7 @@ const LocationIcon = () => (
       strokeLinejoin="round"
       strokeWidth={2}
       d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+      data-oid="gipidqq"
     />
   </svg>
 );
@@ -291,12 +306,14 @@ const PhoneIcon = () => (
     fill="none"
     viewBox="0 0 24 24"
     stroke="currentColor"
+    data-oid="jxsivcv"
   >
     <path
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth={2}
       d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+      data-oid="492v9i:"
     />
   </svg>
 );
@@ -307,40 +324,50 @@ const EmailIcon = () => (
     fill="none"
     viewBox="0 0 24 24"
     stroke="currentColor"
+    data-oid="whcflex"
   >
     <path
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth={2}
       d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+      data-oid="1bsz3fj"
     />
   </svg>
 );
 
 const CONTACT_INFO = [
   {
-    icon: <LocationIcon />,
+    icon: <LocationIcon data-oid="shdoozl" />,
     title: "公司地址",
-    content: <p>11670 台北市文山區羅斯福路六段142巷82號1樓</p>,
+    content: (
+      <p data-oid="92asxna">11670 台北市文山區羅斯福路六段142巷82號1樓</p>
+    ),
   },
   {
-    icon: <PhoneIcon />,
+    icon: <PhoneIcon data-oid="4vv.zz2" />,
     title: "聯絡電話",
-    content: <p>(02) 2935-1589</p>,
+    content: <p data-oid="wm.dmz6">(02) 2935-1589</p>,
   },
   {
-    icon: <EmailIcon />,
+    icon: <EmailIcon data-oid="msv33be" />,
     title: "電子郵件",
-    content: <p>kafs123@126.com</p>,
+    content: <p data-oid="50jcywf">kafs123@126.com</p>,
   },
 ] as const;
 
 const BusinessHourRow = ({ days, hours }: { days: string; hours: string }) => (
-  <div className="flex justify-between py-2">
-    <span className="text-[var(--gray-12)] dark:text-[var(--gray-12)]">
+  <div className="flex justify-between py-2" data-oid="qcktw-i">
+    <span
+      className="text-[var(--gray-12)] dark:text-[var(--gray-12)]"
+      data-oid="5eusd7."
+    >
       {days}
     </span>
-    <span className="text-[var(--gray-11)] dark:text-[var(--gray-11)]">
+    <span
+      className="text-[var(--gray-11)] dark:text-[var(--gray-11)]"
+      data-oid="f-xenms"
+    >
       {hours}
     </span>
   </div>
@@ -366,15 +393,24 @@ const ContactInfo = ({
   title: string;
   content: React.ReactNode;
 }) => (
-  <div className="flex gap-4 items-start">
-    <div className="p-2 bg-[var(--gray-3)] dark:bg-[var(--gray-4)] rounded-lg">
+  <div className="flex gap-4 items-start" data-oid="xg8ba_y">
+    <div
+      className="p-2 bg-[var(--gray-3)] dark:bg-[var(--gray-4)] rounded-lg"
+      data-oid=":-hbcqb"
+    >
       {icon}
     </div>
-    <div>
-      <h3 className="text-lg font-medium text-[var(--gray-12)] dark:text-[var(--gray-12)]">
+    <div data-oid="rjz:qn.">
+      <h3
+        className="text-lg font-medium text-[var(--gray-12)] dark:text-[var(--gray-12)]"
+        data-oid="2andzgv"
+      >
         {title}
       </h3>
-      <div className="mt-1 text-[var(--gray-11)] dark:text-[var(--gray-11)]">
+      <div
+        className="mt-1 text-[var(--gray-11)] dark:text-[var(--gray-11)]"
+        data-oid="oletqnh"
+      >
         {content}
       </div>
     </div>
@@ -382,8 +418,9 @@ const ContactInfo = ({
 );
 
 export default function ContactUs() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const isHydrated = useHydrated();
   const actionData = useActionData<ActionData>();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
@@ -397,47 +434,97 @@ export default function ContactUs() {
     }
   }, [actionData]);
 
+  // Handle form submission
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    if (!isHydrated) return; // Prevent submission during SSR
+
+    event.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const formData = new FormData(event.currentTarget);
+      const response = await fetch(event.currentTarget.action, {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
+        formRef.current?.reset();
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
-    <div className="relative bg-gradient-to-b from-bg-[var(--accent-12a)] to-transparent bg-[var(--accent-2)] pt-24 ">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 ">
+    <div
+      className="relative bg-gradient-to-b from-bg-[var(--accent-12a)] to-transparent bg-[var(--accent-2)] pt-24 "
+      data-oid="yf8lts3"
+    >
+      <div
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 "
+        data-oid="3stvp.n"
+      >
         {/* Hero Section */}
-        <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold text-[var(--gray-12)] dark:text-[var(--gray-12)] mb-4">
+        <div className="text-center mb-16" data-oid="p0tc9by">
+          <h1
+            className="text-5xl font-bold text-[var(--gray-12)] dark:text-[var(--gray-12)] mb-4"
+            data-oid="-v:_bpe"
+          >
             聯絡我們
           </h1>
-          <p className="text-xl text-[var(--gray-11)] dark:text-[var(--gray-11)] max-w-2xl mx-auto">
+          <p
+            className="text-xl text-[var(--gray-11)] dark:text-[var(--gray-11)] max-w-2xl mx-auto"
+            data-oid="l5:_c_-"
+          >
             無論您有任何問題或需求，我們都樂意為您提供協助。讓我們一起為您的貨運需求找到最佳解決方案。
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
+        <div
+          className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12"
+          data-oid="hcr53z-"
+        >
           {/* Contact Information */}
-          <div className="space-y-8">
-            <div className="bg-[var(--gray-1)] dark:bg-[var(--gray-2)] rounded-2xl shadow-xl p-8 transform hover:scale-105 transition-transform duration-300 border border-[var(--gray-6)]">
-              <h2 className="text-2xl font-bold text-[var(--gray-12)] dark:text-[var(--gray-12)] mb-6">
+          <div className="space-y-8" data-oid="g.z78es">
+            <div
+              className="bg-[var(--gray-1)] dark:bg-[var(--gray-2)] rounded-2xl shadow-xl p-8 transform hover:scale-105 transition-transform duration-300 border border-[var(--gray-6)]"
+              data-oid="j124f0y"
+            >
+              <h2
+                className="text-2xl font-bold text-[var(--gray-12)] dark:text-[var(--gray-12)] mb-6"
+                data-oid="npju_zg"
+              >
                 聯絡資訊
               </h2>
-              <div className="space-y-6">
+              <div className="space-y-6" data-oid=".h0c7yq">
                 {CONTACT_INFO.map((info, index) => (
                   <ContactInfo
                     key={index}
                     icon={info.icon}
                     title={info.title}
                     content={info.content}
+                    data-oid="5c_xtdp"
                   />
                 ))}
               </div>
 
-              <div className="mt-8">
-                <h3 className="text-lg font-medium text-[var(--gray-12)] dark:text-[var(--gray-12)] mb-3">
+              <div className="mt-8" data-oid="xfrl2oy">
+                <h3
+                  className="text-lg font-medium text-[var(--gray-12)] dark:text-[var(--gray-12)] mb-3"
+                  data-oid="t80ycqp"
+                >
                   營業時間
                 </h3>
-                <div className="space-y-2">
+                <div className="space-y-2" data-oid="j5jvavc">
                   {BUSINESS_HOURS.map((schedule, index) => (
                     <BusinessHourRow
                       key={index}
                       days={schedule.days}
                       hours={schedule.hours}
+                      data-oid="cv68c4p"
                     />
                   ))}
                 </div>
@@ -446,45 +533,61 @@ export default function ContactUs() {
           </div>
 
           {/* Contact Form */}
-          <div className="bg-[var(--gray-1)] dark:bg-[var(--gray-2)] shadow-xl p-8 rounded-lg shadow-sm border border-[var(--gray-6)]">
-            <h2 className="text-2xl font-bold mb-6 text-[var(--gray-12)] dark:text-[var(--gray-12)]">
+          <div
+            className="bg-[var(--gray-1)] dark:bg-[var(--gray-2)] shadow-xl p-8 rounded-lg shadow-sm border border-[var(--gray-6)]"
+            data-oid="vau.9i_"
+          >
+            <h2
+              className="text-2xl font-bold mb-6 text-[var(--gray-12)] dark:text-[var(--gray-12)]"
+              data-oid="gnhmuua"
+            >
               聯絡我們
             </h2>
 
             {actionData?.success ? (
-              <div className="bg-green-50 dark:bg-[var(--accent-2)] border border-[var(--gray-6)] rounded-xl p-6 mb-6">
-                <div className="flex items-center">
+              <div
+                className="bg-green-50 dark:bg-[var(--accent-2)] border border-[var(--gray-6)] rounded-xl p-6 mb-6"
+                data-oid="rns7-qq"
+              >
+                <div className="flex items-center" data-oid="urlbe33">
                   <svg
                     className="h-6 w-6 text-[var(--accent-9)] dark:text-[var(--accent-9)] mr-3"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
+                    data-oid="4esnc8y"
                   >
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       strokeWidth={2}
                       d="M5 13l4 4L19 7"
+                      data-oid="im.e0ix"
                     />
                   </svg>
-                  <p className="text-[var(--accent-11)] dark:text-[var(--accent-11)] font-medium">
+                  <p
+                    className="text-[var(--accent-11)] dark:text-[var(--accent-11)] font-medium"
+                    data-oid="4oemrmt"
+                  >
                     感謝您的訊息！我們會盡快回覆您。
                   </p>
                 </div>
               </div>
             ) : (
-              <FormPrimitive.Root asChild>
+              <FormPrimitive.Root asChild data-oid="p2vdwu_">
                 <Form
                   ref={formRef}
                   method="post"
                   className="space-y-6"
-                  onSubmit={() => setIsSubmitting(true)}
+                  onSubmit={handleSubmit}
+                  data-oid="j3c0jpy"
                 >
                   <FormField
                     name="name"
                     label="姓名"
                     error={actionData?.errors?.name}
                     defaultValue={actionData?.values?.name}
+                    data-oid="jjprrho"
                   />
 
                   <FormField
@@ -493,6 +596,7 @@ export default function ContactUs() {
                     type="email"
                     error={actionData?.errors?.email}
                     defaultValue={actionData?.values?.email}
+                    data-oid="rcm84:r"
                   />
 
                   <FormField
@@ -500,6 +604,7 @@ export default function ContactUs() {
                     label="主旨"
                     error={actionData?.errors?.subject}
                     defaultValue={actionData?.values?.subject}
+                    data-oid="plm6ovo"
                   />
 
                   <FormField
@@ -509,21 +614,26 @@ export default function ContactUs() {
                     rows={4}
                     error={actionData?.errors?.message}
                     defaultValue={actionData?.values?.message}
+                    data-oid="g4gmag1"
                   />
 
-                  <FormPrimitive.Submit asChild>
+                  <FormPrimitive.Submit asChild data-oid="2mojbyt">
                     <Button
-                      disabled={isSubmitting}
+                      disabled={!isHydrated || isSubmitting}
                       type="submit"
                       size="3"
                       variant="solid"
                       className="w-full"
+                      data-oid=":1d8ye6"
                     >
                       {isSubmitting ? "傳送中..." : "傳送訊息"}
                     </Button>
                   </FormPrimitive.Submit>
                   {actionData?.errors?.system && (
-                    <p className="text-sm text-[var(--accent-9)]">
+                    <p
+                      className="text-sm text-[var(--accent-9)]"
+                      data-oid="vpk5okz"
+                    >
                       {actionData.errors.system}
                     </p>
                   )}
