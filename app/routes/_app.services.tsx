@@ -20,34 +20,51 @@ interface LoaderData {
 }
 
 // Constants
-const CONTENT_DIR = join(process.cwd(), "content", "services");
+const APP_DIR = join(process.cwd(), "app");
+const ROUTES_DIR = join(APP_DIR, "routes");
 
 export const loader = async () => {
   try {
-    const files = await readdir(CONTENT_DIR);
+    const files = await readdir(ROUTES_DIR);
     const mdxFiles = files.filter(
       (file) => file.endsWith(".mdx") && !file.startsWith("_"),
     );
 
     const services = await Promise.all(
       mdxFiles.map(async (filename) => {
-        const filePath = join(CONTENT_DIR, filename);
-        const source = await readFile(filePath, "utf-8");
-        const { data } = matter(source);
+        try {
+          const filePath = join(ROUTES_DIR, filename);
+          const source = await readFile(filePath, "utf-8");
+          const { data } = matter(source);
 
-        if (!data.title || !data.description || !data.date) {
-          console.warn(`Missing required frontmatter in ${filename}`);
+          // Validate required frontmatter fields
+          if (!data.title || !data.description || !data.date) {
+            console.warn(`Missing required frontmatter in ${filename}. Required fields: title, description, date`);
+            return null;
+          }
+
+          // Convert filename to route path
+          // e.g., "services.china-shipping.mdx" -> "/services/china-shipping"
+          const routePath = filename
+            .replace(/\.mdx$/, '')  // Remove .mdx extension
+            .split('.')             // Split by dots
+            .join('/');            // Join with slashes
+
+          // Type check the data
+          const service: ServiceMeta = {
+            slug: routePath,
+            title: String(data.title),
+            description: String(data.description),
+            image: data.image ? String(data.image) : "",
+            date: String(data.date),
+            tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
+          };
+
+          return service;
+        } catch (error) {
+          console.error(`Error processing ${filename}:`, error);
           return null;
         }
-
-        return {
-          slug: filename.replace(/\.mdx$/, ""),
-          title: data.title,
-          description: data.description,
-          image: data.image || "",
-          date: data.date,
-          tags: data.tags || [],
-        };
       }),
     );
 
@@ -162,7 +179,7 @@ export default function Services() {
                 className="group relative bg-gradient-to-b from-[var(--accent-1)] to-[var(--accent-2)] rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
                 data-oid="xfyfduv"
               >
-                <Link to={service.slug} className="block" data-oid="_95w5up">
+                <Link to={`/${service.slug}`} className="block" data-oid="_95w5up">
                   {service.image ? (
                     <div
                       className="relative h-48 overflow-hidden"

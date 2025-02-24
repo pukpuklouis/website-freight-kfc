@@ -6,7 +6,6 @@ import {
   ScrollRestoration,
   useLoaderData,
   json,
-  LiveReload,
 } from "@remix-run/react";
 import type {
   LinksFunction,
@@ -115,7 +114,6 @@ export default function App() {
         </ThemeProvider>
         <ScrollRestoration data-oid="i_jh419" />
         <Scripts data-oid="9hq3nn8" />
-        <LiveReload />
       </body>
     </html>
   );

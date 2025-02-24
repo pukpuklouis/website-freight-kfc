@@ -1,12 +1,15 @@
 {
   "include": [
+    "env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     "**/.server/**/*.ts",
     "**/.server/**/*.tsx",
     "**/.client/**/*.ts",
-    "**/.client/**/*.tsx"
-, "svgr.config.mjs", "svgo.config.mjs", "remix.config.js"  ],
+    "**/.client/**/*.tsx", 
+    "svgr.config.mjs", 
+    "svgo.config.mjs", 
+    "remix.config.js"  ],
   "compilerOptions": {
     "lib": ["DOM", "DOM.Iterable", "ES2022"],
     "types": ["@remix-run/node", "@remix-run/cloudflare","vite/client", "@cloudflare/workers-types"],
