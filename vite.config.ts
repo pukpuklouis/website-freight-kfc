@@ -4,16 +4,18 @@ import {
  } from "@remix-run/dev";
 import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
-import mdx from '@mdx-js/rollup';
+import mdx from "@mdx-js/rollup";
 import remarkGfm from 'remark-gfm';
 import rehypeSlug from 'rehype-slug';
+import remarkFrontmatter from "remark-frontmatter";
+import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 
 export default defineConfig({
   plugins: [
     remixCloudflareDevProxy(),
     mdx({
-      remarkPlugins: [remarkGfm],
+      remarkPlugins: [remarkGfm, remarkFrontmatter, remarkMdxFrontmatter],
       rehypePlugins: [
         rehypeSlug,
         [rehypeAutolinkHeadings, { behavior: "wrap" }]
@@ -34,28 +36,21 @@ export default defineConfig({
     exclude: [
       '@radix-ui/react-form',
       '@radix-ui/react-alert-dialog',
-      // 'mdx-bundler' // Keep excluded
     ],
     include: [
       '@remix-run/react',
       'react',
       'react-dom',
-      'react/jsx-runtime',
-      'mdx-bundler'
+      'react/jsx-runtime'
     ]
   },
   resolve: {
     alias: {
       crypto: 'crypto-browserify',
-      // path: 'path-browserify'
+      path: 'path-browserify'
     }
   },
   build: {
     sourcemap: false
-    },
-  server: {
-    hmr: {
-      timeout: 5000
-    }
   }
 });

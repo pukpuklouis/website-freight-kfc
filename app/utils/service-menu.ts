@@ -7,29 +7,45 @@ export interface ServiceLink {
   url: string;
 }
 
-const CONTENT_DIR = join(process.cwd(), "content");
-const SERVICES_DIR = join(CONTENT_DIR, "services");
+const APP_DIR = join(process.cwd(), "app");
+const ROUTES_DIR = join(APP_DIR, "routes");
 
 export async function getServiceLinks(): Promise<ServiceLink[]> {
-  // Read all MDX files in the services directory
-  const files = await readdir(SERVICES_DIR);
-  const mdxFiles = files.filter(file => file.endsWith(".mdx") && !file.startsWith("_"));
+  try {
+    // Read all MDX files in the routes directory
+    const files = await readdir(ROUTES_DIR);
+    const mdxFiles = files.filter(file => file.endsWith(".mdx") && !file.startsWith("_"));
 
-  const serviceLinks: ServiceLink[] = [];
+    const serviceLinks = await Promise.all(
+      mdxFiles.map(async (file) => {
+        const filePath = join(ROUTES_DIR, file);
+        const content = await readFile(filePath, "utf-8");
+        const { data } = matter(content);
 
-  for (const file of mdxFiles) {
-    const filePath = join(SERVICES_DIR, file);
-    const content = await readFile(filePath, "utf-8");
-    const { data } = matter(content);
+        if (!data.title) {
+          console.warn(`Missing title in ${file}`);
+          return null;
+        }
 
-    if (data.title) {
-      serviceLinks.push({
-        title: data.title,
-        url: `/services/${file.replace(".mdx", "")}`,
-      });
-    }
+        // Convert filename to route path
+        // e.g., "services.china-shipping.mdx" -> "/services/china-shipping"
+        const url = file
+          .replace(/\.mdx$/, '')  // Remove .mdx extension
+          .split('.')             // Split by dots
+          .join('/');            // Join with slashes
+
+        return {
+          title: data.title,
+          url: `/${url}`,
+        };
+      })
+    );
+
+    return serviceLinks
+      .filter((link): link is ServiceLink => link !== null)
+      .sort((a, b) => a.title.localeCompare(b.title));
+  } catch (error) {
+    console.error("Error reading service links:", error);
+    return [];
   }
-
-  // Sort by title
-  return serviceLinks.sort((a, b) => a.title.localeCompare(b.title));
 }

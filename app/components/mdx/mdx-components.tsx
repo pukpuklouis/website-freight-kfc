@@ -210,8 +210,8 @@ export const mdxComponents = {
   ),
 };
 
-export const MDXWrapper = ({ children }: { children: ReactNode }) => (
-  <div className="prose prose-lg max-w-none">
+export const MDXWrapper = ({ children, components = mdxComponents }: MDXWrapperProps) => (
+  <div className="mdx-content">
     {children}
   </div>
 );
