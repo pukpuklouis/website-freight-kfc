@@ -7,32 +7,21 @@ import { ThemeToggle } from "./ThemeToggle";
 import { Button } from "@radix-ui/themes";
 import { useTheme, themes } from "~/utils/theme";
 import "@radix-ui/themes/styles.css";
+import type { ServiceLink } from "~/models/service.server";
 
-type NavLink = {
+interface NavLink {
   title: string;
   url: string;
-  subMenuLinks?: NavLink[];
-};
+  subMenuLinks?: ServiceLink[];
+}
 
-const navLinks: NavLink[] = [
-  { title: "關於我們", url: "/about-us" },
-  {
-    title: "服務介紹",
-    url: "/services",
-    subMenuLinks: [
-      { title: "冷鏈物流", url: "/services/cold-chain" },
-      { title: "倉儲服務", url: "/services/warehousing" },
-      { title: "運輸配送", url: "/services/delivery" },
-      { title: "供應鏈管理", url: "/services/supply-chain" },
-    ],
-  },
-  // { title: "未來營運", url: "/vision-roadmap" },
-  { title: "聯絡我們", url: "/contact-us" },
-];
+interface HeaderProps {
+  serviceLinks: ServiceLink[];
+}
 
 const NavButtonText = "跨境下單";
 
-export function Header() {
+export function Header({ serviceLinks }: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { theme } = useTheme();
   const accentColor = themes[theme].accent;
@@ -41,28 +30,28 @@ export function Header() {
   const NavItem = ({ link }: { link: NavLink }) => {
     if (link.subMenuLinks) {
       return (
-        <div className="group relative" data-oid="rz7-9su">
+        <div className="group relative" data-oid="m2a3y68">
           <div
             className="flex items-center gap-1 py-2 text-lg font-medium text-[var(--accent-9)] transition-colors hover:text-[var(--accent-11)]"
-            data-oid="a4odllj"
+            data-oid="y0eu3l4"
           >
             {link.title}
-            <RxChevronDown className="size-4" data-oid="kfc61hx" />
+            <RxChevronDown className="size-4" data-oid="w3xdspa" />
           </div>
           <div
             className="absolute left-0 top-full hidden pt-2 group-hover:block"
-            data-oid="_jcfvyi"
+            data-oid="sgi2kyd"
           >
             <div
-              className="w-48 rounded-lg border border-[var(--accent-6)] bg-background/70 backdrop-blur-sm p-2 shadow-lg"
-              data-oid="t7n4ycj"
+              className="w-[18rem] rounded-lg border border-[var(--accent-8)] bg-[var(--gray-a3)] backdrop-blur-sm p-2 shadow-lg transition-all duration-300"
+              data-oid="rs0ww6i"
             >
               {link.subMenuLinks.map((subLink) => (
                 <Link
                   key={subLink.title}
                   to={subLink.url}
                   className="block rounded-md px-2 py-1.5 text-md text-[var(--accent-9)] transition-colors hover:bg-[var(--accent-9)] hover:text-[var(--gray-1)] dark:hover:bg-[var(--accent-8)] dark:hover:text-[var(--gray-12)]"
-                  data-oid="8k:aa:a"
+                  data-oid="jgi9e5x"
                 >
                   {subLink.title}
                 </Link>
@@ -77,7 +66,7 @@ export function Header() {
       <Link
         to={link.url}
         className="py-2 text-lg font-bold text-[var(--accent-9)] transition-colors hover:text-[var(--accent-11)]"
-        data-oid="rwi.i38"
+        data-oid="dix:9g0"
       >
         {link.title}
       </Link>
@@ -89,32 +78,32 @@ export function Header() {
 
     if (link.subMenuLinks) {
       return (
-        <div className="w-full" data-oid="22qjc9r">
-          <button
+        <div className="w-full" data-oid=":e-r02x">
+          <Button
             onClick={() => setIsSubMenuOpen(!isSubMenuOpen)}
             className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-md font-medium text-[var(--gray-11)] transition-colors hover:bg-accent hover:text[var(--accent-7)]"
-            data-oid="0irfe9e"
+            data-oid="._.gpe."
           >
             {link.title}
             <RxChevronDown
               className={`size-4 transition-transform ${
                 isSubMenuOpen ? "rotate-180" : ""
               }`}
-              data-oid=".vqc2d5"
+              data-oid="uw77.ky"
             />
-          </button>
-          <AnimatePresence data-oid="pm3bhx5">
+          </Button>
+          <AnimatePresence data-oid="xd.rt8o">
             {isSubMenuOpen && (
               <motion.div
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "auto" }}
                 exit={{ opacity: 0, height: 0 }}
                 className="overflow-hidden"
-                data-oid="5-f2qmi"
+                data-oid="iogu9og"
               >
                 <div
                   className="ml-4 mt-1 flex flex-col gap-1"
-                  data-oid="ui0j63l"
+                  data-oid="1do-69g"
                 >
                   {link.subMenuLinks.map((subLink) => (
                     <Link
@@ -122,7 +111,7 @@ export function Header() {
                       to={subLink.url}
                       className="rounded-lg px-3 py-2 text-sm text-[var(--gray-11)] transition-colors hover:bg-accent hover:text-accent-foreground"
                       onClick={() => setIsMobileMenuOpen(false)}
-                      data-oid="nj8uwqn"
+                      data-oid="8azs6eo"
                     >
                       {subLink.title}
                     </Link>
@@ -140,12 +129,22 @@ export function Header() {
         to={link.url}
         className="w-full rounded-lg px-3 py-2 text-md font-medium text-[var(--gray-11)] transition-colors hover:bg-accent hover:text-accent-foreground"
         onClick={() => setIsMobileMenuOpen(false)}
-        data-oid="83e61w4"
+        data-oid="pqk7z7l"
       >
         {link.title}
       </Link>
     );
   };
+
+  const navLinks: NavLink[] = [
+    { title: "關於我們", url: "/about-us" },
+    {
+      title: "服務項目",
+      url: "/services",
+      subMenuLinks: serviceLinks
+    },
+    { title: "聯絡我們", url: "/contact-us" },
+  ];
 
   return (
     <section
@@ -156,23 +155,23 @@ export function Header() {
           "--theme-gray-12": grayColors[12],
         } as React.CSSProperties
       }
-      data-oid="rh1_gju"
+      data-oid="1.l3v:j"
     >
       <div
-        className="px-6 rounded-full bg-background/60 backdrop-blur-md border shadow-sm"
-        data-oid="x6svic3"
+        className="px-6 rounded-full bg-[var(--gray-a3)] backdrop-blur-md border border-[var(--accent-8)] shadow-sm transition duration-300"
+        data-oid="g2dw62s"
       >
         <div
           className="relative flex h-14 items-center justify-between"
-          data-oid="67zd8it"
+          data-oid="vv7jcw-"
         >
           {/* Mobile Menu Button and Logo Container */}
-          <div className="flex items-center" data-oid="-ylae0b">
+          <div className="flex items-center" data-oid="1xjqx9.">
             {/* Mobile Menu Button */}
             <button
               className="flex size-12 flex-col justify-center lg:hidden"
               onClick={() => setIsMobileMenuOpen((prev) => !prev)}
-              data-oid="34atzc."
+              data-oid="332cbfs"
             >
               {Array(3)
                 .fill(null)
@@ -180,7 +179,7 @@ export function Header() {
                   <span
                     key={index}
                     className="my-[3px] h-0.5 w-6 bg-foreground"
-                    data-oid="nardpl8"
+                    data-oid="7lushob"
                   />
                 ))}
             </button>
@@ -189,13 +188,13 @@ export function Header() {
             <Link
               to="/"
               className="lg:ml-0 absolute left-1/2 -translate-x-1/2 lg:static lg:translate-x-0 flex items-center text-2xl font-bold"
-              data-oid="am4w1yi"
+              data-oid=".5l77gw"
             >
               <img
                 src="https://res.cloudinary.com/pukpuklouis/image/upload/s--Dq6anFk9--/KFZ/KFC-logo_wrjevi"
                 alt="KFC Logo"
                 className="h-8"
-                data-oid="c9rmy6g"
+                data-oid="bvr6kiz"
               />
             </Link>
           </div>
@@ -203,18 +202,18 @@ export function Header() {
           {/* Desktop Navigation - Centered */}
           <nav
             className="hidden lg:flex lg:gap-4 items-center absolute left-1/2 -translate-x-1/2"
-            data-oid="kp5.tie"
+            data-oid="_pv1_bo"
           >
             {navLinks.map((link) => (
-              <NavItem key={link.title} link={link} data-oid="t:9lffo" />
+              <NavItem key={link.title} link={link} data-oid="xckao84" />
             ))}
           </nav>
 
           {/* Right Actions */}
-          <div className="hidden lg:flex items-center gap-4" data-oid="1kmbp9v">
-            <ThemeToggle data-oid="83tid3e" />
-            <Button asChild size="3" radius="full" data-oid="53dgh6:">
-              <Link to="/contact-us" data-oid="xhgvy4-">
+          <div className="hidden lg:flex items-center gap-4" data-oid="jzv8fbr">
+            <ThemeToggle data-oid="qd39mo0" />
+            <Button asChild size="3" radius="full" data-oid="nla0jpk">
+              <Link to="/contact-us" data-oid="cs6zu6y">
                 {NavButtonText}
               </Link>
             </Button>
@@ -223,34 +222,34 @@ export function Header() {
       </div>
 
       {/* Mobile Menu */}
-      <AnimatePresence data-oid="p8o4kun">
+      <AnimatePresence data-oid=".lx_72p">
         {isMobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             className="absolute left-0 right-0 top-full mt-2 rounded-2xl border bg-popover shadow-lg lg:hidden"
-            data-oid="vnxfss2"
+            data-oid="hq71fzz"
           >
-            <nav className="flex flex-col gap-2 p-4" data-oid="iyt:mci">
+            <nav className="flex flex-col gap-2 p-4" data-oid="r7m20mr">
               {navLinks.map((link) => (
                 <MobileNavItem
                   key={link.title}
                   link={link}
-                  data-oid="5s7:xa0"
+                  data-oid="as7gin1"
                 />
               ))}
-              <Button asChild className="w-full mt-2 " data-oid="bek4h:9">
+              <Button asChild className="w-full mt-2 " data-oid="vdriy8l">
                 <Link
                   to="/contact-us"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  data-oid="717enux"
+                  data-oid="c09mbjt"
                 >
                   {NavButtonText}
                 </Link>
               </Button>
-              <div className="flex justify-center mt-2" data-oid="87eqj7e">
-                <ThemeToggle data-oid="9qz6cog" />
+              <div className="flex justify-center mt-2" data-oid="2wi2j8u">
+                <ThemeToggle data-oid="r54:2ii" />
               </div>
             </nav>
           </motion.div>

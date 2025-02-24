@@ -77,7 +77,7 @@ export function Spotlight({
       style={{
         opacity: isHovered ? 1 : 0,
       }}
-      data-oid="tjvugwr"
+      data-oid="kgb66lu"
     >
       <motion.div
         className="absolute inset-0 z-30 bg-gradient-to-r from-transparent via-accent-foreground/10 to-transparent"
@@ -87,7 +87,7 @@ export function Spotlight({
           width: size,
           height: size,
         }}
-        data-oid=":wh09yt"
+        data-oid="4v9ckpe"
       />
     </motion.div>
   );

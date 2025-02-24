@@ -1,4 +1,4 @@
-import { json } from "@remix-run/node";
+import { json, type LoaderFunctionArgs } from "@remix-run/node";
 import type { LoaderFunction, MetaFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { HeroSection } from "~/components/_index_hero_section";
@@ -6,6 +6,7 @@ import { FeatureSection } from "~/components/_index_feature_section";
 import { BenefitSection } from "~/components/_index_benefit_section";
 import { HowItWorks } from "~/components/_index_howitwork";
 import { ServiceSection } from "~/components/_index_service_section";
+import { getAllServiceLinks, type ServiceLink } from "~/models/service.server";
 
 interface Service {
   title: string;
@@ -14,9 +15,9 @@ interface Service {
   link: string;
 }
 
-// Add LoaderData type to properly type the loader return value
 interface LoaderData {
   services: Service[];
+  serviceLinks: ServiceLink[];
 }
 
 export const meta: MetaFunction = () => {
@@ -26,7 +27,7 @@ export const meta: MetaFunction = () => {
   ];
 };
 
-export const loader: LoaderFunction = async () => {
+export const loader: LoaderFunction = async ({ request }: LoaderFunctionArgs) => {
   const services: Service[] = [
     {
       title: "海運",
@@ -51,18 +52,19 @@ export const loader: LoaderFunction = async () => {
     },
   ];
 
-  return json<LoaderData>({ services });
+  const serviceLinks = await getAllServiceLinks();
+  return json<LoaderData>({ services, serviceLinks });
 };
 
 export default function Index() {
-  const { services } = useLoaderData<LoaderData>();
+  const { services, serviceLinks } = useLoaderData<LoaderData>();
 
   return (
-    <main className="flex-1" data-oid="bwic6ab">
-      <HeroSection data-oid="3ctctm." />
-      <FeatureSection data-oid=":ya9fao" />
+    <main className="flex-1" data-oid="wr-sqyq">
+      <HeroSection data-oid="7mevyqu" />
+      <FeatureSection data-oid="ak90jih" />
       {/* <BenefitSection data-oid=".5.11og" /> */}
-      <HowItWorks data-oid="03m5c7j" />
+      <HowItWorks data-oid="m-c-:kp" />
       {/* <ServiceSection services={services} data-oid="rb6s:rr" /> */}
     </main>
   );

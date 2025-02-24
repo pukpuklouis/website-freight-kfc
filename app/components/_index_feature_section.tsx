@@ -4,6 +4,8 @@ import type { LucideIcon } from "lucide-react";
 import { Tilt } from "~/components/ui/tilt";
 import { Spotlight } from "~/components/ui/spotlight";
 import { useTheme, themes } from "~/utils/theme";
+import { FeatureLgCard } from "./feature-lg-card";
+import { Link } from "@remix-run/react";
 
 interface ImageData {
   readonly src: string;
@@ -15,6 +17,7 @@ interface FeatureCardProps {
   readonly title: string;
   readonly description: string;
   readonly className?: string;
+  readonly url?: string;
 }
 
 interface FeatureSectionProps {
@@ -28,27 +31,39 @@ interface FeatureSectionProps {
 const defaultFeatures: FeatureCardProps[] = [
   {
     image: {
-      src: "https://images.unsplash.com/photo-1516738901171-8eb4fc13bd20?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3Ds",
-      alt: "全球物流網絡",
+      src: "https://images.unsplash.com/photo-1596188126441-41279e8f5e46?q=80&w=1920&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      alt: "兩岸三地海快、空運、小三通",
     },
-    title: "全球網路",
+    title: "兩岸三地海快、空運、小三通",
     description: "專精大中華區，確保貨物安全高效地運送到目的地。",
+    url: "services/cross-strait-three-regions-sea-express-air-transport",
   },
   {
     image: {
-      src: "https://images.unsplash.com/photo-1581089781785-603411fa81e5?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      alt: "即時追蹤系統",
+      src: "/images/services/city-1909892_1920.webp",
+      alt: "台灣快遞海運菲律賓",
     },
-    title: "即時追蹤",
+    title: "台灣快遞海運菲律賓",
+    description: "海運服務，深入菲律賓地區確保貨物安全高效送到目的地。",
+    url: "services/taiwan-express-delivery-and-sea-freight-to-philippines",
+  },
+  {
+    image: {
+      src: "https://images.unsplash.com/photo-1653029431060-4a5909fdf59d?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      alt: "日本海快到台灣",
+    },
+    title: "日本海快到台灣",
     description: "透過我們的先進追蹤系統，全天候監控您的貨物。",
+    url: "services/japan-sea-express-to-taiwan",
   },
   {
     image: {
       src: "https://images.unsplash.com/photo-1553413077-190dd305871c?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      alt: "安全貨運處理",
+      alt: "台灣倉儲配送",
     },
-    title: "安全處理",
+    title: "台灣倉儲配送",
     description: "採用最先進的安全措施保護您的貴重貨物。",
+    url: "services",
   },
 ];
 
@@ -56,10 +71,14 @@ const FeatureCard = memo(function FeatureCard({
   image,
   title,
   description,
+  url,
   className = "",
 }: FeatureCardProps & { className?: string }) {
   const { theme } = useTheme();
   const { accent, gray } = themes[theme];
+
+  const CardWrapper = url ? Link : "div";
+  const cardProps = url ? { to: url } : {};
 
   return (
     <motion.div
@@ -68,7 +87,6 @@ const FeatureCard = memo(function FeatureCard({
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
       className={className}
-      data-oid="m3izzcm"
     >
       <Tilt
         rotationFactor={6}
@@ -79,18 +97,16 @@ const FeatureCard = memo(function FeatureCard({
           mass: 0.5,
         }}
         className="h-full"
-        data-oid="r.ix:4w"
       >
-        <div
-          className="feature-card group relative overflow-hidden rounded-xl h-full"
-          data-oid="8u6kgdc"
+        <CardWrapper
+          {...cardProps}
+          className="feature-card group relative overflow-hidden rounded-xl h-full block transition-transform duration-300 hover:scale-[1.02]"
         >
           {/* Background Image */}
           <img
             src={image.src}
             alt={image.alt}
             className="absolute inset-0 h-full w-full object-cover"
-            data-oid="d_jx1va"
           />
 
           {/* Spotlight Effect */}
@@ -102,37 +118,33 @@ const FeatureCard = memo(function FeatureCard({
               damping: 20,
               mass: 0.5,
             }}
-            data-oid="7s38p4d"
           />
 
           {/* Content overlay */}
           <div
             className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-[var(--gray-12)] to-transparent"
-            data-oid="hoa64rq"
           >
             <h3
               className="mb-2 text-2xl font-black tracking-tight text-[var(--gray-1)]"
-              data-oid="ih1m_0k"
             >
               {title}
             </h3>
             <p
               className="text-[var(--gray-3)] font-light opacity-0 transform translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0"
-              data-oid=".1y4iy2"
             >
               {description}
             </p>
           </div>
-        </div>
+        </CardWrapper>
       </Tilt>
     </motion.div>
   );
 });
 
 export const FeatureSection = memo(function FeatureSection({
-  tagline = "為什麼選擇我們",
-  heading = "Make logistics disappear like magic.",
-  description = "體驗我們創新的全球貨運服務和專業團隊。",
+  tagline = "Our services",
+  heading = "我們的服務",
+  description = "體驗我們的全球貨運服務和專業團隊。",
   features = defaultFeatures,
   className,
 }: FeatureSectionProps) {
@@ -140,100 +152,18 @@ export const FeatureSection = memo(function FeatureSection({
   const { accent, gray } = themes[theme];
 
   return (
-    <section
-      className="feature-section relative px-[10%] py-16 md:py-24 lg:py-32 bg-[var(--accent-2)]"
-      data-oid="zwtbb.z"
-    >
-      <div className="container mx-auto" data-oid="zomrnrq">
-        {/* Header Section */}
-        <div className="relative mb-8 md:mb-8 lg:mb-8" data-oid="h1zb7-o">
-          <Tilt
-            rotationFactor={4}
-            isRevese
-            springOptions={{
-              stiffness: 26.7,
-              damping: 4.1,
-              mass: 0.2,
-            }}
-            className="group relative overflow-hidden rounded-2xl"
-            data-oid="iu5dq_k"
-          >
-            {/* Background Image */}
-            <div className="absolute inset-0" data-oid="e21cecq">
-              <img
-                src="https://images.unsplash.com/photo-1617952739858-28043cecdae3?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                alt="Background"
-                className="w-full h-full object-cover transition-all duration-700 group-hover:grayscale-7"
-                data-oid=".x02djc"
-              />
-
-              <div
-                className="feature-card-gradient absolute inset-0"
-                data-oid="hbf3.d."
-              />
-            </div>
-
-            {/* Spotlight Effect */}
-            <Spotlight
-              className="feature-spotlight z-10 blur-3xl"
-              size={200}
-              springOptions={{
-                stiffness: 26.7,
-                damping: 4.1,
-                mass: 0.2,
-              }}
-              data-oid="pqq3pgw"
-            />
-
-            {/* Content Card */}
-            <div
-              className="relative z-20 py-16 md:py-20 lg:py-24 px-6 md:px-12"
-              data-oid="a3svz7b"
-            >
-              <div className="mx-auto max-w-3xl" data-oid="hdix865">
-                <div
-                  className="rounded-2xl p-8 md:p-12 border border-[var(--accent-9)] bg-[var(--accent-6)]/50 backdrop-blur-sm transform-gpu transition-all duration-500"
-                  data-oid="e_daam2"
-                >
-                  <p
-                    className="mb-3 text-sm font-medium uppercase tracking-widest md:mb-4 text-[var(--accent-10)]"
-                    data-oid="2o_90fw"
-                  >
-                    {tagline}
-                  </p>
-                  <h2
-                    className="mb-6 text-4xl font-bold md:text-6xl lg:text-7xl tracking-tight text-[var(--accent-9)]"
-                    data-oid="qt5pb3q"
-                  >
-                    {heading.split(" ").map((word, index, array) => (
-                      <span key={index} data-oid="1thf:p:">
-                        {index === array.length - 1 ? (
-                          <span className="italic" data-oid="x5arm79">
-                            {word}
-                          </span>
-                        ) : (
-                          <span data-oid="66xq8zw">{word} </span>
-                        )}
-                      </span>
-                    ))}
-                  </h2>
-                  <p
-                    className="md:text-lg max-w-2xl text-gray-300"
-                    data-oid="3qvjsl6"
-                  >
-                    {description}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </Tilt>
-        </div>
+    <section className="relative px-[10%] py-16 md:py-24 bg-[var(--accent-2)]">
+      <div className="container relative">
+        {/* Hero Feature Card */}
+        <FeatureLgCard
+          tagline={tagline}
+          heading={heading}
+          description={description}
+          imageUrl="https://images.unsplash.com/photo-1617952739858-28043cecdae3?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        />
 
         {/* Features Grid */}
-        <div
-          className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
-          data-oid="kftvf6r"
-        >
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
           {features.map((feature, index) => (
             <FeatureCard
               key={`feature-${index}`}
@@ -243,7 +173,6 @@ export const FeatureSection = memo(function FeatureSection({
                   ? "md:col-span-2 lg:col-span-1 aspect-[16/9] md:aspect-[2/1] lg:aspect-[16/9]"
                   : "aspect-[16/9]"
               }
-              data-oid="jlpu032"
             />
           ))}
         </div>

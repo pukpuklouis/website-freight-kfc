@@ -47,7 +47,7 @@ export default function VisionRoadmap() {
         component: (
           <CheckCircle
             className={`h-6 w-6 text-[${accentColor}]`}
-            data-oid="unelkvo"
+            data-oid="8rk7q9c"
           />
         ),
       },
@@ -65,7 +65,7 @@ export default function VisionRoadmap() {
         component: (
           <Scale
             className={`h-6 w-6 text-[${accentColor}]`}
-            data-oid=":ocpnd6"
+            data-oid="hxyg6dm"
           />
         ),
       },
@@ -83,7 +83,7 @@ export default function VisionRoadmap() {
         component: (
           <Globe
             className={`h-6 w-6 text-[${accentColor}]`}
-            data-oid="ark.h.z"
+            data-oid="ce41ztu"
           />
         ),
       },
@@ -93,7 +93,7 @@ export default function VisionRoadmap() {
   return (
     <div
       className="mx-auto px-4 sm:px-6 lg:px-8 py-40 bg-[var(--accent-2)]"
-      data-oid="v4_cx-a"
+      data-oid="nqnwqp:"
     >
       <FeatureVision
         heading="卡菲斯國際願景藍圖"
@@ -116,13 +116,13 @@ export default function VisionRoadmap() {
           src: "https://images.unsplash.com/photo-1605732562742-3023a888e56e?q=80&w=2835&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           alt: "Vision",
         }}
-        data-oid="f8l5zbq"
+        data-oid="t2h1_hp"
       />
 
       <StrategicFocus
         heading="未來策略重點規劃"
         strategies={strategies}
-        data-oid="-d_sosa"
+        data-oid="q6jldr8"
       />
     </div>
   );

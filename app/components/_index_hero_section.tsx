@@ -34,12 +34,12 @@ export function HeroSection() {
       className="flex items-center gap-2"
       whileHover={{ scale: 1.05 }}
       transition={{ type: "spring", stiffness: 400, damping: 10 }}
-      data-oid="yito421"
+      data-oid="6-wh2ky"
     >
-      <Icon className="h-5 w-5 text-[var(--accent-9)]" data-oid="rgro2ad" />
+      <Icon className="h-5 w-5 text-[var(--accent-9)]" data-oid="yfi0.8g" />
       <span
         className="text-[var(--accent-10)] text-[clamp(0.2rem,2vw+0.5rem,1rem)]"
-        data-oid="9t:h435"
+        data-oid="6-s4pk0"
       >
         {text}
       </span>
@@ -77,20 +77,20 @@ export function HeroSection() {
   return (
     <section
       className="relative pt-32 pb-16 md:pt-40 md:pb-24 bg-gradient-to-b from-[var(--accent-6)] via-[var(--accent-2)] to-transparent overflow-show bg-[var(--accent-2)]"
-      data-oid="z9-0rbe"
+      data-oid="o:fq5__"
     >
       <div
         className="absolute inset-0 bg-grid-slate-900/[0.04] bg-[size:75px_75px] [mask-image:linear-gradient(to_bottom,white,transparent)] z-[-1]"
-        data-oid="00ypj2r"
+        data-oid="fc0n0-t"
       />
 
-      <div className="container mx-auto px-4" data-oid="b:hl5nz">
+      <div className="container mx-auto px-4" data-oid=".ieiqe_">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="text-center mb-12 md:mb-16 mt-4"
-          data-oid="-9yp.mb"
+          data-oid="vm2v57k"
         >
           <motion.h1
             style={{
@@ -103,7 +103,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            data-oid="_if50hi"
+            data-oid="-lqdk.2"
           >
             跨境運輸 連接四方
           </motion.h1>
@@ -113,7 +113,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            data-oid="-f9ti0c"
+            data-oid="n51s784"
           >
             卡菲斯國際運輸提供無縫的跨境運輸解決方案，讓您出貨無憂。
           </motion.p>
@@ -122,24 +122,24 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            data-oid="_3x7mt3"
+            data-oid="smmaaq2"
           >
             <Button
               size="4"
               variant="solid"
               className="group transition-all duration-200 shadow-lg bg-[var(--accent-9)] text-[var(--accent-contrast)] hover:bg-[var(--accent-10)] hover:border-[var(--accent-9)]"
               asChild
-              data-oid="472bx04"
+              data-oid="yvrfzdl"
             >
               <Link
                 to="/contact-us"
                 className="inline-flex items-center gap-2"
-                data-oid="5z_d:e0"
+                data-oid="dw9c2cn"
               >
                 {heroCTA}
                 <Ship
                   className="h-5 w-5 transition-transform duration-200 group-hover:scale-[1.2]"
-                  data-oid="g-_a_g-"
+                  data-oid="nqrgn.r"
                 />
               </Link>
             </Button>
@@ -148,7 +148,7 @@ export function HeroSection() {
 
         <div
           className="relative border border-1 border-separate border-[var(--accent-7)] w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[550px] overflow-hidden rounded-xl sm:rounded-3xl md:rounded-4xl"
-          data-oid="pmyllkk"
+          data-oid="av6he11"
         >
           {heroImages.map((image, index) => (
             <motion.div
@@ -160,22 +160,22 @@ export function HeroSection() {
                 scale: currentImageIndex === index ? 1 : 1.1,
               }}
               transition={{ duration: 0.8 }}
-              data-oid="ldqkvad"
+              data-oid="9sdzp.0"
             >
               <img
                 src={image.src}
                 alt={image.alt}
                 className="w-full h-full object-cover rounded-2xl"
-                data-oid="je7gwqt"
+                data-oid="dx6m4q0"
               />
 
               <div
                 className="absolute inset-0 bg-black/30 rounded-2xl flex items-end justify-end p-4"
-                data-oid="7nk4:z5"
+                data-oid="465o2-v"
               >
                 <span
                   className="absolute bottom-8 right-8 text-gray-300 lg:text-5xl md:text-3xl sm:text-3xl font-bold"
-                  data-oid="bt-nugv"
+                  data-oid="l3l:ft:"
                 >
                   {image.location}
                 </span>
@@ -184,7 +184,7 @@ export function HeroSection() {
           ))}
           <div
             className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2"
-            data-oid="z_-f1w1"
+            data-oid="rfn92al"
           >
             {heroImages.map((_, index) => (
               <button
@@ -196,7 +196,7 @@ export function HeroSection() {
                     : "bg-white/50 hover:bg-white/70"
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
-                data-oid="rjx5m2y"
+                data-oid="my7ti3x"
               />
             ))}
           </div>
@@ -207,10 +207,10 @@ export function HeroSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          data-oid="mngkk81"
+          data-oid="v..hiog"
         >
           {featureItems.map((item) => (
-            <FeatureItem key={item.text} {...item} data-oid="6pjawhf" />
+            <FeatureItem key={item.text} {...item} data-oid="h.j6pze" />
           ))}
         </motion.div>
       </div>
