@@ -107,7 +107,11 @@ export function FAQSection({
                       data-oid="d4zd9o6"
                     >
                       <ReactMarkdown
-                        className="text-[var(--gray-11)]"
+                        components={{
+                          p: ({ children }) => (
+                            <p className="text-[var(--gray-11)]">{children}</p>
+                          )
+                        }}
                         data-oid="j8-xe8v"
                       >
                         {question.answer}

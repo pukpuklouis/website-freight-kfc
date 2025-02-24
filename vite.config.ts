@@ -37,8 +37,14 @@ export default defineConfig({
       path: 'path-browserify',
     }
   },
+  // ssr: {
+  //   target: 'webworker',
+  //   format: 'esm',
+  //   noExternal: true
+  // },
   build: {
     rollupOptions: {
+      // external: [], // Explicitly mark nothing as external for the client build
       output: {
         manualChunks: {
           vendor: [
