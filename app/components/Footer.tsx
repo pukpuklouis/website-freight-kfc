@@ -46,25 +46,25 @@ const socialLinks: SocialLink[] = [
     name: "Line",
     url: "https://line.me/ti/p/~0932194674",
     id: "0932194674",
-    icon: <FaLine className="w-5 h-5 text-green-500" data-oid="z2vq6:d" />,
+    icon: <FaLine className="w-5 h-5 text-green-500" data-oid="qflxed0" />,
   },
   {
     name: "Line",
     url: "https://line.me/ti/p/~12unisky",
     id: "12unisky",
-    icon: <FaLine className="w-5 h-5 text-green-500" data-oid="7kif37w" />,
+    icon: <FaLine className="w-5 h-5 text-green-500" data-oid="jkwl::-" />,
   },
   {
     name: "Line",
     url: "https://line.me/ti/p/~@217iielg",
     id: "@217iielg",
-    icon: <FaLine className="w-5 h-5 text-green-500" data-oid="hh.thim" />,
+    icon: <FaLine className="w-5 h-5 text-green-500" data-oid="9q01tsm" />,
   },
   {
     name: "WeChat",
     url: "weixin://dl/chat?a0932194674",
     id: "a0932194674",
-    icon: <FaWeixin className="w-5 h-5 text-green-500" data-oid="h_3vso9" />,
+    icon: <FaWeixin className="w-5 h-5 text-green-500" data-oid="t60e-7a" />,
   },
   // {
   //   name: "QQ",
@@ -78,7 +78,7 @@ const followLinks = [
   {
     name: "Facebook",
     url: "https://www.facebook.com/profile.php?id=100057394310703",
-    icon: <FaFacebookF className="w-4 h-4" data-oid="q:ft:rd" />,
+    icon: <FaFacebookF className="w-4 h-4" data-oid="_mo8w-9" />,
   },
 ];
 
@@ -130,19 +130,19 @@ const defaultCompanyInfo: CompanyInfo = {
 };
 
 const ContactItem = ({ label, value }: ContactInfo) => (
-  <p data-oid="dh7-2wu">
-    <span className="font-semibold" data-oid="fza5hm2">
+  <p data-oid="y_bs7vr">
+    <span className="font-semibold" data-oid="f98uvut">
       {label}:
     </span>{" "}
-    <span className="" data-oid="23nk.98">
+    <span className="" data-oid="h-5igx9">
       {value}
     </span>
   </p>
 );
 
 const FooterSection = ({ title, children }: FooterSection) => (
-  <div data-oid="rydg4cj">
-    <h4 className="font-semibold mb-4" data-oid="jqqgu:h">
+  <div data-oid="if:i2cb">
+    <h4 className="font-semibold mb-4" data-oid="2y798fr">
       {title}
     </h4>
     {children}
@@ -150,16 +150,16 @@ const FooterSection = ({ title, children }: FooterSection) => (
 );
 
 const QuickLinksSection = () => (
-  <nav aria-label="Footer navigation" data-oid=":hp-q4f">
-    <FooterSection title="快速連結" data-oid="ktik8wp">
-      <ul className="space-y-2" data-oid=":xqqqsm">
+  <nav aria-label="Footer navigation" data-oid="6evy4n:">
+    <FooterSection title="快速連結" data-oid="q58:j9g">
+      <ul className="space-y-2" data-oid="kycyo2_">
         {quickLinks.map(({ name, to }) => (
-          <li key={name} data-oid="4v-t.xn">
+          <li key={name} data-oid="l91n3wx">
             <Link
               to={to}
               className="hover:text-[var(--accent-1)] transition-colors"
               prefetch="intent"
-              data-oid="lmzmgj3"
+              data-oid="p-modx6"
             >
               {name}
             </Link>
@@ -171,17 +171,17 @@ const QuickLinksSection = () => (
 );
 
 const SocialLinksSection = () => (
-  <FooterSection title="聯絡方式" data-oid="sda69_o">
-    <ul className="space-y-2 text-sm" data-oid="0vz9a64">
+  <FooterSection title="聯絡方式" data-oid="3isvs4v">
+    <ul className="space-y-2 text-sm" data-oid="wfbzc3d">
       {socialLinks.map((link) => (
-        <li key={link.name + link.id} data-oid="tkq8k-2">
+        <li key={link.name + link.id} data-oid="2qzotk.">
           <a
             href={link.url}
             className="hover:text-[var(--accent-1)] transition-colors flex items-center gap-2"
-            data-oid="b6g596s"
+            data-oid="z-x77uy"
           >
             {link.icon}
-            <span className="font-semibold" data-oid="3.ab7r-">
+            <span className="font-semibold" data-oid="mjz8lqr">
               {link.name}:
             </span>{" "}
             {link.id}
@@ -193,8 +193,8 @@ const SocialLinksSection = () => (
 );
 
 const FollowSection = () => (
-  <FooterSection title="追蹤我們" data-oid="q4q6:o:">
-    <div className="flex gap-4" data-oid="cbzyl7k">
+  <FooterSection title="追蹤我們" data-oid="xt_b2co">
+    <div className="flex gap-4" data-oid="4d6mlof">
       {followLinks.map((link) => (
         <a
           key={link.name}
@@ -203,7 +203,7 @@ const FollowSection = () => (
           target="_blank"
           rel="noopener noreferrer"
           aria-label={`Follow us on ${link.name}`}
-          data-oid="p9csw8m"
+          data-oid="ys0usus"
         >
           {link.icon}
         </a>
@@ -213,15 +213,15 @@ const FollowSection = () => (
 );
 
 const DownloadLinksSection = () => (
-  <FooterSection title="下載專區" data-oid="60fn_39">
-    <ul className="space-y-1" data-oid="5qxu1fx">
+  <FooterSection title="下載專區" data-oid="p.zz9kl">
+    <ul className="space-y-1" data-oid=".g5awqg">
       {downloadLinks.map((link) => (
-        <li key={link.name} data-oid="ys8q7a.">
+        <li key={link.name} data-oid="r84:xgt">
           <a
             href={link.url}
             download
             className="inline-flex items-center gap-1 hover:text-[var(--accent-1)] transition-colors group"
-            data-oid="he79v8b"
+            data-oid="xlh8.on"
           >
             {link.name}
             <svg
@@ -229,14 +229,14 @@ const DownloadLinksSection = () => (
               viewBox="0 0 16 16"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              data-oid="zk16.vo"
+              data-oid="bt7ewt."
             >
               <path
                 d="M3 13h10M8 3v7m0 0l3-3m-3 3L5 7"
                 stroke="currentColor"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                data-oid="fghhgcp"
+                data-oid="w4kz.od"
               />
             </svg>
           </a>
@@ -247,16 +247,16 @@ const DownloadLinksSection = () => (
 );
 
 const LinkItemsSection = () => (
-  <FooterSection title="相關連結" data-oid="99l710j">
-    <ul className="space-y-1" data-oid="yeb:-7.">
+  <FooterSection title="相關連結" data-oid="y2r:n-h">
+    <ul className="space-y-1" data-oid="x_tkdyv">
       {linkItems.map((item) => (
-        <li key={item.name} data-oid="oxul7ng">
+        <li key={item.name} data-oid="tnf-a2w">
           <a
             href={item.url}
             className="inline-flex items-center gap-1 hover:text-[var(--accent-1)] transition-colors group"
             target="_blank"
             rel="noopener noreferrer"
-            data-oid="k887-ce"
+            data-oid="itp.439"
           >
             {item.name}
             <svg
@@ -264,14 +264,14 @@ const LinkItemsSection = () => (
               viewBox="0 0 16 16"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              data-oid="er6kqlv"
+              data-oid="gh6aojr"
             >
               <path
                 d="M4.5 11.5L11.5 4.5M11.5 4.5H6.5M11.5 4.5V9.5"
                 stroke="currentColor"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                data-oid="vykmj_i"
+                data-oid="rihql97"
               />
             </svg>
           </a>
@@ -285,27 +285,27 @@ function CompanySection() {
   const companyInfo = React.useMemo(() => defaultCompanyInfo, []);
 
   return (
-    <div className="flex flex-col items-left gap-4" data-oid="du8nwgc">
-      <div className="flex flex-row items-center" data-oid="fbi301x">
+    <div className="flex flex-col items-left gap-4" data-oid="hltd1v7">
+      <div className="flex flex-row items-center" data-oid="nw:ggrr">
         <KfcLogo
           className="w-11 h-6 fill-[var(--accent-11)] mr-2"
-          data-oid="5j46bh8"
+          data-oid="or..24g"
         />
 
-        <h3 className="font-bold text-lg" data-oid="afjv2vj">
+        <h3 className="font-bold text-lg" data-oid="80g8s7w">
           {companyInfo.name}
         </h3>
       </div>
-      <div className="space-y-2" data-oid="_q-xsn5">
-        <p className="text-sm" data-oid="t_04z2p">
+      <div className="space-y-2" data-oid="hv2g41u">
+        <p className="text-sm" data-oid="udoa--s">
           {companyInfo.slogan}
         </p>
-        <p className="text-sm" data-oid="5rco4wm">
+        <p className="text-sm" data-oid=":8q.k47">
           {companyInfo.legalName}
         </p>
-        <div className="space-y-1" data-oid="ar-l0ty">
+        <div className="space-y-1" data-oid="k38d0n3">
           {companyInfo.contacts.map((contact) => (
-            <ContactItem key={contact.label} {...contact} data-oid="9f3e6j8" />
+            <ContactItem key={contact.label} {...contact} data-oid="._ji.km" />
           ))}
         </div>
       </div>
@@ -347,57 +347,57 @@ export function Footer() {
     <footer
       className={themeStyles.footer}
       role="contentinfo"
-      data-oid="8vf8kfp"
+      data-oid="vdxdk0t"
     >
-      <div className="container mx-auto px-4 py-12" data-oid="t35fznt">
+      <div className="container mx-auto px-4 py-12" data-oid="m-gw:l6">
         <div
           className="flex flex-col gap-8 md:grid md:grid-cols-3 md:gap-4 lg:grid-cols-7 lg:gap-4"
-          data-oid="ad2xe_n"
+          data-oid="5gwb:st"
         >
-          <div className="lg:col-span-2 md:col-span-1" data-oid="4cjl654">
-            <CompanySection data-oid="22e49y-" />
+          <div className="lg:col-span-2 md:col-span-1" data-oid=".3_gu61">
+            <CompanySection data-oid="o_8mjmw" />
           </div>
-          <QuickLinksSection data-oid="ag-yled" />
-          <LinkItemsSection data-oid="jvdxzke" />
-          <DownloadLinksSection data-oid="e_f3v8i" />
-          <SocialLinksSection data-oid="ta51k0w" />
-          <FollowSection data-oid="vtsx50." />
+          <QuickLinksSection data-oid="8s8alot" />
+          <LinkItemsSection data-oid=".nfw4rt" />
+          <DownloadLinksSection data-oid="ap4ptn7" />
+          <SocialLinksSection data-oid="pu:6gl0" />
+          <FollowSection data-oid="fxncm:6" />
         </div>
 
         <div
           className={`${themeStyles.border} mt-8 pt-8 text-sm text-center`}
-          data-oid="ocz1ofp"
+          data-oid="u9gvs9v"
         >
-          <p className="mb-2" data-oid="b-3jtwd">
+          <p className="mb-2" data-oid="f1ici::">
             &copy; {currentYear} 卡菲斯國際. All rights reserved.
           </p>
-          <div className="flex justify-center gap-4 mb-4" data-oid="2am8bqj">
+          <div className="flex justify-center gap-4 mb-4" data-oid=":ni0kli">
             <Link
               to="/terms"
               className="hover:text-[var(--accent-1)] transition-colors"
               prefetch="intent"
-              data-oid="bwi97:_"
+              data-oid="-bf.mxy"
             >
               服務條款
             </Link>
-            <span data-oid=":-zs2zt">•</span>
+            <span data-oid="oujl_os">•</span>
             <Link
               to="/privacy"
               className="hover:text-[var(--accent-1)] transition-colors"
               prefetch="intent"
-              data-oid="p2x:qox"
+              data-oid="hf701q6"
             >
               隱私政策
             </Link>
           </div>
-          <p className="" data-oid="hep7lw2">
+          <p className="" data-oid="i7by1nf">
             Design by{" "}
             <a
               href="https://anlstudio.framer.website"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-[var(--accent-1)] transition-colors"
-              data-oid="svhpaac"
+              data-oid="l:iblzl"
             >
               A&LStudio
             </a>

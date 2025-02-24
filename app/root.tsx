@@ -5,6 +5,8 @@ import {
   Scripts,
   ScrollRestoration,
   useLoaderData,
+  json,
+  LiveReload,
 } from "@remix-run/react";
 import type {
   LinksFunction,
@@ -18,6 +20,7 @@ import { ThemeProvider } from "~/components/ThemeProvider";
 import { Header } from "~/components/Header";
 import { Footer } from "~/components/Footer";
 import { getThemeFromCookie, Theme } from "~/utils/theme";
+import { getServiceLinks } from "~/utils/service-menu";
 
 export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
@@ -52,65 +55,67 @@ export const meta: MetaFunction = () => {
 
 export const loader: LoaderFunction = async ({ request }) => {
   const theme = await getThemeFromCookie(request);
-  return { theme };
+  const serviceLinks = await getServiceLinks();
+  return json({ theme, serviceLinks });
 };
 
 export function ErrorBoundary() {
   return (
-    <html lang="en" data-oid="yzqnny1">
-      <head data-oid="rgysxhn">
-        <title data-oid="ttgpgam">Oops! Something went wrong</title>
-        <Meta data-oid="pwuu4f6" />
-        <Links data-oid="yn00ekg" />
+    <html lang="en" data-oid="_50tu_f">
+      <head data-oid="uii0e:z">
+        <title data-oid="oosgdn1">Oops! Something went wrong</title>
+        <Meta data-oid="gi0vai7" />
+        <Links data-oid=":na3lfy" />
       </head>
-      <body className="h-full" data-oid="k:nz3c8">
-        <ThemeProvider data-oid=":tc.9a4">
+      <body className="h-full" data-oid="6a81.27">
+        <ThemeProvider data-oid="noisnm-">
           <div
             className="flex min-h-screen flex-col items-center justify-center p-4"
-            data-oid="gmpw344"
+            data-oid=":i3cwmg"
           >
-            <h1 className="text-2xl font-bold" data-oid="ilgy1h8">
+            <h1 className="text-2xl font-bold" data-oid="lk5.itu">
               Oops! Something went wrong
             </h1>
-            <p className="mt-4 text-gray-600" data-oid="cu0hoih">
+            <p className="mt-4 text-gray-600" data-oid="s1_5g::">
               Please try refreshing the page
             </p>
           </div>
         </ThemeProvider>
-        <Scripts data-oid="h_4j:-c" />
+        <Scripts data-oid="9h5uzye" />
       </body>
     </html>
   );
 }
 
 export default function App() {
-  const { theme } = useLoaderData<{ theme: Theme }>();
+  const { theme, serviceLinks } = useLoaderData<{ theme: Theme; serviceLinks: any }>();
 
   return (
-    <html lang="en" className={theme} data-oid="yz0629g">
-      <head data-oid="dscn-hm">
-        <meta charSet="utf-8" data-oid="_5hmw_e" />
+    <html lang="zh-TW" className={theme} data-oid="x3:jcql">
+      <head data-oid="kbb:8p:">
+        <meta charSet="utf-8" data-oid="eby.pg_" />
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1"
-          data-oid="b16uik_"
+          data-oid="kyt110v"
         />
 
-        <Meta data-oid="u4hp9r8" />
-        <Links data-oid="f8im8ch" />
+        <Meta data-oid="p6j67ls" />
+        <Links data-oid="2ke.af5" />
       </head>
-      <body className="h-full" data-oid="_i7uexq">
-        <ThemeProvider initialTheme={theme} data-oid="ebi_9_r">
-          <div className="flex min-h-screen flex-col" data-oid="e0gwi55">
-            <Header data-oid="3n6q8dd" />
-            <main className="flex-1" data-oid="6ia.izw">
-              <Outlet data-oid="g9:4tp8" />
+      <body className="h-full" data-oid="b554mn3">
+        <ThemeProvider initialTheme={theme} data-oid="y1s3.lj">
+          <div className="flex min-h-screen flex-col" data-oid="pezlp7z">
+            <Header serviceLinks={serviceLinks} data-oid="suoq5h8" />
+            <main className="flex-1" data-oid="w5u8f:a">
+              <Outlet data-oid="4x6o1bc" />
             </main>
-            <Footer data-oid="_0ft88t" />
+            <Footer data-oid="5qaouwl" />
           </div>
         </ThemeProvider>
-        <ScrollRestoration data-oid="6oe7rlr" />
-        <Scripts data-oid="hwuf-uz" />
+        <ScrollRestoration data-oid="i_jh419" />
+        <Scripts data-oid="9hq3nn8" />
+        <LiveReload />
       </body>
     </html>
   );

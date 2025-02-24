@@ -14,12 +14,12 @@ export function ThemeToggle() {
       aria-label={
         theme === "dark" ? "Switch to light theme" : "Switch to dark theme"
       }
-      data-oid="0nph:ej"
+      data-oid="nx:a-iy"
     >
       {theme === "dark" ? (
-        <RiMoonFoggyLine size={ICON_SIZE} data-oid="x6rj08-" />
+        <RiMoonFoggyLine size={ICON_SIZE} data-oid="dk0-:kl" />
       ) : (
-        <RiSunFoggyLine size={ICON_SIZE} data-oid="udfqps_" />
+        <RiSunFoggyLine size={ICON_SIZE} data-oid="kn3xvs5" />
       )}
     </IconButton>
   );

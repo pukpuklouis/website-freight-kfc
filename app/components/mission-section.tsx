@@ -1,4 +1,3 @@
-import "./mission-section.css";
 import { useRef } from "react";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { useTheme, themes } from "~/utils/theme";
@@ -30,26 +29,26 @@ export function MissionSection({ features }: MissionSectionProps) {
     return (
       <section
         className="relative px-[5%] py-16 md:py-24 lg:py-28"
-        data-oid="b6c74nj"
+        data-oid="9s-k2pi"
       >
-        <div className="container" data-oid="n.vgo_h">
-          <div className="grid gap-8" data-oid="r7t-cw9">
+        <div className="container" data-oid="qwu2cs:">
+          <div className="grid gap-8" data-oid="_gaqun.">
             {features.map((feature) => (
               <div
                 key={feature.number}
                 className="opacity-100"
-                data-oid="dghwi7o"
+                data-oid="9fveb8x"
               >
                 <p
                   className="text-sm text-[var(--accent-9)]"
-                  data-oid="q72i6nu"
+                  data-oid="godmv9-"
                 >
                   {feature.tagline}
                 </p>
-                <h2 className="mt-2 text-2xl font-bold" data-oid="88ijrx5">
+                <h2 className="mt-2 text-2xl font-bold" data-oid="z0:zrof">
                   {feature.heading}
                 </h2>
-                <p className="mt-4 text-[var(--accent-11)]" data-oid="c4fgybn">
+                <p className="mt-4 text-[var(--accent-11)]" data-oid="q1m1ue-">
                   {feature.description}
                 </p>
               </div>
@@ -64,10 +63,10 @@ export function MissionSection({ features }: MissionSectionProps) {
     <section
       ref={ref}
       className="relative px-[5%] py-16 md:py-24 lg:py-28"
-      data-oid="s9bttp0"
+      data-oid="pydbysw"
     >
-      <div className="container" data-oid="pikrlbs">
-        <div className="grid gap-8" data-oid="dtq4vb0">
+      <div className="container" data-oid="ut:thst">
+        <div className="grid gap-8" data-oid="e2228_q">
           {features.map((feature, index) => {
             const totalDuration = 1;
             const segmentDuration = totalDuration / features.length;
@@ -119,18 +118,18 @@ export function MissionSection({ features }: MissionSectionProps) {
                 key={feature.number}
                 style={{ opacity, scale, y }}
                 className="transform-gpu"
-                data-oid="ip7o-xk"
+                data-oid="0g0ba3_"
               >
                 <p
                   className="text-sm text-[var(--accent-9)]"
-                  data-oid=":kboml9"
+                  data-oid="wp3d-nj"
                 >
                   {feature.tagline}
                 </p>
-                <h2 className="mt-2 text-2xl font-bold" data-oid="8xj--g9">
+                <h2 className="mt-2 text-2xl font-bold" data-oid="63p9e5t">
                   {feature.heading}
                 </h2>
-                <p className="mt-4 text-[var(--accent-11)]" data-oid="n.79t8:">
+                <p className="mt-4 text-[var(--accent-11)]" data-oid="bbk3_n_">
                   {feature.description}
                 </p>
               </motion.div>
@@ -159,39 +158,39 @@ function FeatureCard({ number, tagline, heading, description }: Feature) {
   return (
     <div
       className="flex flex-col items-start justify-center py-8 md:py-0"
-      data-oid="dpug_e5"
+      data-oid="5qv86be"
     >
       <div
         className="mt-10 flex text-[6rem] font-bold leading-[1] md:mt-0 md:hidden"
-        data-oid="1ccob5o"
+        data-oid="3mzs6z:"
       >
         {number}
       </div>
       <div
         ref={ref}
         className="mb-8 mt-8 h-0.5 w-full bg-[var(--gray-6)] md:mt-0"
-        data-oid=".n1fce-"
+        data-oid="70s51sb"
       >
         <motion.div
           className="h-0.5 bg-[var(--accent-7)]"
           style={{ width }}
-          data-oid="hvt6y2x"
+          data-oid="417b0d7"
         />
       </div>
-      <div className="max-w-2xl" data-oid="y2-ozid">
+      <div className="max-w-2xl" data-oid="cnl4k5-">
         <p
           className="mb-3 font-semibold text-[var(--gray-10)] md:text-gray- md:mb-4"
-          data-oid="1iyh61z"
+          data-oid="9sdu_3u"
         >
           {tagline}
         </p>
         <h2
           className="mb-5 md:mb-6 text-[clamp(2rem,4vw+0.6rem,5rem)] font-bold text-[var(--accent-12)]"
-          data-oid="h6xojsk"
+          data-oid="q:hbx0k"
         >
           {heading}
         </h2>
-        <p className="text-[var(--gray-11)]" data-oid="0tyeas.">
+        <p className="text-[var(--gray-11)]" data-oid="8z6u_qu">
           {description}
         </p>
       </div>

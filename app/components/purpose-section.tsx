@@ -1,4 +1,3 @@
-import "./purpose-section.css";
 import type { FC } from "react";
 import { useTheme, themes } from "~/utils/theme";
 
@@ -43,67 +42,67 @@ export const PurposeSection: FC = () => {
   return (
     <section
       className="py-32 pb-8 px-4 md:px-8 lg:px-16 bg-[var(--accent-2)]"
-      data-oid="ym03.sb"
+      data-oid="0yb.f1z"
     >
-      <div className="max-w-6xl mx-auto" data-oid="-pr9bwt">
+      <div className="max-w-6xl mx-auto" data-oid="53sbvxe">
         <h1
           className="text-5xl md:text-5xl font-bold mb-8 text-center"
-          data-oid="8-66m2r"
+          data-oid="vx9qvyb"
         >
           全球直送{" "}
           <span
             className="bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent"
-            data-oid="npc_me8"
+            data-oid="r3iqua8"
           >
             使命必達
           </span>
         </h1>
         <div
           className="space-y-8 text-lg text-[var(--gray-12)] max-w-4xl mx-auto"
-          data-oid="kazwqkp"
+          data-oid="tjk18j8"
         >
-          <p className="text-center max-w-3xl mx-auto" data-oid="5md8x_4">
+          <p className="text-center max-w-3xl mx-auto" data-oid="zxy07u8">
             不論是空運急件還是菲律賓專線海運，我們提供「
             <span
               className="bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent font-semibold"
-              data-oid="ofwnmdt"
+              data-oid="vobptoh"
             >
               到府直送一條龍服務
             </span>{" "}
             」從台灣到世界，從倉庫到客戶手中，極速出貨+智能追蹤系統，跨境物流從未如此輕鬆。我們{" "}
             <span
               className="bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent font-semibold"
-              data-oid="0qp-a6l"
+              data-oid="3c2rg1r"
             >
               更懂您的需求
             </span>{" "}
             不是單純運貨，是為您創造價值——專業團隊量身規劃最佳路線，報關文件、稅務諮詢、風險預警全程守護，讓每一分錢都花在刀口上！
           </p>
-          <div className="grid md:grid-cols-2 gap-8 mt-12" data-oid="lu3vqx:">
+          <div className="grid md:grid-cols-2 gap-8 mt-12" data-oid="345fkt.">
             {featureCards.map((card, index) => (
               <div
                 key={index}
                 className="bg-[var(--accent-4)] border border-[var(--accent-9)] p-6 rounded-lg transition-all duration-300 hover:bg-[var(--accent-5)] hover:shadow-lg"
-                data-oid="64kin7o"
+                data-oid="g1tgy71"
               >
-                <h3 className="text-2xl font-semibold mb-4" data-oid="td.38lj">
+                <h3 className="text-2xl font-semibold mb-4" data-oid="91_:qdz">
                   <span
                     className={`${card.gradientClass} bg-clip-text text-transparent`}
-                    data-oid="_7z2uhs"
+                    data-oid="7gnteod"
                   >
                     {card.title}
                   </span>
                 </h3>
-                <p data-oid="9ft7y1_">
+                <p data-oid="wca6jms">
                   {card.points.map((point, pointIndex) => (
                     <span
                       key={pointIndex}
                       className={`text-[clamp(0.875rem,0.8rem+0.25vw,1rem)]`}
-                      data-oid="qd.w:de"
+                      data-oid="nkg3bmc"
                     >
                       {card.pointStyle} {point}
                       {pointIndex < card.points.length - 1 && (
-                        <br data-oid="auoytki" />
+                        <br data-oid="u791_r4" />
                       )}
                     </span>
                   ))}

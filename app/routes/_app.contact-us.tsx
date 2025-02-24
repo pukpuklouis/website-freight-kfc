@@ -229,17 +229,17 @@ const FormField = ({
   `;
 
   return (
-    <div className="space-y-2" data-oid="pra1fow">
-      <div className="flex items-baseline justify-between" data-oid="zf9im7j">
+    <div className="space-y-2" data-oid="ieero6v">
+      <div className="flex items-baseline justify-between" data-oid="uh7mrfm">
         <label
           htmlFor={name}
           className="text-sm font-medium text-[var(--gray-12)] dark:text-[var(--gray-12)]"
-          data-oid="p96o0h6"
+          data-oid="yqn7f:c"
         >
           {label}
         </label>
         {required && (
-          <span className="text-sm text-[var(--accent-9)]" data-oid="zbkhyow">
+          <span className="text-sm text-[var(--accent-9)]" data-oid="knl.h_-">
             *
           </span>
         )}
@@ -252,7 +252,7 @@ const FormField = ({
           required={required}
           rows={rows}
           defaultValue={defaultValue}
-          data-oid="jlat7:c"
+          data-oid=".wiy._-"
         />
       ) : (
         <input
@@ -262,11 +262,11 @@ const FormField = ({
           className={inputClasses}
           required={required}
           defaultValue={defaultValue}
-          data-oid="ge6cv-l"
+          data-oid="7t-2705"
         />
       )}
       {error && (
-        <p className="mt-1 text-sm text-[var(--accent-9)]" data-oid="8ff7qig">
+        <p className="mt-1 text-sm text-[var(--accent-9)]" data-oid="kk-6bdl">
           {error}
         </p>
       )}
@@ -280,14 +280,14 @@ const LocationIcon = () => (
     fill="none"
     viewBox="0 0 24 24"
     stroke="currentColor"
-    data-oid="5zn8p7x"
+    data-oid="nlrywe0"
   >
     <path
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth={2}
       d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-      data-oid="h8ry6wr"
+      data-oid="blv13bl"
     />
 
     <path
@@ -295,7 +295,7 @@ const LocationIcon = () => (
       strokeLinejoin="round"
       strokeWidth={2}
       d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-      data-oid="gipidqq"
+      data-oid="ve51-r1"
     />
   </svg>
 );
@@ -306,14 +306,14 @@ const PhoneIcon = () => (
     fill="none"
     viewBox="0 0 24 24"
     stroke="currentColor"
-    data-oid="jxsivcv"
+    data-oid=":fflmrt"
   >
     <path
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth={2}
       d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-      data-oid="492v9i:"
+      data-oid="gc.btm2"
     />
   </svg>
 );
@@ -324,49 +324,49 @@ const EmailIcon = () => (
     fill="none"
     viewBox="0 0 24 24"
     stroke="currentColor"
-    data-oid="whcflex"
+    data-oid="a6how:-"
   >
     <path
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth={2}
       d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-      data-oid="1bsz3fj"
+      data-oid="x666zwf"
     />
   </svg>
 );
 
 const CONTACT_INFO = [
   {
-    icon: <LocationIcon data-oid="shdoozl" />,
+    icon: <LocationIcon data-oid="axyw9cm" />,
     title: "公司地址",
     content: (
-      <p data-oid="92asxna">11670 台北市文山區羅斯福路六段142巷82號1樓</p>
+      <p data-oid="h4sh5kk">11670 台北市文山區羅斯福路六段142巷82號1樓</p>
     ),
   },
   {
-    icon: <PhoneIcon data-oid="4vv.zz2" />,
+    icon: <PhoneIcon data-oid="iequqpo" />,
     title: "聯絡電話",
-    content: <p data-oid="wm.dmz6">(02) 2935-1589</p>,
+    content: <p data-oid="j08jif3">(02) 2935-1589</p>,
   },
   {
-    icon: <EmailIcon data-oid="msv33be" />,
+    icon: <EmailIcon data-oid="_gesb4:" />,
     title: "電子郵件",
-    content: <p data-oid="50jcywf">kafs123@126.com</p>,
+    content: <p data-oid="j04s93v">kafs123@126.com</p>,
   },
 ] as const;
 
 const BusinessHourRow = ({ days, hours }: { days: string; hours: string }) => (
-  <div className="flex justify-between py-2" data-oid="qcktw-i">
+  <div className="flex justify-between py-2" data-oid="d-tt48.">
     <span
       className="text-[var(--gray-12)] dark:text-[var(--gray-12)]"
-      data-oid="5eusd7."
+      data-oid="zdy77g8"
     >
       {days}
     </span>
     <span
       className="text-[var(--gray-11)] dark:text-[var(--gray-11)]"
-      data-oid="f-xenms"
+      data-oid="f4wxi8a"
     >
       {hours}
     </span>
@@ -393,23 +393,23 @@ const ContactInfo = ({
   title: string;
   content: React.ReactNode;
 }) => (
-  <div className="flex gap-4 items-start" data-oid="xg8ba_y">
+  <div className="flex gap-4 items-start" data-oid="2jlhx:.">
     <div
       className="p-2 bg-[var(--gray-3)] dark:bg-[var(--gray-4)] rounded-lg"
-      data-oid=":-hbcqb"
+      data-oid="5eomk04"
     >
       {icon}
     </div>
-    <div data-oid="rjz:qn.">
+    <div data-oid=":4:q5p-">
       <h3
         className="text-lg font-medium text-[var(--gray-12)] dark:text-[var(--gray-12)]"
-        data-oid="2andzgv"
+        data-oid="-d:1f5y"
       >
         {title}
       </h3>
       <div
         className="mt-1 text-[var(--gray-11)] dark:text-[var(--gray-11)]"
-        data-oid="oletqnh"
+        data-oid="mp:ycj8"
       >
         {content}
       </div>
@@ -461,23 +461,23 @@ export default function ContactUs() {
   return (
     <div
       className="relative bg-gradient-to-b from-bg-[var(--accent-12a)] to-transparent bg-[var(--accent-2)] pt-24 "
-      data-oid="yf8lts3"
+      data-oid="y-0i8p7"
     >
       <div
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 "
-        data-oid="3stvp.n"
+        data-oid="4vqo4nr"
       >
         {/* Hero Section */}
-        <div className="text-center mb-16" data-oid="p0tc9by">
+        <div className="text-center mb-16" data-oid="jxeak3x">
           <h1
             className="text-5xl font-bold text-[var(--gray-12)] dark:text-[var(--gray-12)] mb-4"
-            data-oid="-v:_bpe"
+            data-oid="6px1:s9"
           >
             聯絡我們
           </h1>
           <p
             className="text-xl text-[var(--gray-11)] dark:text-[var(--gray-11)] max-w-2xl mx-auto"
-            data-oid="l5:_c_-"
+            data-oid="r91lfvd"
           >
             無論您有任何問題或需求，我們都樂意為您提供協助。讓我們一起為您的貨運需求找到最佳解決方案。
           </p>
@@ -485,46 +485,46 @@ export default function ContactUs() {
 
         <div
           className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12"
-          data-oid="hcr53z-"
+          data-oid="jhfcnm2"
         >
           {/* Contact Information */}
-          <div className="space-y-8" data-oid="g.z78es">
+          <div className="space-y-8" data-oid="3c02uud">
             <div
               className="bg-[var(--gray-1)] dark:bg-[var(--gray-2)] rounded-2xl shadow-xl p-8 transform hover:scale-105 transition-transform duration-300 border border-[var(--gray-6)]"
-              data-oid="j124f0y"
+              data-oid="1lc6ac9"
             >
               <h2
                 className="text-2xl font-bold text-[var(--gray-12)] dark:text-[var(--gray-12)] mb-6"
-                data-oid="npju_zg"
+                data-oid="bokiz8c"
               >
                 聯絡資訊
               </h2>
-              <div className="space-y-6" data-oid=".h0c7yq">
+              <div className="space-y-6" data-oid=".yo9kvx">
                 {CONTACT_INFO.map((info, index) => (
                   <ContactInfo
                     key={index}
                     icon={info.icon}
                     title={info.title}
                     content={info.content}
-                    data-oid="5c_xtdp"
+                    data-oid="05lo8ta"
                   />
                 ))}
               </div>
 
-              <div className="mt-8" data-oid="xfrl2oy">
+              <div className="mt-8" data-oid=":m.3xa8">
                 <h3
                   className="text-lg font-medium text-[var(--gray-12)] dark:text-[var(--gray-12)] mb-3"
-                  data-oid="t80ycqp"
+                  data-oid="2ajlvds"
                 >
                   營業時間
                 </h3>
-                <div className="space-y-2" data-oid="j5jvavc">
+                <div className="space-y-2" data-oid="akhfe6q">
                   {BUSINESS_HOURS.map((schedule, index) => (
                     <BusinessHourRow
                       key={index}
                       days={schedule.days}
                       hours={schedule.hours}
-                      data-oid="cv68c4p"
+                      data-oid=":-okxyd"
                     />
                   ))}
                 </div>
@@ -535,11 +535,11 @@ export default function ContactUs() {
           {/* Contact Form */}
           <div
             className="bg-[var(--gray-1)] dark:bg-[var(--gray-2)] shadow-xl p-8 rounded-lg shadow-sm border border-[var(--gray-6)]"
-            data-oid="vau.9i_"
+            data-oid="rk.1b.6"
           >
             <h2
               className="text-2xl font-bold mb-6 text-[var(--gray-12)] dark:text-[var(--gray-12)]"
-              data-oid="gnhmuua"
+              data-oid="8_sw3ek"
             >
               聯絡我們
             </h2>
@@ -547,47 +547,47 @@ export default function ContactUs() {
             {actionData?.success ? (
               <div
                 className="bg-green-50 dark:bg-[var(--accent-2)] border border-[var(--gray-6)] rounded-xl p-6 mb-6"
-                data-oid="rns7-qq"
+                data-oid="9lgun9k"
               >
-                <div className="flex items-center" data-oid="urlbe33">
+                <div className="flex items-center" data-oid=":npctb.">
                   <svg
                     className="h-6 w-6 text-[var(--accent-9)] dark:text-[var(--accent-9)] mr-3"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
-                    data-oid="4esnc8y"
+                    data-oid="cz149bo"
                   >
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       strokeWidth={2}
                       d="M5 13l4 4L19 7"
-                      data-oid="im.e0ix"
+                      data-oid=".2jsc1r"
                     />
                   </svg>
                   <p
                     className="text-[var(--accent-11)] dark:text-[var(--accent-11)] font-medium"
-                    data-oid="4oemrmt"
+                    data-oid="wxyi7wa"
                   >
                     感謝您的訊息！我們會盡快回覆您。
                   </p>
                 </div>
               </div>
             ) : (
-              <FormPrimitive.Root asChild data-oid="p2vdwu_">
+              <FormPrimitive.Root asChild data-oid="pr.cs.3">
                 <Form
                   ref={formRef}
                   method="post"
                   className="space-y-6"
                   onSubmit={handleSubmit}
-                  data-oid="j3c0jpy"
+                  data-oid="5s5jz8v"
                 >
                   <FormField
                     name="name"
                     label="姓名"
                     error={actionData?.errors?.name}
                     defaultValue={actionData?.values?.name}
-                    data-oid="jjprrho"
+                    data-oid="3rhw6tf"
                   />
 
                   <FormField
@@ -596,7 +596,7 @@ export default function ContactUs() {
                     type="email"
                     error={actionData?.errors?.email}
                     defaultValue={actionData?.values?.email}
-                    data-oid="rcm84:r"
+                    data-oid="h4xjj2p"
                   />
 
                   <FormField
@@ -604,7 +604,7 @@ export default function ContactUs() {
                     label="主旨"
                     error={actionData?.errors?.subject}
                     defaultValue={actionData?.values?.subject}
-                    data-oid="plm6ovo"
+                    data-oid=":tgvn:1"
                   />
 
                   <FormField
@@ -614,17 +614,17 @@ export default function ContactUs() {
                     rows={4}
                     error={actionData?.errors?.message}
                     defaultValue={actionData?.values?.message}
-                    data-oid="g4gmag1"
+                    data-oid="37qmaz4"
                   />
 
-                  <FormPrimitive.Submit asChild data-oid="2mojbyt">
+                  <FormPrimitive.Submit asChild data-oid="8_nun42">
                     <Button
                       disabled={!isHydrated || isSubmitting}
                       type="submit"
                       size="3"
                       variant="solid"
                       className="w-full"
-                      data-oid=":1d8ye6"
+                      data-oid="oiu-nmn"
                     >
                       {isSubmitting ? "傳送中..." : "傳送訊息"}
                     </Button>
@@ -632,7 +632,7 @@ export default function ContactUs() {
                   {actionData?.errors?.system && (
                     <p
                       className="text-sm text-[var(--accent-9)]"
-                      data-oid="vpk5okz"
+                      data-oid="slbfr9k"
                     >
                       {actionData.errors.system}
                     </p>
