@@ -15,6 +15,21 @@ export default defineConfig({
         v3_throwAbortReason: true,
         v3_singleFetch: true,
         v3_lazyRouteDiscovery: true,
+      },
+      mdx: async (filename) => {
+        const [remarkGfm, rehypeSlug, rehypeAutolinkHeadings] = await Promise.all([
+          import('remark-gfm').then((mod) => mod.default),
+          import('rehype-slug').then((mod) => mod.default),
+          import('rehype-autolink-headings').then((mod) => mod.default),
+        ]);
+
+        return {
+          remarkPlugins: [remarkGfm],
+          rehypePlugins: [
+            rehypeSlug,
+            [rehypeAutolinkHeadings, { behavior: "wrap" }]
+          ]
+        };
       }
     }),
     tsconfigPaths(),
@@ -37,14 +52,8 @@ export default defineConfig({
       path: 'path-browserify',
     }
   },
-  // ssr: {
-  //   target: 'webworker',
-  //   format: 'esm',
-  //   noExternal: true
-  // },
   build: {
     rollupOptions: {
-      // external: [], // Explicitly mark nothing as external for the client build
       output: {
         manualChunks: {
           vendor: [
