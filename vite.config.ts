@@ -33,31 +33,26 @@ export default defineConfig({
   optimizeDeps: {
     exclude: [
       '@radix-ui/react-form',
-      '@radix-ui/react-alert-dialog'
+      '@radix-ui/react-alert-dialog',
+      // 'mdx-bundler' // Keep excluded
     ],
     include: [
       '@remix-run/react',
       'react',
       'react-dom',
-      'react/jsx-runtime'
+      'react/jsx-runtime',
+      'mdx-bundler'
     ]
   },
   resolve: {
     alias: {
       crypto: 'crypto-browserify',
-      path: 'path-browserify',
+      // path: 'path-browserify'
     }
   },
   build: {
-    rollupOptions: {
-      external: [
-        '@remix-run/react',
-        'react',
-        'react-dom',
-        'react/jsx-runtime'
-      ]
-    }
-  },
+    sourcemap: false
+    },
   server: {
     hmr: {
       timeout: 5000

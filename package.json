@@ -31,7 +31,6 @@
     "@cloudinary/react": "^1.13.1",
     "@cloudinary/url-gen": "^1.21.0",
     "@hookform/resolvers": "^3.10.0",
-    "@mdx-js/rollup": "^3.1.0",
     "@radix-ui/colors": "^3.0.0",
     "@radix-ui/react-accordion": "^1.2.2",
     "@radix-ui/react-alert-dialog": "^1.1.4",
@@ -81,6 +80,7 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20250121.0",
+    "@mdx-js/rollup": "^3.1.0",
     "@remix-run/dev": "^2.15.3",
     "@svgr/cli": "^8.1.0",
     "@svgr/plugin-jsx": "^8.1.0",
