@@ -1,5 +1,3 @@
-import { readdir, readFile } from "node:fs/promises";
-import { join } from "node:path";
 import matter from "gray-matter";
 
 export interface ServiceLink {
@@ -7,39 +5,44 @@ export interface ServiceLink {
   url: string;
 }
 
-const CONTENT_DIR = join(process.cwd(), "content");
-const SERVICE_DIR = join(CONTENT_DIR, "service");
-
 export async function getServiceLinks(): Promise<ServiceLink[]> {
   try {
-    // Read all MD files in the content/service directory
-    const files = await readdir(SERVICE_DIR);
-    const mdFiles = files.filter(file => file.endsWith(".md"));
+    // Use import.meta.glob to load all markdown files
+    const mdModules = import.meta.glob<string>("/content/service/*.md", { 
+      query: '?raw',
+      import: 'default'
+    });
 
     const serviceLinks = await Promise.all(
-      mdFiles.map(async (file) => {
-        const filePath = join(SERVICE_DIR, file);
-        const content = await readFile(filePath, "utf-8");
-        const { data } = matter(content);
+      Object.entries(mdModules).map(async ([path, loadContent]) => {
+        try {
+          const content = await loadContent();
+          const { data } = matter(content);
 
-        if (!data.title) {
-          console.warn(`Missing title in ${file}`);
+          if (!data.title) {
+            console.warn(`Missing title in ${path}`);
+            return null;
+          }
+
+          // Extract slug from file path
+          const slug = path.replace('/content/service/', '').replace('.md', '');
+
+          return {
+            title: data.title,
+            url: `/service/${slug}`,
+          };
+        } catch (error) {
+          console.error(`Error processing ${path}:`, error);
           return null;
         }
-
-        // Remove the .md extension to get the slug
-        const slug = file.replace(/\.md$/, "");
-
-        return {
-          title: data.title,
-          url: `/service/${slug}`,
-        };
       })
     );
 
+    // Filter out any null entries and sort by title
     return serviceLinks
       .filter((link): link is ServiceLink => link !== null)
       .sort((a, b) => a.title.localeCompare(b.title));
+
   } catch (error) {
     console.error("Error reading service links:", error);
     return [];

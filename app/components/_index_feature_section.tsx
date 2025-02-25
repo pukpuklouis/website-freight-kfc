@@ -36,7 +36,7 @@ const defaultFeatures: FeatureCardProps[] = [
     },
     title: "兩岸三地海快、空運、小三通",
     description: "專精大中華區，確保貨物安全高效地運送到目的地。",
-    url: "services/cross-strait-three-regions-sea-express-air-transport",
+    url: "service/cross-strait-three-regions-sea-express-air-transport",
   },
   {
     image: {
@@ -45,7 +45,7 @@ const defaultFeatures: FeatureCardProps[] = [
     },
     title: "台灣快遞海運菲律賓",
     description: "海運服務，深入菲律賓地區確保貨物安全高效送到目的地。",
-    url: "services/taiwan-express-delivery-and-sea-freight-to-philippines",
+    url: "service/taiwan-express-delivery-and-sea-freight-to-philippines",
   },
   {
     image: {
@@ -54,7 +54,7 @@ const defaultFeatures: FeatureCardProps[] = [
     },
     title: "日本海快到台灣",
     description: "透過我們的先進追蹤系統，全天候監控您的貨物。",
-    url: "services/japan-sea-express-to-taiwan",
+    url: "service/japan-sea-express-to-taiwan",
   },
   {
     image: {
