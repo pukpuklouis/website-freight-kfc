@@ -45,7 +45,7 @@
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
   text-align: left;
-  font-size: 0.75rem;
+  font-size: 1rem;
   line-height: 1rem;
   font-weight: 500;
   text-transform: uppercase;
@@ -55,6 +55,15 @@
   transition-duration: 150ms;
   color: var(--accent-11);
   border-color: var(--accent-6);
+}
+.markdown-em {
+  font-weight: 500;
+  color: var(--accent-11);
+  transition: color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.markdown-em:hover {
+  color: var(--accent-10);
 }
 
 .markdown-td {

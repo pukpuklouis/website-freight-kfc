@@ -60,25 +60,25 @@ export default function ServiceRoute() {
   const { content, frontmatter } = useLoaderData<LoaderData>();
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-40">
+    <div className="max-w-4xl mx-auto px-4 pb-36">
       <header className="mb-8">
-        <h1 className="text-4xl font-bold mb-4">{frontmatter.title}</h1>
-        {frontmatter.description && (
-          <p className="text-xl text-gray-600">{frontmatter.description}</p>
-        )}
         {frontmatter.image && (
           <img
             src={frontmatter.image}
             alt={frontmatter.title}
-            className="w-full h-64 object-cover rounded-lg mt-6"
+            className="w-full h-[350px] object-cover rounded-bl-2xl rounded-br-2xl"
           />
+        )}
+        <h1 className="text-5xl text-[var(--accent-9)] font-bold my-4">{frontmatter.title}</h1>
+        {frontmatter.description && (
+          <p className="text-lg text-[var(--accent-7)]">{frontmatter.description}</p>
         )}
         {frontmatter.tags && frontmatter.tags.length > 0 && (
           <div className="flex gap-2 mt-4">
             {frontmatter.tags.map((tag) => (
               <span
                 key={tag}
-                className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm"
+                className="px-3 py-1 bg-[var(--accent-2)] text-[var(--accent-9)] border border-1 border-[var(--accent-8)] rounded-full text-sm"
               >
                 {tag}
               </span>
