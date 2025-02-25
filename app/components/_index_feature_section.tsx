@@ -28,6 +28,23 @@ interface FeatureSectionProps {
   readonly className?: string;
 }
 
+interface CardWrapperProps {
+  children: React.ReactNode;
+  className: string;
+  to?: string;
+}
+
+const CardWrapper: React.FC<CardWrapperProps> = ({ children, className, to }) => {
+  if (to) {
+    return (
+      <Link to={to} className={className}>
+        {children}
+      </Link>
+    );
+  }
+  return <div className={className}>{children}</div>;
+};
+
 const defaultFeatures: FeatureCardProps[] = [
   {
     image: {
@@ -77,9 +94,6 @@ const FeatureCard = memo(function FeatureCard({
   const { theme } = useTheme();
   const { accent, gray } = themes[theme];
 
-  const CardWrapper = url ? Link : "div";
-  const cardProps = url ? { to: url } : {};
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -98,8 +112,8 @@ const FeatureCard = memo(function FeatureCard({
         }}
         className="h-full"
       >
-        <CardWrapper
-          {...cardProps}
+        <CardWrapper 
+          to={url} 
           className="feature-card group relative overflow-hidden rounded-xl h-full block transition-transform duration-300 hover:scale-[1.02]"
         >
           {/* Background Image */}
