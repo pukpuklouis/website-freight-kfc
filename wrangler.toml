@@ -12,14 +12,6 @@ compatibility_flags = ["nodejs_compat"]
 [build]
 command = "npm run build"
 
-# Environment variables for production
-[env.production]
-NODE_ENV = "production"
-
-# Development environment settings
-[env.development]
-NODE_ENV = "development"
-
 # Enable logging and other observability features
 [observability]
 enabled = true
