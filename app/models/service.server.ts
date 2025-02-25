@@ -1,5 +1,3 @@
-import { readdir, readFile } from "node:fs/promises";
-import { join } from "node:path";
 import matter from "gray-matter";
 
 export interface ServiceMeta {
@@ -15,13 +13,22 @@ export interface ServiceLink {
   url: string;
 }
 
-const CONTENT_DIR = join(process.cwd(), "content");
-const SERVICE_DIR = join(CONTENT_DIR, "service");
-
 export async function getServiceMeta(slug: string): Promise<ServiceMeta | null> {
   try {
-    const filePath = join(SERVICE_DIR, `${slug}.md`);
-    const source = await readFile(filePath, "utf-8");
+    const mdModules = import.meta.glob<string>("/content/service/*.md", { 
+      query: '?raw',
+      import: 'default'
+    });
+
+    const matchingPath = `/content/service/${slug}.md`;
+    const loadContent = mdModules[matchingPath];
+
+    if (!loadContent) {
+      console.error(`No matching service found for slug: ${slug}`);
+      return null;
+    }
+
+    const source = await loadContent();
     const { data } = matter(source);
     
     // Validate the required fields
@@ -29,13 +36,13 @@ export async function getServiceMeta(slug: string): Promise<ServiceMeta | null> 
       console.error(`Invalid service metadata in ${slug}.md`);
       return null;
     }
-    
+
     return {
-      title: String(data.title),
-      description: String(data.description),
-      date: String(data.date),
-      tags: data.tags.map(String),
-      image: data.image ? String(data.image) : undefined
+      title: data.title,
+      description: data.description,
+      date: data.date,
+      tags: data.tags,
+      image: data.image,
     };
   } catch (error) {
     console.error(`Error reading service metadata for ${slug}:`, error);
@@ -45,33 +52,41 @@ export async function getServiceMeta(slug: string): Promise<ServiceMeta | null> 
 
 export async function getAllServiceLinks(): Promise<ServiceLink[]> {
   try {
-    const files = await readdir(SERVICE_DIR);
-    const mdFiles = files.filter(file => file.endsWith(".md"));
+    const mdModules = import.meta.glob<string>("/content/service/*.md", { 
+      query: '?raw',
+      import: 'default'
+    });
 
     const serviceLinks = await Promise.all(
-      mdFiles.map(async (file) => {
-        const filePath = join(SERVICE_DIR, file);
-        const content = await readFile(filePath, "utf-8");
-        const { data } = matter(content);
+      Object.entries(mdModules).map(async ([path, loadContent]) => {
+        try {
+          const source = await loadContent();
+          const { data } = matter(source);
 
-        if (!data.title) {
-          console.warn(`Missing title in ${file}`);
+          if (!data.title) {
+            console.warn(`Missing title in ${path}`);
+            return null;
+          }
+
+          // Extract slug from file path
+          const slug = path.replace('/content/service/', '').replace('.md', '');
+
+          return {
+            title: data.title,
+            url: `/service/${slug}`,
+          };
+        } catch (error) {
+          console.error(`Error processing ${path}:`, error);
           return null;
         }
-
-        // Remove the .md extension to get the slug
-        const slug = file.replace(/\.md$/, "");
-
-        return {
-          title: data.title,
-          url: `/service/${slug}`,
-        };
       })
     );
 
+    // Filter out any null entries and sort by title
     return serviceLinks
       .filter((link): link is ServiceLink => link !== null)
       .sort((a, b) => a.title.localeCompare(b.title));
+
   } catch (error) {
     console.error("Error reading service links:", error);
     return [];
