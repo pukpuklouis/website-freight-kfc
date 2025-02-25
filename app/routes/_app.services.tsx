@@ -1,9 +1,7 @@
 import { json } from "@remix-run/node";
 import { Link, useLoaderData } from "@remix-run/react";
-import { readdir, readFile } from "node:fs/promises";
-import { join } from "node:path";
-import { motion, AnimatePresence } from "framer-motion";
 import matter from "gray-matter";
+import { motion, AnimatePresence } from "framer-motion";
 
 // Types
 interface ServiceMeta {
@@ -19,69 +17,61 @@ interface LoaderData {
   services: ServiceMeta[];
 }
 
-// Constants
-const APP_DIR = join(process.cwd(), "app");
-const ROUTES_DIR = join(APP_DIR, "routes");
-
 export const loader = async () => {
   try {
-    const files = await readdir(ROUTES_DIR);
-    const mdxFiles = files.filter(
-      (file) => file.endsWith(".mdx") && !file.startsWith("_"),
-    );
+    // Use import.meta.glob to load all markdown files
+    const mdModules = import.meta.glob<string>("/content/service/*.md", { 
+      query: '?raw',
+      import: 'default'
+    });
 
     const services = await Promise.all(
-      mdxFiles.map(async (filename) => {
+      Object.entries(mdModules).map(async ([path, loadContent]) => {
         try {
-          const filePath = join(ROUTES_DIR, filename);
-          const source = await readFile(filePath, "utf-8");
+          const source = await loadContent();
           const { data } = matter(source);
 
           // Validate required frontmatter fields
           if (!data.title || !data.description || !data.date) {
-            console.warn(`Missing required frontmatter in ${filename}. Required fields: title, description, date`);
+            console.warn(`Missing required frontmatter in ${path}. Required fields: title, description, date`);
             return null;
           }
 
-          // Convert filename to route path
-          // e.g., "services.china-shipping.mdx" -> "/services/china-shipping"
-          const routePath = filename
-            .replace(/\.mdx$/, '')  // Remove .mdx extension
-            .split('.')             // Split by dots
-            .join('/');            // Join with slashes
+          // Extract slug from file path
+          const slug = path.replace('/content/service/', '').replace('.md', '');
 
           // Type check the data
           const service: ServiceMeta = {
-            slug: routePath,
-            title: String(data.title),
-            description: String(data.description),
-            image: data.image ? String(data.image) : "",
-            date: String(data.date),
-            tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
+            slug,
+            title: data.title,
+            description: data.description,
+            image: data.image || '',
+            date: data.date,
+            tags: data.tags || [],
           };
 
           return service;
         } catch (error) {
-          console.error(`Error processing ${filename}:`, error);
+          console.error(`Error processing ${path}:`, error);
           return null;
         }
-      }),
+      })
     );
 
-    // Filter out any null values and sort by date
+    // Filter out null values and sort by date
     const validServices = services
       .filter((service): service is ServiceMeta => service !== null)
       .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
-    return json<LoaderData>({ services: validServices });
+    return json({ services: validServices });
   } catch (error) {
     console.error("Error loading services:", error);
-    return json<LoaderData>({ services: [] });
+    return json({ services: [] });
   }
 };
 
 export default function Services() {
-  const { services } = useLoaderData<typeof loader>();
+  const { services } = useLoaderData<LoaderData>();
 
   const container = {
     hidden: { opacity: 0 },
@@ -128,10 +118,10 @@ export default function Services() {
 
   return (
     <div
-      className="min-h-screen bg-gradient-to-b from-[var(--accent-2)] to-transparent"
+      className="relative z-10 min-h-screen bg-gradient-to-b from-[var(--accent-2)] to-transparent"
       data-oid="7r_hln6"
     >
-      <div className="container mx-auto px-4 py-40" data-oid="0n:yt52">
+      <div className="relative z-20 container mx-auto px-4 py-40" data-oid="0n:yt52">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -179,7 +169,7 @@ export default function Services() {
                 className="group relative bg-gradient-to-b from-[var(--accent-1)] to-[var(--accent-2)] rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
                 data-oid="xfyfduv"
               >
-                <Link to={`/${service.slug}`} className="block" data-oid="_95w5up">
+                <Link to={`/service/${service.slug}`} className="block" data-oid="_95w5up">
                   {service.image ? (
                     <div
                       className="relative h-48 overflow-hidden"

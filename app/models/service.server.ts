@@ -15,18 +15,18 @@ export interface ServiceLink {
   url: string;
 }
 
-const APP_DIR = join(process.cwd(), "app");
-const ROUTES_DIR = join(APP_DIR, "routes");
+const CONTENT_DIR = join(process.cwd(), "content");
+const SERVICE_DIR = join(CONTENT_DIR, "service");
 
 export async function getServiceMeta(slug: string): Promise<ServiceMeta | null> {
   try {
-    const filePath = join(ROUTES_DIR, `${slug}.mdx`);
+    const filePath = join(SERVICE_DIR, `${slug}.md`);
     const source = await readFile(filePath, "utf-8");
     const { data } = matter(source);
     
     // Validate the required fields
     if (!data.title || !data.description || !data.date || !Array.isArray(data.tags)) {
-      console.error(`Invalid service metadata in ${slug}.mdx`);
+      console.error(`Invalid service metadata in ${slug}.md`);
       return null;
     }
     
@@ -45,16 +45,12 @@ export async function getServiceMeta(slug: string): Promise<ServiceMeta | null> 
 
 export async function getAllServiceLinks(): Promise<ServiceLink[]> {
   try {
-    const files = await readdir(ROUTES_DIR);
-    const mdxFiles = files.filter(file => 
-      file.endsWith(".mdx") && 
-      file.startsWith("service.") && 
-      !file.startsWith("_")
-    );
+    const files = await readdir(SERVICE_DIR);
+    const mdFiles = files.filter(file => file.endsWith(".md"));
 
     const serviceLinks = await Promise.all(
-      mdxFiles.map(async (file) => {
-        const filePath = join(ROUTES_DIR, file);
+      mdFiles.map(async (file) => {
+        const filePath = join(SERVICE_DIR, file);
         const content = await readFile(filePath, "utf-8");
         const { data } = matter(content);
 
@@ -63,15 +59,12 @@ export async function getAllServiceLinks(): Promise<ServiceLink[]> {
           return null;
         }
 
-        // Convert filename to route path
-        // e.g., "service.china-shipping.mdx" -> "/service/china-shipping"
-        const routePath = file
-          .replace(/\.mdx$/, '')  // Remove .mdx extension
-          .replace(/^service\./, 'service/');  // Convert service. prefix to service/
+        // Remove the .md extension to get the slug
+        const slug = file.replace(/\.md$/, "");
 
         return {
           title: data.title,
-          url: `/${routePath}`,
+          url: `/service/${slug}`,
         };
       })
     );

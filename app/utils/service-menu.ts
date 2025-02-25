@@ -7,22 +7,18 @@ export interface ServiceLink {
   url: string;
 }
 
-const APP_DIR = join(process.cwd(), "app");
-const ROUTES_DIR = join(APP_DIR, "routes");
+const CONTENT_DIR = join(process.cwd(), "content");
+const SERVICE_DIR = join(CONTENT_DIR, "service");
 
 export async function getServiceLinks(): Promise<ServiceLink[]> {
   try {
-    // Read all MDX files in the routes directory
-    const files = await readdir(ROUTES_DIR);
-    const mdxFiles = files.filter(file => 
-      file.endsWith(".mdx") && 
-      file.startsWith("service.") && 
-      !file.startsWith("_")
-    );
+    // Read all MD files in the content/service directory
+    const files = await readdir(SERVICE_DIR);
+    const mdFiles = files.filter(file => file.endsWith(".md"));
 
     const serviceLinks = await Promise.all(
-      mdxFiles.map(async (file) => {
-        const filePath = join(ROUTES_DIR, file);
+      mdFiles.map(async (file) => {
+        const filePath = join(SERVICE_DIR, file);
         const content = await readFile(filePath, "utf-8");
         const { data } = matter(content);
 
@@ -31,15 +27,12 @@ export async function getServiceLinks(): Promise<ServiceLink[]> {
           return null;
         }
 
-        // Convert filename to route path
-        // e.g., "service.china-shipping.mdx" -> "/service/china-shipping"
-        const url = file
-          .replace(/\.mdx$/, '')  // Remove .mdx extension
-          .replace(/^service\./, 'service/');  // Convert service. prefix to service/
+        // Remove the .md extension to get the slug
+        const slug = file.replace(/\.md$/, "");
 
         return {
           title: data.title,
-          url: `/${url}`,
+          url: `/service/${slug}`,
         };
       })
     );

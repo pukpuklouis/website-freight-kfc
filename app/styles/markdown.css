@@ -1,0 +1,124 @@
+/* Table styles */
+.markdown-table-wrapper {
+  overflow-x: auto;
+}
+
+.markdown-table {
+  min-width: 100%;
+  border-width: 1px;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  border-color: var(--accent-3);
+}
+
+.markdown-table > :not([hidden]) ~ :not([hidden]) {
+  --tw-divide-y-reverse: 0;
+  border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
+  border-bottom-width: calc(1px * var(--tw-divide-y-reverse));
+  --tw-divide-opacity: 0.2;
+  --tw-divide-color: var(--accent-7);
+}
+
+.markdown-thead {
+  background-color: var(--accent-2);
+}
+
+.markdown-tr {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.markdown-tr:hover {
+  background-color: var(--accent-2);
+}
+
+.markdown-tr:nth-child(even) {
+  background-color: var(--accent-1);
+}
+
+.markdown-th {
+  border-bottom-width: 1px;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  text-align: left;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  color: var(--accent-11);
+  border-color: var(--accent-6);
+}
+
+.markdown-td {
+  border-bottom-width: 1px;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  color: var(--accent-11);
+  border-color: var(--accent-6);
+}
+
+/* Link styles */
+.markdown-link {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  color: var(--accent-9);
+}
+
+.markdown-link:hover {
+  color: var(--accent-10);
+}
+
+/* Blockquote styles */
+.markdown-blockquote {
+  padding-left: 1rem;
+  font-style: italic;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  border-left-width: 4px;
+  border-color: var(--accent-6);
+  color: var(--accent-11);
+  background-color: var(--accent-2);
+}
+
+/* Code styles */
+.markdown-code-inline {
+  border-radius: 0.25rem;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+  padding-top: 0.125rem;
+  padding-bottom: 0.125rem;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  background-color: var(--accent-3);
+  color: var(--accent-11);
+}
+
+.markdown-code-block {
+  display: block;
+  border-radius: var(--radius);
+  padding: 1rem;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  background-color: var(--accent-3);
+  color: var(--accent-11);
+  border: 1px solid var(--accent-6);
+}
