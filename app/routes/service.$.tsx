@@ -1,83 +1,110 @@
-import { json } from "@remix-run/node";
-import type { LoaderFunctionArgs } from "@remix-run/node";
+import { json, type LoaderFunctionArgs } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
-import { getServiceMeta } from "~/models/service.server";
-import { motion } from "framer-motion";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import matter from "gray-matter";
+import styles from "~/styles/markdown.css";
+import { markdownComponents } from "~/components/MarkdownComponents";
 
 interface LoaderData {
-  meta: {
+  content: string;
+  frontmatter: {
     title: string;
-    description: string;
+    description?: string;
     date: string;
     tags: string[];
     image?: string;
   };
-  mdxModule: any;
 }
 
 export const loader = async ({ params }: LoaderFunctionArgs) => {
-  const slug = params["*"];
-  if (!slug) {
+  try {
+    const slug = params["*"];
+    
+    // Use import.meta.glob to load markdown content
+    const mdModules = import.meta.glob<string>("/content/service/*.md", { 
+      query: '?raw',
+      import: 'default'
+    });
+
+    const matchingPath = `/content/service/${slug}.md`;
+    const loadContent = mdModules[matchingPath];
+
+    if (!loadContent) {
+      throw new Error(`No matching service found for slug: ${slug}`);
+    }
+
+    const source = await loadContent();
+    const { content, data } = matter(source);
+
+    return json<LoaderData>({
+      content,
+      frontmatter: {
+        title: String(data.title),
+        description: String(data.description),
+        date: String(data.date),
+        tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
+        image: data.image ? String(data.image) : undefined
+      },
+    });
+  } catch (error) {
     throw new Response("Not Found", { status: 404 });
   }
-
-  // Construct the full path for the MDX file
-  const fullSlug = `service.${slug}`;
-  const meta = await getServiceMeta(fullSlug);
-  if (!meta) {
-    throw new Response("Not Found", { status: 404 });
-  }
-
-  // Import the MDX file
-  const mdxModule = await import(`~/routes/service.${slug}.mdx`);
-
-  return json<LoaderData>({ meta, mdxModule });
 };
 
-export default function ServiceLayout() {
-  const { meta, mdxModule } = useLoaderData<typeof loader>();
-  const MDXContent = mdxModule.default;
+export function links() {
+  return [{ rel: "stylesheet", href: styles }];
+}
+
+export default function ServiceRoute() {
+  const { content, frontmatter } = useLoaderData<LoaderData>();
 
   return (
-    <motion.article
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="max-w-4xl mx-auto px-4 py-8"
-    >
-      {/* Hero Section */}
-      <div className="mb-8">
-        {meta.image && (
-          <div className="aspect-w-16 aspect-h-9 mb-6 rounded-lg overflow-hidden">
-            <img
-              src={meta.image}
-              alt={meta.title}
-              className="object-cover w-full h-full"
-            />
+    <div className="max-w-4xl mx-auto px-4 py-32">
+      <header className="mb-8">
+        <h1 className="text-4xl font-bold mb-4">{frontmatter.title}</h1>
+        {frontmatter.description && (
+          <p className="text-xl text-gray-600">{frontmatter.description}</p>
+        )}
+        {frontmatter.image && (
+          <img
+            src={frontmatter.image}
+            alt={frontmatter.title}
+            className="w-full h-64 object-cover rounded-lg mt-6"
+          />
+        )}
+        {frontmatter.tags && frontmatter.tags.length > 0 && (
+          <div className="flex gap-2 mt-4">
+            {frontmatter.tags.map((tag) => (
+              <span
+                key={tag}
+                className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm"
+              >
+                {tag}
+              </span>
+            ))}
           </div>
         )}
-        <h1 className="text-4xl font-bold mb-4 text-[var(--gray-12)]">
-          {meta.title}
-        </h1>
-        <p className="text-xl text-[var(--gray-11)] mb-4">
-          {meta.description}
-        </p>
-        <div className="flex flex-wrap gap-2">
-          {meta.tags.map((tag) => (
-            <span
-              key={tag}
-              className="inline-block px-3 py-1 text-sm bg-[var(--accent-4)] text-[var(--accent-11)] rounded-full"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-      </div>
+      </header>
 
-      {/* MDX Content */}
-      <div className="prose prose-lg max-w-none">
-        <MDXContent />
-      </div>
-    </motion.article>
+      <article className="prose prose-lg max-w-none dark:prose-invert">
+        <ReactMarkdown 
+          remarkPlugins={[remarkGfm]}
+          components={markdownComponents}
+        >
+          {content}
+        </ReactMarkdown>
+      </article>
+    </div>
+  );
+}
+
+// Add error boundary
+export function ErrorBoundary() {
+  return (
+    <div className="max-w-4xl mx-auto px-4 py-8">
+      <h1 className="text-2xl font-bold text-red-600">Service Not Found</h1>
+      <p className="mt-2">Sorry, we couldn't find the service you're looking for.</p>
+    </div>
   );
 }
