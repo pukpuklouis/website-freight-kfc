@@ -3,7 +3,7 @@ import { useLoaderData } from "@remix-run/react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import matter from "gray-matter";
-import styles from "~/styles/markdown.css";
+import "~/styles/markdown.css";
 import { markdownComponents } from "~/components/MarkdownComponents";
 
 interface LoaderData {
@@ -53,7 +53,7 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
 };
 
 export function links() {
-  return [{ rel: "stylesheet", href: styles }];
+  return [{ rel: "stylesheet", href: "/styles/markdown.css" }];
 }
 
 export default function ServiceRoute() {
