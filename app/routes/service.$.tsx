@@ -60,7 +60,7 @@ export default function ServiceRoute() {
   const { content, frontmatter } = useLoaderData<LoaderData>();
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-32">
+    <div className="max-w-4xl mx-auto px-4 py-40">
       <header className="mb-8">
         <h1 className="text-4xl font-bold mb-4">{frontmatter.title}</h1>
         {frontmatter.description && (
