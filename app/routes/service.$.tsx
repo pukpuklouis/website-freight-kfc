@@ -1,6 +1,6 @@
 import { json } from "@remix-run/node";
 import type { LoaderFunctionArgs } from "@remix-run/node";
-import { Outlet, useLoaderData } from "@remix-run/react";
+import { useLoaderData } from "@remix-run/react";
 import { getServiceMeta } from "~/models/service.server";
 import { motion } from "framer-motion";
 
@@ -12,6 +12,7 @@ interface LoaderData {
     tags: string[];
     image?: string;
   };
+  mdxModule: any;
 }
 
 export const loader = async ({ params }: LoaderFunctionArgs) => {
@@ -27,11 +28,15 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
     throw new Response("Not Found", { status: 404 });
   }
 
-  return json<LoaderData>({ meta });
+  // Import the MDX file
+  const mdxModule = await import(`~/routes/service.${slug}.mdx`);
+
+  return json<LoaderData>({ meta, mdxModule });
 };
 
 export default function ServiceLayout() {
-  const { meta } = useLoaderData<typeof loader>();
+  const { meta, mdxModule } = useLoaderData<typeof loader>();
+  const MDXContent = mdxModule.default;
 
   return (
     <motion.article
@@ -71,9 +76,7 @@ export default function ServiceLayout() {
 
       {/* MDX Content */}
       <div className="prose prose-lg max-w-none">
-        <div className="forOutlet">
-          <Outlet />
-        </div>
+        <MDXContent />
       </div>
     </motion.article>
   );

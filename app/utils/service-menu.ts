@@ -14,7 +14,11 @@ export async function getServiceLinks(): Promise<ServiceLink[]> {
   try {
     // Read all MDX files in the routes directory
     const files = await readdir(ROUTES_DIR);
-    const mdxFiles = files.filter(file => file.endsWith(".mdx") && !file.startsWith("_"));
+    const mdxFiles = files.filter(file => 
+      file.endsWith(".mdx") && 
+      file.startsWith("service.") && 
+      !file.startsWith("_")
+    );
 
     const serviceLinks = await Promise.all(
       mdxFiles.map(async (file) => {
@@ -28,11 +32,10 @@ export async function getServiceLinks(): Promise<ServiceLink[]> {
         }
 
         // Convert filename to route path
-        // e.g., "services.china-shipping.mdx" -> "/services/china-shipping"
+        // e.g., "service.china-shipping.mdx" -> "/service/china-shipping"
         const url = file
           .replace(/\.mdx$/, '')  // Remove .mdx extension
-          .split('.')             // Split by dots
-          .join('/');            // Join with slashes
+          .replace(/^service\./, 'service/');  // Convert service. prefix to service/
 
         return {
           title: data.title,
