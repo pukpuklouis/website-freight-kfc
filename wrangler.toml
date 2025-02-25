@@ -9,25 +9,14 @@ compatibility_flags = ["nodejs_compat"]
 [build]
 command = "npm run build"
 
-# Static assets location
-[site]
-bucket = "./public"
-
-# Functions configuration (for Cloudflare Pages Functions)
-[functions]
-directory = "./functions"
-include = ["**/*.js"]
-exclude = ["node_modules/**/*"]
-
 # Environment variables for production
 [env.production]
-workers_dev = true
+NODE_ENV = "production"
+
+# Development environment settings
+[env.development]
+NODE_ENV = "development"
 
 # Enable logging and other observability features
 [observability]
 enabled = true
-
-# Development environment settings (optional)
-[env.development]
-workers_dev = true
-# Add any development-specific variables here
