@@ -8,10 +8,6 @@ pages_build_output_dir = "./build/client"
 compatibility_date = "2024-12-30"
 compatibility_flags = ["nodejs_compat"]
 
-# Build configuration
-[build]
-command = "npm run build"
-
 # Enable logging and other observability features
 [observability]
 enabled = true
