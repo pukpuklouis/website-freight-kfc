@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { Truck, Ship, Plane } from "lucide-react";
 import { useTheme, themes } from "~/utils/theme";
 import ReactMarkdown from "react-markdown";
+import { ServiceLink } from "~/models/service.server";
 
 interface Service {
   title: string;
@@ -15,6 +16,7 @@ interface ServiceSectionProps {
   title?: string;
   description?: string;
   services: Service[];
+  serviceLinks: ServiceLink[];
 }
 
 const IconMap = {
@@ -27,6 +29,7 @@ export const ServiceSection = ({
   title = "我們的服務",
   description = "我們提供全方位的物流解決方案，滿足您的所有運輸需求。",
   services,
+  serviceLinks,
 }: ServiceSectionProps) => {
   const { theme } = useTheme();
   const { accent, gray } = themes[theme];
@@ -59,6 +62,8 @@ export const ServiceSection = ({
             {description}
           </ReactMarkdown>
         </div>
+
+        {/* Main Services Grid */}
         <div
           className="grid grid-cols-1 md:grid-cols-3 gap-8"
           data-oid="2l8g8.r"
@@ -129,6 +134,31 @@ export const ServiceSection = ({
               </Link>
             );
           })}
+        </div>
+
+        {/* Service Links Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {serviceLinks.map((link) => (
+            <Link
+              key={link.url}
+              to={link.url}
+              className={`p-4 rounded-lg transition-all ${
+                theme === "dark"
+                  ? "bg-[var(--accent-3)] hover:bg-[var(--accent-4)]"
+                  : "bg-[var(--accent-2)] hover:bg-[var(--accent-3)]"
+              }`}
+            >
+              <h4
+                className={`text-lg font-medium ${
+                  theme === "dark"
+                    ? "text-[var(--accent-12)]"
+                    : "text-[var(--accent-12)]"
+                }`}
+              >
+                {link.title}
+              </h4>
+            </Link>
+          ))}
         </div>
       </div>
     </section>

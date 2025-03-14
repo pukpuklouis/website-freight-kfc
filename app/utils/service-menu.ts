@@ -1,8 +1,17 @@
 import matter from "gray-matter";
 
+export interface ServiceMatter {
+  title: string;
+  order?: number;
+  date?: string;
+  [key: string]: any;  // Allow additional frontmatter fields
+}
+
 export interface ServiceLink {
   title: string;
   url: string;
+  order?: number;
+  date?: string;
 }
 
 export async function getServiceLinks(): Promise<ServiceLink[]> {
@@ -17,7 +26,7 @@ export async function getServiceLinks(): Promise<ServiceLink[]> {
       Object.entries(mdModules).map(async ([path, loadContent]) => {
         try {
           const content = await loadContent();
-          const { data } = matter(content);
+          const { data } = matter(content) as { data: ServiceMatter };
 
           if (!data.title) {
             console.warn(`Missing title in ${path}`);
@@ -30,6 +39,8 @@ export async function getServiceLinks(): Promise<ServiceLink[]> {
           return {
             title: data.title,
             url: `/service/${slug}`,
+            order: data.order,
+            date: data.date
           };
         } catch (error) {
           console.error(`Error processing ${path}:`, error);
@@ -38,10 +49,21 @@ export async function getServiceLinks(): Promise<ServiceLink[]> {
       })
     );
 
-    // Filter out any null entries and sort by title
+    // Filter out any null entries and sort by order, date, then title
     return serviceLinks
       .filter((link): link is ServiceLink => link !== null)
-      .sort((a, b) => a.title.localeCompare(b.title));
+      .sort((a, b) => {
+        // First sort by order if available
+        if (typeof a.order === 'number' && typeof b.order === 'number') {
+          return a.order - b.order;
+        }
+        // Then sort by date if available
+        if (a.date && b.date) {
+          return new Date(b.date).getTime() - new Date(a.date).getTime();
+        }
+        // Finally sort by title
+        return a.title.localeCompare(b.title);
+      });
 
   } catch (error) {
     console.error("Error reading service links:", error);
