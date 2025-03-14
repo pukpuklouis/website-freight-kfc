@@ -91,13 +91,13 @@ const quickLinks: NavLink[] = [
 ];
 
 const downloadLinks: DownloadItem[] = [
-  { name: "個案委任書", url: "~/docs/106_09_19_個案委任書(新).docx" },
-  { name: "INVOICE", url: "~/docs/Invoice-範本.xls" },
-  { name: "PACKING LIST", url: "~/docs/Packing範本.xls" },
-  { name: "報關檢核表", url: "~/docs/檢核表.doc" },
-  { name: "洋貨具結書", url: "~/docs/新具結書.doc" },
-  { name: "易碎品切結書", url: "~/docs/易碎品切結書.docx" },
-  { name: "海運詢問表(出口中國)", url: "~/docs/海運詢問表-出口中國.xlsx" },
+  { name: "個案委任書", url: "/docs/106_09_19_個案委任書(新).docx" },
+  { name: "INVOICE", url: "/docs/Invoice-範本.xls" },
+  { name: "PACKING LIST", url: "/docs/Packing範本.xls" },
+  { name: "報關檢核表", url: "/docs/檢核表.doc" },
+  { name: "洋貨具結書", url: "/docs/新具結書.doc" },
+  { name: "易碎品切結書", url: "/docs/易碎品切結書.docx" },
+  { name: "海運詢問表(出口中國)", url: "/docs/海運詢問表-出口中國.xlsx" },
 ];
 
 const linkItems: LinkItem[] = [
@@ -123,9 +123,9 @@ const defaultCompanyInfo: CompanyInfo = {
   slogan: "專業的物流服務",
   legalName: "卡菲斯國際物流有限公司",
   contacts: [
-    { label: "電話", value: "+886-2-2345-6789" },
-    { label: "地址", value: "台北市中山區中山北路二段" },
-    { label: "Email", value: "service@kfc-freight.com" },
+    { label: "電話", value: "02-2935-1589" },
+    { label: "地址", value: "台北市文山區羅斯福路六段142巷82號1樓" },
+    { label: "Email", value: "unisky@ms76.hinet.net" },
   ],
 };
 

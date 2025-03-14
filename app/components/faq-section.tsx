@@ -138,7 +138,7 @@ export function FAQSection({
             className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-[var(--accent-8)] hover:bg-[var(--accent-9)] transition-colors"
             data-oid="vq37:um"
           >
-            🤙 貨發出去賺大錢！
+            🤙 聯絡我們
           </a>
         </div>
       </div>
