@@ -63,9 +63,9 @@ export default function Index() {
     <main className="flex-1" data-oid="wr-sqyq">
       <HeroSection data-oid="7mevyqu" />
       <FeatureSection data-oid="ak90jih" />
-      {/* <BenefitSection data-oid=".5.11og" /> */}
       <HowItWorks data-oid="m-c-:kp" />
-      {/* <ServiceSection services={services} data-oid="rb6s:rr" /> */}
+      {/* <BenefitSection /> */}
+      {/* <ServiceSection services={services} /> */}
     </main>
   );
 }
