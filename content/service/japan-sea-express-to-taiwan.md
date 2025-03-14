@@ -4,6 +4,7 @@ description: 提供完整的海運服務，將日本貨物送達台灣全流程
 image: https://images.unsplash.com/photo-1653029431060-4a5909fdf59d?q=80&w=1920&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
 date: 2024-02-22
 tags: ['日本', '海快', '台灣']
+sort: 3
 ---
 
 ### 日本海快發台灣專線

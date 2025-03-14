@@ -43,14 +43,14 @@ export function Header({ serviceLinks }: HeaderProps) {
             data-oid="sgi2kyd"
           >
             <div
-              className="w-[18rem] rounded-lg border border-[var(--accent-8)] bg-[var(--gray-a3)] backdrop-blur-sm p-2 shadow-lg transition-all duration-300"
+              className="w-[18rem] rounded-lg border border-[var(--accent-8)] bg-[var(--accent-3)] p-2 shadow-lg transition-all duration-300"
               data-oid="rs0ww6i"
             >
               {link.subMenuLinks.map((subLink) => (
                 <Link
                   key={subLink.title}
                   to={subLink.url}
-                  className="block rounded-md px-2 py-1.5 text-md text-[var(--accent-9)] transition-colors hover:bg-[var(--accent-9)] hover:text-[var(--gray-1)] dark:hover:bg-[var(--accent-8)] dark:hover:text-[var(--gray-12)]"
+                  className="block rounded-md px-2 py-1.5 text-md font-semibold text-[var(--accent-9)] transition-colors hover:bg-[var(--accent-9)] hover:text-[var(--gray-1)] dark:hover:bg-[var(--accent-8)] dark:hover:text-[var(--gray-12)]"
                   data-oid="jgi9e5x"
                 >
                   {subLink.title}
@@ -158,7 +158,7 @@ export function Header({ serviceLinks }: HeaderProps) {
       data-oid="1.l3v:j"
     >
       <div
-        className="px-6 rounded-full bg-[var(--gray-a3)] backdrop-blur-md border border-[var(--accent-8)] shadow-sm transition duration-300"
+        className="px-6 rounded-full bg-[var(--accent-3)] border border-[var(--accent-8)] shadow-sm transition duration-300"
         data-oid="g2dw62s"
       >
         <div

@@ -63,6 +63,14 @@ export const loader = async () => {
       title: "Q3：你們在台、中、菲、日四地的配送有多深入？",
       answer: `我們在四國都設有倉儲中心(如 台北、深圳、馬尼拉、東京)，並透過與當地物流龍頭合作，延伸至二線城市及工業 區`,
     },
+    {
+      title: "Q4：(菲律賓)是否包含關稅費用？",
+      answer: `是，菲律賓當地無須再支付任何費用`,
+    },
+    {
+      title: "Q5：(日本)海快寄送限制？",
+      answer: `香菸、食品、保健食品、自用藥品、各類含藥性高的產品，都無法托運`,
+    }
   ];
 
   return json({ missionFeatures, faqQuestions });

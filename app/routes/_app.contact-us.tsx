@@ -352,7 +352,7 @@ const CONTACT_INFO = [
   {
     icon: <EmailIcon data-oid="_gesb4:" />,
     title: "電子郵件",
-    content: <p data-oid="j04s93v">kafs123@126.com</p>,
+    content: <p data-oid="j04s93v">unisky@ms76.hinet.net</p>,
   },
 ] as const;
 

@@ -15,7 +15,7 @@ export function HeroSection() {
   const gradient1 = `var(--accent-9)`;
   const gradient2 = `var(--accent-a4)`;
 
-  const heroCTA = "貨發出錢進來";
+  const heroCTA = "聯絡我們";
 
   const featureItems = [
     { icon: Shield, text: "安全跨境運輸" },
