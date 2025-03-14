@@ -7,6 +7,7 @@ import { BenefitSection } from "~/components/_index_benefit_section";
 import { HowItWorks } from "~/components/_index_howitwork";
 import { ServiceSection } from "~/components/_index_service_section";
 import { getAllServiceLinks, type ServiceLink } from "~/models/service.server";
+import { FAB } from "~/components/ui/fab-component";
 
 interface Service {
   title: string;

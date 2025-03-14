@@ -20,6 +20,7 @@ import { Header } from "~/components/Header";
 import { Footer } from "~/components/Footer";
 import { getThemeFromCookie, Theme } from "~/utils/theme";
 import { getServiceLinks } from "~/utils/service-menu";
+import { FAB } from "~/components/ui/fab-component";
 
 export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
@@ -108,6 +109,7 @@ export default function App() {
             <Header serviceLinks={serviceLinks} data-oid="suoq5h8" />
             <main className="flex-1" data-oid="w5u8f:a">
               <Outlet data-oid="4x6o1bc" />
+              <FAB qrValue="https://line.me/R/ti/p/@217iielg" position="responsive" />
             </main>
             <Footer data-oid="5qaouwl" />
           </div>

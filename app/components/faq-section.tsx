@@ -64,7 +64,7 @@ export function FAQSection({
                 data-oid="1ww-5od"
               >
                 <span
-                  className="text-lg font-semibold text-[var(--gray-12)]"
+                  className="text-lg text-left font-semibold text-[var(--gray-12)]"
                   data-oid="wey_glq"
                 >
                   {question.title}

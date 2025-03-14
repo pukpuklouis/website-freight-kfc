@@ -6,7 +6,6 @@ import { Spotlight } from "~/components/ui/spotlight";
 import { useTheme, themes } from "~/utils/theme";
 import { FeatureLgCard } from "./feature-lg-card";
 import { Link } from "@remix-run/react";
-import { serviceLink }  from "~/models/service.server"
 
 interface ImageData {
   readonly src: string;
