@@ -6,6 +6,7 @@ import { Spotlight } from "~/components/ui/spotlight";
 import { useTheme, themes } from "~/utils/theme";
 import { FeatureLgCard } from "./feature-lg-card";
 import { Link } from "@remix-run/react";
+import { serviceLink }  from "~/models/service.server"
 
 interface ImageData {
   readonly src: string;
@@ -49,9 +50,9 @@ const defaultFeatures: FeatureCardProps[] = [
   {
     image: {
       src: "https://images.unsplash.com/photo-1596188126441-41279e8f5e46?q=80&w=1920&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      alt: "兩岸三地海快、空運、小三通",
+      alt: "兩岸三地海快、空運",
     },
-    title: "兩岸三地海快、空運、小三通",
+    title: "兩岸三地海快、空運",
     description: "專精大中華區，確保貨物安全高效地運送到目的地。",
     url: "service/cross-strait-three-regions-sea-express-air-transport",
   },
@@ -80,7 +81,7 @@ const defaultFeatures: FeatureCardProps[] = [
     },
     title: "台灣倉儲配送",
     description: "採用最先進的安全措施保護您的貴重貨物。",
-    url: "services",
+    url: "service/Taiwan-logistics-solutions",
   },
 ];
 
@@ -139,12 +140,12 @@ const FeatureCard = memo(function FeatureCard({
             className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-[var(--gray-12)] to-transparent"
           >
             <h3
-              className="mb-2 text-2xl font-black tracking-tight text-[var(--gray-1)]"
+              className="mb-1 text-2xl font-black tracking-tight text-[var(--gray-1)]"
             >
               {title}
             </h3>
             <p
-              className="text-[var(--gray-3)] font-light opacity-0 transform translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0"
+              className="text-[var(--gray-3)] font-normal opacity-0 transform translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0"
             >
               {description}
             </p>
