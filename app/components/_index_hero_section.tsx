@@ -48,17 +48,17 @@ export function HeroSection() {
 
   const heroImages = [
     {
-      src: "https://images.unsplash.com/photo-1578245093109-472875396a2a?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      src: "images/banner/KFC-freight-banner-China-to-Taiwan-M.avif",
       alt: "Logistics Services",
       location: "兩岸三地",
     },
     {
-      src: "https://images.unsplash.com/photo-1510681916233-314f497f3301?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      src: "images/banner/KFC-freight-banner-Taiwan-to-Phlippines-M.avif",
       alt: "Global Network",
       location: "菲律賓",
     },
     {
-      src: "https://images.unsplash.com/photo-1509810505-b88f10b18375?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      src: "images/banner/KFC-freight-banner-Taiwan-to-Japan.avif",
       alt: "japan port",
       location: "日本",
     },
@@ -147,7 +147,7 @@ export function HeroSection() {
         </motion.div>
 
         <div
-          className="relative border border-1 border-separate border-[var(--accent-7)] w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[550px] overflow-hidden rounded-xl sm:rounded-3xl md:rounded-4xl"
+          className="relative border border-1 border-separate border-[var(--accent-7)] w-full sm:h-[400px] md:h-[600px] lg:h-[750px] overflow-hidden rounded-xl sm:rounded-3xl md:rounded-4xl"
           data-oid="av6he11"
         >
           {heroImages.map((image, index) => (
@@ -170,7 +170,7 @@ export function HeroSection() {
               />
 
               <div
-                className="absolute inset-0 bg-black/30 rounded-2xl flex items-end justify-end p-4"
+                className="absolute inset-0 bg-black/10 rounded-2xl flex items-end justify-end p-4"
                 data-oid="465o2-v"
               >
                 <span
