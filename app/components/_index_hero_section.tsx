@@ -53,7 +53,7 @@ export function HeroSection() {
       location: "兩岸三地",
     },
     {
-      src: "images/banner/KFC-freight-banner-Taiwan-to-Phlippines-M.avif",
+      src: "images/banner/KFC-freight-banner-Taiwna-to-Philippines-clp.avif",
       alt: "Global Network",
       location: "菲律賓",
     },
