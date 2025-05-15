@@ -60,13 +60,13 @@ export default function ServiceRoute() {
   const { content, frontmatter } = useLoaderData<LoaderData>();
 
   return (
-    <div className="max-w-4xl mx-auto px-4 pb-36">
+    <div className="max-w-4xl mx-auto px-4 pb-36 mt-28">
       <header className="mb-8">
         {frontmatter.image && (
           <img
             src={frontmatter.image}
             alt={frontmatter.title}
-            className="w-full h-[350px] object-cover rounded-bl-2xl rounded-br-2xl"
+            className="w-full h-auto aspect-video object-cover rounded-2xl"
           />
         )}
         <h1 className="text-5xl text-[var(--accent-9)] font-bold my-4">{frontmatter.title}</h1>

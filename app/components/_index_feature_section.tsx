@@ -61,16 +61,16 @@ const defaultFeatures: FeatureCardProps[] = [
       alt: "台灣快遞海運菲律賓",
     },
     title: "台灣快遞海運菲律賓",
-    description: "海運服務，深入菲律賓地區確保貨物安全高效送到目的地。",
+    description: "快遞服務：今天貨交卡菲斯運通，明天馬尼拉派送上門",
     url: "service/taiwan-express-delivery-and-sea-freight-to-philippines",
   },
   {
     image: {
-      src: "https://images.unsplash.com/photo-1653029431060-4a5909fdf59d?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      src: "https://images.unsplash.com/photo-1532236204992-f5e85c024202?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       alt: "日本海快到台灣",
     },
     title: "日本海快到台灣",
-    description: "透過我們的先進追蹤系統，全天候監控您的貨物。",
+    description: "萬物皆可運送，上不了飛機的貨品都能夠托運",
     url: "service/japan-sea-express-to-taiwan",
   },
   {
@@ -79,7 +79,7 @@ const defaultFeatures: FeatureCardProps[] = [
       alt: "台灣倉儲配送",
     },
     title: "台灣倉儲配送",
-    description: "採用最先進的安全措施保護您的貴重貨物。",
+    description: "全天候監控您的貨物，進口、通關、倉儲、揀貨、包裝、派送，全程一條龍服務",
     url: "service/Taiwan-logistics-solutions",
   },
 ];
