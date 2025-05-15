@@ -20,7 +20,7 @@ export function HeroSection() {
   const featureItems = [
     { icon: Shield, text: "安全跨境運輸" },
     { icon: Globe, text: "大中華區跨境首選" },
-    { icon: Clock, text: "24/7  客戶服務" },
+    { icon: Clock, text: "客戶服務" },
   ] as const;
 
   const FeatureItem = ({
@@ -48,7 +48,7 @@ export function HeroSection() {
 
   const heroImages = [
     {
-      src: "images/banner/KFC-freight-banner-China-to-Taiwan-M.avif",
+      src: "images/banner/KFC-freight-banner-China-to-Taiwan-M-v2.avif",
       alt: "Logistics Services",
       location: "兩岸三地",
     },
@@ -147,7 +147,7 @@ export function HeroSection() {
         </motion.div>
 
         <div
-          className="relative border border-1 border-separate border-[var(--accent-7)] w-full sm:h-[400px] md:h-[600px] lg:h-[750px] overflow-hidden rounded-xl sm:rounded-3xl md:rounded-4xl"
+          className="relative border border-1 border-separate border-[var(--accent-7)] sm:h-[400px] md:h-[600px] lg:h-[650px] aspect-[4/3] mx-auto overflow-hidden rounded-xl sm:rounded-3xl md:rounded-4xl"
           data-oid="av6he11"
         >
           {heroImages.map((image, index) => (
@@ -174,7 +174,7 @@ export function HeroSection() {
                 data-oid="465o2-v"
               >
                 <span
-                  className="absolute bottom-8 right-8 text-gray-300 lg:text-5xl md:text-3xl sm:text-3xl font-bold"
+                  className="absolute bottom-8 left-8 text-gray-300 lg:text-5xl md:text-3xl sm:text-3xl font-bold"
                   data-oid="l3l:ft:"
                 >
                   {image.location}
