@@ -4,7 +4,7 @@ import {
   type MetaFunction,
   type TypedResponse,
 } from "@remix-run/cloudflare";
-import { Form, useActionData } from "@remix-run/react";
+import { Form, useActionData, useNavigation } from "@remix-run/react";
 import { useState, useRef, useEffect } from "react";
 import { Resend } from "resend";
 import { encode } from "html-entities";
@@ -125,25 +125,25 @@ export const action = async ({
     const errors: ActionData["errors"] = {};
 
     // Validate input length and format
-    if (!name || name.length < 2 || name.length > 100) {
-      errors.name = "Name must be between 2 and 100 characters";
+    if (!name || name.length < 2 || name.length > 20) {
+      errors.name = "姓名必須在2到20字之間";
     }
 
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      errors.email = "Valid email is required";
+      errors.email = "請輸入有效的Email";
     }
 
     if (!subject || subject.length < 3 || subject.length > 200) {
-      errors.subject = "Subject must be between 3 and 200 characters";
+      errors.subject = "主題必須在3到200字之間";
     }
 
     if (!message || message.length < 10 || message.length > 5000) {
-      errors.message = "Message must be between 10 and 5000 characters";
+      errors.message = "訊息必須在10到5000字之間";
     }
 
     // Additional spam checks
     if (message.includes("http") || message.includes("www.")) {
-      errors.system = "Links are not allowed in the message.";
+      errors.system = "訊息中不得包含連結。";
     }
 
     if (Object.keys(errors).length > 0) {
@@ -158,22 +158,21 @@ export const action = async ({
 
     try {
       await resend.emails.send({
-        from: "onboarding@resend.dev",
-        to: ["anlstudio.kfc@gmail.com"],
+        from: "noreply@kabayan.com.tw", // Domain verified with Resend, see https://www.resend.com/docs/domain-verification
+        to: ["unisky@ms76.hinet.net"],
         replyTo: email,
-        subject: `Contact Form: ${subject}`,
+        subject: `網站聯絡表單: ${subject}`,
         html: `
-          <h2>New Contact Form Submission</h2>
-          <p><strong>Name:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Subject:</strong> ${subject}</p>
-          <p><strong>Message:</strong></p>
+          <h2>網站聯絡表單</h2>
+          <p><strong>客戶姓名:</strong> ${name}</p>
+          <p><strong>客戶Email:</strong> ${email}</p>
+          <p><strong>主題:</strong> ${subject}</p>
+          <p><strong>訊息:</strong></p>
           <p>${message}</p>
           <hr>
-          <p><small>This email was sent from the contact form at KFC Freight Services website.</small></p>
+          <p><small>此封信件由卡菲斯官網的聯絡表單送出。</small></p>
         `,
       });
-
       return json<ActionData>({
         values: { name, email, subject, message },
         success: true,
@@ -182,7 +181,7 @@ export const action = async ({
       console.error("Failed to send email:", error);
       return json<ActionData>({
         errors: {
-          system: "Failed to send email. Please try again later.",
+          system: "寄送失敗，請稍後再試。",
         },
         values: { name, email, subject, message },
       });
@@ -191,7 +190,7 @@ export const action = async ({
     console.error("Form submission error:", error);
     return json<ActionData>({
       errors: {
-        system: "An unexpected error occurred. Please try again.",
+        system: "發生意外錯誤，請稍後再試。",
       },
     });
   }
@@ -420,43 +419,15 @@ const ContactInfo = ({
 export default function ContactUs() {
   const isHydrated = useHydrated();
   const actionData = useActionData<ActionData>();
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const navigation = useNavigation();
   const formRef = useRef<HTMLFormElement>(null);
 
+  // Reset form on successful submission
   useEffect(() => {
-    if (actionData?.success) {
-      // Clear form on success
-      formRef.current?.reset();
-      setIsSubmitting(false);
-    } else if (actionData?.errors) {
-      // Reset submitting state if there are errors
-      setIsSubmitting(false);
+    if (actionData?.success && formRef.current) {
+      formRef.current.reset();
     }
-  }, [actionData]);
-
-  // Handle form submission
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    if (!isHydrated) return; // Prevent submission during SSR
-
-    event.preventDefault();
-    setIsSubmitting(true);
-
-    try {
-      const formData = new FormData(event.currentTarget);
-      const response = await fetch(event.currentTarget.action, {
-        method: "POST",
-        body: formData,
-      });
-
-      if (response.ok) {
-        formRef.current?.reset();
-      }
-    } catch (error) {
-      console.error("Form submission error:", error);
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+  }, [actionData?.success]);
 
   return (
     <div
@@ -534,7 +505,7 @@ export default function ContactUs() {
 
           {/* Contact Form */}
           <div
-            className="bg-[var(--gray-1)] dark:bg-[var(--gray-2)] shadow-xl p-8 rounded-lg shadow-sm border border-[var(--gray-6)]"
+            className="bg-[var(--gray-1)] dark:bg-[var(--gray-2)] shadow-xl p-8 rounded-lg border border-[var(--gray-6)]"
             data-oid="rk.1b.6"
           >
             <h2
@@ -576,10 +547,9 @@ export default function ContactUs() {
             ) : (
               <FormPrimitive.Root asChild data-oid="pr.cs.3">
                 <Form
-                  ref={formRef}
                   method="post"
+                  ref={formRef}
                   className="space-y-6"
-                  onSubmit={handleSubmit}
                   data-oid="5s5jz8v"
                 >
                   <FormField
@@ -619,14 +589,16 @@ export default function ContactUs() {
 
                   <FormPrimitive.Submit asChild data-oid="8_nun42">
                     <Button
-                      disabled={!isHydrated || isSubmitting}
+                      disabled={!isHydrated || navigation.state === "submitting"}
                       type="submit"
                       size="3"
                       variant="solid"
                       className="w-full"
                       data-oid="oiu-nmn"
                     >
-                      {isSubmitting ? "傳送中..." : "傳送訊息"}
+                      {navigation.state === "submitting"
+                        ? "傳送中..."
+                        : "傳送訊息"}
                     </Button>
                   </FormPrimitive.Submit>
                   {actionData?.errors?.system && (
