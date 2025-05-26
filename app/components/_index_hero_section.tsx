@@ -99,7 +99,7 @@ export function HeroSection() {
               WebkitTextFillColor: "transparent",
               backgroundClip: "text",
             }}
-            className="text-[clamp(1.75rem,5vw+1rem,5rem)] font-bold tracking-tight mb-6"
+            className="text-[clamp(1.75rem,7vw+1rem,5rem)] font-bold tracking-tight text-balance mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -108,14 +108,14 @@ export function HeroSection() {
             跨境運輸 連接四方
           </motion.h1>
           <motion.p
-            style={{ color: gray[12] }}
-            className="text-xl max-w-2xl mx-auto "
+            style={{ color: gray[9] }}
+            className="text-lg md:text-xl max-w-2xl mx-auto font-light text-balance"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             data-oid="n51s784"
           >
-            卡菲斯國際運輸提供無縫的跨境運輸解決方案，讓您出貨無憂。
+            卡菲斯國際運輸提供無縫的跨境運輸解決方案，讓您出貨無憂
           </motion.p>
           <motion.div
             className="flex flex-wrap gap-4 justify-center mt-8"
@@ -147,7 +147,7 @@ export function HeroSection() {
         </motion.div>
 
         <div
-          className="relative border border-1 border-separate border-[var(--accent-7)] sm:w-[100%] md:h-[600px] lg:h-[650px] aspect-[4/3] mx-auto overflow-hidden rounded-xl sm:rounded-3xl md:rounded-4xl"
+          className="relative border-1 border-separate border-[var(--accent-7)] w-[100%] md:w-[90%] lg:w-[80%] aspect-[4/3] mx-0 md:mx-auto overflow-hidden rounded-2xl"
           data-oid="av6he11"
         >
           {heroImages.map((image, index) => (
