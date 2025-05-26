@@ -166,7 +166,7 @@ export const FeatureSection = memo(function FeatureSection({
   const { accent, gray } = themes[theme];
 
   return (
-    <section className="relative px-[10%] py-16 md:py-24 bg-[var(--accent-2)]">
+    <section className="relative px-4 md:px-[10%] py-16 md:py-24 bg-[var(--accent-2)]">
       <div className="container relative">
         {/* Hero Feature Card */}
         <FeatureLgCard

@@ -11,6 +11,7 @@ import { encode } from "html-entities";
 import * as FormPrimitive from "@radix-ui/react-form";
 import { Button } from "@radix-ui/themes";
 import { useHydrated } from "~/hooks/use-hydrated";
+import { generateSEOMeta, PAGE_SEO_CONFIGS } from "~/utils/seo";
 
 // Store IP-based rate limiting
 const ipRequests = new Map<string, { count: number; timestamp: number }>();
@@ -48,13 +49,7 @@ function sanitizeInput(input: string): string {
 }
 
 export const meta: MetaFunction = () => {
-  return [
-    { title: "聯絡我們-卡菲斯國際" },
-    {
-      name: "description",
-      content: "聯繫卡菲斯國際貨運服務。我們隨時為您的貨運和物流需求提供協助。",
-    },
-  ];
+  return generateSEOMeta(PAGE_SEO_CONFIGS.contactUs);
 };
 
 interface ActionData {

@@ -7,7 +7,7 @@ import { BenefitSection } from "~/components/_index_benefit_section";
 import { HowItWorks } from "~/components/_index_howitwork";
 import { ServiceSection } from "~/components/_index_service_section";
 import { getAllServiceLinks, type ServiceLink } from "~/models/service.server";
-import { FAB } from "~/components/ui/fab-component";
+import { generateSEOMeta, PAGE_SEO_CONFIGS } from "~/utils/seo";
 
 interface Service {
   title: string;
@@ -22,10 +22,7 @@ interface LoaderData {
 }
 
 export const meta: MetaFunction = () => {
-  return [
-    { title: "卡菲斯國際" },
-    { name: "description", content: "卡菲斯國際專營中國日本菲律賓三地運輸!" },
-  ];
+  return generateSEOMeta(PAGE_SEO_CONFIGS.home);
 };
 
 export const loader: LoaderFunction = async ({ request }: LoaderFunctionArgs) => {

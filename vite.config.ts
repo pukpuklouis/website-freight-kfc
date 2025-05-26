@@ -11,7 +11,11 @@ import remarkFrontmatter from "remark-frontmatter";
 import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 
-export default defineConfig({
+// Change this line to accept the 'mode' argument
+export default defineConfig(({ mode }) => { // <--- ADD ({ mode }) HERE
+  const isProduction = mode === 'production'; // Create a boolean variable for clarity
+  
+  return {
   plugins: [
     remixCloudflareDevProxy(),
     mdx({
@@ -45,12 +49,15 @@ export default defineConfig({
     ]
   },
   resolve: {
-    alias: {
+    //only alias when in production 
+    alias: isProduction ? {
       crypto: 'crypto-browserify',
       path: 'path-browserify'
-    }
+    } : {},
   },
   build: {
     sourcemap: false
   }
+};
 });
+

@@ -5,16 +5,10 @@ import { MissionSection } from "~/components/mission-section";
 import { FAQSection } from "~/components/faq-section";
 import { PurposeSection } from "~/components/purpose-section";
 import { useTheme, themes } from "~/utils/theme";
+import { generateSEOMeta, PAGE_SEO_CONFIGS } from "~/utils/seo";
 
 export const meta: MetaFunction = () => {
-  return [
-    { title: "特色-卡菲斯國際" },
-    {
-      name: "description",
-      content:
-        "了解卡菲斯國際貨運服務，我們的優勢、價值觀以及對卓越貨運解決方案的承諾。",
-    },
-  ];
+  return generateSEOMeta(PAGE_SEO_CONFIGS.aboutUs);
 };
 
 export const loader = async () => {

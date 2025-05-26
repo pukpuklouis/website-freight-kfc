@@ -1,4 +1,6 @@
 import type { LoaderFunctionArgs } from "@remix-run/node";
+import { readdir } from "fs/promises";
+import { join } from "path";
 
 interface SitemapEntry {
   url: string;
@@ -43,20 +45,11 @@ export async function loader({ request }: LoaderFunctionArgs) {
       changefreq: "monthly",
       priority: 0.7,
     },
-    {
-      url: `${domain}/vision-roadmap`,
-      lastmod: new Date().toISOString(),
-      changefreq: "monthly",
-      priority: 0.6,
-    },
   ];
 
-  // You can add dynamic routes here in the future
-  // For example, if you have blog posts or services from a database:
-  // const dynamicRoutes = await getDynamicRoutes(domain);
-  // const allRoutes = [...staticRoutes, ...dynamicRoutes];
-  
-  const allRoutes = staticRoutes;
+  // Get dynamic service routes
+  const dynamicRoutes = await getDynamicServiceRoutes(domain);
+  const allRoutes = [...staticRoutes, ...dynamicRoutes];
 
   const sitemap = generateSitemap(allRoutes);
 
@@ -88,15 +81,29 @@ ${routes
 </urlset>`;
 }
 
-// Helper function for future dynamic content
-// async function getDynamicRoutes(domain: string): Promise<SitemapEntry[]> {
-//   // Example: Fetch blog posts, services, or other dynamic content
-//   // const posts = await db.post.findMany({ where: { published: true } });
-//   // return posts.map(post => ({
-//   //   url: `${domain}/blog/${post.slug}`,
-//   //   lastmod: post.updatedAt.toISOString(),
-//   //   changefreq: "weekly" as const,
-//   //   priority: 0.6,
-//   // }));
-//   return [];
-// }
+// Helper function to get dynamic service routes
+async function getDynamicServiceRoutes(domain: string): Promise<SitemapEntry[]> {
+  try {
+    // Get all markdown files from content/service directory
+    const contentDir = join(process.cwd(), "content", "service");
+    const files = await readdir(contentDir);
+    
+    const serviceRoutes: SitemapEntry[] = files
+      .filter(file => file.endsWith('.md'))
+      .map(file => {
+        // Remove .md extension to get the slug
+        const slug = file.replace('.md', '');
+        return {
+          url: `${domain}/service/${slug}`,
+          lastmod: new Date().toISOString(),
+          changefreq: "monthly" as const,
+          priority: 0.7,
+        };
+      });
+
+    return serviceRoutes;
+  } catch (error) {
+    console.error("Error reading service files:", error);
+    return [];
+  }
+}

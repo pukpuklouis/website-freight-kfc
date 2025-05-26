@@ -4,6 +4,7 @@ import { Ship, CheckCircle, Scale, Globe } from 'lucide-react';
 import { useTheme } from '~/utils/theme';
 import { FeatureVision } from '~/components/feature-vision';
 import { StrategicFocus } from '~/components/strategic-focus';
+import { generateSEOMeta, PAGE_SEO_CONFIGS } from "~/utils/seo";
 
 interface FeatureItem {
   path: string;
@@ -20,14 +21,7 @@ interface Strategy {
 }
 
 export const meta: MetaFunction = () => {
-  return [
-    { title: '未來營運-卡菲斯國際' },
-    {
-      name: 'description',
-      content:
-        '探索我們對貨運服務未來的願景，以及我們的成長和創新策略路線圖。',
-    },
-  ];
+  return generateSEOMeta(PAGE_SEO_CONFIGS.visionRoadmap);
 };
 
 export default function VisionRoadmap() {

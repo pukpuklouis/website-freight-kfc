@@ -147,7 +147,7 @@ export function HeroSection() {
         </motion.div>
 
         <div
-          className="relative border border-1 border-separate border-[var(--accent-7)] sm:h-[400px] md:h-[600px] lg:h-[650px] aspect-[4/3] mx-auto overflow-hidden rounded-xl sm:rounded-3xl md:rounded-4xl"
+          className="relative border border-1 border-separate border-[var(--accent-7)] sm:w-[100%] md:h-[600px] lg:h-[650px] aspect-[4/3] mx-auto overflow-hidden rounded-xl sm:rounded-3xl md:rounded-4xl"
           data-oid="av6he11"
         >
           {heroImages.map((image, index) => (
@@ -165,7 +165,7 @@ export function HeroSection() {
               <img
                 src={image.src}
                 alt={image.alt}
-                className="w-full h-full object-cover rounded-2xl"
+                className="w-full h-full object-cover"
                 data-oid="dx6m4q0"
               />
 

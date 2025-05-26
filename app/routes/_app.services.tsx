@@ -1,7 +1,9 @@
 import { json } from "@remix-run/node";
 import { Link, useLoaderData } from "@remix-run/react";
+import type { MetaFunction } from "@remix-run/node";
 import matter from "gray-matter";
 import { motion, AnimatePresence } from "framer-motion";
+import { generateSEOMeta, PAGE_SEO_CONFIGS } from "~/utils/seo";
 
 // Types
 interface ServiceMeta {
@@ -16,6 +18,10 @@ interface ServiceMeta {
 interface LoaderData {
   services: ServiceMeta[];
 }
+
+export const meta: MetaFunction = () => {
+  return generateSEOMeta(PAGE_SEO_CONFIGS.services);
+};
 
 export const loader = async () => {
   try {

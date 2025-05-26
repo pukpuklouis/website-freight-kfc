@@ -1,10 +1,12 @@
 import { json, type LoaderFunctionArgs } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
+import type { MetaFunction } from "@remix-run/node";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import matter from "gray-matter";
 import "~/styles/markdown.css";
 import { markdownComponents } from "~/components/MarkdownComponents";
+import { generateSEOMeta } from "~/utils/seo";
 
 interface LoaderData {
   content: string;
@@ -16,6 +18,24 @@ interface LoaderData {
     image?: string;
   };
 }
+
+export const meta: MetaFunction<typeof loader> = ({ data }) => {
+  if (!data) {
+    return generateSEOMeta({
+      title: "服務頁面未找到",
+      description: "您所尋找的服務頁面不存在。請返回服務列表查看我們的完整服務項目。",
+    });
+  }
+
+  const { frontmatter } = data;
+  return generateSEOMeta({
+    title: frontmatter.title,
+    description: frontmatter.description || `了解${frontmatter.title}服務詳情`,
+    url: `https://www.kabayan.com.tw/service/${frontmatter.title.toLowerCase().replace(/\s+/g, '-')}`,
+    type: "article",
+    ogImage: frontmatter.image || "https://www.kabayan.com.tw/og-image.png",
+  });
+};
 
 export const loader = async ({ params }: LoaderFunctionArgs) => {
   try {
