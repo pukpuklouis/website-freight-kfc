@@ -38,10 +38,14 @@ export const links: LinksFunction = () => [
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "KFC Freight" },
+    { title: "卡菲斯國際 | 專營中國日本菲律賓三地運輸" },
     {
       name: "description",
-      content: "Welcome to KFC Freight!",
+      content: "卡菲斯國際專營中國、日本、菲律賓三地運輸服務。提供專業貨運、物流配送、清關服務，安全快速，價格優惠。立即聯繫我們獲取報價！",
+    },
+    {
+      name: "keywords",
+      content: "卡菲斯國際,中國運輸,日本運輸,菲律賓運輸,國際貨運,物流服務,清關服務,三地運輸,貨物配送",
     },
     {
       name: "viewport",
@@ -50,6 +54,53 @@ export const meta: MetaFunction = () => {
     { name: "theme-color", content: "#ffffff" },
     { name: "apple-mobile-web-app-capable", content: "yes" },
     { name: "apple-mobile-web-app-status-bar-style", content: "default" },
+    
+    // Open Graph Meta Tags
+    { property: "og:type", content: "website" },
+    { property: "og:title", content: "卡菲斯國際 | 專營中國日本菲律賓三地運輸" },
+    {
+      property: "og:description",
+      content: "卡菲斯國際專營中國、日本、菲律賓三地運輸服務。提供專業貨運、物流配送、清關服務，安全快速，價格優惠。",
+    },
+    { property: "og:url", content: "https://www.kabayan.com.tw" },
+    { property: "og:site_name", content: "卡菲斯國際" },
+    { property: "og:image", content: "https://www.kabayan.com.tw/og-image.png" },
+    { property: "og:image:width", content: "1200" },
+    { property: "og:image:height", content: "630" },
+    { property: "og:image:alt", content: "卡菲斯國際 - 專營中國日本菲律賓三地運輸" },
+    { property: "og:locale", content: "zh_TW" },
+    
+    // Twitter Card Meta Tags
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:title", content: "卡菲斯國際 | 專營中國日本菲律賓三地運輸" },
+    {
+      name: "twitter:description",
+      content: "卡菲斯國際專營中國、日本、菲律賓三地運輸服務。提供專業貨運、物流配送、清關服務，安全快速，價格優惠。",
+    },
+    { name: "twitter:image", content: "https://www.kabayan.com.tw/og-image.png" },
+    { name: "twitter:image:alt", content: "卡菲斯國際 - 專營中國日本菲律賓三地運輸" },
+    { name: "twitter:site", content: "@kabayan" },
+    { name: "twitter:creator", content: "@kabayan" },
+    { name: "twitter:url", content: "https://www.kabayan.com.tw" },
+    { name: "twitter:locale", content: "zh_TW" },
+    
+    // Additional SEO Meta Tags
+    { name: "robots", content: "index, follow" },
+    { name: "googlebot", content: "index, follow" },
+    { name: "author", content: "卡菲斯國際" },
+    { name: "language", content: "zh-TW" },
+    { name: "geo.region", content: "TW" },
+    { name: "geo.placename", content: "Taiwan" },
+    
+    // Canonical URL
+    { tagName: "link", rel: "canonical", href: "https://www.kabayan.com.tw" },
+    
+    // Favicon and Apple Touch Icons
+    { tagName: "link", rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+    { tagName: "link", rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" },
+    { tagName: "link", rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon-32x32.png" },
+    { tagName: "link", rel: "icon", type: "image/png", sizes: "16x16", href: "/favicon-16x16.png" },
+    { tagName: "link", rel: "manifest", href: "/site.webmanifest" },
   ];
 };
 
