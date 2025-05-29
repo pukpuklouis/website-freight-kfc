@@ -48,7 +48,7 @@ const CardWrapper: React.FC<CardWrapperProps> = ({ children, className, to }) =>
 const defaultFeatures: FeatureCardProps[] = [
   {
     image: {
-      src: "https://images.unsplash.com/photo-1596188126441-41279e8f5e46?q=80&w=1920&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      src: "https://images.unsplash.com/photo-1596188126441-41279e8f5e46?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       alt: "兩岸三地海快、空運",
     },
     title: "兩岸三地海快、空運",
