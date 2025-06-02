@@ -23,6 +23,9 @@ import { getServiceLinks } from "~/utils/service-menu";
 import { FAB } from "~/components/ui/fab-component";
 import { generateSEOMeta, PAGE_SEO_CONFIGS } from "~/utils/seo";
 
+export const GTM_ID = "GTM-KC6ZWC4B";
+
+
 export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -49,7 +52,7 @@ export const loader: LoaderFunction = async ({ request }) => {
 
 export function ErrorBoundary() {
   return (
-    <html lang="en" data-oid="_50tu_f">
+    <html lang="zh-TW" data-oid="_50tu_f">
       <head data-oid="uii0e:z">
         <title data-oid="oosgdn1">Oops! Something went wrong</title>
         <Meta data-oid="gi0vai7" />
@@ -87,11 +90,31 @@ export default function App() {
           content="width=device-width, initial-scale=1"
           data-oid="kyt110v"
         />
-
         <Meta data-oid="p6j67ls" />
         <Links data-oid="2ke.af5" />
+        {/* Google Tag Manager */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+              })(window,document,'script','dataLayer','${GTM_ID}');
+            `
+          }}
+        />
       </head>
       <body className="h-full" data-oid="b554mn3">
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe
+            src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+          />
+        </noscript>
         <ThemeProvider initialTheme={theme} data-oid="y1s3.lj">
           <div className="flex min-h-screen flex-col" data-oid="pezlp7z">
             <Header serviceLinks={serviceLinks} data-oid="suoq5h8" />
