@@ -35,25 +35,28 @@ export default function CatchAllRoute() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
             to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            className="inline-flex items-center justify-center rounded-md bg-[var(--accent-9)] px-6 py-3 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-[var(--accent-11)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           >
             回到首頁
           </Link>
           <Link
             to="/contact-us"
-            className="inline-flex items-center justify-center rounded-md border border-input bg-background px-6 py-3 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            className="inline-flex items-center justify-center rounded-md border border-[var(--accent-6)] px-6 py-3 text-sm font-medium shadow-sm bg-[var(--accent-2)] transition-colors hover:bg-[var(--accent-3)] hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           >
             聯絡我們
           </Link>
         </div>
         
-        <div className="mt-12 pt-8 border-t border-border">
-          <p className="text-sm text-muted-foreground">
+        <div className="mt-12 pt-8 border-t border-border flex flex-row gap-2 items-center justify-center">
+          <p className="text-sm text-[var(--gray-11)]">
             需要幫助嗎？{' '}
-            <Link to="/contact-us" className="font-medium text-primary hover:underline">
+          </p>
+          <div className=" my-2 hover:scale-105 transition-all duration-300 ease-in-out">
+            <Link to="/contact-us" className="text-sm text-[var(--accent-8)]">
               聯絡我們的客服
             </Link>
-          </p>
+          </div>
+          
         </div>
       </div>
     </div>
